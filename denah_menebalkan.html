@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Lembar Menebalkan Denah Rumah</title>
+<style>
+  @media print {
+    body {
+      background-color: white !important;
+      -webkit-print-color-adjust: exact; 
+      padding: 0 !important;
+    }
+    .no-print {
+      display: none;
+    }
+    .page {
+      box-shadow: none !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+  }
+  body {
+    font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 20px;
+  }
+  .page {
+    width: 21cm;
+    height: 29.7cm;
+    background: white;
+    padding: 2cm;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box;
+    position: relative;
+  }
+  h1 {
+    text-align: center;
+    color: #333;
+    font-size: 28px;
+    margin-bottom: 5px;
+  }
+  .instructions {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 30px;
+    color: #555;
+  }
+  svg {
+    width: 100%;
+    height: 80%;
+    display: block;
+    margin: 0 auto;
+  }
+  .wall {
+    fill: none;
+    stroke: #aaaaaa;
+    stroke-width: 6;
+    stroke-dasharray: 15, 10;
+    stroke-linecap: round;
+  }
+  .furniture {
+    fill: none;
+    stroke: #bbbbbb;
+    stroke-width: 4;
+    stroke-dasharray: 8, 8;
+  }
+  .text-trace {
+    font-size: 32px;
+    fill: none;
+    stroke: #cccccc;
+    stroke-width: 2;
+    stroke-dasharray: 4, 4;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    font-weight: bold;
+    letter-spacing: 2px;
+  }
+  .btn {
+    padding: 10px 20px;
+    font-size: 18px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+    text-decoration: none;
+  }
+  .btn:hover {
+    background-color: #45a049;
+  }
+</style>
+</head>
+<body>
+
+<button class="btn no-print" onclick="window.print()">🖨️ Cetak Lembar Ini (Print)</button>
+
+<div class="page">
+  <h1>Ayo Gambar Rumah Kita!</h1>
+  <p class="instructions">Tebalkan garis putus-putusnya dan tulislah nama ruangannya ya!</p>
+
+  <svg viewBox="0 0 800 1000">
+    <!-- Dinding Luar -->
+    <rect x="50" y="50" width="700" height="850" class="wall" rx="10" />
+
+    <!-- Dinding Dalam Horizontal -->
+    <line x1="50" y1="350" x2="750" y2="350" class="wall" />
+    <line x1="50" y1="650" x2="750" y2="650" class="wall" />
+
+    <!-- Dinding Dalam Vertikal -->
+    <line x1="450" y1="50" x2="450" y2="350" class="wall" />
+    <line x1="350" y1="350" x2="350" y2="650" class="wall" />
+    <line x1="400" y1="650" x2="400" y2="900" class="wall" />
+
+    <!-- Teras Depan -->
+    <rect x="250" y="900" width="300" height="50" class="wall" />
+    <text x="400" y="925" class="text-trace" style="font-size: 20px;">TERAS</text>
+
+    <!-- Tulisan Ruangan untuk ditebalkan -->
+    <text x="250" y="200" class="text-trace">KAMAR TIDUR</text>
+    <text x="600" y="200" class="text-trace">KAMAR MANDI</text>
+
+    <text x="200" y="500" class="text-trace">RUANG TAMU</text>
+    <text x="550" y="500" class="text-trace">RUANG TENGAH</text>
+
+    <text x="225" y="775" class="text-trace">DAPUR</text>
+    <text x="575" y="775" class="text-trace">KAMAR ANAK</text>
+    
+    <!-- Sedikit perabotan putus-putus sebagai tambahan -->
+    <!-- Kasur -->
+    <rect x="100" y="100" width="120" height="150" class="furniture" rx="5" />
+    <rect x="115" y="115" width="90" height="40" class="furniture" />
+    
+    <!-- Kasur Anak -->
+    <rect x="600" y="700" width="100" height="130" class="furniture" rx="5" />
+    
+    <!-- Meja Makan (Bundar) -->
+    <circle cx="550" cy="580" r="40" class="furniture" />
+    
+    <!-- Sofa Ruang Tamu -->
+    <rect x="100" y="450" width="150" height="60" class="furniture" rx="8" />
+
+  </svg>
+</div>
+
+</body>
+</html>

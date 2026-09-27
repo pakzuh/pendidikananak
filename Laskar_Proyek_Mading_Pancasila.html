@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proyek Mading Pancasila — Ananda Laskar (Kelas 2 SD MISS Malang)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #fdfaf4;
+    color: #2c3e50;
+    line-height: 1.5;
+    padding: 16px;
+  }
+  .app-container {
+    max-width: 1060px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 3.5px solid #c0392b;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 12px 35px rgba(192, 57, 43, 0.15);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #c0392b 0%, #b71c1c 50%, #e67e22 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 22px;
+    text-align: center;
+    border: 2px solid #7f1d1d;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 22pt;
+    color: #f1c40f;
+    text-shadow: 1px 2px 4px rgba(0,0,0,0.4);
+    margin-bottom: 6px;
+  }
+  .header .sub {
+    font-size: 11.5pt;
+    color: #fdfefe;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 10pt;
+    background: rgba(0,0,0,0.22);
+    padding: 8px 16px;
+    border-radius: 10px;
+  }
+
+  /* Navigation Tabs */
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 165px;
+    background: #fdf2e9;
+    border: 2px solid #e67e22;
+    padding: 11px 12px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 10pt;
+    font-weight: bold;
+    color: #b9770e;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+  }
+  .tab-btn:hover { background: #fae5d3; }
+  .tab-btn.active {
+    background: #c0392b;
+    color: #ffffff;
+    border-color: #962d22;
+    box-shadow: 0 4px 10px rgba(192, 57, 43, 0.3);
+  }
+
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* Action Bar */
+  .top-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    padding: 12px 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .btn-action {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 9px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    font-family: inherit;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: 0.2s;
+  }
+  .btn-action:hover { background: #219955; transform: scale(1.02); }
+
+  /* Section Styling */
+  .sec-card {
+    background: #ffffff;
+    border: 2.5px solid #e67e22;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 22px;
+  }
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #c0392b;
+    color: white;
+    padding: 7px 16px;
+    border-radius: 8px;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+  .tip-box {
+    background: #fdf2e9;
+    border-left: 5px solid #c0392b;
+    padding: 12px 16px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 16px;
+  }
+  .tip-box b { color: #962d22; }
+
+  /* Mading Poster Canvas Simulator */
+  .mading-board {
+    background: #fcf8e3;
+    border: 3.5px dashed #b7950b;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.05);
+    margin-bottom: 18px;
+  }
+  .mading-banner {
+    background: #c0392b;
+    color: #ffffff;
+    text-align: center;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 15pt;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border: 2px solid #962d22;
+    margin-bottom: 18px;
+  }
+  
+  /* Layout Grid: Left DO/DONT + Center Authentic Garuda + Right DO/DONT */
+  .mading-layout-grid {
+    display: grid;
+    grid-template-columns: 210px 1fr 210px;
+    gap: 16px;
+    align-items: center;
+  }
+  @media (max-width: 900px) {
+    .mading-layout-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .side-column {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .center-garuda-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 2px solid #f39c12;
+    border-radius: 14px;
+    padding: 16px;
+    min-height: 520px;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    position: relative;
+  }
+
+  /* Center Official Garuda Image */
+  .garuda-display-box {
+    width: 100%;
+    max-width: 380px;
+    text-align: center;
+    position: relative;
+  }
+  .garuda-display-box img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,0.15));
+  }
+
+  /* Interactive Perisai Overlay Mode */
+  .shield-overlay-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -46%);
+    width: 160px;
+    height: 180px;
+    pointer-events: auto;
+  }
+  .slot-interactive {
+    position: absolute;
+    width: 44px;
+    height: 44px;
+    border: 2px dashed #f39c12;
+    border-radius: 8px;
+    background: rgba(255,255,255,0.85);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: 0.2s;
+  }
+  .slot-interactive:hover {
+    transform: scale(1.12);
+    border-color: #27ae60;
+    background: #ffffff;
+  }
+  /* Slot positions over perisai */
+  .slot-pos-center { top: 68px; left: 58px; }        /* Sila 1: Bintang */
+  .slot-pos-bottom-right { top: 112px; left: 96px; } /* Sila 2: Rantai */
+  .slot-pos-top-right { top: 22px; left: 96px; }      /* Sila 3: Pohon */
+  .slot-pos-top-left { top: 22px; left: 20px; }       /* Sila 4: Banteng */
+  .slot-pos-bottom-left { top: 112px; left: 20px; }   /* Sila 5: Padi Kapas */
+
+  .slot-interactive img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+  }
+
+  /* Mode Switch Buttons */
+  .mode-switch-bar {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .btn-mode {
+    background: #fdf2e9;
+    border: 2px solid #e67e22;
+    border-radius: 8px;
+    padding: 6px 14px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    color: #a04000;
+    cursor: pointer;
+    transition: 0.15s;
+  }
+  .btn-mode.active {
+    background: #c0392b;
+    color: #ffffff;
+    border-color: #962d22;
+  }
+
+  /* Tray of Symbols */
+  .tray-box {
+    background: #fff8e7;
+    border: 2px solid #e67e22;
+    border-radius: 12px;
+    padding: 14px;
+    margin-top: 16px;
+  }
+  .tray-title {
+    font-size: 10.5pt;
+    font-weight: bold;
+    color: #a04000;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .symbols-picker {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .btn-symbol-item {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 6px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    color: #2c3e50;
+    transition: 0.2s;
+  }
+  .btn-symbol-item:hover {
+    border-color: #c0392b;
+    background: #fdf2e9;
+    transform: scale(1.04);
+  }
+  .btn-symbol-item img { width: 28px; height: 28px; }
+
+  /* DO & DONT Cards */
+  .card-slot {
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 6px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    transition: 0.2s;
+  }
+  .card-slot:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+  }
+  .card-slot img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 6px;
+  }
+
+  /* Color Guide Cards */
+  .color-guide-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+    gap: 14px;
+    margin-top: 14px;
+  }
+  .color-card {
+    background: #f8fafc;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 14px;
+  }
+  .color-card b {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11pt;
+    color: #1e3a8a;
+    margin-bottom: 6px;
+  }
+  .color-card p {
+    font-size: 9.5pt;
+    color: #475569;
+  }
+
+  /* Printable Sheets */
+  .printable-page {
+    background: #ffffff;
+    border: 2px dashed #7f8c8d;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+  .cutout-symbols-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 12px;
+    margin-top: 14px;
+    text-align: center;
+  }
+  @media (max-width: 768px) {
+    .cutout-symbols-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .symbol-cutout-card {
+    border: 2px dashed #7f8c8d;
+    border-radius: 10px;
+    padding: 12px 8px;
+    position: relative;
+    background: #fafafa;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 170px;
+  }
+  .symbol-cutout-card img {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    margin: 8px 0;
+  }
+
+  /* Quiz Box */
+  .quiz-card {
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+  .quiz-q {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #b7950b;
+    margin-bottom: 10px;
+  }
+  .quiz-options {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .btn-opt {
+    background: #ffffff;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    cursor: pointer;
+    font-weight: bold;
+    color: #334155;
+    transition: 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-opt:hover { background: #fdf2e9; border-color: #d35400; }
+  .btn-opt.correct { background: #2ecc71 !important; color: #fff !important; border-color: #27ae60 !important; }
+  .btn-opt.wrong { background: #e74c3c !important; color: #fff !important; border-color: #c0392b !important; }
+  .quiz-feedback {
+    margin-top: 8px;
+    font-size: 9.5pt;
+    font-weight: bold;
+  }
+
+  @page {
+    size: A4 portrait;
+    margin: 10mm;
+  }
+
+  /* Print Rules */
+  @media print {
+    body {
+      background: #ffffff !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      color: #000000 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .app-container {
+      border: none !important;
+      box-shadow: none !important;
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      width: 100% !important;
+    }
+    .nav-tabs, .top-action-bar, .tray-box, .mode-switch-bar, .header .meta, .header .sub, button, .btn-action {
+      display: none !important;
+    }
+    .tab-pane {
+      display: none !important;
+    }
+    .tab-pane.active {
+      display: block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+    .printable-page {
+      border: 1.5px solid #cbd5e1 !important;
+      padding: 8mm !important;
+      margin-bottom: 20px !important;
+      page-break-after: always;
+      break-after: page;
+    }
+    .printable-page:last-child {
+      page-break-after: auto;
+      break-after: auto;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🦅 PROYEK MADING PANCASILA</h1>
+    <div class="sub">LAMBANG NEGARA REPUBLIK INDONESIA: GARUDA PANCASILA & PENERAPAN SILA (DO & DON'T)</div>
+    <div class="meta">
+      <span>👦 <b>Siswa:</b> Laskar Al Kautsar (Kelas 2)</span>
+      <span>🏫 <b>Sekolah:</b> SD MISS Malang</span>
+      <span>📅 <b>Jadwal:</b> Selasa, 22 Sept & Rabu, 23 Sept 2026</span>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-simulasi')">🗺️ Simulasi Mading Interaktif</button>
+    <button class="tab-btn" onclick="switchTab('tab-warna')">🎨 Panduan Warna & Makna Lambang</button>
+    <button class="tab-btn" onclick="switchTab('tab-potongan')">✂️ Lembar Cetak & Gunting (A4)</button>
+    <button class="tab-btn" onclick="switchTab('tab-kuis')">🧠 Kuis Latihan Tebak Sila</button>
+    <button class="tab-btn" onclick="switchTab('tab-presentasi')">🗣️ Naskah Presentasi Mading</button>
+  </div>
+
+  <!-- Action Bar -->
+  <div class="top-action-bar">
+    <div style="font-size:10pt; font-weight:bold; color:#a04000;">
+      💡 Fokus Hari Ini: Menempel Burung Garuda Utuh, 5 simbol perisai, menulis "Bhinneka Tunggal Ika", & 10 kartu Do/Don't!
+    </div>
+    <div style="display: flex; gap: 8px;">
+      <button class="btn-action" onclick="printWorksheet('tab-potongan')" style="background: #c0392b; color: white;">🖨️ Cetak Lembar Gunting & Pola A4</button>
+      <button class="btn-action" onclick="window.print()" style="background: #ffffff; color: #334155; border: 1.5px solid #cbd5e1;">📄 Cetak Tab Aktif</button>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 1: SIMULASI MADING INTERAKTIF (OFFICIAL GARUDA PANCASILA) -->
+  <!-- ============================================================== -->
+  <div id="tab-simulasi" class="tab-pane active">
+    <div class="sec-card">
+      <div class="sec-title">🗺️ Model Mading Lengkap: Garuda Pancasila & Kartu Penerapan</div>
+
+      <div class="tip-box">
+        <b>⭐ Lambang Resmi Negara Indonesia:</b> Di bawah ini ditampilkan <b>Burung Garuda Pancasila resmi</b> dengan tubuh utuh, sayap mengembang (17 helai), ekor (8 helai), pangkal ekor (19 helai), leher (45 helai), mencengkeram pita <b>Bhinneka Tunggal Ika</b>, dan di dadanya terpasang perisai dengan 5 simbol sila yang sah!
+      </div>
+
+      <!-- Mode Selector -->
+      <div class="mode-switch-bar">
+        <button class="btn-mode active" id="btn-mode-full" onclick="setMadingMode('full')">🌟 Tampilan Mading Lengkap 100%</button>
+        <button class="btn-mode" id="btn-mode-practice" onclick="setMadingMode('practice')">🎯 Mode Latihan Pasang Simbol Perisai</button>
+      </div>
+
+      <!-- Canvas Mading -->
+      <div class="mading-board">
+        <div class="mading-banner">
+          ⭐ MADING PANCASILA: AKU ANAK PANCASILA ⭐
+        </div>
+
+        <div class="mading-layout-grid">
+          
+          <!-- Sisi Kiri: Kartu DO & DONT Sila 1 & Sila 4 -->
+          <div class="side-column">
+            <!-- Sila 1 DO & DONT -->
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#27ae60; margin-bottom:3px;">✅ DO: Penerapan Sila 1</span>
+              <img src="images_pedoman/pancasila_cards/sila1_do.png" alt="Sila 1 DO">
+            </div>
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#e74c3c; margin-bottom:3px;">❌ DON'T: Bukan Sila 1</span>
+              <img src="images_pedoman/pancasila_cards/sila1_dont.png" alt="Sila 1 DONT">
+            </div>
+            
+            <!-- Sila 4 DO & DONT -->
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#27ae60; margin-bottom:3px;">✅ DO: Penerapan Sila 4</span>
+              <img src="images_pedoman/pancasila_cards/sila4_do.png" alt="Sila 4 DO">
+            </div>
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#e74c3c; margin-bottom:3px;">❌ DON'T: Bukan Sila 4</span>
+              <img src="images_pedoman/pancasila_cards/sila4_dont.png" alt="Sila 4 DONT">
+            </div>
+          </div>
+
+          <!-- Bagian Tengah: Garuda Pancasila Asli & Lengkap -->
+          <div class="center-garuda-area">
+            
+            <div class="garuda-display-box" id="garudaBox">
+              <!-- Full Official Garuda Pancasila SVG -->
+              <img id="garudaMainImg" src="images_pedoman/official_garuda/garuda_pancasila_color.svg" alt="Official Garuda Pancasila">
+
+              <!-- Interactive Slots Container (Active in practice mode) -->
+              <div class="shield-overlay-container" id="shieldOverlay" style="display:none;">
+                
+                <!-- 1. Slot Bintang (Center) -->
+                <div class="slot-interactive slot-pos-center" id="slot-1" onclick="slotClicked('1')" title="Sila 1: Bintang (Tengah)">
+                  <span id="slot-txt-1" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila 1</span>
+                </div>
+
+                <!-- 2. Slot Rantai (Bottom Right) -->
+                <div class="slot-interactive slot-pos-bottom-right" id="slot-2" onclick="slotClicked('2')" title="Sila 2: Rantai Emas (Kanan Bawah)">
+                  <span id="slot-txt-2" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila 2</span>
+                </div>
+
+                <!-- 3. Slot Pohon Beringin (Top Right) -->
+                <div class="slot-interactive slot-pos-top-right" id="slot-3" onclick="slotClicked('3')" title="Sila 3: Pohon Beringin (Kanan Atas)">
+                  <span id="slot-txt-3" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila 3</span>
+                </div>
+
+                <!-- 4. Slot Kepala Banteng (Top Left) -->
+                <div class="slot-interactive slot-pos-top-left" id="slot-4" onclick="slotClicked('4')" title="Sila 4: Kepala Banteng (Kiri Atas)">
+                  <span id="slot-txt-4" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila 4</span>
+                </div>
+
+                <!-- 5. Slot Padi & Kapas (Bottom Left) -->
+                <div class="slot-interactive slot-pos-bottom-left" id="slot-5" onclick="slotClicked('5')" title="Sila 5: Padi & Kapas (Kiri Bawah)">
+                  <span id="slot-txt-5" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila 5</span>
+                </div>
+
+              </div>
+            </div>
+
+            <div style="margin-top:12px; font-size:9.5pt; font-weight:bold; color:#1e293b; text-align:center;">
+              🦅 <b>GARUDA PANCASILA</b><br>
+              <span style="font-size:8.5pt; color:#64748b;">Lambang Negara Kesatuan Republik Indonesia</span>
+            </div>
+
+          </div>
+
+          <!-- Sisi Kanan: Kartu DO & DONT Sila 2, 3, & 5 -->
+          <div class="side-column">
+            <!-- Sila 2 DO & DONT -->
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#27ae60; margin-bottom:3px;">✅ DO: Penerapan Sila 2</span>
+              <img src="images_pedoman/pancasila_cards/sila2_do.png" alt="Sila 2 DO">
+            </div>
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#e74c3c; margin-bottom:3px;">❌ DON'T: Bukan Sila 2</span>
+              <img src="images_pedoman/pancasila_cards/sila2_dont.png" alt="Sila 2 DONT">
+            </div>
+
+            <!-- Sila 3 DO & DONT -->
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#27ae60; margin-bottom:3px;">✅ DO: Penerapan Sila 3</span>
+              <img src="images_pedoman/pancasila_cards/sila3_do.png" alt="Sila 3 DO">
+            </div>
+
+            <!-- Sila 5 DO & DONT -->
+            <div class="card-slot">
+              <span style="font-size:8pt; font-weight:bold; color:#27ae60; margin-bottom:3px;">✅ DO: Penerapan Sila 5</span>
+              <img src="images_pedoman/pancasila_cards/sila5_do.png" alt="Sila 5 DO">
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Nampan Simbol Interaktif (Mode Latihan) -->
+        <div class="tray-box" id="practiceTray" style="display:none;">
+          <div class="tray-title">
+            <span>📦 Nampan 5 Simbol Resmi (Klik simbol lalu klik posisinya di perisai):</span>
+            <div>
+              <button class="btn-action" style="padding:4px 10px; font-size:8.5pt;" onclick="fillAllOfficialSlots()">✨ Pasang Semua</button>
+              <button class="btn-action" style="background:#e74c3c; padding:4px 10px; font-size:8.5pt;" onclick="resetOfficialSlots()">🔄 Kosongkan</button>
+            </div>
+          </div>
+
+          <div class="symbols-picker">
+            <button class="btn-symbol-item" onclick="pickOfficialSymbol('1')">
+              <img src="images_pedoman/official_garuda/sila_1_star.svg"> Sila 1: Bintang
+            </button>
+            <button class="btn-symbol-item" onclick="pickOfficialSymbol('2')">
+              <img src="images_pedoman/official_garuda/sila_2_chain.svg"> Sila 2: Rantai Emas
+            </button>
+            <button class="btn-symbol-item" onclick="pickOfficialSymbol('3')">
+              <img src="images_pedoman/official_garuda/sila_3_tree.svg"> Sila 3: Pohon Beringin
+            </button>
+            <button class="btn-symbol-item" onclick="pickOfficialSymbol('4')">
+              <img src="images_pedoman/official_garuda/sila_4_bull.svg"> Sila 4: Kepala Banteng
+            </button>
+            <button class="btn-symbol-item" onclick="pickOfficialSymbol('5')">
+              <img src="images_pedoman/official_garuda/sila_5_rice_cotton.svg"> Sila 5: Padi & Kapas
+            </button>
+          </div>
+          <div id="practiceFeedback" style="margin-top:10px; text-align:center; font-weight:bold; font-size:10pt;"></div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 2: PANDUAN WARNA RESMI & MAKNA LAMBANG -->
+  <!-- ============================================================== -->
+  <div id="tab-warna" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">🎨 Panduan Mewarnai Resmi & Makna Lambang Negara</div>
+
+      <div class="tip-box">
+        <b>⭐ Nilai Sempurna:</b> Guru menilai ketepatan warna Burung Garuda dan perisai. Gunakan acuan warna resmi negara di bawah ini:
+      </div>
+
+      <div style="display:flex; justify-content:center; margin-bottom:20px;">
+        <img src="images_pedoman/official_garuda/garuda_pancasila_color.svg" style="max-width:280px; height:auto; filter:drop-shadow(0 4px 10px rgba(0,0,0,0.15));">
+      </div>
+
+      <div class="color-guide-grid">
+        <!-- 1. Tubuh Garuda -->
+        <div class="color-card" style="border-left:5px solid #f1c40f;">
+          <b>🦅 1. Tubuh & Seluruh Bulu Garuda</b>
+          <p>
+            • <b>Warna:</b> Kuning Emas Murni (*Golden Yellow*).<br>
+            • <b>Makna:</b> Keagungan, kejayaan, dan keluhuran bangsa Indonesia.<br>
+            • <b>Arah Kepala:</b> Menoleh ke kanan (*heraldic right*) melambangkan kebaikan, kebajikan, dan kebenaran.<br>
+            • <b>Jumlah Bulu Bersejarah:</b><br>
+            &nbsp;&nbsp;- <b>17</b> helai pada masing-masing sayap.<br>
+            &nbsp;&nbsp;- <b>8</b> helai pada ekor utama.<br>
+            &nbsp;&nbsp;- <b>19</b> helai di bawah perisai / pangkal ekor.<br>
+            &nbsp;&nbsp;- <b>45</b> helai pada leher.<br>
+            &nbsp;&nbsp;➔ <b>17 - 8 - 1945</b> (Hari Kemerdekaan RI)!
+          </p>
+        </div>
+
+        <!-- 2. Sila 1: Bintang -->
+        <div class="color-card" style="border-left:5px solid #f39c12;">
+          <b>⭐ 2. Sila 1: Bintang Emas Berlatar Hitam</b>
+          <p>
+            • <b>Bunyi:</b> Ketuhanan Yang Maha Esa.<br>
+            • <b>Posisi:</b> Tepat di <b>Tengah Perisai</b> (di atas perisai kecil hitam).<br>
+            • <b>Warna Bintang:</b> Kuning Emas bersudut lima.<br>
+            • <b>Latar Belakang:</b> <b>HITAM</b> (warna alam, melambangkan berkat cahaya rohani dari Tuhan YME).
+          </p>
+        </div>
+
+        <!-- 3. Sila 2: Rantai Emas -->
+        <div class="color-card" style="border-left:5px solid #e74c3c;">
+          <b>⛓️ 3. Sila 2: Rantai Emas Berlatar Merah</b>
+          <p>
+            • <b>Bunyi:</b> Kemanusiaan yang Adil dan Beradab.<br>
+            • <b>Posisi:</b> Kuadran <b>Kanan Bawah</b> perisai.<br>
+            • <b>Warna Rantai:</b> Kuning Emas berkait melingkar.<br>
+            • <b>Latar Belakang:</b> <b>MERAH</b>.<br>
+            • <b>Makna Bentuk:</b> Gelang lingkaran (perempuan) dan gelang persegi (laki-laki) saling terhubung kuat membela keadilan.
+          </p>
+        </div>
+
+        <!-- 4. Sila 3: Pohon Beringin -->
+        <div class="color-card" style="border-left:5px solid #2ecc71;">
+          <b>🌳 4. Sila 3: Pohon Beringin Berlatar Putih</b>
+          <p>
+            • <b>Bunyi:</b> Persatuan Indonesia.<br>
+            • <b>Posisi:</b> Kuadran <b>Kanan Atas</b> perisai.<br>
+            • <b>Warna:</b> Daun Hijau rindang lebat, batang dan sulur akar Cokelat.<br>
+            • <b>Latar Belakang:</b> <b>PUTIH</b> (kesucian dan ketulusan persatuan).<br>
+            • <b>Makna:</b> Tempat berteduh yang aman bagi seluruh rakyat Indonesia.
+          </p>
+        </div>
+
+        <!-- 5. Sila 4: Kepala Banteng -->
+        <div class="color-card" style="border-left:5px solid #e74c3c;">
+          <b>🐂 5. Sila 4: Kepala Banteng Berlatar Merah</b>
+          <p>
+            • <b>Bunyi:</b> Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan...<br>
+            • <b>Posisi:</b> Kuadran <b>Kiri Atas</b> perisai.<br>
+            • <b>Warna:</b> Hitam pekat dengan tanduk putih kokoh.<br>
+            • <b>Latar Belakang:</b> <b>MERAH</b> (keberanian bermusyawarah).<br>
+            • <b>Makna:</b> Hewan sosial yang senang berkumpul untuk bermufakat.
+          </p>
+        </div>
+
+        <!-- 6. Sila 5: Padi dan Kapas -->
+        <div class="color-card" style="border-left:5px solid #27ae60;">
+          <b>🌾 6. Sila 5: Padi dan Kapas Berlatar Putih</b>
+          <p>
+            • <b>Bunyi:</b> Keadilan Sosial bagi Seluruh Rakyat Indonesia.<br>
+            • <b>Posisi:</b> Kuadran <b>Kiri Bawah</b> perisai.<br>
+            • <b>Warna:</b> Butir Padi Kuning Emas di kiri, Bunga Kapas Putih berkelopak Hijau di kanan.<br>
+            • <b>Latar Belakang:</b> <b>PUTIH</b>.<br>
+            • <b>Makna:</b> Kebutuhan dasar rakyat Indonesia: Pangan (padi) dan Sandang (kapas).
+          </p>
+        </div>
+      </div>
+
+      <!-- Garis Khatulistiwa & Pita -->
+      <div style="background:#fef9e7; border:2px solid #f1c40f; border-radius:12px; padding:16px; margin-top:18px;">
+        <h4 style="color:#b7950b; margin-bottom:6px;">🎗️ Garis Khatulistiwa & Pita Cengkeraman Kaki:</h4>
+        <p style="font-size:10pt;">
+          • <b>Garis Hitam Tebal di Tengah Perisai:</b> Garis horizontal hitam melambangkan <b>Garis Khatulistiwa (Equator)</b> yang melintasi kepulauan Indonesia dari barat ke timur.<br>
+          • <b>Pita Putih:</b> Dicengkeram kuat oleh kedua kaki Garuda, bertuliskan huruf kapital tebal:<br>
+          <span style="font-size:14pt; font-weight:bold; color:#1e293b; letter-spacing:2px; display:inline-block; margin:6px 0; background:#fff; padding:6px 16px; border-radius:8px; border:1.5px solid #cbd5e1;">B H I N N E K A &nbsp; T U N G G A L &nbsp; I K A</span><br>
+          • <b>Artinya:</b> Berbeda-beda tetapi tetap satu jua.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 3: LEMBAR POTONG SIAP CETAK (A4) -->
+  <!-- ============================================================== -->
+  <div id="tab-potongan" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">✂️ Lembar Potong Siap Cetak (A4) — Pola Garuda, 5 Simbol Resmi, & Kartu DO/DON'T</div>
+
+      <div class="tip-box">
+        <b>⭐ Panduan Ayah & Bunda:</b> Cetak ketiga lembar di bawah ini malam ini menggunakan tombol <b>"🖨️ Cetak Tab Aktif (A4)"</b>. Lembar 1 adalah pola outline Burung Garuda resmi untuk latihan mewarnai Laskar, Lembar 2 adalah 5 simbol sila resmi untuk ditempel di perisai, dan Lembar 3 adalah 10 kartu DO & DON'T untuk hari Rabu!
+      </div>
+
+      <!-- LEMBAR 1: OUTLINE GARUDA HITAM PUTIH (READY TO COLOR) -->
+      <div class="printable-page">
+        <div style="text-align:center; font-weight:bold; color:#c0392b; font-size:12pt; margin-bottom:8px;">
+          📄 LEMBAR 1: POLA OUTLINE RESMI BURUNG GARUDA PANCASILA (SIAP DIWARNAI)
+        </div>
+        <p style="font-size:9.5pt; color:#64748b; margin-bottom:14px;">
+          Warnai bulu dengan kuning emas, perisai dengan merah-putih, dan tempelkan 5 simbol di perisai dadanya:
+        </p>
+        <div style="display:flex; justify-content:center; margin-bottom:14px;">
+          <img src="images_pedoman/official_garuda/garuda_pancasila_monochrome.png" style="max-width:440px; height:auto; border:1px solid #e2e8f0; border-radius:8px; padding:10px;">
+        </div>
+        <button class="btn-action" onclick="printElement('garudaPrint')">🖨️ Cetak Gambar Pola Garuda Saja</button>
+      </div>
+
+      <!-- LEMBAR 2: 5 SIMBOL RESMI NEGARA (READY TO CUT) -->
+      <div class="printable-page">
+        <div style="text-align:center; font-weight:bold; color:#c0392b; font-size:12pt; margin-bottom:8px;">
+          ✂️ LEMBAR 2: 5 SIMBOL RESMI PANCASILA (POTONG IKUTI GARIS PUTUS-PUTUS) ✂️
+        </div>
+        <p style="font-size:9.5pt; color:#64748b; margin-bottom:14px;">
+          Gunting 5 kotak di bawah ini, lalu tempelkan ke perisai dada Burung Garuda sesuai posisinya:
+        </p>
+
+        <div class="cutout-symbols-grid">
+          <!-- 1. Bintang -->
+          <div class="symbol-cutout-card">
+            <span style="position:absolute; top:4px; left:6px; font-size:7pt; color:#7f8c8d;">✂️ Gunting</span>
+            <img src="images_pedoman/official_garuda/sila_1_star.svg" alt="Sila 1 Star">
+            <b style="font-size:9.5pt; color:#1e293b;">1. Bintang Emas</b>
+            <span style="font-size:7.5pt; color:#c0392b; font-weight:bold;">(Tempel di Tengah)</span>
+          </div>
+
+          <!-- 2. Rantai -->
+          <div class="symbol-cutout-card">
+            <span style="position:absolute; top:4px; left:6px; font-size:7pt; color:#7f8c8d;">✂️ Gunting</span>
+            <img src="images_pedoman/official_garuda/sila_2_chain.svg" alt="Sila 2 Chain">
+            <b style="font-size:9.5pt; color:#1e293b;">2. Rantai Emas</b>
+            <span style="font-size:7.5pt; color:#c0392b; font-weight:bold;">(Kanan Bawah)</span>
+          </div>
+
+          <!-- 3. Pohon Beringin -->
+          <div class="symbol-cutout-card">
+            <span style="position:absolute; top:4px; left:6px; font-size:7pt; color:#7f8c8d;">✂️ Gunting</span>
+            <img src="images_pedoman/official_garuda/sila_3_tree.svg" alt="Sila 3 Tree">
+            <b style="font-size:9.5pt; color:#1e293b;">3. Pohon Beringin</b>
+            <span style="font-size:7.5pt; color:#c0392b; font-weight:bold;">(Kanan Atas)</span>
+          </div>
+
+          <!-- 4. Kepala Banteng -->
+          <div class="symbol-cutout-card">
+            <span style="position:absolute; top:4px; left:6px; font-size:7pt; color:#7f8c8d;">✂️ Gunting</span>
+            <img src="images_pedoman/official_garuda/sila_4_bull.svg" alt="Sila 4 Bull">
+            <b style="font-size:9.5pt; color:#1e293b;">4. Kepala Banteng</b>
+            <span style="font-size:7.5pt; color:#c0392b; font-weight:bold;">(Kiri Atas)</span>
+          </div>
+
+          <!-- 5. Padi dan Kapas -->
+          <div class="symbol-cutout-card">
+            <span style="position:absolute; top:4px; left:6px; font-size:7pt; color:#7f8c8d;">✂️ Gunting</span>
+            <img src="images_pedoman/official_garuda/sila_5_rice_cotton.svg" alt="Sila 5 Rice Cotton">
+            <b style="font-size:9.5pt; color:#1e293b;">5. Padi & Kapas</b>
+            <span style="font-size:7.5pt; color:#c0392b; font-weight:bold;">(Kiri Bawah)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LEMBAR 3: 10 KARTU DO & DONT RESMI DARI SEKOLAH -->
+      <div class="printable-page">
+        <div style="text-align:center; font-weight:bold; color:#c0392b; font-size:12pt; margin-bottom:8px;">
+          ✂️ LEMBAR 3: 10 KARTU DO & DON'T PENERAPAN SILA PANCASILA (UNTUK SESI RABU) ✂️
+        </div>
+        <p style="font-size:9.5pt; color:#64748b; margin-bottom:14px;">
+          Gunting 10 kartu ini rapi, lalu tempelkan di dekat masing-masing simbol sila di kertas mading:
+        </p>
+
+        <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(170px, 1fr)); gap:12px;">
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila1_do.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila1_dont.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila2_do.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila2_dont.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila3_do.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila3_dont.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila4_do.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila4_dont.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila5_do.png" style="max-width:100%; height:auto;">
+          </div>
+          <div style="border:2px dashed #94a3b8; padding:6px; border-radius:8px; text-align:center;">
+            <img src="images_pedoman/pancasila_cards/sila5_dont.png" style="max-width:100%; height:auto;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 4: KUIS LATIHAN CERIA -->
+  <!-- ============================================================== -->
+  <div id="tab-kuis" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">🧠 Kuis Ceria Tebak Sila (Latihan Mandiri Laskar)</div>
+
+      <div class="tip-box">
+        Pilihlah salah satu tombol jawaban di bawah ini untuk menguji pemahaman Laskar tentang lambang dan penerapan Pancasila:
+      </div>
+
+      <!-- Soal 1 -->
+      <div class="quiz-card" id="q1">
+        <div class="quiz-q">1. Laskar selalu berdoa sebelum belajar dan menghormati teman yang berbeda agama saat beribadah. Ini contoh penerapan Sila ke...</div>
+        <div class="quiz-options">
+          <button class="btn-opt" onclick="answerQuiz(1, this, true)"><img src="images_pedoman/official_garuda/sila_1_star.svg" width="22"> Sila ke-1 (Bintang)</button>
+          <button class="btn-opt" onclick="answerQuiz(1, this, false)"><img src="images_pedoman/official_garuda/sila_2_chain.svg" width="22"> Sila ke-2 (Rantai)</button>
+          <button class="btn-opt" onclick="answerQuiz(1, this, false)"><img src="images_pedoman/official_garuda/sila_3_tree.svg" width="22"> Sila ke-3 (Pohon Beringin)</button>
+        </div>
+        <div class="quiz-feedback" id="fb-1"></div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="quiz-card" id="q2">
+        <div class="quiz-q">2. Melihat teman terjatuh dan kesusahan, Laskar segera menolong dan menghiburnya. Ini penerapan Sila ke...</div>
+        <div class="quiz-options">
+          <button class="btn-opt" onclick="answerQuiz(2, this, false)"><img src="images_pedoman/official_garuda/sila_1_star.svg" width="22"> Sila ke-1 (Bintang)</button>
+          <button class="btn-opt" onclick="answerQuiz(2, this, true)"><img src="images_pedoman/official_garuda/sila_2_chain.svg" width="22"> Sila ke-2 (Rantai Emas)</button>
+          <button class="btn-opt" onclick="answerQuiz(2, this, false)"><img src="images_pedoman/official_garuda/sila_4_bull.svg" width="22"> Sila ke-4 (Kepala Banteng)</button>
+        </div>
+        <div class="quiz-feedback" id="fb-2"></div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="quiz-card" id="q3">
+        <div class="quiz-q">3. Saat upacara bendera hari Senin di sekolah, Laskar berdiri tertib, khidmat, dan menjaga persatuan. Ini penerapan Sila ke...</div>
+        <div class="quiz-options">
+          <button class="btn-opt" onclick="answerQuiz(3, this, false)"><img src="images_pedoman/official_garuda/sila_5_rice_cotton.svg" width="22"> Sila ke-5 (Padi & Kapas)</button>
+          <button class="btn-opt" onclick="answerQuiz(3, this, true)"><img src="images_pedoman/official_garuda/sila_3_tree.svg" width="22"> Sila ke-3 (Pohon Beringin)</button>
+          <button class="btn-opt" onclick="answerQuiz(3, this, false)"><img src="images_pedoman/official_garuda/sila_2_chain.svg" width="22"> Sila ke-2 (Rantai Emas)</button>
+        </div>
+        <div class="quiz-feedback" id="fb-3"></div>
+      </div>
+
+      <!-- Soal 4 -->
+      <div class="quiz-card" id="q4">
+        <div class="quiz-q">4. Di kelas, Laskar dan teman-teman bermusyawarah mendengarkan pendapat bersama saat memilih ketua kelas. Ini penerapan Sila ke...</div>
+        <div class="quiz-options">
+          <button class="btn-opt" onclick="answerQuiz(4, this, false)"><img src="images_pedoman/official_garuda/sila_1_star.svg" width="22"> Sila ke-1 (Bintang)</button>
+          <button class="btn-opt" onclick="answerQuiz(4, this, false)"><img src="images_pedoman/official_garuda/sila_3_tree.svg" width="22"> Sila ke-3 (Pohon Beringin)</button>
+          <button class="btn-opt" onclick="answerQuiz(4, this, true)"><img src="images_pedoman/official_garuda/sila_4_bull.svg" width="22"> Sila ke-4 (Kepala Banteng)</button>
+        </div>
+        <div class="quiz-feedback" id="fb-4"></div>
+      </div>
+
+      <!-- Soal 5 -->
+      <div class="quiz-card" id="q5">
+        <div class="quiz-q">5. Laskar belajar dengan sungguh-sungguh, tidak malas mengerjakan tugas, dan adil kepada semua teman. Ini penerapan Sila ke...</div>
+        <div class="quiz-options">
+          <button class="btn-opt" onclick="answerQuiz(5, this, true)"><img src="images_pedoman/official_garuda/sila_5_rice_cotton.svg" width="22"> Sila ke-5 (Padi dan Kapas)</button>
+          <button class="btn-opt" onclick="answerQuiz(5, this, false)"><img src="images_pedoman/official_garuda/sila_2_chain.svg" width="22"> Sila ke-2 (Rantai Emas)</button>
+          <button class="btn-opt" onclick="answerQuiz(5, this, false)"><img src="images_pedoman/official_garuda/sila_4_bull.svg" width="22"> Sila ke-4 (Kepala Banteng)</button>
+        </div>
+        <div class="quiz-feedback" id="fb-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 5: NASKAH PRESENTASI MADING (SENIN DEPAN) -->
+  <!-- ============================================================== -->
+  <div id="tab-presentasi" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">🗣️ Naskah Presentasi Mading di Depan Kelas (Senin, 28 Sept)</div>
+
+      <div class="tip-box">
+        Laskar cukup membaca naskah santun dan runtut di bawah ini sambil berdiri tegak, tersenyum, dan menunjuk karyanya:
+      </div>
+
+      <div style="background:#fef9e7; border:2px solid #f39c12; border-radius:12px; padding:18px; line-height:1.75;">
+        <h4 style="color:#b7950b; margin-bottom:10px; font-size:12pt;">🎙️ Teks Presentasi Laskar:</h4>
+        
+        <p><b>1. Pembukaan:</b><br>
+        <i>"Assalamu'alaikum warahmatullahi wabarakatuh.<br>
+        Selamat pagi Miss, Mister, dan teman-teman semuanya.<br>
+        Perkenalkan, nama lengkap saya <b>Laskar Al Kautsar</b> (panggilan <b>Laskar</b>) dari kelas <b>Grade 2 SD MISS Malang</b>."</i></p>
+
+        <p style="margin-top:10px;"><b>2. Memperkenalkan Mading:</b><br>
+        <i>"Hari ini saya sangat senang ingin mempresentasikan karya saya, yaitu <b>Mading Pancasila: Aku Anak Pancasila</b>.<br>
+        Di bagian tengah ada <b>Burung Garuda Pancasila</b> berwarna kuning emas lambang kejayaan dan keagungan bangsa kita."</i></p>
+
+        <p style="margin-top:10px;"><b>3. Menjelaskan 5 Simbol & Penerapannya (Sambil menunjuk gambar):</b><br>
+        <i>"Di dada Burung Garuda terdapat perisai dengan 5 simbol sila:<br>
+        • <b>Sila Pertama (Bintang Emas di tengah):</b> Ketuhanan Yang Maha Esa. Contoh penerapannya adalah <b>menghormati teman yang berbeda agama saat beribadah</b>.<br>
+        • <b>Sila Kedua (Rantai Emas di kanan bawah):</b> Kemanusiaan yang Adil dan Beradab. Contoh penerapannya adalah <b>menolong teman yang sedang kesusahan</b>.<br>
+        • <b>Sila Ketiga (Pohon Beringin di kanan atas):</b> Persatuan Indonesia. Contoh penerapannya adalah <b>tertib mengikuti upacara bendera dan menjaga persatuan</b>.<br>
+        • <b>Sila Keempat (Kepala Banteng di kiri atas):</b> Kerakyatan yang Dipimpin oleh Hikmat Kebijaksanaan... Contoh penerapannya adalah <b>bermusyawarah dan mau mendengarkan pendapat teman</b>.<br>
+        • <b>Sila Kelima (Padi dan Kapas di kiri bawah):</b> Keadilan Sosial bagi Seluruh Rakyat Indonesia. Contoh penerapannya adalah <b>rajin belajar dan tidak malas mengerjakan kewajiban sebagai pelajar</b>."</i></p>
+
+        <p style="margin-top:10px;"><b>4. Menjelaskan Semboyan & Penutup:</b><br>
+        <i>"Di cengkeraman kaki Burung Garuda ada pita bertuliskan semboyan <b>Bhinneka Tunggal Ika</b>, yang artinya <b>berbeda-beda tetapi tetap satu jua</b>.<br>
+        Mari kita selalu terapkan nilai-nilai Pancasila dalam kehidupan sehari-hari!<br>
+        Terima kasih atas perhatiannya. Wassalamu'alaikum warahmatullahi wabarakatuh!"</i></p>
+      </div>
+
+      <div style="margin-top:16px; background:#ebf5fb; border-left:5px solid #2980b9; padding:12px 16px; border-radius:0 8px 8px 0; font-size:9.5pt;">
+        <b>💡 Tips Sukses Presentasi Laskar:</b><br>
+        1. Tangan kanan menunjuk gambar di mading saat menyebutkan sila.<br>
+        2. Tersenyum ramah dan tatap mata Miss, Mister, dan teman-teman.<br>
+        3. Suaranya lantang, jelas, dan percaya diri! Laskar anak pintar kebanggaan Ayah & Bunda! ⭐
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script>
+  function switchTab(tabId, btnElement) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    const target = document.getElementById(tabId);
+    if (target) target.classList.add('active');
+    if (btnElement) {
+      btnElement.classList.add('active');
+    } else {
+      const matchBtn = document.querySelector(`[onclick*="${tabId}"]`);
+      if (matchBtn) matchBtn.classList.add('active');
+    }
+  }
+
+  function printWorksheet(targetTabId = 'tab-potongan') {
+    const tabBtn = document.querySelector(`[onclick*="${targetTabId}"]`);
+    switchTab(targetTabId, tabBtn);
+    setTimeout(() => {
+      window.print();
+    }, 250);
+  }
+
+  function setMadingMode(mode) {
+    const btnFull = document.getElementById('btn-mode-full');
+    const btnPrac = document.getElementById('btn-mode-practice');
+    const overlay = document.getElementById('shieldOverlay');
+    const tray = document.getElementById('practiceTray');
+
+    if (mode === 'full') {
+      btnFull.classList.add('active');
+      btnPrac.classList.remove('active');
+      overlay.style.display = 'none';
+      tray.style.display = 'none';
+    } else {
+      btnPrac.classList.add('active');
+      btnFull.classList.remove('active');
+      overlay.style.display = 'block';
+      tray.style.display = 'block';
+    }
+  }
+
+  const officialSymbols = {
+    '1': { name: 'Bintang Emas', src: 'images_pedoman/official_garuda/sila_1_star.svg', desc: 'Sila 1: Bintang (Tengah)' },
+    '2': { name: 'Rantai Emas', src: 'images_pedoman/official_garuda/sila_2_chain.svg', desc: 'Sila 2: Rantai Emas (Kanan Bawah)' },
+    '3': { name: 'Pohon Beringin', src: 'images_pedoman/official_garuda/sila_3_tree.svg', desc: 'Sila 3: Pohon Beringin (Kanan Atas)' },
+    '4': { name: 'Kepala Banteng', src: 'images_pedoman/official_garuda/sila_4_bull.svg', desc: 'Sila 4: Kepala Banteng (Kiri Atas)' },
+    '5': { name: 'Padi dan Kapas', src: 'images_pedoman/official_garuda/sila_5_rice_cotton.svg', desc: 'Sila 5: Padi & Kapas (Kiri Bawah)' }
+  };
+
+  let selectedOfficialSymbol = null;
+
+  function pickOfficialSymbol(num) {
+    selectedOfficialSymbol = num;
+    const sym = officialSymbols[num];
+    const fb = document.getElementById('practiceFeedback');
+    fb.innerHTML = `👉 Kamu memilih <b>${sym.name}</b>! Sekarang klik slot perisai di posisi <b>${sym.desc}</b>!`;
+    fb.style.color = '#c0392b';
+  }
+
+  function slotClicked(slotNum) {
+    if (!selectedOfficialSymbol) {
+      alert('Pilih salah satu simbol dari nampan di bawah dulu ya Laskar!');
+      return;
+    }
+    const fb = document.getElementById('practiceFeedback');
+    if (selectedOfficialSymbol === slotNum) {
+      const sym = officialSymbols[slotNum];
+      const slot = document.getElementById('slot-' + slotNum);
+      slot.innerHTML = `<img src="${sym.src}">`;
+      slot.style.border = '2px solid #27ae60';
+      slot.style.background = '#ffffff';
+      fb.innerHTML = `🎉 <b>BENAR SEKALI LASKAR!</b> Simbol <b>${sym.name}</b> berhasil terpasang di posisi ${sym.desc}!`;
+      fb.style.color = '#27ae60';
+      selectedOfficialSymbol = null;
+    } else {
+      fb.innerHTML = `❌ Posisi ini belum tepat untuk simbol tersebut. Coba perhatikan lagi ya!`;
+      fb.style.color = '#c0392b';
+    }
+  }
+
+  function fillAllOfficialSlots() {
+    for (let i = 1; i <= 5; i++) {
+      const sym = officialSymbols[i.toString()];
+      const slot = document.getElementById('slot-' + i);
+      slot.innerHTML = `<img src="${sym.src}">`;
+      slot.style.border = '2px solid #27ae60';
+      slot.style.background = '#ffffff';
+    }
+    const fb = document.getElementById('practiceFeedback');
+    fb.innerHTML = `✨ <b>Semua 5 simbol perisai berhasil terpasang sempurna!</b>`;
+    fb.style.color = '#27ae60';
+  }
+
+  function resetOfficialSlots() {
+    for (let i = 1; i <= 5; i++) {
+      const slot = document.getElementById('slot-' + i);
+      slot.innerHTML = `<span id="slot-txt-${i}" style="font-size:7.5pt; font-weight:bold; color:#7f8c8d;">Sila ${i}</span>`;
+      slot.style.border = '2px dashed #f39c12';
+      slot.style.background = 'rgba(255,255,255,0.85)';
+    }
+    const fb = document.getElementById('practiceFeedback');
+    fb.innerHTML = `🔄 Perisai dikosongkan kembali untuk latihan.`;
+    fb.style.color = '#7f8c8d';
+    selectedOfficialSymbol = null;
+  }
+
+  function answerQuiz(qNum, btn, isCorrect) {
+    const card = document.getElementById('q' + qNum);
+    const fb = document.getElementById('fb-' + qNum);
+    card.querySelectorAll('.btn-opt').forEach(b => {
+      b.disabled = true;
+    });
+
+    if (isCorrect) {
+      btn.classList.add('correct');
+      fb.innerHTML = '🎉 <b>HEBAT LASKAR! JAWABAN BENAR!</b>';
+      fb.style.color = '#27ae60';
+    } else {
+      btn.classList.add('wrong');
+      fb.innerHTML = '❌ Jawaban belum tepat, tapi tidak apa-apa, ayo diingat lagi ya!';
+      fb.style.color = '#c0392b';
+    }
+  }
+
+  function printElement(elId) {
+    window.print();
+  }
+</script>
+
+</body>
+</html>

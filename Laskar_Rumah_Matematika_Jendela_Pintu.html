@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rumah Matematika Tampak Depan: Jendela & Pintu — Laskar (Kelas 2)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #fdf6ec;
+    color: #2c3e50;
+    line-height: 1.45;
+    padding: 16px;
+  }
+  .app-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 3.5px solid #e67e22;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(230, 126, 34, 0.15);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #d35400 0%, #e67e22 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border: 2px solid #ba4a00;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 21pt;
+    color: #f1c40f;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+    margin-bottom: 6px;
+  }
+  .header .sub {
+    font-size: 11.5pt;
+    color: #fdfefe;
+    font-weight: bold;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 10pt;
+    background: rgba(255,255,255,0.22);
+    padding: 8px 14px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Navigation Tabs */
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 140px;
+    background: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 10.5pt;
+    font-weight: bold;
+    color: #34495e;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+  }
+  .tab-btn:hover { background: #d5dbdb; }
+  .tab-btn.active {
+    background: #e67e22;
+    color: #ffffff;
+    border-color: #d35400;
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.3);
+  }
+
+  /* Tab Panes */
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* Top Action Bar */
+  .top-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    padding: 10px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .btn-print {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .btn-print:hover { background: #219955; transform: scale(1.02); }
+
+  /* Tips & Section Box */
+  .tip-box {
+    background: #fef5e7;
+    border-left: 5px solid #e67e22;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 14px;
+  }
+  .sec-card {
+    background: #ffffff;
+    border: 2.5px solid #e67e22;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #e67e22;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  /* Interactive House Visual (Tampak Depan) */
+  .house-facade-container {
+    background: linear-gradient(180deg, #d6eaf8 0%, #ebf5fb 65%, #a9dfbf 65%, #27ae60 100%);
+    border: 3px solid #2980b9;
+    border-radius: 16px;
+    padding: 24px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .house-svg-wrap {
+    max-width: 650px;
+    margin: 0 auto;
+    filter: drop-shadow(0 6px 12px rgba(0,0,0,0.15));
+  }
+
+  /* Math Card Badges */
+  .math-stat-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 14px;
+    margin-top: 18px;
+  }
+  .stat-card {
+    background: #ffffff;
+    border: 2px solid #e67e22;
+    border-radius: 12px;
+    padding: 12px 14px;
+    text-align: left;
+  }
+  .stat-card b { color: #d35400; font-size: 11pt; display: block; margin-bottom: 4px; }
+  .stat-card .math-exp {
+    font-size: 13pt;
+    font-weight: bold;
+    color: #2c3e50;
+    background: #fdf2e9;
+    padding: 4px 8px;
+    border-radius: 6px;
+    display: inline-block;
+    margin: 4px 0;
+  }
+
+  /* Question Cards */
+  .q-card {
+    background: #fcfefe;
+    border: 2px solid #bdc3c7;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .q-num { font-size: 11pt; font-weight: bold; color: #d35400; margin-bottom: 8px; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .opt-btn {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 10.5pt;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s;
+  }
+  .opt-btn:hover { background: #fdf2e9; border-color: #e67e22; }
+  .opt-btn.correct { background: #d4efdf !important; border-color: #27ae60 !important; color: #196f3d; font-weight: bold; }
+  .opt-btn.wrong   { background: #fadbd8 !important; border-color: #e74c3c !important; color: #943126; }
+
+  .feedback {
+    margin-top: 8px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok  { color: #27ae60; }
+  .feedback.err { color: #c0392b; }
+
+  /* Cue Card */
+  .cue-card {
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .cue-card b { color: #b9770e; font-size: 11pt; display: block; margin-bottom: 4px; }
+  .cue-card p { font-size: 10.5pt; color: #2c3e50; }
+  .cue-card .translation { font-size: 9.5pt; color: #7f8c8d; font-style: italic; margin-top: 4px; }
+
+  /* Cutout Grid */
+  .cutout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 14px;
+    text-align: center;
+    margin-top: 14px;
+  }
+  .cutout-item {
+    background: #ffffff;
+    border: 1.5px dashed #7f8c8d;
+    border-radius: 8px;
+    padding: 10px 6px;
+  }
+  .cutout-item svg { display: block; margin: 0 auto 6px; }
+  .cutout-item span { font-size: 8.5pt; font-weight: bold; color: #34495e; }
+
+  /* Certificate */
+  .cert {
+    border: 4px double #e67e22;
+    background: #fdfbf7;
+    padding: 20px;
+    text-align: center;
+    border-radius: 14px;
+    margin-top: 24px;
+  }
+  .cert h2 { font-size: 17pt; color: #d35400; margin: 4px 0; }
+  .cert .kid-name {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #e67e22;
+    display: inline-block;
+    padding: 2px 30px;
+    margin: 8px 0;
+  }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .app-container { box-shadow: none; border: 2px solid #000; width: 100%; max-width: 100%; padding: 10mm 12mm; }
+    .nav-tabs, .top-action-bar, button { display: none !important; }
+    .tab-pane { display: block !important; page-break-after: always; }
+    .opt-btn { border: 1.5px solid #000; background: #fff !important; color: #000 !important; }
+    .feedback { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🏠 RUMAH MATEMATIKA: JENDELA & PINTU 🚪</h1>
+    <div class="sub">TEMA TAMPAK DEPAN RUMAH — MULTIPLICATION & DIVISION (EQUAL GROUPS)</div>
+    <div class="meta">
+      <span>👦 <b>Nama Siswa:</b> Laskar (Kelas 2)</span>
+      <span>🏫 <b>Sekolah:</b> SD MISS Malang</span>
+      <span>🗓️ <b>Target Proyek:</b> Senin, 21 September 2026</span>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-facade')">🏠 Model Rumah Tampak Depan</button>
+    <button class="tab-btn" onclick="switchTab('tab-quiz')">⭐ Soal Tantangan Math</button>
+    <button class="tab-btn" onclick="switchTab('tab-speech')">🗣️ Naskah Presentasi</button>
+    <button class="tab-btn" onclick="switchTab('tab-templates')">✂️ Template Gunting & Tempel</button>
+  </div>
+
+  <!-- Action Bar -->
+  <div class="top-action-bar">
+    <div style="font-size:10.5pt; font-weight:bold; color:#7d6608;">
+      📐 Konsep: Jendela dan Pintu dibuat dengan kelompok panel yang <b>Sama Banyak (Equal Groups)</b>!
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ Cetak Lembar / Template</button>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 1: MODEL RUMAH TAMPAK DEPAN (INTERACTIVE SVG) -->
+  <!-- ============================================================== -->
+  <div id="tab-facade" class="tab-pane active">
+    
+    <div class="tip-box">
+      <b>💡 Mengapa Jendela & Pintu Sangat Cocok untuk Belajar Perkalian & Pembagian?</b><br>
+      • <b>Jendela:</b> Rumah tampak depan punya <b>3 Jendela</b>. Setiap jendela memiliki <b>4 Kotak Kaca</b>.<br>
+      &nbsp;&nbsp;➔ Penjumlahan berulang: <b>4 + 4 + 4 = 12</b> &nbsp;|&nbsp; Perkalian: <b>3 Jendela × 4 Kaca = 12 Kaca</b>.<br>
+      • <b>Pintu:</b> Rumah punya <b>2 Daun Pintu Utama</b>. Setiap pintu memiliki <b>3 Kotak Panel Kayu</b>.<br>
+      &nbsp;&nbsp;➔ Penjumlahan berulang: <b>3 + 3 = 6</b> &nbsp;|&nbsp; Perkalian: <b>2 Pintu × 3 Panel = 6 Panel</b>.<br>
+      • <b>Pembagian (Sharing Equally):</b> Ada 12 stiker bunga hiasan dibagi sama rata ke 3 Jendela ➔ <b>12 ÷ 3 = 4 stiker per jendela</b>!
+    </div>
+
+    <!-- Visual Fasad Rumah -->
+    <div class="house-facade-container">
+      <div class="house-svg-wrap">
+        <svg viewBox="0 0 500 435" width="100%" height="auto">
+          <!-- Awan & Langit Cerah -->
+          <path d="M40,35 Q30,20 45,15 Q55,5 70,13 Q85,5 95,17 Q105,20 100,35 Z" fill="#ffffff" opacity="0.95"/>
+          <path d="M380,45 Q370,30 385,25 Q395,15 410,23 Q425,15 435,27 Q445,30 440,45 Z" fill="#ffffff" opacity="0.95"/>
+          
+          <!-- Atap Rumah Segitiga -->
+          <polygon points="250,25 35,135 465,135" fill="#c0392b" stroke="#962d22" stroke-width="4"/>
+          <!-- Cerobong Asap -->
+          <rect x="340" y="40" width="30" height="50" fill="#7f8c8d" stroke="#636e72" stroke-width="2"/>
+          <ellipse cx="355" cy="40" rx="15" ry="5" fill="#95a5a6"/>
+          <!-- Ventilasi Atap Bulat -->
+          <circle cx="250" cy="85" r="17" fill="#f39c12" stroke="#d68910" stroke-width="3"/>
+          <line x1="250" y1="68" x2="250" y2="102" stroke="#d68910" stroke-width="2"/>
+          <line x1="233" y1="85" x2="267" y2="85" stroke="#d68910" stroke-width="2"/>
+
+          <!-- Dinding Utama Rumah Tampak Depan (Tinggi 255 px) -->
+          <rect x="65" y="135" width="370" height="255" fill="#fdebd0" stroke="#d35400" stroke-width="4"/>
+          <!-- Garis List Pembatas Lantai 1 & Lantai 2 -->
+          <line x1="67" y1="265" x2="433" y2="265" stroke="#e59866" stroke-width="3" stroke-dasharray="8,5"/>
+
+          <!-- ============================================== -->
+          <!-- 3 JENDELA RUMAH (LANTAI ATAS: 3 x 4 = 12 KACA) -->
+          <!-- ============================================== -->
+          <!-- Jendela 1 (Kiri) -->
+          <g>
+            <rect x="95" y="155" width="68" height="70" rx="4" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+            <!-- 4 Kotak Kaca -->
+            <rect x="100" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="131" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="100" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="131" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <!-- Kanopi Jendela & Pot Bunga -->
+            <polygon points="90,155 168,155 162,148 96,148" fill="#e74c3c"/>
+            <rect x="93" y="225" width="72" height="9" rx="3" fill="#8e44ad"/>
+            <text x="129" y="248" font-size="9" font-weight="bold" fill="#2c3e50" text-anchor="middle">Jendela 1: 4 Kaca</text>
+          </g>
+
+          <!-- Jendela 2 (Tengah) -->
+          <g>
+            <rect x="216" y="155" width="68" height="70" rx="4" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+            <!-- 4 Kotak Kaca -->
+            <rect x="221" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="252" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="221" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="252" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <!-- Kanopi Jendela & Pot Bunga -->
+            <polygon points="211,155 289,155 283,148 217,148" fill="#e74c3c"/>
+            <rect x="214" y="225" width="72" height="9" rx="3" fill="#8e44ad"/>
+            <!-- Label Jendela Tengah (Sangat Jelas & Ada Gap Lega ke Pintu) -->
+            <text x="250" y="248" font-size="9" font-weight="bold" fill="#2c3e50" text-anchor="middle">Jendela 2: 4 Kaca</text>
+          </g>
+
+          <!-- Jendela 3 (Kanan) -->
+          <g>
+            <rect x="337" y="155" width="68" height="70" rx="4" fill="#3498db" stroke="#2980b9" stroke-width="3"/>
+            <!-- 4 Kotak Kaca -->
+            <rect x="342" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="373" y="160" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="342" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <rect x="373" y="192" width="26" height="28" fill="#ebf5fb" stroke="#2980b9" stroke-width="1.5"/>
+            <!-- Kanopi Jendela & Pot Bunga -->
+            <polygon points="332,155 410,155 404,148 338,148" fill="#e74c3c"/>
+            <rect x="335" y="225" width="72" height="9" rx="3" fill="#8e44ad"/>
+            <text x="371" y="248" font-size="9" font-weight="bold" fill="#2c3e50" text-anchor="middle">Jendela 3: 4 Kaca</text>
+          </g>
+
+          <!-- ============================================== -->
+          <!-- GAP & LAMPU DINDING DI ATAS PINTU -->
+          <!-- ============================================== -->
+          <!-- Lampu Teras Rumah di Atas Pintu (Di Area Gap y=268..285) -->
+          <g>
+            <circle cx="250" cy="275" r="7" fill="#f1c40f" stroke="#d68910" stroke-width="1.5"/>
+            <polygon points="244,272 256,272 253,266 247,266" fill="#34495e"/>
+            <!-- Kanopi Pintu Masuk -->
+            <rect x="190" y="286" width="120" height="7" rx="3" fill="#c0392b" stroke="#962d22" stroke-width="1.5"/>
+          </g>
+
+          <!-- ============================================== -->
+          <!-- PINTU GANDA UTAMA (LANTAI 1: 2 DAUN x 3 PANEL = 6) -->
+          <!-- ============================================== -->
+          <g>
+            <!-- Kusen Pintu Luar (Mulai di y=293, Tidak Menabrak Jendela) -->
+            <rect x="195" y="293" width="110" height="97" fill="#784212" stroke="#4e2c0e" stroke-width="3"/>
+            
+            <!-- Daun Pintu Kiri (3 Panel Kayu) -->
+            <rect x="200" y="298" width="48" height="92" fill="#b9770e" stroke="#7e5109" stroke-width="1.5"/>
+            <rect x="205" y="304" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <rect x="205" y="333" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <rect x="205" y="362" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <circle cx="242" cy="345" r="3" fill="#f1c40f"/> <!-- Gagang pintu kiri -->
+
+            <!-- Daun Pintu Kanan (3 Panel Kayu) -->
+            <rect x="252" y="298" width="48" height="92" fill="#b9770e" stroke="#7e5109" stroke-width="1.5"/>
+            <rect x="257" y="304" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <rect x="257" y="333" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <rect x="257" y="362" width="38" height="23" fill="#d68910" stroke="#7e5109" stroke-width="1"/>
+            <circle cx="258" cy="345" r="3" fill="#f1c40f"/> <!-- Gagang pintu kanan -->
+
+            <!-- Tangga Masuk Pintu (Di Bawah Pintu) -->
+            <rect x="180" y="390" width="140" height="8" rx="2" fill="#95a5a6" stroke="#7f8c8d" stroke-width="1.5"/>
+            <rect x="165" y="398" width="170" height="8" rx="2" fill="#7f8c8d" stroke="#5d6d7e" stroke-width="1.5"/>
+            
+            <text x="250" y="423" font-size="10" font-weight="bold" fill="#145a32" text-anchor="middle">2 Daun Pintu: Masing-masing 3 Panel</text>
+          </g>
+
+          <!-- Pagar & Garis Tanah -->
+          <line x1="25" y1="390" x2="165" y2="390" stroke="#7f8c8d" stroke-width="2.5"/>
+          <line x1="335" y1="390" x2="475" y2="390" stroke="#7f8c8d" stroke-width="2.5"/>
+        </svg>
+      </div>
+
+      <!-- Kartu Perhitungan Matematika Rumah -->
+      <div class="math-stat-box">
+        
+        <!-- Kartu 1: Perkalian Jendela -->
+        <div class="stat-card">
+          <b>🪟 Perkalian Kaca Jendela (Multiplication):</b>
+          <div>Ada <b>3 jendela</b>, setiap jendela punya <b>4 kotak kaca</b>.</div>
+          <div class="math-exp">4 + 4 + 4 = 12 Kaca</div>
+          <div style="font-size:11pt; font-weight:bold; color:#2980b9;">➔ 3 Jendela × 4 Kaca = 12 Kaca</div>
+        </div>
+
+        <!-- Kartu 2: Perkalian Panel Pintu -->
+        <div class="stat-card">
+          <b>🚪 Perkalian Panel Pintu (Multiplication):</b>
+          <div>Ada <b>2 daun pintu</b>, setiap pintu punya <b>3 kotak panel</b>.</div>
+          <div class="math-exp">3 + 3 = 6 Panel</div>
+          <div style="font-size:11pt; font-weight:bold; color:#d35400;">➔ 2 Pintu × 3 Panel = 6 Panel</div>
+        </div>
+
+        <!-- Kartu 3: Pembagian Hiasan Jendela -->
+        <div class="stat-card">
+          <b>➗ Pembagian Kaca Jendela (Division):</b>
+          <div>12 kotak kaca dibagi sama rata ke 3 bingkai jendela.</div>
+          <div class="math-exp">12 ÷ 3 = 4 Kaca per Jendela</div>
+          <div style="font-size:9pt; color:#666;">Konsep: Sharing equally (dibagi sama banyak)</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 2: SOAL TANTANGAN MATEMATIKA JENDELA & PINTU -->
+  <!-- ============================================================== -->
+  <div id="tab-quiz" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">📝 Kuis Matematika: Jendela & Pintu Rumah</div>
+      <div class="tip-box">
+        Yuk bantu Laskar menghitung perkalian dan pembagian pada bagian depan rumah!
+      </div>
+
+      <!-- Soal 1 -->
+      <div class="q-card" id="q1">
+        <div class="q-num">Soal 1. Pada bagian depan rumah, Laskar melihat ada <b>3 bingkai jendela</b>. Setiap jendela memiliki <b>4 kotak kaca</b> yang sama banyak. Berapakah jumlah seluruh kotak kaca jendela?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(1, true, this)">
+            <span>🪟</span> 12 Kaca &nbsp;(4 + 4 + 4 = 12 atau 3 × 4 = 12)
+          </button>
+          <button class="opt-btn" onclick="checkQ(1, false, this)">
+            <span>🪟</span> 7 Kaca &nbsp;(3 + 4 = 7)
+          </button>
+          <button class="opt-btn" onclick="checkQ(1, false, this)">
+            <span>🪟</span> 9 Kaca
+          </button>
+        </div>
+        <div class="feedback" id="fb1"></div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="q-card" id="q2">
+        <div class="q-num">Soal 2. Pintu utama rumah memiliki <b>2 daun pintu</b>. Pada setiap daun pintu terdapat <b>3 kotak panel kayu</b>. Kalimat perkalian yang benar adalah...</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(2, true, this)">
+            <span>🚪</span> 2 × 3 = 6 panel kayu
+          </button>
+          <button class="opt-btn" onclick="checkQ(2, false, this)">
+            <span>🚪</span> 2 + 3 = 5 panel kayu
+          </button>
+          <button class="opt-btn" onclick="checkQ(2, false, this)">
+            <span>🚪</span> 3 × 3 = 9 panel kayu
+          </button>
+        </div>
+        <div class="feedback" id="fb2"></div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="q-card" id="q3">
+        <div class="q-num">Soal 3. Ibu memiliki <b>6 hiasan lampu lampion</b>. Lampu-lampu tersebut akan digantung sama banyak di atas <b>2 daun pintu</b> (6 ÷ 2 = ...). Berapa lampu di setiap pintu?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(3, true, this)">
+            <span>🏮</span> 3 Lampu di setiap pintu
+          </button>
+          <button class="opt-btn" onclick="checkQ(3, false, this)">
+            <span>🏮</span> 2 Lampu di setiap pintu
+          </button>
+          <button class="opt-btn" onclick="checkQ(3, false, this)">
+            <span>🏮</span> 4 Lampu di setiap pintu
+          </button>
+        </div>
+        <div class="feedback" id="fb3"></div>
+      </div>
+
+      <!-- Soal 4 -->
+      <div class="q-card" id="q4">
+        <div class="q-num">Soal 4. Di bawah <b>3 jendela</b> rumah, Laskar ingin menaruh <b>2 pot bunga</b> di setiap jendela. Berapa pot bunga yang dibutuhkan semuanya?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(4, true, this)">
+            <span>🌺</span> 6 Pot Bunga &nbsp;(3 × 2 = 6)
+          </button>
+          <button class="opt-btn" onclick="checkQ(4, false, this)">
+            <span>🌺</span> 5 Pot Bunga
+          </button>
+          <button class="opt-btn" onclick="checkQ(4, false, this)">
+            <span>🌺</span> 8 Pot Bunga
+          </button>
+        </div>
+        <div class="feedback" id="fb4"></div>
+      </div>
+
+      <!-- Sertifikat -->
+      <div class="cert">
+        <div style="font-size:10pt; letter-spacing:2px; font-weight:bold; color:#7f8c8d;">✦ PIAGAM BINTANG ARSITEK CILIK ✦</div>
+        <h2>🏆 MASTER OF MATH HOUSE: DOORS & WINDOWS 🏆</h2>
+        <p style="margin:4px 0; font-size:11pt;">Diberikan dengan rasa bangga kepada:</p>
+        <div class="kid-name">LASKAR</div>
+        <p style="margin:4px 0; font-size:10.5pt; color:#2c3e50;">
+          Telah berhasil membuktikan perkalian dan pembagian melalui model <b>Jendela & Pintu Rumah Tampak Depan</b> dengan sangat cerdas!
+        </p>
+        <div style="font-size:18pt; letter-spacing:6px; color:#f39c12; margin:10px 0;">
+          ★★★★★
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 3: NASKAH PRESENTASI KHUSUS JENDELA & PINTU -->
+  <!-- ============================================================== -->
+  <div id="tab-speech" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">🗣️ Naskah Presentasi Proyek: Jendela & Pintu Rumah</div>
+      <div class="tip-box">
+        Ini teks contekan saat Laskar maju ke depan kelas untuk memamerkan model rumah matematika:
+      </div>
+
+      <div class="cue-card">
+        <b>1. Pembuka (Introduction)</b>
+        <p>"Good morning teachers and friends! This is our 3D Math House project showing the front view of a house."</p>
+        <div class="translation">"Selamat pagi bapak/ibu guru dan teman-teman! Ini adalah proyek Rumah Matematika 3D kami yang menampilkan tampak depan sebuah rumah."</div>
+      </div>
+
+      <div class="cue-card">
+        <b>2. Menjelaskan Jendela (Multiplication of Windows)</b>
+        <p>"Look at the windows. There are <b>3 windows</b>. Each window has <b>4 glass panes</b>. In repeated addition: <b>4 + 4 + 4 = 12</b>. In multiplication: <b>3 times 4 equals 12 glass panes!</b>"</p>
+        <div class="translation">"Lihat bagian jendelanya. Ada 3 jendela, masing-masing punya 4 kotak kaca. 4 + 4 + 4 = 12. Jadi, 3 kali 4 sama dengan 12 kotak kaca!"</div>
+      </div>
+
+      <div class="cue-card">
+        <b>3. Menjelaskan Pintu (Multiplication of Doors)</b>
+        <p>"Now look at the front door. We have <b>2 door wings</b>. Each door has <b>3 wooden panels</b>. So, <b>2 times 3 equals 6 panels!</b>"</p>
+        <div class="translation">"Sekarang perhatikan pintunya. Kami punya 2 daun pintu utama. Tiap pintu memiliki 3 panel kayu. Jadi, 2 kali 3 sama dengan 6 panel kayu!"</div>
+      </div>
+
+      <div class="cue-card">
+        <b>4. Menjelaskan Pembagian (Division Concept)</b>
+        <p>"For division, <b>12 glass panes</b> divided into <b>3 windows</b> equals <b>4 panes each (12 ÷ 3 = 4)</b>. Thank you!"</p>
+        <div class="translation">"Untuk pembagian, 12 kotak kaca dibagi ke 3 jendela sama dengan 4 kaca per jendela. Terima kasih!"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 4: TEMPLATE GUNTING & TEMPEL KHUSUS JENDELA & PINTU -->
+  <!-- ============================================================== -->
+  <div id="tab-templates" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">✂️ Template Fasad Rumah, Pintu & Jendela (Siap Cetak A4)</div>
+      <div class="tip-box">
+        Cetak halaman ini di kertas karton / A4. Ananda Laskar bisa menggunting pintu dan jendela, lalu menempelkannya di atas dinding rumah tampak depan!
+      </div>
+
+      <div style="border: 2px dashed #7f8c8d; background:#fafbfc; padding:16px; border-radius:12px;">
+        <div style="text-align:center; font-weight:bold; color:#7f8c8d; font-size:10pt; margin-bottom:12px;">
+          --- POLA POTONG TAMPAK DEPAN RUMAH (CUTOUT TEMPLATES) ---
+        </div>
+
+        <div class="cutout-grid">
+          
+          <!-- Template Jendela 1 -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 65" width="55" height="60">
+              <rect x="5" y="5" width="50" height="55" rx="3" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+              <rect x="9" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="9" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+            </svg>
+            <span>Jendela A (4 Kaca)</span>
+          </div>
+
+          <!-- Template Jendela 2 -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 65" width="55" height="60">
+              <rect x="5" y="5" width="50" height="55" rx="3" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+              <rect x="9" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="9" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+            </svg>
+            <span>Jendela B (4 Kaca)</span>
+          </div>
+
+          <!-- Template Jendela 3 -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 65" width="55" height="60">
+              <rect x="5" y="5" width="50" height="55" rx="3" fill="#3498db" stroke="#2980b9" stroke-width="2"/>
+              <rect x="9" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="9" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="9" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+              <rect x="32" y="34" width="19" height="21" fill="#ebf5fb" stroke="#2980b9"/>
+            </svg>
+            <span>Jendela C (4 Kaca)</span>
+          </div>
+
+          <!-- Template Daun Pintu Kiri -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 45 75" width="45" height="75">
+              <rect x="3" y="3" width="39" height="69" rx="2" fill="#b9770e" stroke="#7e5109" stroke-width="2"/>
+              <rect x="8" y="8" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+              <rect x="8" y="28" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+              <rect x="8" y="48" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+            </svg>
+            <span>Pintu Kiri (3 Panel)</span>
+          </div>
+
+          <!-- Template Daun Pintu Kanan -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 45 75" width="45" height="75">
+              <rect x="3" y="3" width="39" height="69" rx="2" fill="#b9770e" stroke="#7e5109" stroke-width="2"/>
+              <rect x="8" y="8" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+              <rect x="8" y="28" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+              <rect x="8" y="48" width="29" height="15" fill="#d68910" stroke="#7e5109"/>
+            </svg>
+            <span>Pintu Kanan (3 Panel)</span>
+          </div>
+
+          <!-- Pot Bunga Bawah Jendela x 3 -->
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🌺 🌺</div>
+            <span>2 Bunga Jendela 1</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🌺 🌺</div>
+            <span>2 Bunga Jendela 2</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🌺 🌺</div>
+            <span>2 Bunga Jendela 3</span>
+          </div>
+
+          <!-- Atap & Cerobong -->
+          <div class="cutout-item" style="grid-column: span 2;">
+            <svg viewBox="0 0 160 50" width="140" height="42">
+              <polygon points="80,5 5,45 155,45" fill="#c0392b" stroke="#962d22" stroke-width="2"/>
+            </svg>
+            <span>Atap Segitiga Rumah</span>
+          </div>
+
+          <!-- Kartu Label Matematika Rumah -->
+          <div class="cutout-item" style="grid-column: span 2; background:#fef9e7;">
+            <b style="color:#2980b9; font-size:11pt;">3 × 4 = 12</b>
+            <div style="font-size:8pt;">Label Kaca Jendela</div>
+          </div>
+          <div class="cutout-item" style="grid-column: span 2; background:#fef9e7;">
+            <b style="color:#d35400; font-size:11pt;">2 × 3 = 6</b>
+            <div style="font-size:8pt;">Label Panel Pintu</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script>
+  let quizCount = 0;
+  const answeredQuiz = {};
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function playSound(type) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      }
+    } catch(e) {}
+  }
+
+  function checkQ(qNum, isCorrect, btnElem) {
+    if (answeredQuiz[qNum]) return;
+
+    const fb = document.getElementById('fb' + qNum);
+    if (isCorrect) {
+      btnElem.classList.add('correct');
+      fb.innerHTML = '✨ Hebat sekali Laskar! Jawabanmu 100% Benar! 🎉';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      quizCount++;
+      answeredQuiz[qNum] = true;
+    } else {
+      btnElem.classList.add('wrong');
+      fb.innerHTML = 'Hampir tepat! Coba hitung lagi kotak jendela/pintunya ya 😊';
+      fb.className = 'feedback show err';
+    }
+  }
+</script>
+
+</body>
+</html>

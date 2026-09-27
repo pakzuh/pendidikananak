@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lembar Aktivitas Pelangi — Menebali Huruf Samar &amp; Mengenal Hewan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  @page {
+    size: A4 portrait;
+    margin: 6mm;
+  }
+  
+  body {
+    font-family: 'Nunito', sans-serif;
+    color: #2d3748;
+    background: #f7fafc;
+    line-height: 1.3;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  
+  /* Screen layout & toolbar */
+  .no-print-toolbar {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    color: white;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  .toolbar-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+  }
+  .btn-group {
+    display: flex;
+    gap: 10px;
+  }
+  .btn {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 800;
+    font-size: 0.95rem;
+    padding: 9px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-print {
+    background: #10b981;
+    color: white;
+  }
+  .btn-print:hover { background: #059669; }
+  .btn-draw {
+    background: #f59e0b;
+    color: white;
+  }
+  .btn-draw:hover { background: #d97706; }
+  
+  /* Printable Page Sheet */
+  .sheet {
+    width: 210mm;
+    min-height: 297mm;
+    margin: 15px auto;
+    padding: 8mm 10mm;
+    background: white;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border-radius: 12px;
+    position: relative;
+  }
+  
+  /* Printable Header */
+  .header-box {
+    border: 3px solid #6366f1;
+    border-radius: 14px;
+    background: linear-gradient(180deg, #eef2ff 0%, #ffffff 100%);
+    padding: 8px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .sheet-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 16pt;
+    color: #4338ca;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .sheet-subtitle {
+    font-size: 9.5pt;
+    color: #475569;
+    font-weight: 700;
+    margin-top: 1px;
+  }
+  .meta-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    font-size: 9.5pt;
+    font-weight: 800;
+    color: #1e293b;
+    min-width: 220px;
+    text-align: right;
+  }
+  .fill-name {
+    color: #4338ca;
+    font-weight: 900;
+    font-size: 10pt;
+  }
+
+  /* Instruction Banner */
+  .instruction-card {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    border-radius: 10px;
+    padding: 6px 12px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .instruction-icon {
+    font-size: 22pt;
+  }
+  .instruction-text {
+    font-size: 9.5pt;
+    color: #78350f;
+    font-weight: 800;
+    line-height: 1.25;
+  }
+
+  /* Activity Cards List */
+  .activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .activity-card {
+    border: 2.5px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 8px 10px;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    position: relative;
+    page-break-inside: avoid;
+  }
+  
+  .card-jerapah { border-color: #f59e0b; background: #fffbeb; }
+  .card-lumba { border-color: #06b6d4; background: #ecfeff; }
+  .card-paus { border-color: #3b82f6; background: #eff6ff; }
+  .card-mommy { border-color: #ec4899; background: #fdf2f8; }
+
+  .card-number {
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    background: #1e293b;
+    color: white;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 10pt;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+  }
+
+  /* Visual Icon & Illustration Area */
+  .animal-visual {
+    width: 100px;
+    height: 110px;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 12px;
+    border: 2px stroke #cbd5e1;
+    padding: 4px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  }
+  .animal-svg {
+    width: 82px;
+    height: 82px;
+  }
+
+  /* Tracing Section */
+  .tracing-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+  }
+
+  .lang-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+  }
+  .lang-tag {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 9pt;
+    padding: 4px 6px;
+    border-radius: 6px;
+    font-weight: 700;
+    width: 90px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .tag-id { background: #fee2e2; color: #991b1b; border: 1.5px solid #fca5a5; }
+  .tag-en { background: #dbeafe; color: #1e40af; border: 1.5px solid #93c5fd; }
+  .tag-love { background: #fce7f3; color: #9d174d; border: 1.5px solid #fbcfe8; }
+
+  /* Writing Ruling Box & Dashed Letter SVG - NO OVERFLOW / FULL DISPLAY */
+  .tracing-box {
+    flex: 1;
+    height: 52px;
+    background: #ffffff;
+    border: 2px solid #cbd5e1;
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    padding: 0 6px;
+  }
+  
+  /* Primary Writing Guidelines (3 lines) */
+  .writing-guidelines {
+    position: absolute;
+    left: 0; right: 0; top: 0; bottom: 0;
+    pointer-events: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 4px 0;
+  }
+  .line-top { border-top: 1.5px solid #f1f5f9; }
+  .line-mid { border-top: 1.5px dashed #cbd5e1; }
+  .line-bot { border-top: 1.5px solid #f1f5f9; }
+
+  /* Tracing SVG Text - FULLY VISIBLE & LIGHT FAINT DASHED STROKE FOR TRACING */
+  .tracing-svg {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* Footer & Parents Note */
+  .footer-section {
+    margin-top: 8px;
+    display: flex;
+    gap: 10px;
+    align-items: stretch;
+    page-break-inside: avoid;
+  }
+
+  .parent-note-card {
+    flex: 1.4;
+    background: #f8fafc;
+    border: 2px dashed #94a3b8;
+    border-radius: 10px;
+    padding: 8px 12px;
+  }
+  .parent-note-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 9.5pt;
+    color: #334155;
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .parent-note-list {
+    font-size: 8.5pt;
+    color: #475569;
+    padding-left: 16px;
+    line-height: 1.3;
+  }
+
+  .evaluation-card {
+    flex: 1;
+    border: 2px solid #cbd5e1;
+    border-radius: 10px;
+    padding: 6px 12px;
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .eval-title {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #1e293b;
+  }
+  .stars {
+    font-size: 16pt;
+    color: #cbd5e1;
+    letter-spacing: 2px;
+  }
+  .paraf-line {
+    font-size: 8pt;
+    color: #64748b;
+    border-top: 1px solid #cbd5e1;
+    padding-top: 2px;
+  }
+
+  #drawing-canvas {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 500;
+  }
+  body.drawing-mode #drawing-canvas {
+    pointer-events: auto;
+    cursor: crosshair;
+  }
+
+  @media print {
+    .no-print-toolbar { display: none !important; }
+    body { background: white; }
+    .sheet {
+      width: 100% !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Interactive Toolbar -->
+<div class="no-print-toolbar">
+  <div class="toolbar-title">🌈 Worksheet Pelangi: Menebali Huruf Samar (100% Tampil Penuh)</div>
+  <div class="btn-group">
+    <button class="btn btn-draw" onclick="toggleDrawing()">🎨 <span id="draw-btn-text">Mode Corat-Coret Layar</span></button>
+    <button class="btn btn-print" onclick="window.print()">🖨️ Cetak / Simpan PDF</button>
+  </div>
+</div>
+
+<!-- Main Worksheet Sheet -->
+<div class="sheet" id="worksheet-sheet">
+  <canvas id="drawing-canvas"></canvas>
+
+  <!-- Header Box -->
+  <div class="header-box">
+    <div>
+      <div class="sheet-title">🌈 LEMBAR AKTIVITAS PELANGI</div>
+      <div class="sheet-subtitle">Menebali Huruf Samar &amp; Mengenal Hewan (Anak Usia 3-5 Tahun)</div>
+    </div>
+    <div class="meta-grid">
+      <div>Nama: <span class="fill-name">&nbsp;Pelangi Lotusia Rabbani&nbsp;</span></div>
+      <div>Hari / Tgl: <span style="border-bottom:2px dashed #94a3b8; display:inline-block; width:110px;"></span></div>
+      <div>Waktu: <span style="color:#d97706;">⏱️ 3 – 5 Menit</span></div>
+    </div>
+  </div>
+
+  <!-- Instruction Banner -->
+  <div class="instruction-card">
+    <div class="instruction-icon">✏️</div>
+    <div class="instruction-text">
+      <strong>PETUNJUK BELAJAR (HURUF SAMAR ABU-ABU):</strong><br>
+      Ayo Pelangi, tebali huruf-huruf SAMAR ABU-ABU di bawah ini dengan krayon/pensil warna favoritmu! Ikuti garis putus-putusnya ya! ✨
+    </div>
+  </div>
+
+  <!-- Activity Cards (4 Items) -->
+  <div class="activity-list">
+
+    <!-- ITEM 1: JERAPAH / GIRAFFE -->
+    <div class="activity-card card-jerapah">
+      <div class="card-number">1</div>
+      
+      <div class="animal-visual">
+        <svg class="animal-svg" viewBox="0 0 100 100">
+          <path d="M 40 90 L 40 60 L 44 60 L 44 90 Z" fill="#f59e0b"/>
+          <path d="M 52 90 L 52 60 L 56 60 L 56 90 Z" fill="#f59e0b"/>
+          <ellipse cx="48" cy="55" rx="18" ry="14" fill="#fbbf24"/>
+          <path d="M 52 55 L 56 22 L 44 22 L 42 55 Z" fill="#fbbf24"/>
+          <circle cx="48" cy="32" r="2.5" fill="#b45309"/>
+          <circle cx="51" cy="42" r="3" fill="#b45309"/>
+          <circle cx="45" cy="50" r="2.5" fill="#b45309"/>
+          <ellipse cx="50" cy="20" rx="12" ry="9" fill="#fbbf24"/>
+          <path d="M 43 14 L 40 9" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="40" cy="8" r="2" fill="#b45309"/>
+          <path d="M 57 14 L 60 9" stroke="#b45309" stroke-width="2" stroke-linecap="round"/>
+          <circle cx="60" cy="8" r="2" fill="#b45309"/>
+          <ellipse cx="38" cy="18" rx="4" ry="2" fill="#f59e0b"/>
+          <ellipse cx="62" cy="18" rx="4" ry="2" fill="#f59e0b"/>
+          <ellipse cx="56" cy="21" rx="5" ry="4" fill="#fef3c7"/>
+          <circle cx="46" cy="18" r="1.5" fill="#1e293b"/>
+          <circle cx="53" cy="18" r="1.5" fill="#1e293b"/>
+          <path d="M 54 22 Q 56 24 58 22" fill="none" stroke="#78350f" stroke-width="1.2" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size:8pt; font-weight:900; color:#b45309; margin-top:2px;">JERAPAH</span>
+      </div>
+
+      <div class="tracing-content">
+        <div class="lang-row">
+          <div class="lang-tag tag-id">🇮🇩 JERAPAH</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <!-- viewBox 0 0 520 48 + textLength="500" lengthAdjust="spacingAndGlyphs" PREVENTS CUTOFF -->
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="10" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="30" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="4,4" textLength="500" lengthAdjust="spacingAndGlyphs">J - E - R - A - P - A - H</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-tag tag-en">🇬🇧 GIRAFFE</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="10" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="30" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="4,4" textLength="500" lengthAdjust="spacingAndGlyphs">G - I - R - A - F - F - E</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 2: LUMBA-LUMBA / DOLPHIN -->
+    <div class="activity-card card-lumba">
+      <div class="card-number">2</div>
+      
+      <div class="animal-visual">
+        <svg class="animal-svg" viewBox="0 0 100 100">
+          <path d="M 15 70 C 35 40 65 30 85 45 C 75 60 55 75 25 75 Z" fill="#06b6d4"/>
+          <path d="M 25 70 C 45 55 65 50 82 47 C 72 62 55 72 25 70 Z" fill="#cffaff"/>
+          <path d="M 85 45 C 92 46 94 50 88 52 C 82 53 80 50 85 45 Z" fill="#0891b2"/>
+          <path d="M 15 70 L 5 62 C 8 72 12 74 5 80 Z" fill="#0891b2"/>
+          <path d="M 50 42 C 52 30 60 32 58 45 Z" fill="#0891b2"/>
+          <circle cx="76" cy="46" r="2" fill="#1e293b"/>
+          <circle cx="77" cy="45.5" r="0.7" fill="#ffffff"/>
+          <path d="M 10 85 Q 25 80 40 85 Q 55 90 70 85 Q 85 80 95 85" stroke="#38bdf8" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <span style="font-size:8pt; font-weight:900; color:#0891b2; margin-top:2px;">LUMBA-LUMBA</span>
+      </div>
+
+      <div class="tracing-content">
+        <div class="lang-row">
+          <div class="lang-tag tag-id">🇮🇩 LUMBA</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <!-- LUMBA-LUMBA HAS 19 CHARS -> ADJUSTED PERFECTLY SO ALL 19 CHARACTERS FIT 100% -->
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="5" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="24" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2" stroke-dasharray="3.5,3.5" textLength="510" lengthAdjust="spacingAndGlyphs">L - U - M - B - A - L - U - M - B - A</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-tag tag-en">🇬🇧 DOLPHIN</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="10" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="30" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2.2" stroke-dasharray="4,4" textLength="500" lengthAdjust="spacingAndGlyphs">D - O - L - P - H - I - N</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 3: PAUS / WHALE -->
+    <div class="activity-card card-paus">
+      <div class="card-number">3</div>
+      
+      <div class="animal-visual">
+        <svg class="animal-svg" viewBox="0 0 100 100">
+          <path d="M 20 60 C 20 35 60 35 85 55 C 85 75 55 80 20 60 Z" fill="#3b82f6"/>
+          <path d="M 30 63 C 45 72 65 72 80 58 C 70 75 45 78 30 63 Z" fill="#dbeafe"/>
+          <path d="M 20 60 C 10 50 5 45 8 55 C 5 65 10 65 20 60 Z" fill="#2563eb"/>
+          <path d="M 50 36 C 45 25 35 22 40 18 C 48 24 50 30 50 36 Z" fill="#60a5fa"/>
+          <path d="M 52 36 C 57 25 67 22 62 18 C 54 24 52 30 52 36 Z" fill="#93c5fd"/>
+          <circle cx="70" cy="53" r="2.2" fill="#1e293b"/>
+          <circle cx="71" cy="52" r="0.7" fill="#ffffff"/>
+          <ellipse cx="76" cy="57" rx="2.5" ry="1.5" fill="#f43f5e" opacity="0.6"/>
+        </svg>
+        <span style="font-size:8pt; font-weight:900; color:#1d4ed8; margin-top:2px;">PAUS</span>
+      </div>
+
+      <div class="tracing-content">
+        <div class="lang-row">
+          <div class="lang-tag tag-id">🇮🇩 PAUS</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="15" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="32" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4,4" textLength="480" lengthAdjust="spacingAndGlyphs">P - A - U - S</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="lang-row">
+          <div class="lang-tag tag-en">🇬🇧 WHALE</div>
+          <div class="tracing-box">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <svg class="tracing-svg" viewBox="0 0 520 48" preserveAspectRatio="xMinYMid meet">
+              <text x="15" y="35" font-family="'Fredoka', 'Nunito', sans-serif" font-size="32" font-weight="700" fill="#f1f5f9" stroke="#94a3b8" stroke-width="2.5" stroke-dasharray="4,4" textLength="480" lengthAdjust="spacingAndGlyphs">W - H - A - L - E</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 4: MOMMY -->
+    <div class="activity-card card-mommy">
+      <div class="card-number">4</div>
+      
+      <div class="animal-visual">
+        <svg class="animal-svg" viewBox="0 0 100 100">
+          <circle cx="42" cy="38" r="14" fill="#fbcfe8"/>
+          <path d="M 28 36 C 26 20 56 20 56 36 C 52 26 32 26 28 36 Z" fill="#831843"/>
+          <circle cx="42" cy="38" r="1.5" fill="#831843"/>
+          <circle cx="48" cy="38" r="1.5" fill="#831843"/>
+          <path d="M 43 43 Q 45 46 47 43" fill="none" stroke="#be185d" stroke-width="1.2" stroke-linecap="round"/>
+          <circle cx="64" cy="52" r="10" fill="#fed7aa"/>
+          <path d="M 54 50 C 52 38 74 38 74 50 C 70 42 58 42 54 50 Z" fill="#7c2d12"/>
+          <circle cx="61" cy="51" r="1.2" fill="#7c2d12"/>
+          <circle cx="66" cy="51" r="1.2" fill="#7c2d12"/>
+          <path d="M 62 55 Q 63.5 57 65 55" fill="none" stroke="#c2410c" stroke-width="1" stroke-linecap="round"/>
+          <path d="M 50 20 C 50 16 44 16 44 20 C 44 24 50 27 50 27 C 50 27 56 24 56 20 C 56 16 50 16 50 20 Z" fill="#ec4899"/>
+          <path d="M 68 32 C 68 29 64 29 64 32 C 64 35 68 37 68 37 C 68 37 72 35 72 32 C 72 29 68 29 68 32 Z" fill="#f43f5e"/>
+        </svg>
+        <span style="font-size:8pt; font-weight:900; color:#be185d; margin-top:2px;">MOMMY ❤️</span>
+      </div>
+
+      <div class="tracing-content">
+        <div class="lang-row">
+          <div class="lang-tag tag-love">❤️ MOMMY</div>
+          <div class="tracing-box" style="height: 60px;">
+            <div class="writing-guidelines">
+              <div class="line-top"></div>
+              <div class="line-mid"></div>
+              <div class="line-bot"></div>
+            </div>
+            <svg class="tracing-svg" viewBox="0 0 520 52" preserveAspectRatio="xMinYMid meet">
+              <text x="20" y="40" font-family="'Fredoka', 'Nunito', sans-serif" font-size="40" font-weight="700" fill="#fdf2f8" stroke="#f472b6" stroke-width="3" stroke-dasharray="4.5,4.5" textLength="480" lengthAdjust="spacingAndGlyphs">M - O - M - M - Y</text>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Footer Section -->
+  <div class="footer-section">
+    <div class="parent-note-card">
+      <div class="parent-note-title">
+        📌 CATATAN UNTUK AYAH / IBU:
+      </div>
+      <ul class="parent-note-list">
+        <li>🗣️ <strong>Puji Pelafalannya:</strong> Ajak Pelangi mengucapkan kata bahasa Inggrisnya saat menebali huruf.</li>
+        <li>⏱️ <strong>Sesi Singkat (Micro-learning):</strong> Cukup <strong>3–5 menit</strong> agar Pelangi gembira &amp; tidak bosan.</li>
+      </ul>
+    </div>
+
+    <div class="evaluation-card">
+      <div class="eval-title">⭐ Nilai Pelangi Hari Ini ⭐</div>
+      <div class="stars">★ ★ ★ ★ ★</div>
+      <div class="paraf-line">Paraf Ayah / Ibu: ____________</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Canvas Drawing Script for Interactive Screen Mode -->
+<script>
+  let isDrawing = false;
+  let canvas, ctx;
+
+  function initCanvas() {
+    canvas = document.getElementById('drawing-canvas');
+    const sheet = document.getElementById('worksheet-sheet');
+    canvas.width = sheet.offsetWidth;
+    canvas.height = sheet.offsetHeight;
+    ctx = canvas.getContext('2d');
+    ctx.lineWidth = 5;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#ec4899';
+
+    canvas.addEventListener('mousedown', startDrawing);
+    canvas.addEventListener('mousemove', draw);
+    canvas.addEventListener('mouseup', stopDrawing);
+    canvas.addEventListener('mouseleave', stopDrawing);
+
+    canvas.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      startDrawing({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+    canvas.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      draw({ clientX: touch.clientX, clientY: touch.clientY });
+    });
+    canvas.addEventListener('touchend', stopDrawing);
+  }
+
+  function toggleDrawing() {
+    document.body.classList.toggle('drawing-mode');
+    const btnText = document.getElementById('draw-btn-text');
+    if (document.body.classList.contains('drawing-mode')) {
+      btnText.innerText = 'Matikan Mode Corat-Coret';
+    } else {
+      btnText.innerText = 'Mode Corat-Coret Layar';
+    }
+  }
+
+  function startDrawing(e) {
+    if (!document.body.classList.contains('drawing-mode')) return;
+    isDrawing = true;
+    const rect = canvas.getBoundingClientRect();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  }
+
+  function draw(e) {
+    if (!isDrawing || !document.body.classList.contains('drawing-mode')) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+  }
+
+  function stopDrawing() {
+    isDrawing = false;
+  }
+
+  window.addEventListener('load', initCanvas);
+  window.addEventListener('resize', initCanvas);
+</script>
+
+</body>
+</html>

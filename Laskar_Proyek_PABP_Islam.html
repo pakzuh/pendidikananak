@@ -1,0 +1,2222 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyek PABP Islam Grade 2 — Show Your Caring | Laskar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #047857;
+      --primary-dark: #065f46;
+      --primary-light: #ecfdf5;
+      --secondary: #f59e0b;
+      --accent: #10b981;
+      --gold: #d97706;
+      --bg: #f8fafc;
+      --card-bg: #ffffff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --radius: 18px;
+      --shadow: 0 10px 25px -5px rgba(4, 120, 87, 0.1), 0 8px 10px -6px rgba(4, 120, 87, 0.05);
+      --shadow-lg: 0 20px 30px -10px rgba(6, 95, 70, 0.15);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 50%, #f0fdfa 100%);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      padding-bottom: 60px;
+    }
+
+    h1, h2, h3, h4, .font-title {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    .arabic-font {
+      font-family: 'Amiri', serif;
+      direction: rtl;
+    }
+
+    /* Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Header Banner */
+    .header-card {
+      background: linear-gradient(135deg, #065f46 0%, #047857 60%, #0d9488 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 30px 36px;
+      box-shadow: 0 15px 35px rgba(6, 95, 70, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 3px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .header-card::after {
+      content: "💖";
+      position: absolute;
+      right: 25px;
+      bottom: -15px;
+      font-size: 130px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .badge-gold {
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      color: #78350f;
+    }
+
+    .header-title {
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      line-height: 1.2;
+    }
+
+    .header-subtitle {
+      font-size: 16.5px;
+      color: #a7f3d0;
+      max-width: 820px;
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 16px;
+      padding: 12px 18px;
+      font-size: 13.5px;
+    }
+
+    .meta-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .meta-icon {
+      font-size: 20px;
+    }
+
+    /* Navigation Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      margin-bottom: 24px;
+      scrollbar-width: thin;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 12px 20px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.03);
+    }
+
+    .tab-btn:hover {
+      background: #f8fafc;
+      color: var(--primary);
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 8px 15px rgba(4, 120, 87, 0.3);
+    }
+
+    /* Tab Panes */
+    .tab-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Card & Section */
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 26px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1.5px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+      border-bottom: 2px dashed #f1f5f9;
+      padding-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: 22px;
+      color: var(--primary-dark);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Hadith Callout Box */
+    .hadith-box {
+      background: linear-gradient(135deg, #ecfdf5, #f0fdf4);
+      border: 2px solid #a7f3d0;
+      border-radius: 18px;
+      padding: 22px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .hadith-arabic {
+      font-family: 'Amiri', serif;
+      font-size: 24px;
+      line-height: 2.1;
+      color: #065f46;
+      text-align: center;
+      margin: 10px 0;
+      direction: rtl;
+    }
+
+    .hadith-arti {
+      font-size: 15px;
+      text-align: center;
+      color: #047857;
+      font-weight: 600;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 10px 16px;
+      border-radius: 12px;
+    }
+
+    /* 4 Sikap Grid */
+    .sikap-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 18px;
+      margin-top: 16px;
+    }
+
+    .sikap-card {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+      transition: all 0.25s ease;
+    }
+
+    .sikap-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: var(--primary);
+    }
+
+    .sikap-card-head {
+      padding: 16px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .sikap-card-head.c1 { background: linear-gradient(135deg, #e11d48, #f43f5e); }
+    .sikap-card-head.c2 { background: linear-gradient(135deg, #0284c7, #0ea5e9); }
+    .sikap-card-head.c3 { background: linear-gradient(135deg, #7c3aed, #8b5cf6); }
+    .sikap-card-head.c4 { background: linear-gradient(135deg, #d97706, #f59e0b); }
+
+    .sikap-icon-big {
+      font-size: 32px;
+      background: rgba(255, 255, 255, 0.25);
+      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .sikap-card-title {
+      font-size: 18px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .sikap-card-sub {
+      font-size: 12px;
+      opacity: 0.9;
+      font-weight: 600;
+    }
+
+    .sikap-body {
+      padding: 16px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13.5px;
+    }
+
+    .sikap-desc {
+      color: #334155;
+      line-height: 1.5;
+      font-size: 13.5px;
+    }
+
+    .do-box {
+      background: #f0fdf4;
+      border-left: 4px solid #10b981;
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+
+    .dont-box {
+      background: #fef2f2;
+      border-left: 4px solid #ef4444;
+      padding: 8px 12px;
+      border-radius: 0 8px 8px 0;
+      font-size: 12.5px;
+    }
+
+    /* Buttons */
+    .btn {
+      padding: 9px 18px;
+      border-radius: 10px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+    }
+
+    .btn-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      border: 1.5px solid var(--border);
+      color: var(--text);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: white;
+    }
+
+    .btn-gold:hover {
+      background: #b45309;
+    }
+
+    .btn-lg {
+      padding: 12px 24px;
+      font-size: 16px;
+      border-radius: 14px;
+    }
+
+    /* Story & Speech Section */
+    .story-card {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      margin-bottom: 20px;
+      transition: all 0.2s;
+    }
+
+    .story-card:hover {
+      border-color: var(--primary);
+    }
+
+    .story-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .story-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .story-box {
+      background: #fffbeb;
+      border: 2px dashed #fde68a;
+      border-radius: 12px;
+      padding: 16px 18px;
+      font-size: 15px;
+      line-height: 1.8;
+      color: #78350f;
+      position: relative;
+    }
+
+    .story-box.cloze-hidden .kw {
+      background: #d97706;
+      color: transparent;
+      border-radius: 4px;
+      padding: 0 4px;
+      cursor: pointer;
+      user-select: none;
+      transition: all 0.2s;
+    }
+
+    .story-box.cloze-hidden .kw:hover {
+      background: #b45309;
+    }
+
+    .story-box.cloze-hidden .kw.revealed {
+      background: #d1fae5;
+      color: #065f46;
+      border-bottom: 2px solid #10b981;
+    }
+
+    /* Speech Script Box */
+    .speech-box {
+      background: linear-gradient(135deg, #f0fdf4, #ecfdf5);
+      border: 2.5px solid #10b981;
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 20px;
+    }
+
+    .speech-title {
+      font-size: 19px;
+      color: #065f46;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .speech-text {
+      font-size: 15.5px;
+      line-height: 1.9;
+      color: #1e293b;
+      background: #ffffff;
+      border: 1px solid #a7f3d0;
+      padding: 18px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+    }
+
+    /* Print Controls & Sheet */
+    .print-controls {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .print-sheet {
+      background: #ffffff;
+      max-width: 840px;
+      margin: 0 auto 30px auto;
+      padding: 24px 28px;
+      border: 2px solid #cbd5e1;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .sheet-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2.5px solid #0f172a;
+      padding-bottom: 12px;
+      margin-bottom: 14px;
+    }
+
+    .sheet-title-group h3 {
+      font-size: 18px;
+      color: #0f172a;
+      letter-spacing: 0.5px;
+    }
+
+    .sheet-title-group p {
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    .student-info-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 12px;
+      margin-bottom: 14px;
+      background: #f8fafc;
+    }
+
+    /* Cutout Cards Grid */
+    .cutout-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .cutout-card {
+      border: 2px dashed #64748b;
+      border-radius: 12px;
+      padding: 10px 8px;
+      background: #fafafa;
+      text-align: center;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      page-break-inside: avoid;
+    }
+
+    .scissor-tag {
+      position: absolute;
+      top: -10px;
+      right: 10px;
+      background: #ffffff;
+      padding: 0 6px;
+      font-size: 11px;
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .cutout-img-slot {
+      width: 100%;
+      height: 90px;
+      border-radius: 8px;
+      background: #f1f5f9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      overflow: hidden;
+    }
+
+    .cutout-img-slot svg {
+      width: 75px;
+      height: 75px;
+    }
+
+    .cutout-label {
+      font-size: 12px;
+      font-weight: 800;
+      color: #0f172a;
+      line-height: 1.3;
+      margin-bottom: 4px;
+    }
+
+    .cutout-category-hint {
+      font-size: 10.5px;
+      color: #047857;
+      font-weight: 700;
+      background: #ecfdf5;
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    /* 4 Column Drop Table */
+    .classification-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+      font-size: 11.5px;
+    }
+
+    .classification-table th, .classification-table td {
+      border: 1.5px solid #334155;
+      padding: 8px 6px;
+      vertical-align: top;
+      text-align: center;
+    }
+
+    .classification-table th {
+      background: #f1f5f9;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    .th-c1 { color: #e11d48; border-top: 4px solid #e11d48; }
+    .th-c2 { color: #0284c7; border-top: 4px solid #0284c7; }
+    .th-c3 { color: #7c3aed; border-top: 4px solid #7c3aed; }
+    .th-c4 { color: #d97706; border-top: 4px solid #d97706; }
+
+    .drop-slot {
+      min-height: 105px;
+      border: 2px dashed #94a3b8;
+      background: #f8fafc;
+      border-radius: 8px;
+      margin-bottom: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      color: #94a3b8;
+      font-size: 10.5px;
+      font-weight: 600;
+      padding: 4px;
+    }
+
+    /* Ruled Handwriting Lines */
+    .ruled-box {
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      background: repeating-linear-gradient(
+        to bottom,
+        #ffffff 0px,
+        #ffffff 22px,
+        #93c5fd 23px,
+        #ffffff 24px,
+        #ffffff 44px,
+        #fca5a5 45px
+      );
+      height: 90px;
+      margin-top: 6px;
+      margin-bottom: 12px;
+      padding: 4px 10px;
+      font-size: 12px;
+      color: #64748b;
+    }
+
+    /* Rubric Table */
+    .rubric-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11px;
+      margin-top: 10px;
+    }
+
+    .rubric-table th, .rubric-table td {
+      border: 1px solid #cbd5e1;
+      padding: 6px 8px;
+      text-align: center;
+    }
+
+    .rubric-table th {
+      background: #f8fafc;
+      font-weight: 700;
+      color: #334155;
+    }
+
+    .signature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 20px;
+      text-align: center;
+      font-size: 11.5px;
+    }
+
+    .sig-line {
+      margin-top: 40px;
+      border-top: 1.5px solid #0f172a;
+      padding-top: 4px;
+      font-weight: 600;
+    }
+
+    /* Interactive Game Styles */
+    .game-board {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .game-pool {
+      background: #f8fafc;
+      border: 2px dashed #94a3b8;
+      border-radius: 16px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .game-targets {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .target-box {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      min-height: 140px;
+      transition: all 0.2s;
+    }
+
+    .target-box.hovered {
+      border-color: var(--primary);
+      background: #f0fdf4;
+      transform: scale(1.02);
+    }
+
+    .target-head {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .draggable-card {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 10px;
+      padding: 10px;
+      cursor: grab;
+      font-size: 13px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .draggable-card:hover {
+      border-color: var(--primary);
+      background: #f0fdfa;
+      transform: translateY(-2px);
+    }
+
+    .draggable-card.selected {
+      border-color: var(--primary);
+      background: #ecfdf5;
+      box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.3);
+    }
+
+    /* Quiz Card */
+    .quiz-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-q {
+      font-size: 15.5px;
+      font-weight: 700;
+      margin-bottom: 12px;
+      color: #0f172a;
+    }
+
+    .quiz-options {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+
+    .quiz-btn {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+
+    .quiz-btn:hover {
+      border-color: var(--primary);
+      background: #f0fdfa;
+    }
+
+    .quiz-btn.correct {
+      background: #d1fae5;
+      border-color: #10b981;
+      color: #065f46;
+      font-weight: 700;
+    }
+
+    .quiz-btn.wrong {
+      background: #fee2e2;
+      border-color: #ef4444;
+      color: #991b1b;
+    }
+
+    /* Checklist Items */
+    .checklist-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .check-item {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 12px;
+      padding: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .check-item:hover {
+      border-color: var(--primary);
+      transform: translateY(-2px);
+    }
+
+    .check-item.checked {
+      background: #f0fdf4;
+      border-color: #10b981;
+    }
+
+    .custom-box {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #cbd5e1;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: white;
+      flex-shrink: 0;
+    }
+
+    .check-item.checked .custom-box {
+      background: #10b981;
+      border-color: #10b981;
+    }
+
+    /* Toast */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-size: 14px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      z-index: 9999;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* Print Styles */
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      .no-print, .tabs-nav, .header-card, .print-controls, .toast, .top-action-bar, button {
+        display: none !important;
+      }
+
+      .container, .app-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+
+      .tab-pane {
+        display: none !important;
+      }
+
+      .tab-pane.active {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+
+      .print-sheet {
+        box-shadow: none !important;
+        border: 1.5px solid #cbd5e1 !important;
+        padding: 8mm !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .print-sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .cutout-card {
+        border: 1.5px dashed #000000 !important;
+        background: #ffffff !important;
+      }
+
+      .classification-table th, .classification-table td {
+        border-color: #000000 !important;
+      }
+
+      .drop-slot {
+        border: 1.5px dashed #666666 !important;
+        background: #ffffff !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-card { padding: 22px 18px; }
+      .header-title { font-size: 24px; }
+      .cutout-grid { grid-template-columns: repeat(2, 1fr); }
+      .game-board { grid-template-columns: 1fr; }
+      .student-info-bar { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header Banner -->
+    <header class="header-card no-print">
+      <div class="badge-bar">
+        <span class="badge badge-gold">⭐ PROJECT WEEK TERM I</span>
+        <span class="badge">🕌 PABP Islam • Grade 2</span>
+        <span class="badge">TA 2026/2027</span>
+      </div>
+      <h1 class="header-title">Show Your Caring</h1>
+      <p class="header-subtitle">
+        Unit 3: Kasih Sayang Kepada Sesama — 4 Sikap Terpuji: Saling Menyayangi, Sikap Empati, Tutur Kata Lembut, dan Sikap Jujur
+      </p>
+
+      <div class="meta-grid">
+        <div class="meta-item">
+          <span class="meta-icon">👦</span>
+          <div>
+            <strong>Ananda:</strong> Laskar Al Kautsar
+          </div>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">🏫</span>
+          <div>
+            <strong>Sekolah:</strong> SD MISS Malang
+          </div>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">📅</span>
+          <div>
+            <strong>Hari/Tanggal:</strong> Rabu, 23 Sep 2026
+          </div>
+        </div>
+        <div class="meta-item">
+          <span class="meta-icon">⏱️</span>
+          <div>
+            <strong>Waktu:</strong> 09.00 - 10.00 WIB (60 Menit)
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="tabs-nav no-print" aria-label="Menu Tab">
+      <button class="tab-btn active" onclick="switchTab('tab-materi', this)">
+        <span>📖</span> 4 Sikap Terpuji
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-cerita', this)">
+        <span>📝</span> Cerita & Naskah Lisan
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-print', this)">
+        <span>✂️</span> Lembar Siap Cetak (A4)
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-game', this)">
+        <span>🎮</span> Game Klasifikasi & Kuis
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-checklist', this)">
+        <span>🎒</span> Checklist Alat & Buku
+      </button>
+    </nav>
+
+    <!-- Quick Action Bar -->
+    <div class="top-action-bar no-print" style="display: flex; justify-content: space-between; align-items: center; background: #ecfdf5; border: 1.5px solid #a7f3d0; border-radius: 12px; padding: 10px 16px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+      <div style="font-size: 13.5px; font-weight: 700; color: #065f46;">
+        💡 Siap dicetak: 12 Kartu Gunting Bergambar & Lembar Klasifikasi 4 Kolom (2 Halaman A4)!
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-primary" onclick="printWorksheet('tab-print')" style="padding: 8px 16px; font-size: 13.5px; background: #059669; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700;">
+          🖨️ Cetak Lembar PABP (A4)
+        </button>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 1: MATERI 4 SIKAP TERPUJI (MEMBACA & MEMAHAMI)
+         ======================================================== -->
+    <div id="tab-materi" class="tab-pane active">
+      
+      <!-- Hadits Kasih Sayang -->
+      <div class="hadith-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+          <span class="badge" style="background:#047857; color:#ffffff;">📖 Hadits Pedoman Kasih Sayang</span>
+          <span style="font-size: 13px; font-weight: 700; color: #047857;">HR. Abu Dawud & Tirmidzi</span>
+        </div>
+        <div class="hadith-arabic">
+          « الرَّاحِمُونَ يَرْحَمُهُمُ الرَّحْمَنُ، ارْحَمُوا مَنْ فِي الْأَرْضِ يَرْحَمْكُمْ مَنْ فِي السَّمَاءِ »
+        </div>
+        <div class="hadith-arti">
+          "Orang-orang yang berbelas kasih akan disayang oleh Allah Yang Maha Pengasih. <strong>Sayangilah siapa pun yang ada di bumi, niscaya yang ada di langit akan menyayangimu.</strong>"
+        </div>
+      </div>
+
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>💖</span> 4 Sikap Terpuji dalam Keseharian</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Pelajari materi Unit 3 ini dari Buku Paket (Textbook) PABP untuk mempersiapkan penempelan gambar dan presentasi di depan Miss & Mister.
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="playAudioText('Mari belajar 4 sikap terpuji dalam proyek Show Your Caring. Pertama, Saling Menyayangi. Kedua, Sikap Empati. Ketiga, Tutur Kata Lembut. Keempat, Sikap Jujur.')">
+            <span>🔊</span> Dengarkan Ringkasan
+          </button>
+        </div>
+
+        <div class="sikap-grid">
+          
+          <!-- 1. Saling Menyayangi -->
+          <div class="sikap-card">
+            <div class="sikap-card-head c1">
+              <div class="sikap-icon-big">❤️</div>
+              <div>
+                <div class="sikap-card-title">1. Saling Menyayangi</div>
+                <div class="sikap-card-sub">Love & Care for All</div>
+              </div>
+            </div>
+            <div class="sikap-body">
+              <p class="sikap-desc">
+                Menyayangi dan mengasihi semua ciptaan Allah: orang tua, guru, adik, kakak, teman, hewan, dan tanaman di sekitar kita.
+              </p>
+              <div class="do-box">
+                <strong>✅ Perbuatan Baik (DO):</strong><br>
+                • Berbagi bekal makanan atau mainan.<br>
+                • Menyiram bunga & tanaman sekolah.<br>
+                • Memberi makan kucing peliharaan.
+              </div>
+              <div class="dont-box">
+                <strong>❌ Hindari (DON'T):</strong><br>
+                • Mengejek teman atau bermusuhan.<br>
+                • Merusak tanaman atau menyakiti hewan.
+              </div>
+              <button class="btn btn-outline" style="font-size:12px; margin-top:auto;" onclick="playAudioText('Sikap saling menyayangi artinya menyayangi keluarga, teman, hewan, dan tanaman ciptaan Allah. Contohnya berbagi bekal dan menyiram tanaman.')">
+                <span>🔊</span> Dengar Suara
+              </button>
+            </div>
+          </div>
+
+          <!-- 2. Sikap Empati -->
+          <div class="sikap-card">
+            <div class="sikap-card-head c2">
+              <div class="sikap-icon-big">🤝</div>
+              <div>
+                <div class="sikap-card-title">2. Sikap Empati</div>
+                <div class="sikap-card-sub">Empathy & Caring</div>
+              </div>
+            </div>
+            <div class="sikap-body">
+              <p class="sikap-desc">
+                Mampu ikut merasakan kesedihan dan kesulitan orang lain, lalu segera tergerak hati untuk menolong dan menghibur.
+              </p>
+              <div class="do-box">
+                <strong>✅ Perbuatan Baik (DO):</strong><br>
+                • Menolong teman yang terjatuh di sekolah.<br>
+                • Menghibur teman yang sedang sedih.<br>
+                • Menjenguk dan mendoakan teman sakit.
+              </div>
+              <div class="dont-box">
+                <strong>❌ Hindari (DON'T):</strong><br>
+                • Menertawakan teman yang tersandung.<br>
+                • Cuek atau pura-pura tidak melihat.
+              </div>
+              <button class="btn btn-outline" style="font-size:12px; margin-top:auto;" onclick="playAudioText('Sikap empati adalah merasakan kesedihan orang lain dan segera menolong. Contohnya menolong teman yang tersandung jatuh dan menghibur yang sedih.')">
+                <span>🔊</span> Dengar Suara
+              </button>
+            </div>
+          </div>
+
+          <!-- 3. Tutur Kata Lembut -->
+          <div class="sikap-card">
+            <div class="sikap-card-head c3">
+              <div class="sikap-icon-big">🗣️</div>
+              <div>
+                <div class="sikap-card-title">3. Tutur Kata Lembut</div>
+                <div class="sikap-card-sub">Gentle & Polite Words</div>
+              </div>
+            </div>
+            <div class="sikap-body">
+              <p class="sikap-desc">
+                Berbicara santun, suara ramah dan tenang, tidak berteriak, serta selalu membiasakan <strong>4 Kata Ajaib</strong>.
+              </p>
+              <div class="do-box">
+                <strong>✅ 4 Kata Ajaib (Magic Words):</strong><br>
+                1. <strong>Tolong</strong> (saat minta bantuan)<br>
+                2. <strong>Maaf</strong> (saat berbuat salah)<br>
+                3. <strong>Terima Kasih</strong> (saat dibantu)<br>
+                4. <strong>Permisi</strong> (saat lewat di depan guru)
+              </div>
+              <div class="dont-box">
+                <strong>❌ Hindari (DON'T):</strong><br>
+                • Berteriak atau membentak guru/teman.<br>
+                • Mengucapkan kata-kata kasar/mengejek.
+              </div>
+              <button class="btn btn-outline" style="font-size:12px; margin-top:auto;" onclick="playAudioText('Tutur kata lembut adalah berbicara sopan tanpa berteriak. Selalu gunakan 4 kata ajaib: tolong, maaf, terima kasih, dan permisi.')">
+                <span>🔊</span> Dengar Suara
+              </button>
+            </div>
+          </div>
+
+          <!-- 4. Sikap Jujur -->
+          <div class="sikap-card">
+            <div class="sikap-card-head c4">
+              <div class="sikap-icon-big">💎</div>
+              <div>
+                <div class="sikap-card-title">4. Sikap Jujur</div>
+                <div class="sikap-card-sub">Honesty & Truthfulness</div>
+              </div>
+            </div>
+            <div class="sikap-body">
+              <p class="sikap-desc">
+                Selalu berkata benar apa adanya sesuai kenyataan, bersikap amanah, dan berani mengakui kesalahan diri sendiri.
+              </p>
+              <div class="do-box">
+                <strong>✅ Perbuatan Baik (DO):</strong><br>
+                • Mengembalikan barang temuan ke guru.<br>
+                • Berani jujur mengakui bila bersalah.<br>
+                • Mengerjakan ulangan tanpa menyontek.
+              </div>
+              <div class="dont-box">
+                <strong>❌ Hindari (DON'T):</strong><br>
+                • Berbohong untuk menutupi kesalahan.<br>
+                • Mengambil barang yang bukan miliknya.
+              </div>
+              <button class="btn btn-outline" style="font-size:12px; margin-top:auto;" onclick="playAudioText('Sikap jujur adalah berkata benar dan berani mengakui kesalahan. Contohnya mengembalikan pensil temuan kepada Miss atau Mister.')">
+                <span>🔊</span> Dengar Suara
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 2: CERITA PENGALAMAN & NASKAH LISAN LASKAR
+         ======================================================== -->
+    <div id="tab-cerita" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>📝</span> 4 Contoh Cerita Pengalaman Nyata Laskar</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Cerita pendek yang mudah diingat untuk dituliskan pada lembar proyek dan diceritakan secara lisan kepada Miss & Mister.
+            </p>
+          </div>
+          <div style="display:flex; gap:8px;">
+            <button class="btn btn-outline" onclick="toggleCloze()">
+              <span>👁️</span> Mode Hafalan (Tutup Kata Kunci)
+            </button>
+          </div>
+        </div>
+
+        <!-- 1. Cerita Saling Menyayangi -->
+        <div class="story-card">
+          <div class="story-card-header">
+            <span class="story-badge" style="background:#ffe4e6; color:#e11d48;">
+              <span>❤️</span> 1. Pengalaman Saling Menyayangi
+            </span>
+            <button class="btn btn-outline" style="padding:4px 10px; font-size:12px;" onclick="playAudioText('Saat jam istirahat di sekolah, saya melihat teman saya lupa membawa bekal. Saya mengajak teman saya makan bersama dan membagi biskuit saya. Kami berdua merasa senang.')">
+              <span>🔊</span> Dengarkan
+            </button>
+          </div>
+          <div class="story-box" id="story-1">
+            "Saat jam istirahat di SD MISS, saya membawa bekal <span class="kw">biskuit</span> dari rumah. Saya melihat teman saya belum makan, jadi saya <span class="kw">membagi biskuit</span> saya dengannya. Kami makan bersama sambil tersenyum bahagia karena saling menyayangi."
+          </div>
+        </div>
+
+        <!-- 2. Cerita Sikap Empati -->
+        <div class="story-card">
+          <div class="story-card-header">
+            <span class="story-badge" style="background:#e0f2fe; color:#0284c7;">
+              <span>🤝</span> 2. Pengalaman Sikap Empati
+            </span>
+            <button class="btn btn-outline" style="padding:4px 10px; font-size:12px;" onclick="playAudioText('Suatu hari di lapangan sekolah, teman saya terpeleset dan jatuh. Saya langsung menolongnya berdiri dan membantunya berjalan menemui Miss untuk diobati.')">
+              <span>🔊</span> Dengarkan
+            </button>
+          </div>
+          <div class="story-box" id="story-2">
+            "Suatu hari di lapangan sekolah, teman saya <span class="kw">tersandung dan jatuh</span> hingga lututnya sakit. Saya langsung menghampirinya, <span class="kw">membantu berdiri</span>, dan menemaninya berjalan ke ruang kelas untuk menemui <span class="kw">Miss</span> agar bisa diobati."
+          </div>
+        </div>
+
+        <!-- 3. Cerita Tutur Kata Lembut -->
+        <div class="story-card">
+          <div class="story-card-header">
+            <span class="story-badge" style="background:#ede9fe; color:#7c3aed;">
+              <span>🗣️</span> 3. Pengalaman Tutur Kata Lembut
+            </span>
+            <button class="btn btn-outline" style="padding:4px 10px; font-size:12px;" onclick="playAudioText('Ketika saya meminjam penghapus kepada teman, saya berkata tolong dengan sopan. Setelah selesai, saya mengembalikannya dan mengucapkan terima kasih banyak.')">
+              <span>🔊</span> Dengarkan
+            </button>
+          </div>
+          <div class="story-box" id="story-3">
+            "Ketika pensil warna saya tertinggal, saya tidak berteriak. Saya mendekati teman dan berkata dengan lembut: <span class="kw">'Bolehkah aku meminjam pensilmu, tolong?'</span>. Setelah selesai, saya mengembalikannya dan mengucap: <span class="kw">'Terima kasih banyak ya!'</span>."
+          </div>
+        </div>
+
+        <!-- 4. Cerita Sikap Jujur -->
+        <div class="story-card">
+          <div class="story-card-header">
+            <span class="story-badge" style="background:#fef3c7; color:#d97706;">
+              <span>💎</span> 4. Pengalaman Sikap Jujur
+            </span>
+            <button class="btn btn-outline" style="padding:4px 10px; font-size:12px;" onclick="playAudioText('Saya pernah menemukan penghapus di bawah meja kelas. Saya tidak menyimpannya untuk diri sendiri, melainkan segera menyerahkannya kepada Mister guru agar dikembalikan.')">
+              <span>🔊</span> Dengarkan
+            </button>
+          </div>
+          <div class="story-box" id="story-4">
+            "Saya pernah menemukan penghapus di bawah meja kelas. Meskipun tidak ada yang melihat, saya tidak menyimpannya. Saya segera membawanya dan menyerahkannya ke meja <span class="kw">Miss dan Mister</span> agar bisa diumumkan kepada pemilik aslinya."
+          </div>
+        </div>
+
+        <!-- Naskah Presentasi Lisan -->
+        <div class="speech-box">
+          <div class="speech-title">
+            <span>🗣️</span> Naskah Presentasi Lisan di Depan Miss, Mister, dan Teman-teman
+          </div>
+          <p style="font-size:13px; color:#065f46; margin-bottom:12px;">
+            Hafalkan naskah singkat ini dengan nada ceria, percaya diri, dan suara yang jelas:
+          </p>
+          <div class="speech-text" id="speech-content">
+            "<strong>Assalamu'alaikum warahmatullahi wabarakatuh.</strong><br><br>
+            Good morning <strong>Miss, Mister</strong>, dan teman-teman semuanya!<br>
+            Nama saya <strong>Laskar Al Kautsar</strong> (panggilan <strong>Laskar</strong>), dari kelas <strong>Grade 2 SD MISS Malang</strong>.<br><br>
+            Hari ini, saya ingin mempresentasikan proyek PABP saya yang berjudul <strong>'Show Your Caring'</strong>.<br>
+            Dalam agama Islam, kita diajarkan 4 sikap terpuji kepada sesama:<br>
+            1. <strong>Saling Menyayangi:</strong> Seperti saya berbagi bekal makanan dengan teman di jam istirahat.<br>
+            2. <strong>Sikap Empati:</strong> Seperti saya menolong teman yang tersandung jatuh di lapangan.<br>
+            3. <strong>Tutur Kata Lembut:</strong> Selalu membiasakan kata tolong, maaf, dan terima kasih.<br>
+            4. <strong>Sikap Jujur:</strong> Selalu berkata benar dan mengembalikan barang temuan kepada guru.<br><br>
+            Mari kita saling menyayangi dan berbuat baik setiap hari karena Allah SWT.<br>
+            Terima kasih banyak Miss, Mister, dan teman-teman!<br>
+            <strong>Wassalamu'alaikum warahmatullahi wabarakatuh.</strong>"
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <button class="btn btn-primary btn-lg" onclick="playAudioText(document.getElementById('speech-content').innerText)">
+              <span>🔊</span> Putar Suara Presentasi Laskar
+            </button>
+            <button class="btn btn-outline" onclick="stopAudio()">
+              <span>⏹️</span> Berhenti
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 3: LEMBAR SIAP CETAK (A4 PRINT READY)
+         ======================================================== -->
+    <div id="tab-print" class="tab-pane">
+      
+      <div class="print-controls no-print">
+        <button class="btn btn-primary btn-lg" onclick="printWorksheet('tab-print')">
+          <span>🖨️</span> Cetak Lembar Kerja A4 (Siap Gunting & Tempel)
+        </button>
+        <button class="btn btn-outline" onclick="showToast('Tips: Pada jendela print, pilih Destination: Save as PDF atau printer Anda, Size: A4, Margins: Default.')">
+          <span>💡</span> Petunjuk Cetak
+        </button>
+      </div>
+
+      <!-- ========================================================
+           HALAMAN 1: KARTU GAMBAR PERBUATAN (SIAP POTONG)
+           ======================================================== -->
+      <div class="print-sheet">
+        <div class="sheet-header">
+          <div class="sheet-title-group">
+            <h3>✂️ LEMBAR POTONGAN GAMBAR PERBUATAN — "SHOW YOUR CARING"</h3>
+            <p>Petunjuk: Guntinglah kartu-kartu di bawah ini dengan rapi mengikuti garis putus-putus ✂️</p>
+          </div>
+          <div style="text-align:right; font-size:11px; font-weight:bold; color:#047857;">
+            HALAMAN 1 DARI 2<br>(LEMBAR GUNTING)
+          </div>
+        </div>
+
+        <div class="cutout-grid">
+          
+          <!-- Kartu 1: Berbagi Makanan (Menyayangi) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#ffe4e6"/>
+                <!-- Dua Anak Berbagi Bekal -->
+                <circle cx="28" cy="28" r="10" fill="#fbcfe8"/>
+                <circle cx="52" cy="28" r="10" fill="#bae6fd"/>
+                <rect x="20" y="42" width="16" height="24" rx="4" fill="#f43f5e"/>
+                <rect x="44" y="42" width="16" height="24" rx="4" fill="#0284c7"/>
+                <!-- Kotak Bekal & Roti -->
+                <rect x="30" y="52" width="20" height="12" rx="3" fill="#fef08a" stroke="#ca8a04"/>
+                <circle cx="36" cy="58" r="3" fill="#ea580c"/>
+                <circle cx="44" cy="58" r="3" fill="#ea580c"/>
+                <path d="M36,20 Q40,16 44,20" stroke="#e11d48" stroke-width="2" fill="none"/>
+              </svg>
+            </div>
+            <div class="cutout-label">1. Berbagi Bekal dengan Teman</div>
+            <span class="cutout-category-hint">❤️ Saling Menyayangi</span>
+          </div>
+
+          <!-- Kartu 2: Menyiram Tanaman (Menyayangi) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#f0fdf4"/>
+                <!-- Pot & Bunga Mekar -->
+                <polygon points="26,52 32,70 48,70 54,52" fill="#d97706"/>
+                <line x1="40" y1="52" x2="40" y2="34" stroke="#16a34a" stroke-width="3"/>
+                <path d="M40,44 Q30,40 32,48" stroke="#16a34a" stroke-width="2.5" fill="none"/>
+                <path d="M40,38 Q50,34 48,42" stroke="#16a34a" stroke-width="2.5" fill="none"/>
+                <circle cx="40" cy="28" r="7" fill="#ef4444"/>
+                <circle cx="40" cy="28" r="3" fill="#fef08a"/>
+                <!-- Ceret Siram Air -->
+                <rect x="18" y="22" width="14" height="10" rx="2" fill="#38bdf8"/>
+                <path d="M32,24 L42,18" stroke="#38bdf8" stroke-width="2"/>
+                <line x1="42" y1="20" x2="40" y2="24" stroke="#0284c7" stroke-dasharray="2,2"/>
+              </svg>
+            </div>
+            <div class="cutout-label">2. Menyiram Bunga di Sekolah</div>
+            <span class="cutout-category-hint">❤️ Saling Menyayangi</span>
+          </div>
+
+          <!-- Kartu 3: Memberi Makan Kucing (Menyayangi) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#fffbeb"/>
+                <!-- Kucing Lucu & Mangkuk -->
+                <circle cx="36" cy="42" r="14" fill="#fb923c"/>
+                <polygon points="26,30 30,36 24,38" fill="#ea580c"/>
+                <polygon points="46,30 42,36 48,38" fill="#ea580c"/>
+                <circle cx="32" cy="42" r="2" fill="#1e293b"/>
+                <circle cx="40" cy="42" r="2" fill="#1e293b"/>
+                <path d="M36,45 L36,47" stroke="#1e293b" stroke-width="1.5"/>
+                <!-- Mangkuk Makanan Ikan -->
+                <ellipse cx="56" cy="56" rx="10" ry="4" fill="#facc15"/>
+                <circle cx="56" cy="54" r="2" fill="#78350f"/>
+              </svg>
+            </div>
+            <div class="cutout-label">3. Memberi Makan Kucing Lapar</div>
+            <span class="cutout-category-hint">❤️ Saling Menyayangi</span>
+          </div>
+
+          <!-- Kartu 4: Menolong Teman Jatuh (Empati) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#e0f2fe"/>
+                <!-- Teman Menolong Teman Terjatuh -->
+                <circle cx="50" cy="30" r="8" fill="#fed7aa"/>
+                <rect x="44" y="38" width="12" height="22" rx="3" fill="#0284c7"/>
+                <circle cx="28" cy="46" r="8" fill="#fbcfe8"/>
+                <rect x="22" y="54" width="14" height="12" rx="2" fill="#f43f5e"/>
+                <!-- Tangan Meraih Menolong -->
+                <line x1="44" y1="46" x2="34" y2="48" stroke="#0284c7" stroke-width="3"/>
+                <path d="M22,40 Q25,36 28,40" stroke="#0284c7" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <div class="cutout-label">4. Menolong Teman yang Terjatuh</div>
+            <span class="cutout-category-hint">🤝 Sikap Empati</span>
+          </div>
+
+          <!-- Kartu 5: Menghibur Teman Sedih (Empati) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#e0e7ff"/>
+                <!-- Menepuk Pundak Menghibur -->
+                <circle cx="30" cy="34" r="9" fill="#fed7aa"/>
+                <circle cx="50" cy="34" r="9" fill="#fbcfe8"/>
+                <rect x="22" y="44" width="16" height="22" rx="3" fill="#4f46e5"/>
+                <rect x="42" y="44" width="16" height="22" rx="3" fill="#ec4899"/>
+                <!-- Tangan Merangkul -->
+                <path d="M36,46 Q44,40 48,46" stroke="#4f46e5" stroke-width="3" fill="none"/>
+                <path d="M48,37 Q50,40 52,37" stroke="#64748b" stroke-width="1" fill="none"/>
+              </svg>
+            </div>
+            <div class="cutout-label">5. Menghibur Teman Menangis</div>
+            <span class="cutout-category-hint">🤝 Sikap Empati</span>
+          </div>
+
+          <!-- Kartu 6: Menjenguk Teman Sakit (Empati) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#ccfbf1"/>
+                <!-- Tempat Tidur & Parsel Buah -->
+                <rect x="18" y="46" width="44" height="18" rx="3" fill="#99f6e4"/>
+                <circle cx="28" cy="42" r="7" fill="#fed7aa"/>
+                <rect x="18" y="52" width="30" height="12" fill="#14b8a6"/>
+                <!-- Buah Apel Menjenguk -->
+                <circle cx="56" cy="44" r="5" fill="#ef4444"/>
+                <path d="M56,38 Q58,36 56,34" stroke="#15803d" stroke-width="1.5" fill="none"/>
+              </svg>
+            </div>
+            <div class="cutout-label">6. Menjenguk Teman yang Sakit</div>
+            <span class="cutout-category-hint">🤝 Sikap Empati</span>
+          </div>
+
+          <!-- Kartu 7: Mengucap Salam (Tutur Kata Lembut) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#f3e8ff"/>
+                <!-- Anak Mengucap Salam ke Guru -->
+                <circle cx="28" cy="34" r="8" fill="#fed7aa"/>
+                <rect x="22" y="42" width="12" height="24" rx="3" fill="#7c3aed"/>
+                <!-- Balon Kata Salam -->
+                <rect x="40" y="24" width="32" height="16" rx="6" fill="#ffffff" stroke="#7c3aed" stroke-width="1.5"/>
+                <text x="44" y="35" font-size="8" font-weight="bold" fill="#7c3aed">Salam! 👋</text>
+              </svg>
+            </div>
+            <div class="cutout-label">7. Mengucap Salam dengan Santun</div>
+            <span class="cutout-category-hint">🗣️ Tutur Kata Lembut</span>
+          </div>
+
+          <!-- Kartu 8: Berkata Tolong (Tutur Kata Lembut) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#ede9fe"/>
+                <!-- Tangan Meminjam & Kata Tolong -->
+                <circle cx="40" cy="32" r="10" fill="#fed7aa"/>
+                <path d="M37,36 Q40,39 43,36" stroke="#7c3aed" stroke-width="1.5" fill="none"/>
+                <rect x="24" y="48" width="32" height="16" rx="6" fill="#7c3aed"/>
+                <text x="30" y="60" font-size="9" font-weight="bold" fill="#ffffff">"TOLONG"</text>
+              </svg>
+            </div>
+            <div class="cutout-label">8. Berkata "Tolong" Saat Butuh</div>
+            <span class="cutout-category-hint">🗣️ Tutur Kata Lembut</span>
+          </div>
+
+          <!-- Kartu 9: Mengucap Terima Kasih (Tutur Kata Lembut) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#fae8ff"/>
+                <!-- Senyum Bahagia & Terima Kasih -->
+                <circle cx="40" cy="32" r="11" fill="#fef08a"/>
+                <circle cx="36" cy="30" r="1.5" fill="#78350f"/>
+                <circle cx="44" cy="30" r="1.5" fill="#78350f"/>
+                <path d="M35,36 Q40,42 45,36" stroke="#78350f" stroke-width="2" fill="none"/>
+                <rect x="18" y="50" width="44" height="16" rx="6" fill="#a855f7"/>
+                <text x="21" y="62" font-size="7.5" font-weight="bold" fill="#ffffff">TERIMA KASIH</text>
+              </svg>
+            </div>
+            <div class="cutout-label">9. Mengucapkan "Terima Kasih"</div>
+            <span class="cutout-category-hint">🗣️ Tutur Kata Lembut</span>
+          </div>
+
+          <!-- Kartu 10: Mengembalikan Temuan (Jujur) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#fef3c7"/>
+                <!-- Menyerahkan Pensil ke Meja Guru -->
+                <rect x="18" y="52" width="44" height="16" fill="#b45309" rx="2"/>
+                <rect x="30" y="32" width="6" height="24" rx="2" fill="#eab308" transform="rotate(-30 33 44)"/>
+                <polygon points="34,22 38,20 37,25" fill="#1e293b"/>
+                <circle cx="54" cy="36" r="6" fill="#fed7aa"/>
+              </svg>
+            </div>
+            <div class="cutout-label">10. Mengembalikan Barang Temuan</div>
+            <span class="cutout-category-hint">💎 Sikap Jujur</span>
+          </div>
+
+          <!-- Kartu 11: Mengakui Kesalahan (Jujur) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#fef9c3"/>
+                <!-- Ksatria Berani Mengakui Salah -->
+                <circle cx="40" cy="30" r="10" fill="#fed7aa"/>
+                <rect x="32" y="42" width="16" height="22" rx="3" fill="#f59e0b"/>
+                <path d="M36,46 Q40,44 44,46" stroke="#ffffff" stroke-width="2" fill="none"/>
+                <!-- Tangan di Dada -->
+                <circle cx="40" cy="50" r="4" fill="#fed7aa"/>
+              </svg>
+            </div>
+            <div class="cutout-label">11. Berani Mengakui Kesalahan</div>
+            <span class="cutout-category-hint">💎 Sikap Jujur</span>
+          </div>
+
+          <!-- Kartu 12: Ulangan Tanpa Menyontek (Jujur) -->
+          <div class="cutout-card">
+            <span class="scissor-tag">✂️ Gunting</span>
+            <div class="cutout-img-slot">
+              <svg viewBox="0 0 80 80">
+                <circle cx="40" cy="40" r="34" fill="#fef08a"/>
+                <!-- Kertas Ulangan Nilai 100 Mandiri -->
+                <rect x="24" y="20" width="32" height="42" rx="3" fill="#ffffff" stroke="#d97706" stroke-width="1.5"/>
+                <line x1="28" y1="28" x2="44" y2="28" stroke="#cbd5e1" stroke-width="2"/>
+                <line x1="28" y1="36" x2="52" y2="36" stroke="#cbd5e1" stroke-width="2"/>
+                <line x1="28" y1="44" x2="48" y2="44" stroke="#cbd5e1" stroke-width="2"/>
+                <circle cx="46" cy="52" r="5" fill="#16a34a"/>
+                <text x="43" y="55" font-size="6" font-weight="bold" fill="#ffffff">✓</text>
+              </svg>
+            </div>
+            <div class="cutout-label">12. Mengerjakan Soal Sendiri</div>
+            <span class="cutout-category-hint">💎 Sikap Jujur</span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ========================================================
+           HALAMAN 2: LEMBAR PROYEK SHOW YOUR CARING (TEMPEL & TULIS)
+           ======================================================== -->
+      <div class="print-sheet">
+        <div class="sheet-header">
+          <div class="sheet-title-group">
+            <h3 style="color:#047857;">MAFAZA INTEGRATED SMART SCHOOL (MISS) MALANG</h3>
+            <p style="font-weight:700; color:#0f172a; font-size:13px;">PROJECT WEEK TERM I TA 2026/2027 • PABP GRADE 2</p>
+          </div>
+          <div style="text-align:right; font-size:11px; font-weight:bold; color:#047857;">
+            LEMBAR PROYEK SISWA<br><b>"SHOW YOUR CARING"</b>
+          </div>
+        </div>
+
+        <div class="student-info-bar">
+          <div><strong>Nama:</strong> Laskar Al Kautsar</div>
+          <div><strong>Kelas:</strong> Grade 2 (Dua)</div>
+          <div><strong>Hari/Tgl:</strong> Rabu, 23 Sep 2026</div>
+          <div><strong>Topik:</strong> 4 Sikap Kasih Sayang</div>
+        </div>
+
+        <p style="font-size:11.5px; margin-bottom:8px; color:#334155;">
+          <strong>Petunjuk Pengerjaan:</strong> Tempelkan 3 potongan gambar perbuatan yang sesuai ke dalam masing-masing kolom kategori sikap di bawah ini!
+        </p>
+
+        <!-- Tabel 4 Kolom Klasifikasi -->
+        <table class="classification-table">
+          <thead>
+            <tr>
+              <th class="th-c1" style="width:25%;">
+                ❤️ 1. Saling Menyayangi
+              </th>
+              <th class="th-c2" style="width:25%;">
+                🤝 2. Sikap Empati
+              </th>
+              <th class="th-c3" style="width:25%;">
+                🗣️ 3. Tutur Kata Lembut
+              </th>
+              <th class="th-c4" style="width:25%;">
+                💎 4. Sikap Jujur
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 1 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 2 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 3 ]</span>
+                </div>
+              </td>
+              <td>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 4 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 5 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 6 ]</span>
+                </div>
+              </td>
+              <td>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 7 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 8 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 9 ]</span>
+                </div>
+              </td>
+              <td>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 10 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 11 ]</span>
+                </div>
+                <div class="drop-slot">
+                  <span>[ Tempel Gambar 12 ]</span>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Ruang Menulis Pengalaman Laskar -->
+        <div style="margin-top:14px;">
+          <div style="font-size:12px; font-weight:800; color:#0f172a; display:flex; justify-content:space-between;">
+            <span>✍️ Tuliskan 1 Pengalaman Nyata Kasih Sayang yang Pernah Kamu Lakukan:</span>
+            <span style="font-size:11px; color:#64748b;">(Tulis dengan rapi dan tegak bersambung)</span>
+          </div>
+          <div class="ruled-box">
+            <i>Contoh tulisan Laskar: "Saya berbagi bekal biskuit dengan teman dan menolong teman yang terjatuh di sekolah."</i>
+          </div>
+        </div>
+
+        <!-- Rubrik Penilaian Resmi Guru -->
+        <div style="margin-top:10px;">
+          <div style="font-size:11.5px; font-weight:800; color:#0f172a; margin-bottom:4px;">
+            📊 Rubrik Penilaian Guru (Grading Rubric SD MISS):
+          </div>
+          <table class="rubric-table">
+            <thead>
+              <tr>
+                <th>Kriteria</th>
+                <th>Content & Accuracy</th>
+                <th>Effort & Neatness</th>
+                <th>Following Directions</th>
+                <th>Cooperation</th>
+                <th>Problem Solving</th>
+                <th>Total Skor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><b>Skor (1-5)</b></td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td>⭐⭐⭐⭐⭐</td>
+                <td><b>100 / A</b></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Tanda Tangan -->
+        <div class="signature-grid">
+          <div>
+            <span>Siswa (Student):</span>
+            <div class="sig-line">Laskar Al Kautsar</div>
+          </div>
+          <div>
+            <span>Orang Tua (Parents):</span>
+            <div class="sig-line">Ayah / Bunda</div>
+          </div>
+          <div>
+            <span>Guru Penilai (Teacher):</span>
+            <div class="sig-line">Miss / Mister</div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- ========================================================
+         TAB 4: GAME INTERAKTIF & KUIS 4 SIKAP
+         ======================================================== -->
+    <div id="tab-game" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🎮</span> Game Klasifikasi 4 Sikap Terpuji</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Klik salah satu kartu perbuatan di bawah, lalu klik kotak kategori sikap yang tepat!
+            </p>
+          </div>
+          <div id="game-score" style="font-size:16px; font-weight:700; color:#047857;">
+            Skor: 0 / 8 Kartu Selesai
+          </div>
+        </div>
+
+        <div class="game-board">
+          
+          <!-- Pool Kartu Acak -->
+          <div class="game-pool" id="game-pool">
+            <div style="font-size:13px; font-weight:700; color:#475569; margin-bottom:4px;">
+              📋 Pilih Kartu Perbuatan Berikut:
+            </div>
+            
+            <div class="draggable-card" data-cat="c1" onclick="selectCard(this)">
+              <span>🍪</span> 1. Berbagi bekal makanan dengan teman
+            </div>
+            <div class="draggable-card" data-cat="c2" onclick="selectCard(this)">
+              <span>🩹</span> 2. Menolong teman yang tersandung di lapangan
+            </div>
+            <div class="draggable-card" data-cat="c3" onclick="selectCard(this)">
+              <span>🙏</span> 3. Mengucap "Tolong" saat minta bantuan
+            </div>
+            <div class="draggable-card" data-cat="c4" onclick="selectCard(this)">
+              <span>✏️</span> 4. Mengembalikan pensil temuan ke meja guru
+            </div>
+            <div class="draggable-card" data-cat="c1" onclick="selectCard(this)">
+              <span>🌻</span> 5. Menyirami tanaman pot di depan kelas
+            </div>
+            <div class="draggable-card" data-cat="c2" onclick="selectCard(this)">
+              <span>😢</span> 6. Menghibur teman yang sedang menangis
+            </div>
+            <div class="draggable-card" data-cat="c3" onclick="selectCard(this)">
+              <span>🤝</span> 7. Mengucap "Terima Kasih" dengan senyuman
+            </div>
+            <div class="draggable-card" data-cat="c4" onclick="selectCard(this)">
+              <span>💯</span> 8. Mengerjakan ulangan sendiri tanpa menyontek
+            </div>
+          </div>
+
+          <!-- Target Kotak 4 Sikap -->
+          <div class="game-targets">
+            
+            <div class="target-box" data-cat="c1" onclick="dropToTarget(this)">
+              <div class="target-head" style="color:#e11d48;">
+                <span>❤️</span> 1. Saling Menyayangi
+              </div>
+              <div class="target-items" id="target-c1"></div>
+            </div>
+
+            <div class="target-box" data-cat="c2" onclick="dropToTarget(this)">
+              <div class="target-head" style="color:#0284c7;">
+                <span>🤝</span> 2. Sikap Empati
+              </div>
+              <div class="target-items" id="target-c2"></div>
+            </div>
+
+            <div class="target-box" data-cat="c3" onclick="dropToTarget(this)">
+              <div class="target-head" style="color:#7c3aed;">
+                <span>🗣️</span> 3. Tutur Kata Lembut
+              </div>
+              <div class="target-items" id="target-c3"></div>
+            </div>
+
+            <div class="target-box" data-cat="c4" onclick="dropToTarget(this)">
+              <div class="target-head" style="color:#d97706;">
+                <span>💎</span> 4. Sikap Jujur
+              </div>
+              <div class="target-items" id="target-c4"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- Kuis 5 Soal -->
+        <div style="margin-top:32px; border-top:2px dashed #e2e8f0; padding-top:24px;">
+          <h3 style="font-size:20px; color:#065f46; margin-bottom:14px;">
+            📝 Kuis Pemahaman 4 Sikap Terpuji (5 Soal)
+          </h3>
+
+          <!-- Soal 1 -->
+          <div class="quiz-card" id="q1">
+            <div class="quiz-q">1. Saat melihat teman terjatuh di halaman sekolah, sikap terpuji yang harus Laskar lakukan adalah...</div>
+            <div class="quiz-options">
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q1', false)">A. Menertawakannya bersama teman-teman</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q1', true)">B. Segera menghampiri, menolongnya berdiri, dan mengantar ke guru (Sikap Empati)</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q1', false)">C. Pura-pura tidak melihat dan lari menjauh</button>
+            </div>
+          </div>
+
+          <!-- Soal 2 -->
+          <div class="quiz-card" id="q2">
+            <div class="quiz-q">2. Ketika kita ingin meminjam penghapus kepada teman sekelas, kata ajaib apa yang harus kita ucapkan?</div>
+            <div class="quiz-options">
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q2', true)">A. "Bolehkah aku pinjam penghapusmu, tolong?" (Tutur Kata Lembut)</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q2', false)">B. "Cepat berikan penghapusmu sekarang juga!"</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q2', false)">C. Langsung merebutnya tanpa berbicara apa-apa</button>
+            </div>
+          </div>
+
+          <!-- Soal 3 -->
+          <div class="quiz-card" id="q3">
+            <div class="quiz-q">3. Laskar menemukan uang koin Rp 2.000 di lantai kelas yang bukan miliknya. Sikap jujur yang tepat adalah...</div>
+            <div class="quiz-options">
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q3', false)">A. Memasukkannya ke dalam saku sendiri</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q3', true)">B. Menyerahkannya kepada Miss atau Mister guru agar dikembalikan ke pemiliknya</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q3', false)">C. Mengabaikannya dan menendang uang tersebut</button>
+            </div>
+          </div>
+
+          <!-- Soal 4 -->
+          <div class="quiz-card" id="q4">
+            <div class="quiz-q">4. Berbagi bekal cemilan saat istirahat dan rajin menyirami tanaman sekolah merupakan contoh dari sikap...</div>
+            <div class="quiz-options">
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q4', true)">A. Saling Menyayangi sesama ciptaan Allah SWT</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q4', false)">B. Sikap sombong dan pamer</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q4', false)">C. Sikap malas</button>
+            </div>
+          </div>
+
+          <!-- Soal 5 -->
+          <div class="quiz-card" id="q5">
+            <div class="quiz-q">5. Jika kita tidak sengaja menumpahkan air minum di atas meja kelas, perbuatan jujur dan bertanggung jawab adalah...</div>
+            <div class="quiz-options">
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q5', false)">A. Menyalahkan teman di sebelah kita</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q5', true)">B. Berani jujur mengakui, meminta maaf, dan segera membersihkan meja dengan kain lap</button>
+              <button class="quiz-btn" onclick="checkQuiz(this, 'q5', false)">C. Langsung pura-pura tidur</button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================
+         TAB 5: CHECKLIST PERALATAN & TEXTBOOK PABP
+         ======================================================== -->
+    <div id="tab-checklist" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🎒</span> Checklist Bawaan Tas Proyek PABP</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Pastikan seluruh perlengkapan berikut telah masuk ke dalam tas Laskar malam ini:
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="checkAllList()">
+            <span>✅</span> Centang Semua
+          </button>
+        </div>
+
+        <div class="checklist-grid">
+          
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>📖 Textbook / Buku Paket PABP Grade 2</strong><br>
+              <span style="font-size:12px; color:#047857; font-weight:700;">(Wajib dibawa sesuai outline sekolah untuk dibaca saat ujian!)</span>
+            </div>
+          </label>
+
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>✂️ Gunting Kertas Ujung Tumpul</strong><br>
+              <span style="font-size:12px; color:#64748b;">Untuk memotong 12 kartu gambar perbuatan di lembar proyek.</span>
+            </div>
+          </label>
+
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>🧴 Lem Kertas (Glue Stick)</strong><br>
+              <span style="font-size:12px; color:#64748b;">Untuk menempelkan potongan gambar ke 4 kolom tabel proyek.</span>
+            </div>
+          </label>
+
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>✏️ Kotak Pensil & Penghapus</strong><br>
+              <span style="font-size:12px; color:#64748b;">Untuk menuliskan pengalaman nyata di garis tiga baris.</span>
+            </div>
+          </label>
+
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>🖍️ Crayon / Pensil Warna</strong><br>
+              <span style="font-size:12px; color:#64748b;">Untuk mewarnai bingkai dan mempercantik lembar kerja.</span>
+            </div>
+          </label>
+
+          <label class="check-item" onclick="toggleCheck(this)">
+            <div class="custom-box">✓</div>
+            <div>
+              <strong>💧 Botol Air Minum & Snack Istirahat</strong><br>
+              <span style="font-size:12px; color:#64748b;">Agar Laskar tetap segar dan bertenaga sepanjang proyek.</span>
+            </div>
+          </label>
+
+        </div>
+
+        <div style="background:#ecfdf5; border:2px solid #a7f3d0; border-radius:14px; padding:18px; margin-top:22px;">
+          <h4 style="color:#065f46; margin-bottom:6px;">🌟 Tips Khusus dari Ayah & Bunda untuk Laskar:</h4>
+          <p style="font-size:14px; color:#047857; line-height:1.7;">
+            1. Di kelas nanti, awali dengan membaca <i>Basmalah</i>.<br>
+            2. Buka buku paket PABP Unit 3 untuk menyimak kembali 4 sikap terpuji.<br>
+            3. Gunting gambar pelan-pelan agar rapi, lalu tempelkan menggunakan sedikit lem.<br>
+            4. Saat presentasi di depan <strong>Miss & Mister</strong>, tersenyumlah ramah dan bersuara lantang. Laskar anak hebat pasti bisa! ✨
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast">
+    <span id="toast-icon">✨</span>
+    <span id="toast-msg">Pesan notifikasi</span>
+  </div>
+
+  <script>
+    // Audio Context for sound effects
+    let audioCtx = null;
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      return audioCtx;
+    }
+
+    function playSound(type) {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+
+        const now = ctx.currentTime;
+        if (type === 'success') {
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(523.25, now); // C5
+          osc.frequency.setValueAtTime(659.25, now + 0.1); // E5
+          osc.frequency.setValueAtTime(783.99, now + 0.2); // G5
+          gain.gain.setValueAtTime(0.25, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.4);
+          osc.start(now);
+          osc.stop(now + 0.4);
+        } else if (type === 'pop') {
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(440, now);
+          osc.frequency.exponentialRampToValueAtTime(880, now + 0.1);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.12);
+          osc.start(now);
+          osc.stop(now + 0.12);
+        } else if (type === 'wrong') {
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.linearRampToValueAtTime(150, now + 0.25);
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.25);
+          osc.start(now);
+          osc.stop(now + 0.25);
+        }
+      } catch (e) {
+        console.log('AudioContext error:', e);
+      }
+    }
+
+    // Text to Speech
+    function playAudioText(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = 'id-ID';
+        utterance.rate = 0.92;
+        utterance.pitch = 1.05;
+        window.speechSynthesis.speak(utterance);
+        showToast('🔊 Memutar narasi suara...');
+      } else {
+        showToast('Browser tidak mendukung Speech Synthesis.');
+      }
+    }
+
+    function stopAudio() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        showToast('Audio dihentikan.');
+      }
+    }
+
+    // Tab Switching
+    function switchTab(tabId, btnElement) {
+      document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      
+      const target = document.getElementById(tabId);
+      if (target) target.classList.add('active');
+      if (btnElement) btnElement.classList.add('active');
+      playSound('pop');
+    }
+
+    function printWorksheet(targetTabId = 'tab-print') {
+      const tabBtn = document.querySelector(`[onclick*="${targetTabId}"]`);
+      if (tabBtn) {
+        switchTab(targetTabId, tabBtn);
+      } else {
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById(targetTabId)?.classList.add('active');
+      }
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    // Toast
+    function showToast(msg, icon = '✨') {
+      const toast = document.getElementById('toast');
+      document.getElementById('toast-msg').innerText = msg;
+      document.getElementById('toast-icon').innerText = icon;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 2800);
+    }
+
+    // Cloze Mode in Story Tab
+    let isClozeHidden = false;
+    function toggleCloze() {
+      isClozeHidden = !isClozeHidden;
+      const boxes = document.querySelectorAll('.story-box');
+      boxes.forEach(box => {
+        if (isClozeHidden) {
+          box.classList.add('cloze-hidden');
+        } else {
+          box.classList.remove('cloze-hidden');
+        }
+      });
+
+      // Allow clicking individual hidden keywords to reveal
+      document.querySelectorAll('.kw').forEach(kw => {
+        kw.onclick = function() {
+          if (isClozeHidden) {
+            this.classList.toggle('revealed');
+            playSound('pop');
+          }
+        };
+      });
+
+      showToast(isClozeHidden ? 'Mode hafalan aktif! Klik kotak warna untuk intip kata kunci.' : 'Semua kata kunci ditampilkan.');
+    }
+
+    // Checklist toggling
+    function toggleCheck(item) {
+      item.classList.toggle('checked');
+      playSound('pop');
+    }
+
+    function checkAllList() {
+      document.querySelectorAll('.check-item').forEach(el => el.classList.add('checked'));
+      playSound('success');
+      showToast('Semua perlengkapan telah siap!');
+    }
+
+    // Drag / Click Game logic
+    let selectedCard = null;
+    let completedCount = 0;
+
+    function selectCard(card) {
+      document.querySelectorAll('.draggable-card').forEach(c => c.classList.remove('selected'));
+      selectedCard = card;
+      card.classList.add('selected');
+      playSound('pop');
+      showToast('Kartu dipilih! Sekarang klik kotak sikap yang tepat.');
+    }
+
+    function dropToTarget(targetBox) {
+      if (!selectedCard) {
+        showToast('Pilih salah satu kartu perbuatan terlebih dahulu!');
+        return;
+      }
+
+      const cardCat = selectedCard.getAttribute('data-cat');
+      const targetCat = targetBox.getAttribute('data-cat');
+
+      if (cardCat === targetCat) {
+        // Correct match!
+        playSound('success');
+        const container = targetBox.querySelector('.target-items');
+        
+        const placed = document.createElement('div');
+        placed.style.background = '#ecfdf5';
+        placed.style.border = '1px solid #10b981';
+        placed.style.borderRadius = '8px';
+        placed.style.padding = '6px 10px';
+        placed.style.margin = '4px 0';
+        placed.style.fontSize = '12px';
+        placed.style.color = '#065f46';
+        placed.style.fontWeight = '700';
+        placed.innerText = selectedCard.innerText;
+        container.appendChild(placed);
+
+        selectedCard.remove();
+        selectedCard = null;
+        completedCount++;
+
+        document.getElementById('game-score').innerText = `Skor: ${completedCount} / 8 Kartu Selesai`;
+
+        if (completedCount === 8) {
+          playSound('success');
+          showToast('🎉 MUMTAZ! Laskar berhasil mengelompokkan semua perbuatan!', '🌟');
+        } else {
+          showToast('Benar sekali! Hebat Laskar! 🌟');
+        }
+      } else {
+        // Incorrect match
+        playSound('wrong');
+        showToast('Kurang tepat, coba perhatikan lagi perbuatannya ya!');
+      }
+    }
+
+    // Quiz logic
+    function checkQuiz(button, qId, isCorrect) {
+      const qCard = document.getElementById(qId);
+      const buttons = qCard.querySelectorAll('.quiz-btn');
+      buttons.forEach(btn => btn.disabled = true);
+
+      if (isCorrect) {
+        button.classList.add('correct');
+        playSound('success');
+        showToast('Jawaban Benar! Luar biasa! ⭐');
+      } else {
+        button.classList.add('wrong');
+        playSound('wrong');
+        showToast('Belum tepat, pelajari penjelasannya ya!');
+        // Highlight correct button
+        buttons.forEach(btn => {
+          if (btn.getAttribute('onclick').includes('true')) {
+            btn.classList.add('correct');
+          }
+        });
+      }
+    }
+  </script>
+</body>
+</html>

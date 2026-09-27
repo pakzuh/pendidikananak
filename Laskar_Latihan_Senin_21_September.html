@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Latihan Persiapan Project Week — Laskar (Senin, 21 September 2026)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #f4f8fc;
+    color: #2c3e50;
+    line-height: 1.4;
+    padding: 15px;
+  }
+  .sheet {
+    max-width: 820px;
+    background: #ffffff;
+    margin: 0 auto;
+    padding: 24px 28px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 3px solid #3498db;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #e8f4fc 0%, #cbe5f8 100%);
+    border: 2.5px solid #2980b9;
+    border-radius: 14px;
+    padding: 14px 18px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .header h1 {
+    font-size: 19pt;
+    color: #1a5276;
+    margin-bottom: 4px;
+  }
+  .header .sub {
+    font-size: 11pt;
+    color: #34495e;
+    font-weight: bold;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-size: 10.5pt;
+    background: #ffffff;
+    padding: 6px 12px;
+    border-radius: 8px;
+    border: 1.5px dashed #3498db;
+  }
+
+  /* Audio Sound Toggle & Score */
+  .control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    padding: 8px 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+  }
+  .score-badge {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #d35400;
+  }
+  .btn-action {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .btn-action:hover { background: #2980b9; transform: scale(1.02); }
+
+  /* Sections */
+  .section-box {
+    border: 2.5px solid #2c3e50;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    background: #ffffff;
+    page-break-inside: avoid;
+  }
+  .sec-pjok { border-color: #27ae60; }
+  .sec-indo { border-color: #e67e22; }
+  .sec-eng  { border-color: #8e44ad; }
+
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 13pt;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .sec-pjok .sec-title { background: #27ae60; }
+  .sec-indo .sec-title { background: #e67e22; }
+  .sec-eng  .sec-title { background: #8e44ad; }
+
+  .tip-box {
+    background: #fdfefe;
+    border-left: 5px solid #3498db;
+    background: #f0f7fb;
+    padding: 9px 12px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 14px;
+  }
+
+  /* Question Cards */
+  .q-card {
+    background: #fafbfc;
+    border: 2px solid #d5dbdb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    transition: 0.2s;
+  }
+  .q-card:hover { border-color: #95a5a6; }
+  .q-num {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .opt-btn {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 11pt;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s;
+  }
+  .opt-btn:hover {
+    background: #edf2f7;
+    border-color: #3498db;
+  }
+  .opt-btn.correct {
+    background: #d4efdf !important;
+    border-color: #27ae60 !important;
+    color: #196f3d;
+    font-weight: bold;
+  }
+  .opt-btn.wrong {
+    background: #fadbd8 !important;
+    border-color: #e74c3c !important;
+    color: #943126;
+  }
+
+  /* Story Cards (Bahasa Indonesia) */
+  .story-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 14px 0;
+  }
+  .story-item {
+    flex: 1;
+    min-width: 140px;
+    max-width: 170px;
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+  }
+  .story-item svg {
+    display: block;
+    margin: 0 auto 8px;
+  }
+  .story-item .desc {
+    font-size: 9.5pt;
+    font-weight: bold;
+    min-height: 40px;
+  }
+  .order-select {
+    width: 100%;
+    margin-top: 8px;
+    padding: 6px;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 11pt;
+    font-weight: bold;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  /* Feedback Text */
+  .feedback {
+    margin-top: 8px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok { color: #27ae60; }
+  .feedback.err { color: #c0392b; }
+
+  /* Certificate */
+  .cert {
+    border: 4px double #27ae60;
+    background: #fafffb;
+    padding: 18px;
+    text-align: center;
+    border-radius: 14px;
+    margin-top: 25px;
+    page-break-inside: avoid;
+  }
+  .cert h2 { font-size: 16pt; color: #1e8449; margin: 4px 0; }
+  .cert .kid-name {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #27ae60;
+    display: inline-block;
+    padding: 2px 30px;
+    margin: 8px 0;
+  }
+
+  /* Parent Key */
+  .parent-key {
+    background: #fcf3cf;
+    border: 2px dashed #f39c12;
+    padding: 12px 16px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+  }
+  .parent-key h3 { color: #b9770e; font-size: 11pt; margin-bottom: 6px; }
+
+  /* Printable styles */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border: 2px solid #000; width: 100%; max-width: 100%; padding: 12mm 15mm; }
+    .control-bar, .btn-action { display: none !important; }
+    .opt-btn { border: 1.5px solid #000; background: #fff !important; color: #000 !important; }
+    .feedback { display: none !important; }
+    .parent-key { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🌟 LATIHAN PERSIAPAN PROJECT WEEK 🌟</h1>
+    <div class="sub">SD MAFAZA INTEGRATED SMART SCHOOL (MISS) — KELAS 2</div>
+    <div class="meta">
+      <span>🗓️ <b>Target:</b> Senin, 21 September 2026</span>
+      <span>👦 <b>Nama:</b> Laskar</span>
+      <span>⭐ <b>Term:</b> I (Ganjil)</span>
+    </div>
+  </div>
+
+  <!-- Control & Score Bar -->
+  <div class="control-bar">
+    <div class="score-badge" id="scoreBoard">⭐ Skor: 0 / 10 Soal Berhasil!</div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn-action" onclick="resetAll()">🔄 Ulangi</button>
+      <button class="btn-action" style="background:#27ae60;" onclick="window.print()">🖨️ Cetak Lembar</button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 1: PJOK / PHYSICAL EDUCATION -->
+  <!-- ============================================== -->
+  <div class="section-box sec-pjok">
+    <div class="sec-title">
+      🏃‍♂️ Bagian 1: PJOK (Gerak Lokomotor & Olahraga) — Mr. Arief
+    </div>
+    <div class="tip-box">
+      <b>💡 Ingat ya Laskar:</b><br>
+      • <b>Gerak Lokomotor</b> = Gerakan yang membuat tubuh <u>berpindah tempat</u> (contoh: jalan, lari, lompat, loncat).<br>
+      • <b>Melompat</b> = Tumpuan <b>1 kaki</b> 🦿<br>
+      • <b>Meloncat</b> = Tumpuan <b>2 kaki</b> bersamaan (seperti katak atau kelinci) 🐸🐰
+    </div>
+
+    <!-- Soal 1 -->
+    <div class="q-card" id="q1">
+      <div class="q-num">Soal 1. Apa arti dari gerak <b>LOKOMOTOR</b>?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>🛑</span> Gerakan diam di tempat tanpa pindah
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, true, this)">
+          <span>🏃</span> Gerakan yang berpindah tempat
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>😴</span> Gerakan tidur santai
+        </button>
+      </div>
+      <div class="feedback" id="fb1"></div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="q-card" id="q2">
+      <div class="q-num">Soal 2. Manakah di bawah ini yang merupakan contoh gerak <b>lokomotor</b>?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(2, true, this)">
+          <span>👟</span> Berlari mengejar bola di lapangan
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>🙆</span> Mengayunkan tangan sambil berdiri diam
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>🧘</span> Duduk bersila mendengarkan guru
+        </button>
+      </div>
+      <div class="feedback" id="fb2"></div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div class="q-card" id="q3">
+      <div class="q-num">Soal 3. Kelinci dan katak bergerak maju dengan tumpuan <b>DUA KAKI</b> sekaligus. Gerakan ini disebut...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>🦿</span> Melompat (1 kaki)
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, true, this)">
+          <span>🐸</span> Meloncat (2 kaki)
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>🚶</span> Berjalan pelan
+        </button>
+      </div>
+      <div class="feedback" id="fb3"></div>
+    </div>
+
+    <!-- Soal 4 -->
+    <div class="q-card" id="q4">
+      <div class="q-num">Soal 4. Pada olahraga <b>Sepak Bola</b> (yang akan kita warnai besok), bagian tubuh utama yang digunakan menendang bola adalah...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(4, true, this)">
+          <span>⚽</span> Kaki
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>👋</span> Tangan (kecuali kiper)
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>👂</span> Telinga
+        </button>
+      </div>
+      <div class="feedback" id="fb4"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 2: BAHASA INDONESIA (GAMBAR BERSERI) -->
+  <!-- ============================================== -->
+  <div class="section-box sec-indo">
+    <div class="sec-title">
+      📖 Bagian 2: Bahasa Indonesia (Cerita dalam Gambar)
+    </div>
+    <div class="tip-box">
+      <b>💡 Cara Menemukan Urutan Cerita:</b><br>
+      1. <b>Awal:</b> Siapa tokohnya dan apa yang sedang dimulai?<br>
+      2. <b>Tengah:</b> Kegiatan seru apa yang dilakukan selanjutnya?<br>
+      3. <b>Akhir:</b> Bagaimana hasil akhirnya? (Selesai, bersih, mekar, atau bahagia).
+    </div>
+
+    <!-- Soal 5: Urutkan Gambar Seri (Menanam Bunga) -->
+    <div class="q-card" id="q5">
+      <div class="q-num">Soal 5. Ayo bantu Laskar menyusun 3 gambar proses <b>Menanam Bunga</b> menjadi urutan cerita yang benar!</div>
+      
+      <div class="story-row">
+        <!-- Gambar A -->
+        <div class="story-item">
+          <svg viewBox="0 0 100 90" width="80" height="75">
+            <!-- Pot bunga indah mekar -->
+            <rect x="25" y="55" width="50" height="30" rx="4" fill="#d35400"/>
+            <line x1="50" y1="55" x2="50" y2="25" stroke="#27ae60" stroke-width="4"/>
+            <circle cx="50" cy="22" r="14" fill="#e74c3c"/>
+            <circle cx="50" cy="22" r="6" fill="#f1c40f"/>
+            <path d="M40,40 Q30,35 48,45" fill="#2ecc71"/>
+            <path d="M60,40 Q70,35 52,45" fill="#2ecc71"/>
+          </svg>
+          <div class="desc">Gambar A:<br>Bunga mekar indah di dalam pot</div>
+          <select class="order-select" id="ordA" onchange="checkStory()">
+            <option value="">Pilih urutan...</option>
+            <option value="1">Urutan 1 (Awal)</option>
+            <option value="2">Urutan 2 (Tengah)</option>
+            <option value="3">Urutan 3 (Akhir)</option>
+          </select>
+        </div>
+
+        <!-- Gambar B -->
+        <div class="story-item">
+          <svg viewBox="0 0 100 90" width="80" height="75">
+            <!-- Menanam biji di tanah -->
+            <rect x="25" y="55" width="50" height="30" rx="4" fill="#d35400"/>
+            <ellipse cx="50" cy="62" rx="7" ry="4" fill="#784212"/>
+            <path d="M45,45 Q50,30 55,45" stroke="#f39c12" stroke-width="2" fill="none"/>
+            <circle cx="50" cy="48" r="3" fill="#f39c12"/>
+          </svg>
+          <div class="desc">Gambar B:<br>Menaruh biji bunga ke dalam pot tanah</div>
+          <select class="order-select" id="ordB" onchange="checkStory()">
+            <option value="">Pilih urutan...</option>
+            <option value="1">Urutan 1 (Awal)</option>
+            <option value="2">Urutan 2 (Tengah)</option>
+            <option value="3">Urutan 3 (Akhir)</option>
+          </select>
+        </div>
+
+        <!-- Gambar C -->
+        <div class="story-item">
+          <svg viewBox="0 0 100 90" width="80" height="75">
+            <!-- Menyiram air -->
+            <rect x="25" y="55" width="50" height="30" rx="4" fill="#d35400"/>
+            <line x1="50" y1="55" x2="50" y2="40" stroke="#27ae60" stroke-width="3"/>
+            <!-- gembor ceret air -->
+            <path d="M65,20 L80,30 L65,40 Z" fill="#3498db"/>
+            <circle cx="60" cy="30" r="10" fill="#2980b9"/>
+            <line x1="78" y1="35" x2="52" y2="50" stroke="#3498db" stroke-width="2" stroke-dasharray="3,3"/>
+          </svg>
+          <div class="desc">Gambar C:<br>Menyiram tanaman dengan air setiap hari</div>
+          <select class="order-select" id="ordC" onchange="checkStory()">
+            <option value="">Pilih urutan...</option>
+            <option value="1">Urutan 1 (Awal)</option>
+            <option value="2">Urutan 2 (Tengah)</option>
+            <option value="3">Urutan 3 (Akhir)</option>
+          </select>
+        </div>
+      </div>
+      <div class="feedback" id="fbStory"></div>
+    </div>
+
+    <!-- Soal 6 -->
+    <div class="q-card" id="q6">
+      <div class="q-num">Soal 6. Berdasarkan cerita gambar di atas, apa <b>JUDUL CERITA</b> yang paling bagus dan cocok?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(6, true, this)">
+          <span>🌸</span> Merawat Bunga Kesayanganku
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>🚗</span> Mobil Balap Meluncur Cepat
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>🍳</span> Menggoreng Telur di Dapur
+        </button>
+      </div>
+      <div class="feedback" id="fb6"></div>
+    </div>
+
+    <!-- Soal 7 -->
+    <div class="q-card" id="q7">
+      <div class="q-num">Soal 7. Saat bercerita di depan guru dan teman-teman, sikap yang paling baik adalah...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(7, true, this)">
+          <span>🗣️</span> Berdiri tegak, suara jelas, dan percaya diri
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>🙈</span> Menutup muka dan menangis malu
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>🏃</span> Lari keluar kelas
+        </button>
+      </div>
+      <div class="feedback" id="fb7"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 3: MINI QUIZ BAHASA INGGRIS (PROJECT) -->
+  <!-- ============================================== -->
+  <div class="section-box sec-eng">
+    <div class="sec-title">
+      🇬🇧 Bagian 3: Mini English (Technology Around My Home)
+    </div>
+    <div class="tip-box">
+      <b>💡 English Vocabulary for Rooms & Technology:</b><br>
+      • <b>Kitchen</b> (Dapur): Refrigerator (kulkas), Blender, Rice cooker.<br>
+      • <b>Living Room</b> (Ruang Tamu/Keluarga): TV (televisi), Fan (kipas angin), Lamp.<br>
+      • <b>Bedroom</b> (Kamar Tidur): Bed lamp, Air conditioner (AC), Alarm clock.<br>
+      • <b>Bathroom</b> (Kamar Mandi): Water heater, Hair dryer.
+    </div>
+
+    <!-- Soal 8 -->
+    <div class="q-card" id="q8">
+      <div class="q-num">Soal 8. <i>"We keep fresh milk and vegetables cold in the <b>Refrigerator</b>."</i><br>Where is the refrigerator placed? (Di ruangan manakah kulkas berada?)</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(8, true, this)">
+          <span>🍳</span> Kitchen (Dapur)
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>🛁</span> Bathroom (Kamar Mandi)
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>🚗</span> Garage (Garasi)
+        </button>
+      </div>
+      <div class="feedback" id="fb8"></div>
+    </div>
+
+    <!-- Soal 9 -->
+    <div class="q-card" id="q9">
+      <div class="q-num">Soal 9. Complete the sentence (Lengkapi kalimatnya):<br><b>"This is a TV. We watch cartoon movies in the ____________."</b></div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(9, true, this)">
+          <span>📺</span> Living Room
+        </button>
+        <button class="opt-btn" onclick="checkQ(9, false, this)">
+          <span>🚿</span> Bathroom
+        </button>
+        <button class="opt-btn" onclick="checkQ(9, false, this)">
+          <span>🌳</span> Garden
+        </button>
+      </div>
+      <div class="feedback" id="fb9"></div>
+    </div>
+
+    <!-- Soal 10 -->
+    <div class="q-card" id="q10">
+      <div class="q-num">Soal 10. Di dalam kelompok proyek (*teamwork*), jika ada teman yang sedang menggunting gambar, peran kita yang baik adalah...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(10, true, this)">
+          <span>🤝</span> Membantu merapikan dan menyiapkan lem bersama
+        </button>
+        <button class="opt-btn" onclick="checkQ(10, false, this)">
+          <span>😠</span> Merebut guntingnya secara paksa
+        </button>
+        <button class="opt-btn" onclick="checkQ(10, false, this)">
+          <span>📱</span> Main sendiri dan tidak peduli
+        </button>
+      </div>
+      <div class="feedback" id="fb10"></div>
+    </div>
+  </div>
+
+  <!-- Certificate Award -->
+  <div class="cert" id="certBox">
+    <div style="font-size:10pt; letter-spacing:2px; font-weight:bold; color:#7f8c8d;">✦ PIAGAM SEMANGAT BELAJAR ✦</div>
+    <h2>BINTANG HEBAT PROJECT WEEK 🌟</h2>
+    <p style="margin:4px 0; font-size:11pt;">Diberikan dengan rasa bangga kepada:</p>
+    <div class="kid-name">LASKAR</div>
+    <p style="margin:4px 0; font-size:11pt; color:#2c3e50;">
+      Telah berhasil menyelesaikan latihan persiapan PJOK, Bahasa Indonesia, dan English untuk hari <b>Senin, 21 September 2026</b> dengan luar biasa!
+    </p>
+    <div style="font-size:18pt; letter-spacing:6px; color:#f39c12; margin:10px 0;">
+      ★★★★★
+    </div>
+    <p style="font-size:9.5pt; font-style:italic; color:#7f8c8d;">"Belajar dengan gembira, berkarya dengan percaya diri!"</p>
+  </div>
+
+  <!-- Parent Key Note -->
+  <div class="parent-key">
+    <h3>📌 Kunci Jawaban & Panduan Orang Tua (Ayah / Ibu):</h3>
+    <ol style="margin-left: 20px; line-height: 1.6;">
+      <li><b>Soal 1 (PJOK):</b> Gerakan yang berpindah tempat.</li>
+      <li><b>Soal 2 (PJOK):</b> Berlari mengejar bola di lapangan.</li>
+      <li><b>Soal 3 (PJOK):</b> Meloncat (2 kaki). <i>Tips: Ingatkan lompat = 1 kaki, loncat = 2 kaki.</i></li>
+      <li><b>Soal 4 (PJOK):</b> Kaki (untuk menendang bola pada olahraga sepak bola).</li>
+      <li><b>Soal 5 (B. Indo):</b> Urutan yang benar adalah <b>B (Biji ditanam) ➔ C (Disiram air) ➔ A (Bunga mekar)</b>.</li>
+      <li><b>Soal 6 (B. Indo):</b> Merawat Bunga Kesayanganku.</li>
+      <li><b>Soal 7 (B. Indo):</b> Berdiri tegak, suara jelas, dan percaya diri.</li>
+      <li><b>Soal 8 (English):</b> Kitchen (Kulkas ada di dapur).</li>
+      <li><b>Soal 9 (English):</b> Living Room (Menonton TV di ruang tamu/keluarga).</li>
+      <li><b>Soal 10 (Karakter):</b> Membantu merapikan dan menyiapkan lem bersama (*Teamwork*).</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- Interactive Scripts -->
+<script>
+  let correctCount = 0;
+  const answered = {};
+
+  // Simple Web Audio API Synthesizer (No external library needed)
+  function playSound(type) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1); // E5
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2); // G5
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } else if (type === 'wrong') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      }
+    } catch(e) {}
+  }
+
+  function checkQ(qNum, isCorrect, btnElem) {
+    if (answered[qNum]) return; // sudah dijawab
+
+    const parent = btnElem.closest('.q-card');
+    const buttons = parent.querySelectorAll('.opt-btn');
+    const fb = document.getElementById('fb' + qNum);
+
+    if (isCorrect) {
+      btnElem.classList.add('correct');
+      fb.innerHTML = '✨ Hebat sekali Laskar! Jawabanmu benar! 🎉';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      correctCount++;
+      answered[qNum] = true;
+    } else {
+      btnElem.classList.add('wrong');
+      fb.innerHTML = 'Yuk coba lagi atau minta petunjuk Ayah/Ibu ya 😊';
+      fb.className = 'feedback show err';
+      playSound('wrong');
+      return; // boleh coba lagi
+    }
+
+    updateScore();
+  }
+
+  function checkStory() {
+    const selA = document.getElementById('ordA').value;
+    const selB = document.getElementById('ordB').value;
+    const selC = document.getElementById('ordC').value;
+    const fb = document.getElementById('fbStory');
+
+    if (!selA || !selB || !selC) {
+      fb.className = 'feedback';
+      return;
+    }
+
+    // Urutan benar: B = 1 (Awal), C = 2 (Tengah), A = 3 (Akhir)
+    if (selB === '1' && selC === '2' && selA === '3') {
+      fb.innerHTML = '🎉 LUAR BIASA! Urutannya tepat: Mulai tanam biji (B) ➔ Disiram air (C) ➔ Bunga mekar (A)!';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      if (!answered[5]) {
+        correctCount++;
+        answered[5] = true;
+        updateScore();
+      }
+    } else {
+      fb.innerHTML = 'Urutannya belum pas nih. Ingat: biji ditanam dulu, disiram, baru bunganya mekar ya! 😉';
+      fb.className = 'feedback show err';
+      playSound('wrong');
+    }
+  }
+
+  function updateScore() {
+    const scoreBoard = document.getElementById('scoreBoard');
+    scoreBoard.innerHTML = `⭐ Skor: ${correctCount} / 10 Soal Berhasil!`;
+    if (correctCount === 10) {
+      scoreBoard.innerHTML = `🏆 SEMPURNA! 10 / 10 Soal Selesai! Kamu Juara, Laskar! 🌟`;
+      scoreBoard.style.color = '#27ae60';
+    }
+  }
+
+  function resetAll() {
+    correctCount = 0;
+    for (let k in answered) delete answered[k];
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      b.classList.remove('correct', 'wrong');
+    });
+    document.querySelectorAll('.feedback').forEach(f => {
+      f.className = 'feedback';
+      f.innerHTML = '';
+    });
+    document.querySelectorAll('.order-select').forEach(s => s.value = '');
+    updateScore();
+  }
+</script>
+
+</body>
+</html>

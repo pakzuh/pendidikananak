@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyek Humaniora Grade 2 — My Identity Document (ID Card) | Laskar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --primary-light: #e0e7ff;
+      --secondary: #06b6d4;
+      --accent: #10b981;
+      --gold: #f59e0b;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --card-bg: #ffffff;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 50%, #f0fdf4 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 60px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-title { font-family: 'Fredoka', cursive, sans-serif; }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Header */
+    .header-card {
+      background: linear-gradient(135deg, #3730a3 0%, #4f46e5 50%, #6366f1 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 30px 36px;
+      box-shadow: 0 15px 30px rgba(79, 70, 229, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+
+    .header-card::after {
+      content: "🪪";
+      position: absolute;
+      right: 25px;
+      bottom: -15px;
+      font-size: 130px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-gold { background: #fef08a; color: #854d0e; }
+
+    .header-title { font-size: 30px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+    .header-subtitle { font-size: 16px; color: #c7d2fe; max-width: 800px; margin-bottom: 18px; font-weight: 600; }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 13.5px;
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 11px 18px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover { background: #f8fafc; color: var(--primary); border-color: var(--primary); }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 15px rgba(79, 70, 229, 0.3);
+    }
+
+    .tab-pane { display: none; animation: fadeIn 0.25s ease; }
+    .tab-pane.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 26px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      border: 1.5px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      border-bottom: 2px dashed #e2e8f0;
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-title { font-size: 21px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
+
+    /* Interactive ID Card Preview */
+    .id-card-stage {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .form-box {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 12px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #475569;
+      margin-bottom: 4px;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #cbd5e1;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    /* Realistic Student ID Card */
+    .student-card {
+      background: linear-gradient(135deg, #ffffff 0%, #f0f4ff 60%, #e0e7ff 100%);
+      border: 3px solid #3730a3;
+      border-radius: 20px;
+      padding: 20px 24px;
+      box-shadow: 0 12px 25px rgba(55, 48, 163, 0.15);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .student-card::before {
+      content: "";
+      position: absolute;
+      top: -40px;
+      right: -40px;
+      width: 120px;
+      height: 120px;
+      background: rgba(79, 70, 229, 0.08);
+      border-radius: 50%;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2.5px solid #4f46e5;
+      padding-bottom: 10px;
+      margin-bottom: 16px;
+    }
+
+    .school-emblem {
+      font-size: 28px;
+    }
+
+    .school-title {
+      text-align: right;
+    }
+
+    .school-title h4 {
+      font-size: 14px;
+      font-weight: 800;
+      color: #3730a3;
+      letter-spacing: 0.5px;
+    }
+
+    .school-title span {
+      font-size: 11px;
+      color: #6366f1;
+      font-weight: 700;
+    }
+
+    .card-main {
+      display: flex;
+      gap: 16px;
+    }
+
+    .photo-slot {
+      width: 110px;
+      height: 135px;
+      border: 2px dashed #6366f1;
+      border-radius: 12px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 8px;
+      flex-shrink: 0;
+    }
+
+    .photo-slot span {
+      font-size: 11px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .fields-col {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 13px;
+    }
+
+    .field-row {
+      display: flex;
+      border-bottom: 1px dotted #cbd5e1;
+      padding-bottom: 4px;
+    }
+
+    .field-lbl {
+      width: 110px;
+      font-weight: 700;
+      color: #475569;
+      font-size: 12px;
+    }
+
+    .field-val {
+      flex: 1;
+      font-weight: 800;
+      color: #1e293b;
+    }
+
+    .card-bot {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 16px;
+      padding-top: 10px;
+      border-top: 1.5px solid #cbd5e1;
+    }
+
+    .sig-box {
+      text-align: center;
+      font-size: 11.5px;
+    }
+
+    .sig-area {
+      height: 35px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fredoka', cursive;
+      color: #3730a3;
+      font-size: 18px;
+    }
+
+    /* Presentation Script */
+    .script-box {
+      background: #fffbeb;
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 22px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .script-step { margin-bottom: 16px; }
+    .script-step strong { color: #b45309; display: block; font-size: 14px; }
+    .script-speech { color: #0f172a; font-style: italic; font-weight: 600; font-size: 15.5px; }
+
+    /* Print */
+    .print-sheet {
+      background: #ffffff;
+      max-width: 820px;
+      margin: 0 auto 24px auto;
+      padding: 36px 40px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print, .tabs-nav, .header-card, .btn, button, .top-action-bar, .toast, .print-controls {
+        display: none !important;
+      }
+      .container, .app-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .tab-pane {
+        display: none !important;
+      }
+      .tab-pane.active {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .print-sheet {
+        border: 1.5px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 8mm !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .print-sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .id-card-stage { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header-card no-print">
+      <div class="badge-bar">
+        <span class="badge badge-gold">⭐ PROJECT WEEK TERM I</span>
+        <span class="badge">🪪 Humaniora • Grade 2</span>
+        <span class="badge">Rabu, 23 Sep 2026</span>
+      </div>
+      <h1 class="header-title">My Identity Document (ID Card)</h1>
+      <p class="header-subtitle">
+        Topic: Identitas Diri — Menulis Biodata Lengkap, Pasfoto, Tanda Tangan, & Presentasi Lisan
+      </p>
+
+      <div class="meta-grid">
+        <div><strong>👦 Ananda:</strong> Laskar (Grade 2)</div>
+        <div><strong>🏫 Sekolah:</strong> SD MISS Malang</div>
+        <div><strong>⏱️ Waktu:</strong> 07.30 - 08.30 WIB (60 Menit)</div>
+        <div><strong>📦 Bahan:</strong> Kertas Tebal, Crayon/Pensil Warna, Lem, Gunting</div>
+      </div>
+    </header>
+
+    <!-- Nav Tabs -->
+    <nav class="tabs-nav no-print">
+      <button class="tab-btn active" onclick="switchTab('tab-maker', this)">
+        <span>🪪</span> ID Card Maker & Preview
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-script', this)">
+        <span>🎙️</span> Naskah Presentasi Lisan
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-quiz', this)">
+        <span>🧠</span> Mini Kuis Identitas Diri (5 Soal)
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-print', this)">
+        <span>🖨️</span> Lembar Siap Cetak (A4)
+      </button>
+    </nav>
+
+    <!-- Quick Action Bar -->
+    <div class="top-action-bar no-print" style="display: flex; justify-content: space-between; align-items: center; background: #eef2ff; border: 1.5px solid #c7d2fe; border-radius: 12px; padding: 10px 16px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+      <div style="font-size: 13.5px; font-weight: 700; color: #3730a3;">
+        💡 Siap dicetak: Kartu ID Card Resmi & 4 Pasfoto 3x4 Laskar untuk digunting & ditempel!
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-primary" onclick="printWorksheet('tab-print')" style="padding: 8px 16px; font-size: 13.5px; background: #4f46e5; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700;">
+          🖨️ Cetak Lembar ID Card (A4)
+        </button>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 1: ID CARD MAKER & PREVIEW
+         ======================================================= -->
+    <div id="tab-maker" class="tab-pane active">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🎨</span> Desain & Latihan Isi Kartu Identitas Diri</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Ketik biodata Laskar di formulir kiri, hasil ID Card otomatis tampil di kartu sebelah kanan!
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="fillDefault()">
+            <span>✨</span> Isi Otomatis Data Laskar
+          </button>
+        </div>
+
+        <div class="id-card-stage">
+          
+          <!-- Form -->
+          <div class="form-box">
+            <h4 style="font-size: 16px; margin-bottom: 12px; color: #3730a3;">📝 Data yang Diminta Guru:</h4>
+            
+            <div class="form-group">
+              <label>1. Nama Panjang Sendiri:</label>
+              <input type="text" id="in-name" value="Laskar Al Kautsar" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>2. Nama Panggilan:</label>
+              <input type="text" id="in-nick" value="Laskar" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>3. Tanggal Lahir & Umur:</label>
+              <input type="text" id="in-dob" value="Malang, 8 Desember 2018 (7 Tahun)" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>4. Nama Sekolah:</label>
+              <input type="text" id="in-school" value="SD MISS (Mafaza) Malang" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>5. Alamat Rumah Lengkap:</label>
+              <input type="text" id="in-addr" value="Griya Salam Madani No. 11 Cemorokandang, Kedungkandang, Malang" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>6. Nama Orang Tua (Ayah/Bunda):</label>
+              <input type="text" id="in-parent" value="Ayah & Bunda" oninput="syncCard()">
+            </div>
+
+            <div class="form-group">
+              <label>7. Tanda Tangan:</label>
+              <input type="text" id="in-sig" value="Laskar" oninput="syncCard()">
+            </div>
+          </div>
+
+          <!-- Preview Card -->
+          <div>
+            <div style="text-align: center; margin-bottom: 10px; font-weight: 700; color: #475569; font-size: 14px;">
+              👀 Pratinjau ID Card Laskar:
+            </div>
+
+            <div class="student-card">
+              <div class="card-top">
+                <div class="school-emblem">🏫⭐</div>
+                <div class="school-title">
+                  <h4>MAFAZA INTEGRATED SMART SCHOOL</h4>
+                  <span>STUDENT IDENTITY CARD • GRADE 2</span>
+                </div>
+              </div>
+
+              <div class="card-main">
+                <div class="photo-slot" style="padding:0; overflow:hidden; border:2.5px solid #4f46e5; box-shadow:0 4px 10px rgba(79,70,229,0.2);">
+                  <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Ananda Laskar" style="width:100%; height:100%; object-fit:cover; border-radius:10px;">
+                </div>
+
+                <div class="fields-col">
+                  <div class="field-row">
+                    <span class="field-lbl">Nama Lengkap:</span>
+                    <span class="field-val" id="card-name">Laskar Al Kautsar</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="field-lbl">Panggilan:</span>
+                    <span class="field-val" id="card-nick">Laskar</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="field-lbl">Tgl Lahir / Usia:</span>
+                    <span class="field-val" id="card-dob">Malang, 8 Desember 2018 (7 Th)</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="field-lbl">Sekolah:</span>
+                    <span class="field-val" id="card-school">SD MISS Malang</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="field-lbl">Alamat:</span>
+                    <span class="field-val" id="card-addr">Griya Salam Madani No. 11 Cemorokandang, Kedungkandang, Malang</span>
+                  </div>
+                  <div class="field-row">
+                    <span class="field-lbl">Orang Tua:</span>
+                    <span class="field-val" id="card-parent">Ayah & Bunda</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-bot">
+                <div style="font-size: 11px; color: #64748b;">
+                  T.A. 2026/2027<br>
+                  Grade 2 Student
+                </div>
+                <div class="sig-box">
+                  <div class="sig-area" id="card-sig">Laskar</div>
+                  <div style="border-top: 1px solid #3730a3; padding-top: 2px; font-weight: 700;">Tanda Tangan Siswa</div>
+                </div>
+              </div>
+            </div>
+
+            <div style="margin-top: 16px; background: #e0e7ff; border-radius: 12px; padding: 12px; font-size: 13px; color: #3730a3;">
+              💡 <strong>Tips di Kelas:</strong> Di sekolah disediakan kertas tebal. Laskar tinggal menuliskan data ini dengan pensil yang rapi, lalu tempel pasfoto dan beri hiasan warna di tepinya!
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 2: NASKAH PRESENTASI LISAN
+         ======================================================= -->
+    <div id="tab-script" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🎙️</span> Naskah Presentasi Lisan ID Card</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Sesuai rubrik guru: <em>"Representatif: Mampu menyajikan dalam bentuk lisan."</em>
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="playAudio('Assalamu alaikum Miss, Mister, dan teman-teman! Perkenalkan nama saya Laskar...')">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
+
+        <div class="script-box">
+          <div class="script-step">
+            <strong>1. SALAM & SAPAAN SANTUN:</strong>
+            <div class="script-speech">
+              "Assalamu'alaikum warahmatullahi wabarakatuh.<br>
+              Selamat pagi <b>Miss, Mister</b>, dan teman-teman semuanya!"
+            </div>
+          </div>
+
+          <div class="script-step">
+            <strong>2. MEMPERKENALKAN KARTU IDENTITAS DIRI:</strong>
+            <div class="script-speech">
+              "Hari ini saya ingin mempresentasikan kartu identitas diri (ID Card) buatan saya.<br>
+              • Nama lengkap saya adalah <b>Laskar Al Kautsar</b>.<br>
+              • Teman-teman bisa memanggil saya <b>Laskar</b>.<br>
+              • Saya lahir di Malang pada tanggal <b>8 Desember 2018</b> dan umur saya <b>7 tahun</b>.<br>
+              • Saya bersekolah di <b>SD MISS Malang (Mafaza Integrated Smart School)</b> kelas <b>Grade 2</b>.<br>
+              • Alamat rumah saya di <b>Griya Salam Madani No. 11 Cemorokandang, Kedungkandang, Malang</b>.<br>
+              • Nama orang tua saya adalah <b>Ayah dan Bunda</b> tercinta."
+            </div>
+          </div>
+
+          <div class="script-step">
+            <strong>3. MENUNJUKKAN TANDA TANGAN & PENUTUP:</strong>
+            <div class="script-speech">
+              "Di bagian pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri.<br>
+              Kartu identitas ini sangat berguna agar orang lain dapat mengenal diri kita.<br>
+              Terima kasih Miss, Mister, dan teman-teman! Wassalamu'alaikum warahmatullahi wabarakatuh!"
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 3: MINI KUIS IDENTITAS DIRI (5 SOAL)
+         ======================================================= -->
+    <div id="tab-quiz" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🧠</span> Mini Kuis Identitas Diri (5 Soal)</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Uji pemahaman Laskar tentang fungsi dan bagian kartu identitas diri!
+            </p>
+          </div>
+          <span id="quiz-score-badge" class="badge badge-gold" style="font-size: 14px; padding: 6px 14px;">
+            Skor: 0 / 5
+          </span>
+        </div>
+
+        <div id="quiz-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 4: LEMBAR SIAP CETAK (A4)
+         ======================================================= -->
+    <div id="tab-print" class="tab-pane">
+      <div style="text-align: center; margin-bottom: 20px;" class="no-print">
+        <button class="btn btn-primary" style="padding: 12px 24px; font-size: 16px;" onclick="printWorksheet('tab-print')">
+          <span>🖨️</span> Cetak Lembar ID Card Humaniora (A4)
+        </button>
+      </div>
+
+      <div class="print-sheet">
+        <div style="border-bottom: 2px solid #0f172a; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; font-weight: 800; color: #4f46e5;">MAFAZA INTEGRATED SMART SCHOOL (MISS) MALANG</div>
+            <h2 style="font-size: 18px; color: #0f172a; margin: 4px 0;">PROJECT HUMANIORA: KARTU IDENTITAS DIRI (ID CARD)</h2>
+            <div style="font-size: 12px; color: #64748b;">Subject: Humaniora Grade 2 • Tema: Identitas Diri</div>
+          </div>
+          <div style="font-size: 32px;">🪪✨</div>
+        </div>
+
+        <p style="font-size: 12px; color: #475569; margin-bottom: 16px; font-weight: 700;">
+          ✂️ <strong>Petunjuk:</strong> Isilah biodata pada kartu di bawah ini dengan tulisan tangan rapi, tempelkan pasfoto 3x4, bubuhkan tanda tangan, dan gunting mengikuti garis putus-putus untuk ditempel di kertas tebal!
+        </p>
+
+        <!-- Printable ID Card Box -->
+        <div style="border: 2px dashed #3730a3; border-radius: 16px; padding: 24px; max-width: 520px; margin: 0 auto; background: #ffffff;">
+          <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #3730a3; padding-bottom: 8px; margin-bottom: 14px;">
+            <div style="font-size: 24px;">🏫</div>
+            <div style="text-align: right;">
+              <strong style="font-size: 13px; color: #3730a3; display: block;">SD MISS (MAFAZA) MALANG</strong>
+              <span style="font-size: 11px; color: #6366f1; font-weight: 700;">KARTU IDENTITAS SISWA (GRADE 2)</span>
+            </div>
+          </div>
+
+          <div style="display: flex; gap: 16px;">
+            <div style="width: 105px; height: 130px; border: 2px solid #3730a3; border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; background: #fafafa;">
+              <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Laskar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <div style="flex: 1; font-size: 12px; line-height: 1.8;">
+              <div><strong>Nama Lengkap:</strong> Laskar Al Kautsar</div>
+              <div><strong>Nama Panggilan:</strong> Laskar</div>
+              <div><strong>Tempat, Tgl Lahir:</strong> Malang, 8 Desember 2018</div>
+              <div><strong>Umur:</strong> 7 Tahun &nbsp;&nbsp;&nbsp;&nbsp; <strong>Kelas:</strong> Grade 2 SD</div>
+              <div><strong>Nama Sekolah:</strong> SD MISS (Mafaza) Malang</div>
+              <div><strong>Alamat:</strong> Griya Salam Madani No. 11 Cemorokandang, Kedungkandang, Malang</div>
+              <div><strong>Nama Orang Tua:</strong> Ayah & Bunda</div>
+            </div>
+          </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 14px; padding-top: 8px; border-top: 1px solid #cbd5e1; font-size: 11px;">
+            <div>
+              Malang, 23 September 2026<br>
+              <em>T.A. 2026/2027</em>
+            </div>
+            <div style="text-align: center;">
+              <div style="height: 30px;"></div>
+              <div style="border-top: 1px solid #000; width: 120px; padding-top: 2px; font-weight: 700;">Tanda Tangan Siswa</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Cutout Photos 3x4 -->
+        <div style="margin-top: 24px; border: 1.5px dashed #6366f1; border-radius: 12px; padding: 14px; background: #fafafa;">
+          <div style="font-size: 11px; font-weight: 800; color: #4338ca; margin-bottom: 8px; display: flex; justify-content: space-between;">
+            <span>✂️ Cadangan Pasfoto 3x4 Laskar (Gunting & Tempel ke Kertas Tebal di Sekolah)</span>
+            <span>Ukuran Standar 3x4 cm</span>
+          </div>
+          <div style="display: flex; gap: 14px; justify-content: center;">
+            <div style="width: 85px; height: 110px; border: 1.5px dashed #94a3b8; border-radius: 6px; overflow: hidden; position: relative;">
+              <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Laskar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="width: 85px; height: 110px; border: 1.5px dashed #94a3b8; border-radius: 6px; overflow: hidden; position: relative;">
+              <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Laskar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="width: 85px; height: 110px; border: 1.5px dashed #94a3b8; border-radius: 6px; overflow: hidden; position: relative;">
+              <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Laskar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+            <div style="width: 85px; height: 110px; border: 1.5px dashed #94a3b8; border-radius: 6px; overflow: hidden; position: relative;">
+              <img src="images_pedoman/laskar_photo_3x4.jpg" alt="Foto Laskar" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; display: grid; grid-template-columns: 1fr 1fr; text-align: center; font-size: 12px;">
+          <div>
+            <div>Orang Tua / Wali</div>
+            <div style="margin-top: 36px; border-top: 1px solid #000; width: 140px; margin-left: auto; margin-right: auto; padding-top: 4px;">( &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; )</div>
+          </div>
+          <div>
+            <div>Guru Humaniora</div>
+            <div style="margin-top: 36px; border-top: 1px solid #000; width: 140px; margin-left: auto; margin-right: auto; padding-top: 4px;">( Miss / Mister )</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'id-ID';
+        u.rate = 0.92;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function switchTab(tabId, el) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+      if (el) el.classList.add('active');
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function printWorksheet(targetTabId = 'tab-print') {
+      const tabBtn = document.querySelector(`[onclick*="${targetTabId}"]`);
+      if (tabBtn) {
+        switchTab(targetTabId, tabBtn);
+      } else {
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById(targetTabId)?.classList.add('active');
+      }
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    function syncCard() {
+      document.getElementById('card-name').innerText = document.getElementById('in-name').value || '-';
+      document.getElementById('card-nick').innerText = document.getElementById('in-nick').value || '-';
+      document.getElementById('card-dob').innerText = document.getElementById('in-dob').value || '-';
+      document.getElementById('card-school').innerText = document.getElementById('in-school').value || '-';
+      document.getElementById('card-addr').innerText = document.getElementById('in-addr').value || '-';
+      document.getElementById('card-parent').innerText = document.getElementById('in-parent').value || '-';
+      document.getElementById('card-sig').innerText = document.getElementById('in-sig').value || '-';
+    }
+
+    function fillDefault() {
+      document.getElementById('in-name').value = 'Laskar Al Kautsar';
+      document.getElementById('in-nick').value = 'Laskar';
+      document.getElementById('in-dob').value = 'Malang, 8 Desember 2018 (7 Tahun)';
+      document.getElementById('in-school').value = 'SD MISS (Mafaza) Malang';
+      document.getElementById('in-addr').value = 'Griya Salam Madani No. 11 Cemorokandang, Kedungkandang, Malang';
+      document.getElementById('in-parent').value = 'Ayah & Bunda';
+      document.getElementById('in-sig').value = 'Laskar';
+      syncCard();
+    }
+
+    // Quiz
+    const humanioraQuiz = [
+      {
+        q: '1. Apa kepanjangan dari ID Card?',
+        opts: ['Ice Cream Delicious', 'Identity Document / Identity Card', 'Internet Data Card', 'Indonesian Dollar'],
+        ans: 1,
+        exp: 'ID Card artinya Kartu Dokumen Identitas Diri.'
+      },
+      {
+        q: '2. Keterangan apa saja yang wajib ada di kartu identitas diri anak sekolah?',
+        opts: ['Nama lengkap, tanggal lahir, nama sekolah, dan alamat', 'Daftar mainan favorit', 'Harga baju', 'Nama tetangga jauh'],
+        ans: 0,
+        exp: 'Kartu identitas wajib memuat nama lengkap, tgl lahir/umur, sekolah, dan alamat rumah.'
+      },
+      {
+        q: '3. Mengapa di kartu identitas diri perlu ditempel pasfoto diri kita?',
+        opts: ['Agar kartu menjadi berat', 'Agar orang lain mudah mengenali wajah pemilik kartu', 'Untuk hiasan semata', 'Agar bisa dijual'],
+        ans: 1,
+        exp: 'Pasfoto berfungsi sebagai pengenal wajah yang sah bagi pemilik kartu identitas.'
+      },
+      {
+        q: '4. Apa fungsi tanda tangan pada kartu identitas diri?',
+        opts: ['Sebagai coretan biasa', 'Tanda pengesahan resmi dari pemilik kartu', 'Menghabiskan tinta pulpen', 'Bermain garis'],
+        ans: 1,
+        exp: 'Tanda tangan adalah lambang bukti keaslian dan pengesahan dari diri kita sendiri.'
+      },
+      {
+        q: '5. Sikap yang baik saat mempresentasikan ID Card di depan Miss, Mister, dan teman-teman adalah...?',
+        opts: ['Malu-malu dan menunduk terus', 'Berdiri tegak, tersenyum, dan suaranya jelas', 'Bicara sambil membelakangi guru', 'Menangis'],
+        ans: 1,
+        exp: 'Berdiri tegak, percaya diri, tersenyum ramah, dan suara yang jelas!'
+      }
+    ];
+
+    let quizScore = 0;
+    const answered = {};
+
+    function renderQuiz() {
+      const c = document.getElementById('quiz-container');
+      c.innerHTML = '';
+      humanioraQuiz.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.style.background = '#f8fafc';
+        card.style.border = '2px solid #e2e8f0';
+        card.style.borderRadius = '14px';
+        card.style.padding = '18px';
+        card.style.marginBottom = '14px';
+        card.innerHTML = `
+          <div style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">${item.q}</div>
+          <div style="display:flex; flex-direction:column; gap:8px;" id="opt-box-${idx}">
+            ${item.opts.map((opt, oIdx) => `
+              <button style="background:white; border:1.5px solid #cbd5e1; padding:10px 14px; border-radius:10px; font-size:14px; text-align:left; cursor:pointer; font-family:inherit; transition:0.2s;" onclick="checkAnswer(${idx}, ${oIdx})">${opt}</button>
+            `).join('')}
+          </div>
+          <div id="explain-${idx}" style="display:none; margin-top:8px; font-size:13px; font-weight:700;"></div>
+        `;
+        c.appendChild(card);
+      });
+    }
+
+    function checkAnswer(qIdx, oIdx) {
+      if (answered[qIdx]) return;
+      answered[qIdx] = true;
+
+      const item = humanioraQuiz[qIdx];
+      const btns = document.getElementById('opt-box-' + qIdx).querySelectorAll('button');
+      const exp = document.getElementById('explain-' + qIdx);
+
+      if (oIdx === item.ans) {
+        btns[oIdx].style.background = '#dcfce7';
+        btns[oIdx].style.borderColor = '#22c55e';
+        btns[oIdx].style.color = '#166534';
+        btns[oIdx].style.fontWeight = 'bold';
+        exp.style.display = 'block';
+        exp.style.color = '#15803d';
+        exp.innerText = '🌟 Hebat sekali! ' + item.exp;
+        quizScore++;
+      } else {
+        btns[oIdx].style.background = '#fee2e2';
+        btns[oIdx].style.borderColor = '#ef4444';
+        btns[oIdx].style.color = '#991b1b';
+        btns[item.ans].style.background = '#dcfce7';
+        btns[item.ans].style.borderColor = '#22c55e';
+        btns[item.ans].style.color = '#166534';
+        btns[item.ans].style.fontWeight = 'bold';
+        exp.style.display = 'block';
+        exp.style.color = '#b91c1c';
+        exp.innerText = '💡 Jawaban yang benar: ' + item.opts[item.ans] + '. ' + item.exp;
+      }
+
+      document.getElementById('quiz-score-badge').innerText = `Skor: ${quizScore} / ${humanioraQuiz.length}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

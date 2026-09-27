@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Modul & Latihan IT (Information & Technology) — Laskar Kelas 2</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #eef7fc;
+    color: #2c3e50;
+    line-height: 1.45;
+    padding: 16px;
+  }
+  .sheet {
+    max-width: 840px;
+    background: #ffffff;
+    margin: 0 auto;
+    padding: 24px 28px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 3px solid #2980b9;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #1f4068 0%, #162447 100%);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    position: relative;
+    border: 2px solid #0f1c3f;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #48dbfb;
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+  }
+  .header .sub {
+    font-size: 11.5pt;
+    color: #f1f2f6;
+    font-weight: bold;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+    font-size: 10pt;
+    background: rgba(255,255,255,0.15);
+    padding: 6px 12px;
+    border-radius: 8px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Control & Score Bar */
+  .control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fbf0d9;
+    border: 2px solid #f39c12;
+    padding: 8px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .score-badge {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #d35400;
+  }
+  .btn-action {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .btn-action:hover { background: #1f618d; transform: scale(1.02); }
+
+  /* Sections */
+  .section-box {
+    border: 2.5px solid #2980b9;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    background: #ffffff;
+    page-break-inside: avoid;
+  }
+  .sec-hardware { border-color: #0abde3; }
+  .sec-mouse    { border-color: #10ac84; }
+  .sec-project  { border-color: #ee5253; }
+  .sec-safety   { border-color: #5f27cd; }
+
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 12.5pt;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .sec-hardware .sec-title { background: #0abde3; }
+  .sec-mouse .sec-title    { background: #10ac84; }
+  .sec-project .sec-title  { background: #ee5253; }
+  .sec-safety .sec-title   { background: #5f27cd; }
+
+  .tip-box {
+    background: #f8fbfe;
+    border-left: 5px solid #0abde3;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 14px;
+  }
+
+  /* Hardware Gallery */
+  .hardware-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 12px 0;
+    text-align: center;
+  }
+  .hw-card {
+    border: 2px solid #dcdde1;
+    border-radius: 10px;
+    padding: 10px 6px;
+    background: #fdfdfd;
+  }
+  .hw-card b { display: block; font-size: 10pt; margin-top: 4px; color: #2f3542; }
+  .hw-card span { font-size: 8pt; color: #747d8c; }
+
+  /* Question Cards */
+  .q-card {
+    background: #f9fbfd;
+    border: 2px solid #dcdde1;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .q-num {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .opt-btn {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 10.5pt;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s;
+  }
+  .opt-btn:hover {
+    background: #edf2f7;
+    border-color: #2980b9;
+  }
+  .opt-btn.correct {
+    background: #d4efdf !important;
+    border-color: #27ae60 !important;
+    color: #196f3d;
+    font-weight: bold;
+  }
+  .opt-btn.wrong {
+    background: #fadbd8 !important;
+    border-color: #e74c3c !important;
+    color: #943126;
+  }
+
+  /* Interactive Mouse Simulator */
+  .mouse-sim {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #f1f9f5;
+    border: 2px dashed #10ac84;
+    padding: 14px;
+    border-radius: 12px;
+    margin: 12px 0;
+  }
+  .mouse-btn-area {
+    cursor: pointer;
+    transition: 0.2s;
+  }
+  .mouse-btn-area:hover {
+    filter: brightness(0.9);
+  }
+
+  /* Feedback */
+  .feedback {
+    margin-top: 8px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok { color: #27ae60; }
+  .feedback.err { color: #c0392b; }
+
+  /* Certificate */
+  .cert {
+    border: 4px double #0abde3;
+    background: #f6fcfe;
+    padding: 20px;
+    text-align: center;
+    border-radius: 14px;
+    margin-top: 25px;
+    page-break-inside: avoid;
+  }
+  .cert h2 { font-size: 16.5pt; color: #0984e3; margin: 4px 0; }
+  .cert .kid-name {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #0abde3;
+    display: inline-block;
+    padding: 2px 30px;
+    margin: 8px 0;
+  }
+
+  /* Parent Key */
+  .parent-key {
+    background: #fbf0d9;
+    border: 2px dashed #f39c12;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-size: 9.5pt;
+  }
+  .parent-key h3 { color: #b9770e; font-size: 11pt; margin-bottom: 6px; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border: 2px solid #000; width: 100%; max-width: 100%; padding: 10mm 12mm; }
+    .control-bar, .btn-action { display: none !important; }
+    .opt-btn { border: 1.5px solid #000; background: #fff !important; color: #000 !important; }
+    .feedback { display: none !important; }
+    .parent-key { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>💻 PENGERJAAN & MODUL IT KELAS 2 💻</h1>
+    <div class="sub">INFORMATION & TECHNOLOGY — PROJECT WEEK TERM I</div>
+    <div class="meta">
+      <span>🏫 <b>Sekolah:</b> SD MISS Malang</span>
+      <span>👦 <b>Ananda:</b> Laskar</span>
+      <span>🎯 <b>Target:</b> Project Week TA 2026/2027</span>
+    </div>
+  </div>
+
+  <!-- Control Bar -->
+  <div class="control-bar">
+    <div class="score-badge" id="scoreBoard">⭐ Skor: 0 / 8 Soal Diselesaikan!</div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn-action" onclick="resetAll()">🔄 Ulangi</button>
+      <button class="btn-action" style="background:#10ac84;" onclick="window.print()">🖨️ Cetak Lembar IT</button>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 1: PERANGKAT KERAS KOMPUTER (HARDWARE) -->
+  <!-- ============================================== -->
+  <div class="section-box sec-hardware">
+    <div class="sec-title">
+      🖥️ Misi 1: Detektif Perangkat Komputer (Hardware)
+    </div>
+    
+    <div class="tip-box">
+      <b>💡 Pelajari 4 Bagian Utama Komputer Ini ya:</b>
+    </div>
+
+    <div class="hardware-grid">
+      <!-- Monitor -->
+      <div class="hw-card">
+        <svg viewBox="0 0 80 70" width="60" height="52">
+          <rect x="10" y="5" width="60" height="42" rx="4" fill="#2c3e50" stroke="#34495e" stroke-width="2"/>
+          <rect x="14" y="9" width="52" height="34" rx="2" fill="#74b9ff"/>
+          <rect x="36" y="47" width="8" height="12" fill="#7f8c8d"/>
+          <rect x="25" y="59" width="30" height="5" rx="2" fill="#95a5a6"/>
+        </svg>
+        <b>Monitor</b>
+        <span>Layar menampilkan gambar & video</span>
+      </div>
+
+      <!-- CPU -->
+      <div class="hw-card">
+        <svg viewBox="0 0 80 70" width="60" height="52">
+          <rect x="22" y="5" width="36" height="60" rx="3" fill="#34495e" stroke="#2c3e50" stroke-width="2"/>
+          <circle cx="40" cy="18" r="4" fill="#2ecc71"/>
+          <line x1="30" y1="28" x2="50" y2="28" stroke="#7f8c8d" stroke-width="2"/>
+          <circle cx="40" cy="48" r="8" fill="#1abc9c"/>
+        </svg>
+        <b>CPU (Komputer)</b>
+        <span>Otak komputer untuk memproses data</span>
+      </div>
+
+      <!-- Keyboard -->
+      <div class="hw-card">
+        <svg viewBox="0 0 80 70" width="60" height="52">
+          <rect x="5" y="20" width="70" height="32" rx="3" fill="#95a5a6" stroke="#7f8c8d" stroke-width="2"/>
+          <rect x="10" y="25" width="60" height="22" rx="2" fill="#ecf0f1"/>
+          <circle cx="20" cy="30" r="1.5" fill="#2c3e50"/><circle cx="30" cy="30" r="1.5" fill="#2c3e50"/><circle cx="40" cy="30" r="1.5" fill="#2c3e50"/><circle cx="50" cy="30" r="1.5" fill="#2c3e50"/><circle cx="60" cy="30" r="1.5" fill="#2c3e50"/>
+          <circle cx="20" cy="36" r="1.5" fill="#2c3e50"/><circle cx="30" cy="36" r="1.5" fill="#2c3e50"/><circle cx="40" cy="36" r="1.5" fill="#2c3e50"/><circle cx="50" cy="36" r="1.5" fill="#2c3e50"/><circle cx="60" cy="36" r="1.5" fill="#2c3e50"/>
+          <rect x="25" y="41" width="30" height="3" fill="#bdc3c7"/>
+        </svg>
+        <b>Keyboard</b>
+        <span>Papan ketik tombol huruf & angka</span>
+      </div>
+
+      <!-- Mouse -->
+      <div class="hw-card">
+        <svg viewBox="0 0 80 70" width="60" height="52">
+          <path d="M25,25 C25,12 32,5 40,5 C48,5 55,12 55,25 L55,45 C55,58 48,65 40,65 C32,65 25,58 25,45 Z" fill="#bdc3c7" stroke="#7f8c8d" stroke-width="2"/>
+          <line x1="40" y1="5" x2="40" y2="28" stroke="#7f8c8d" stroke-width="2"/>
+          <line x1="25" y1="28" x2="55" y2="28" stroke="#7f8c8d" stroke-width="2"/>
+          <rect x="37" y="14" width="6" height="10" rx="3" fill="#e74c3c"/>
+        </svg>
+        <b>Mouse</b>
+        <span>Alat untuk menggerakkan tanda panah</span>
+      </div>
+
+      <!-- Speaker -->
+      <div class="hw-card">
+        <svg viewBox="0 0 80 70" width="60" height="52">
+          <rect x="20" y="8" width="40" height="54" rx="4" fill="#2c3e50" stroke="#1a252f" stroke-width="2"/>
+          <circle cx="40" cy="22" r="6" fill="#7f8c8d"/>
+          <circle cx="40" cy="44" r="12" fill="#7f8c8d"/>
+          <circle cx="40" cy="44" r="5" fill="#95a5a6"/>
+        </svg>
+        <b>Speaker</b>
+        <span>Mengeluarkan suara & musik</span>
+      </div>
+    </div>
+
+    <!-- Soal 1 -->
+    <div class="q-card" id="q1">
+      <div class="q-num">Soal 1. Bagian komputer yang berfungsi seperti televisi untuk menampilkan gambar, tulisan, dan video adalah...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(1, true, this)">
+          <span>🖥️</span> Monitor
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>🖱️</span> Mouse
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>🔌</span> Kabel Listrik
+        </button>
+      </div>
+      <div class="feedback" id="fb1"></div>
+    </div>
+
+    <!-- Soal 2 -->
+    <div class="q-card" id="q2">
+      <div class="q-num">Soal 2. Tombol panjang di bagian bawah keyboard yang berfungsi untuk memberikan jarak/spasi antar kata dinamakan...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(2, true, this)">
+          <span>⌨️</span> Tombol Spasi (Spacebar)
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>↩️</span> Tombol Enter
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>⌫</span> Tombol Hapus (Backspace)
+        </button>
+      </div>
+      <div class="feedback" id="fb2"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 2: MOUSE & KURSOR DASAR -->
+  <!-- ============================================== -->
+  <div class="section-box sec-mouse">
+    <div class="sec-title">
+      🖱️ Misi 2: Keterampilan Menggunakan Mouse
+    </div>
+    
+    <div class="tip-box">
+      <b>💡 Cara Kerja Tombol Mouse:</b><br>
+      • <b>Klik Kiri:</b> Digunakan jari telunjuk untuk <u>memilih</u> gambar, tombol, atau menu.<br>
+      • <b>Klik Kanan:</b> Digunakan jari tengah untuk memunculkan menu pilihan khusus.<br>
+      • <b>Scroll (Roda Tengah):</b> Diputar untuk menggulung layar naik atau turun.<br>
+      • <b>Klik 2 Kali Cepat (Double Click):</b> Untuk membuka aplikasi/game!
+    </div>
+
+    <div class="mouse-sim">
+      <div>
+        <svg viewBox="0 0 120 160" width="100" height="135">
+          <!-- Body Mouse -->
+          <path d="M20,60 C20,25 35,10 60,10 C85,10 100,25 100,60 L100,100 C100,135 85,150 60,150 C35,150 20,135 20,100 Z" fill="#ecf0f1" stroke="#2c3e50" stroke-width="3"/>
+          <!-- Tombol Kiri -->
+          <path class="mouse-btn-area" onclick="testClick('kiri')" d="M20,60 C20,28 35,12 57,10 L57,60 Z" fill="#3498db"/>
+          <!-- Tombol Kanan -->
+          <path class="mouse-btn-area" onclick="testClick('kanan')" d="M63,10 C85,12 100,28 100,60 L63,60 Z" fill="#2ecc71"/>
+          <!-- Roda Scroll -->
+          <rect class="mouse-btn-area" onclick="testClick('scroll')" x="54" y="24" width="12" height="24" rx="6" fill="#e74c3c"/>
+          <text x="35" y="42" font-size="9" fill="#fff" font-weight="bold">KIRI</text>
+          <text x="68" y="42" font-size="9" fill="#fff" font-weight="bold">KANAN</text>
+        </svg>
+      </div>
+      <div style="font-size:10.5pt; max-width:420px;">
+        <b>🎯 Coba Klik Bagian Mouse di Samping:</b><br>
+        <span id="mouseTestMsg" style="color:#2980b9; font-weight:bold; display:inline-block; margin-top:6px;">
+          (Klik tombol biru untuk Klik Kiri, hijau untuk Klik Kanan, merah untuk Roda Scroll)
+        </span>
+      </div>
+    </div>
+
+    <!-- Soal 3 -->
+    <div class="q-card" id="q3">
+      <div class="q-num">Soal 3. Jari tangan manakah yang kita gunakan untuk menekan tombol <b>Klik Kiri</b> pada mouse?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(3, true, this)">
+          <span>☝️</span> Jari Telunjuk
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>🖕</span> Jari Tengah
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>🤙</span> Jari Kelingking
+        </button>
+      </div>
+      <div class="feedback" id="fb3"></div>
+    </div>
+
+    <!-- Soal 4 -->
+    <div class="q-card" id="q4">
+      <div class="q-num">Soal 4. Tanda panah kecil di layar komputer yang bergerak mengikuti gerakan tangan kita memegang mouse disebut...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(4, true, this)">
+          <span>↗️</span> Kursor / Pointer
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>⚽</span> Bola
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>✏️</span> Penghapus
+        </button>
+      </div>
+      <div class="feedback" id="fb4"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 3: PERAN IT DALAM PROJECT WEEK -->
+  <!-- ============================================== -->
+  <div class="section-box sec-project">
+    <div class="sec-title">
+      🏠 Misi 3: IT dalam Proyek "Technology Around My Home"
+    </div>
+    
+    <div class="tip-box">
+      <b>💡 Bagaimana Komputer & IT Membantu Proyek Kita:</b><br>
+      1. Mencari informasi dan contoh gambar teknologi rumah di internet secara aman.<br>
+      2. Mengetik nama-nama alat teknologi (seperti *TV, Refrigerator, Fan*).<br>
+      3. Mewarnai atau menggambar menggunakan aplikasi seperti <b>Paint</b> di komputer.
+    </div>
+
+    <!-- Soal 5 -->
+    <div class="q-card" id="q5">
+      <div class="q-num">Soal 5. Manakah di bawah ini yang merupakan perangkat <b>Teknologi Informasi & Komunikasi (IT)</b> di rumah kita?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(5, true, this)">
+          <span>📱</span> Smartphone / Komputer Laptop / Smart TV
+        </button>
+        <button class="opt-btn" onclick="checkQ(5, false, this)">
+          <span>🧹</span> Sapu lidi dan ember pel
+        </button>
+        <button class="opt-btn" onclick="checkQ(5, false, this)">
+          <span>🥣</span> Piring dan sendok makan
+        </button>
+      </div>
+      <div class="feedback" id="fb5"></div>
+    </div>
+
+    <!-- Soal 6 -->
+    <div class="q-card" id="q6">
+      <div class="q-num">Soal 6. Alat apakah yang kita pakai untuk <b>mencetak gambar teknologi dari komputer</b> ke lembar kertas poster?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(6, true, this)">
+          <span>🖨️</span> Printer (Mesin Cetak)
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>🧊</span> Kulkas
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>📻</span> Radio lama
+        </button>
+      </div>
+      <div class="feedback" id="fb6"></div>
+    </div>
+  </div>
+
+  <!-- ============================================== -->
+  <!-- BAGIAN 4: ATURAN SEHAT & AMAN BERKOMPUTER -->
+  <!-- ============================================== -->
+  <div class="section-box sec-safety">
+    <div class="sec-title">
+      🛡️ Misi 4: Menjaga Kesehatan & Keselamatan Menggunakan Komputer
+    </div>
+    
+    <div class="tip-box">
+      <b>💡 Aturan Anak Pintar di Ruang Komputer / Lab IT:</b><br>
+      • Duduk tegak dan santai di kursi, jangan membungkuk.<br>
+      • Jaga jarak mata dari layar monitor (kira-kira sejauh panjang satu lengan).<br>
+      • <b>Dilarang membawa makanan dan minuman</b> dekat keyboard agar komputer tidak rusak/kotor!<br>
+      • Tidak bermain komputer/HP terlalu lama agar mata tidak lelah.
+    </div>
+
+    <!-- Soal 7 -->
+    <div class="q-card" id="q7">
+      <div class="q-num">Soal 7. Berapa jarak aman mata kita dari layar monitor komputer saat belajar?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(7, true, this)">
+          <span>📏</span> Sekitar 40–50 cm (kira-kira sepanjang satu lengan kita)
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>👀</span> Sangat dekat menempel sampai mata terasa perih
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>🚪</span> Dari luar ruangan kelas
+        </button>
+      </div>
+      <div class="feedback" id="fb7"></div>
+    </div>
+
+    <!-- Soal 8 -->
+    <div class="q-card" id="q8">
+      <div class="q-num">Soal 8. Bolehkah kita membawa segelas susu atau es sirup sambil mengetik di dekat keyboard komputer?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(8, true, this)">
+          <span>❌</span> Tidak boleh, karena kalau tumpah komputer bisa rusak dan korsleting
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>✅</span> Boleh, ditumpahkan saja ke keyboard
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>🥤</span> Boleh sambil cuci tangan di atas CPU
+        </button>
+      </div>
+      <div class="feedback" id="fb8"></div>
+    </div>
+  </div>
+
+  <!-- Certificate Award -->
+  <div class="cert" id="certBox">
+    <div style="font-size:10pt; letter-spacing:2px; font-weight:bold; color:#7f8c8d;">✦ PIAGAM APRESIASI IT ✦</div>
+    <h2>🏆 AHLI TEKNOLOGI CILIK (LITTLE IT EXPERT) 🏆</h2>
+    <p style="margin:4px 0; font-size:11pt;">Diberikan dengan penuh apresiasi kepada:</p>
+    <div class="kid-name">LASKAR</div>
+    <p style="margin:4px 0; font-size:11pt; color:#2c3e50;">
+      Telah memahami perangkat komputer, fungsi mouse & keyboard, serta aturan aman menggunakan teknologi untuk <b>Project Week Term I SD MISS</b>!
+    </p>
+    <div style="font-size:18pt; letter-spacing:6px; color:#f39c12; margin:10px 0;">
+      ★★★★★
+    </div>
+    <p style="font-size:9.5pt; font-style:italic; color:#7f8c8d;">"Gunakan teknologi dengan bijak, cerdas, dan kreatif!"</p>
+  </div>
+
+  <!-- Parent Key Note -->
+  <div class="parent-key">
+    <h3>📌 Panduan & Kunci Jawaban IT untuk Orang Tua / Guru:</h3>
+    <ol style="margin-left: 20px; line-height: 1.6;">
+      <li><b>Soal 1 (Monitor):</b> Monitor menampilkan visual/layar kerja.</li>
+      <li><b>Soal 2 (Keyboard):</b> Spacebar (tombol terpanjang untuk memberi spasi).</li>
+      <li><b>Soal 3 (Mouse):</b> Jari telunjuk bertumpu pada tombol Klik Kiri.</li>
+      <li><b>Soal 4 (Kursor):</b> Kursor/pointer adalah penunjuk posisi panah di layar.</li>
+      <li><b>Soal 5 (Teknologi IT):</b> Smartphone, laptop, tablet, smart TV.</li>
+      <li><b>Soal 6 (Printer):</b> Printer mencetak dokumen/gambar dari komputer ke kertas.</li>
+      <li><b>Soal 7 (Kesehatan):</b> Jarak aman mata sekitar 40-50 cm (sepanjang lengan).</li>
+      <li><b>Soal 8 (Keselamatan):</b> Tidak boleh membawa makanan/minuman dekat perangkat elektronik.</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- Interactive Script -->
+<script>
+  let correctCount = 0;
+  const answered = {};
+
+  function playSound(type) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } else if (type === 'wrong') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      } else if (type === 'click') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(800, ctx.currentTime);
+        gain.gain.setValueAtTime(0.1, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.08);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.08);
+      }
+    } catch(e) {}
+  }
+
+  function testClick(area) {
+    playSound('click');
+    const msg = document.getElementById('mouseTestMsg');
+    if (area === 'kiri') {
+      msg.innerHTML = '🔵 Kamu menekan <b>KLIK KIRI</b>! (Dipakai memilih objek)';
+      msg.style.color = '#2980b9';
+    } else if (area === 'kanan') {
+      msg.innerHTML = '🟢 Kamu menekan <b>KLIK KANAN</b>! (Dipakai membuka menu khusus)';
+      msg.style.color = '#27ae60';
+    } else if (area === 'scroll') {
+      msg.innerHTML = '🔴 Kamu menekan <b>RODA SCROLL</b>! (Bisa diputar naik-turun halaman)';
+      msg.style.color = '#e74c3c';
+    }
+  }
+
+  function checkQ(qNum, isCorrect, btnElem) {
+    if (answered[qNum]) return;
+
+    const parent = btnElem.closest('.q-card');
+    const buttons = parent.querySelectorAll('.opt-btn');
+    const fb = document.getElementById('fb' + qNum);
+
+    if (isCorrect) {
+      btnElem.classList.add('correct');
+      fb.innerHTML = '✨ Keren sekali Laskar! Jawabanmu 100% Benar! 🎉';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      correctCount++;
+      answered[qNum] = true;
+    } else {
+      btnElem.classList.add('wrong');
+      fb.innerHTML = 'Hampir tepat! Yuk coba pilih jawaban yang lain 😊';
+      fb.className = 'feedback show err';
+      playSound('wrong');
+      return;
+    }
+
+    updateScore();
+  }
+
+  function updateScore() {
+    const scoreBoard = document.getElementById('scoreBoard');
+    scoreBoard.innerHTML = `⭐ Skor: ${correctCount} / 8 Soal Berhasil!`;
+    if (correctCount === 8) {
+      scoreBoard.innerHTML = `🏆 HEBAT! 8 / 8 Soal IT Selesai dengan Sempurna! 🌟`;
+      scoreBoard.style.color = '#27ae60';
+    }
+  }
+
+  function resetAll() {
+    correctCount = 0;
+    for (let k in answered) delete answered[k];
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      b.classList.remove('correct', 'wrong');
+    });
+    document.querySelectorAll('.feedback').forEach(f => {
+      f.className = 'feedback';
+      f.innerHTML = '';
+    });
+    document.getElementById('mouseTestMsg').innerHTML = '(Klik tombol biru untuk Klik Kiri, hijau untuk Klik Kanan, merah untuk Roda Scroll)';
+    document.getElementById('mouseTestMsg').style.color = '#2980b9';
+    updateScore();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Worksheet Laskar — Pengurangan (Ringkas)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Times New Roman', serif; font-size: 13pt; color: #000; background: #fff; line-height: 1.4; }
+  .page { width: 210mm; min-height: 297mm; padding: 14mm 16mm; margin: 0 auto; page-break-after: always; }
+  .page:last-child { page-break-after: auto; }
+  .hd { display: flex; justify-content: space-between; align-items: center; border: 2px solid #000; padding: 6px 12px; margin-bottom: 12px; }
+  .hd h1 { font-family: Arial, sans-serif; font-size: 14pt; }
+  .hd .day { font-family: Arial, sans-serif; font-size: 10pt; font-weight: bold; border: 2px solid #000; padding: 4px 10px; }
+  .instr { font-family: Arial, sans-serif; font-size: 9.5pt; font-style: italic; border-left: 3px solid #000; padding-left: 8px; margin: 8px 0; }
+  .prob { border: 2px solid #000; padding: 8px 12px; margin: 8px 0; page-break-inside: avoid; }
+  .lbl { font-family: Arial, sans-serif; font-size: 9pt; font-weight: bold; margin-bottom: 6px; }
+  .items { display: flex; gap: 6px; flex-wrap: wrap; margin: 4px 0; }
+  .box { width: 46px; height: 46px; border: 2px solid #000; display: flex; align-items: center; justify-content: center; font-size: 24pt; flex-shrink: 0; position: relative; }
+  .box.x::after { content: "✕"; position: absolute; font-family: Arial, sans-serif; font-size: 28pt; font-weight: bold; }
+  .row { display: flex; align-items: center; gap: 10px; margin-top: 8px; flex-wrap: wrap; }
+  .n { font-size: 26pt; font-weight: bold; min-width: 24px; text-align: center; }
+  .s { font-size: 24pt; font-weight: bold; min-width: 20px; text-align: center; }
+  .ans { width: 46px; height: 46px; border: 3px solid #000; }
+  .key { font-family: Arial, sans-serif; font-size: 8.5pt; border: 1px dashed #000; padding: 5px 8px; margin-top: 8px; }
+  table.q { width: 100%; border-collapse: collapse; margin-top: 8px; }
+  table.q td, table.q th { border: 1.5px solid #000; padding: 6px 10px; font-family: Arial, sans-serif; font-size: 11pt; }
+  table.q th { background: #000; color: #fff; font-size: 9pt; }
+  .opt { border: 2px solid #000; padding: 3px 12px; margin: 0 5px; font-size: 15pt; }
+  .cert { border: 4px double #000; padding: 18px; text-align: center; margin-top: 12px; }
+  .cert h2 { font-family: Arial, sans-serif; font-size: 18pt; }
+  .cert .nm { font-size: 24pt; font-weight: bold; border-bottom: 3px solid #000; display: inline-block; padding: 0 28px 4px; margin: 10px 0; }
+  .sign { display: flex; justify-content: space-between; margin-top: 12px; font-family: Arial, sans-serif; font-size: 9pt; }
+  .sign div { text-align: center; }
+  .sign .ln { border-bottom: 1.5px solid #000; width: 110px; height: 18px; margin-bottom: 4px; }
+  @media print { body { margin: 0; } .page { margin: 0; width: 100%; } }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="page">
+  <div style="border: 3px solid #000; padding: 28px 20px; text-align: center; margin-top: 50px;">
+    <div style="font-family: Arial, sans-serif; font-size: 16pt; font-weight: bold;">SEKOLAH DETEKTIF BINTANG</div>
+    <div style="border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 10px 0; margin: 14px 0;">
+      <div style="font-size: 18pt; font-family: Arial, sans-serif; font-weight: bold;">LASKAR</div>
+      <div style="font-size: 11pt; font-family: Arial, sans-serif;">Kelas 1 SD &nbsp;|&nbsp; Misi: Pengurangan</div>
+    </div>
+    <div style="font-size: 54pt; margin: 14px 0;">➖</div>
+    <div style="font-family: Arial, sans-serif; font-size: 10pt;">5 Misi &bull; 5 Hari</div>
+  </div>
+  <div style="margin-top: 24px; border: 2px solid #000; padding: 10px 14px; font-family: Arial, sans-serif; font-size: 10pt;">
+    📦 = benda &nbsp;|&nbsp; ✕ = diambil (coret sendiri) &nbsp;|&nbsp; □ = tulis jawaban
+  </div>
+  <table style="width: 100%; margin-top: 16px; font-family: Arial, sans-serif; font-size: 10pt;">
+    <tr><td style="padding:6px 0; width:40%;">Nama :</td><td style="border-bottom: 1.5px solid #000;"></td></tr>
+    <tr><td style="padding:6px 0;">Tanda tangan Ayah/Ibu :</td><td style="border-bottom: 1.5px solid #000;"></td></tr>
+  </table>
+</div>
+
+<!-- HARI 1 -->
+<div class="page">
+  <div class="hd"><h1>➖ Misi 1: Ada yang Diambil!</h1><div class="day">HARI 1</div></div>
+  <div class="instr">Coret benda yang diambil, lalu tulis sisanya.</div>
+
+  <div class="prob">
+    <div class="lbl">Contoh: 4 bintang, 1 diambil.</div>
+    <div class="items"><div class="box">⭐</div><div class="box">⭐</div><div class="box">⭐</div><div class="box x">⭐</div></div>
+    <div class="row"><div class="n">4</div><div class="s">−</div><div class="n">1</div><div class="s">=</div><div class="box">3</div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 1: Coret 1 apel.</div>
+    <div class="items"><div class="box">🍎</div><div class="box">🍎</div><div class="box">🍎</div></div>
+    <div class="row"><div class="n">3</div><div class="s">−</div><div class="n">1</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 2: Coret 2 ikan.</div>
+    <div class="items"><div class="box">🐟</div><div class="box">🐟</div><div class="box">🐟</div><div class="box">🐟</div><div class="box">🐟</div></div>
+    <div class="row"><div class="n">5</div><div class="s">−</div><div class="n">2</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="key"><strong>Kunci:</strong> 1) 2 &nbsp;|&nbsp; 2) 3</div>
+</div>
+
+<!-- HARI 2 -->
+<div class="page">
+  <div class="hd"><h1>➖ Misi 2: Berapa Tersisa?</h1><div class="day">HARI 2</div></div>
+  <div class="instr">Coret sesuai angka, lalu tulis sisanya.</div>
+
+  <div class="prob">
+    <div class="lbl">Soal 1: Coret 1 bunga.</div>
+    <div class="items"><div class="box">🌸</div><div class="box">🌸</div><div class="box">🌸</div><div class="box">🌸</div></div>
+    <div class="row"><div class="n">4</div><div class="s">−</div><div class="n">1</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 2: Coret 3 balon.</div>
+    <div class="items"><div class="box">🎈</div><div class="box">🎈</div><div class="box">🎈</div><div class="box">🎈</div><div class="box">🎈</div></div>
+    <div class="row"><div class="n">5</div><div class="s">−</div><div class="n">3</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 3: Coret 2 bola.</div>
+    <div class="items"><div class="box">⚽</div><div class="box">⚽</div><div class="box">⚽</div></div>
+    <div class="row"><div class="n">3</div><div class="s">−</div><div class="n">2</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="instr">Lingkari jawaban yang benar.</div>
+  <table class="q">
+    <tr><td style="width:40%; font-family:'Times New Roman',serif; font-size:13pt; font-weight:bold;">5 − 1 = ?</td><td style="text-align:center;"><span class="opt">2</span><span class="opt">4</span><span class="opt">6</span></td></tr>
+    <tr><td style="font-family:'Times New Roman',serif; font-size:13pt; font-weight:bold;">4 − 2 = ?</td><td style="text-align:center;"><span class="opt">1</span><span class="opt">2</span><span class="opt">3</span></td></tr>
+  </table>
+
+  <div class="key"><strong>Kunci:</strong> 1) 3 &nbsp;|&nbsp; 2) 2 &nbsp;|&nbsp; 3) 1 &nbsp;|&nbsp; pilihan: 5−1=4, 4−2=2</div>
+</div>
+
+<!-- HARI 3 -->
+<div class="page">
+  <div class="hd"><h1>➖ Misi 3: Tulis Kalimat Angka</h1><div class="day">HARI 3</div></div>
+  <div class="instr">Hitung semua benda, hitung yang dicoret (✕), lalu isi kotak.</div>
+
+  <div class="prob">
+    <div class="lbl">Soal 1: Kue</div>
+    <div class="items"><div class="box">🍰</div><div class="box">🍰</div><div class="box x">🍰</div><div class="box x">🍰</div><div class="box">🍰</div></div>
+    <div class="row"><div class="ans"></div><div class="s">−</div><div class="ans"></div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 2: Mobil</div>
+    <div class="items"><div class="box">🚗</div><div class="box x">🚗</div><div class="box">🚗</div><div class="box">🚗</div></div>
+    <div class="row"><div class="ans"></div><div class="s">−</div><div class="ans"></div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl">Soal 3: Kucing</div>
+    <div class="items"><div class="box">🐱</div><div class="box x">🐱</div><div class="box x">🐱</div><div class="box x">🐱</div><div class="box">🐱</div><div class="box">🐱</div></div>
+    <div class="row"><div class="ans"></div><div class="s">−</div><div class="ans"></div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="key"><strong>Kunci:</strong> 1) 5−2=3 &nbsp;|&nbsp; 2) 4−1=3 &nbsp;|&nbsp; 3) 6−3=3</div>
+</div>
+
+<!-- HARI 4 -->
+<div class="page">
+  <div class="hd"><h1>➖ Misi 4: Cerita Detektif</h1><div class="day">HARI 4</div></div>
+  <div class="instr">Baca cerita, coret yang pergi/diambil, tulis jawabannya.</div>
+
+  <div class="prob">
+    <div class="lbl" style="font-weight:normal; font-style:italic;">"Laskar punya 6 permen, dimakan 2. Sisa?"</div>
+    <div class="items"><div class="box">🍬</div><div class="box">🍬</div><div class="box">🍬</div><div class="box">🍬</div><div class="box">🍬</div><div class="box">🍬</div></div>
+    <div class="row"><div class="n">6</div><div class="s">−</div><div class="n">2</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl" style="font-weight:normal; font-style:italic;">"Di meja 5 buku, Ayah ambil 3. Sisa?"</div>
+    <div class="items"><div class="box">📚</div><div class="box">📚</div><div class="box">📚</div><div class="box">📚</div><div class="box">📚</div></div>
+    <div class="row"><div class="n">5</div><div class="s">−</div><div class="n">3</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="prob">
+    <div class="lbl" style="font-weight:normal; font-style:italic;">"7 burung, 4 terbang. Sisa?"</div>
+    <div class="items"><div class="box">🐦</div><div class="box">🐦</div><div class="box">🐦</div><div class="box">🐦</div><div class="box">🐦</div><div class="box">🐦</div><div class="box">🐦</div></div>
+    <div class="row"><div class="n">7</div><div class="s">−</div><div class="n">4</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <div class="key"><strong>Kunci:</strong> 1) 4 &nbsp;|&nbsp; 2) 2 &nbsp;|&nbsp; 3) 3</div>
+</div>
+
+<!-- HARI 5 -->
+<div class="page">
+  <div class="hd"><h1>➖ Misi 5: Ujian Detektif</h1><div class="day">HARI 5</div></div>
+  <div class="instr">Kerjakan sendiri dulu ya!</div>
+
+  <div class="prob">
+    <div class="lbl">No. 1: Coret 2 bintang.</div>
+    <div class="items"><div class="box">⭐</div><div class="box">⭐</div><div class="box">⭐</div><div class="box">⭐</div><div class="box">⭐</div></div>
+    <div class="row"><div class="n">5</div><div class="s">−</div><div class="n">2</div><div class="s">=</div><div class="ans"></div></div>
+  </div>
+
+  <table class="q">
+    <tr><th style="width:8%;">No</th><th style="width:52%;">Soal</th><th style="width:40%;">Jawaban</th></tr>
+    <tr><td style="text-align:center; font-weight:bold;">2</td><td style="font-family:'Times New Roman',serif; font-size:13pt; font-weight:bold;">4 − 1 = ?</td><td style="height:38px;"></td></tr>
+    <tr><td style="text-align:center; font-weight:bold;">3</td><td style="font-family:'Times New Roman',serif; font-size:13pt; font-weight:bold;">6 − 3 = ?</td><td></td></tr>
+    <tr><td style="text-align:center; font-weight:bold;">4</td><td style="font-family:'Times New Roman',serif; font-size:13pt; font-weight:bold;">7 − 2 = ?</td><td></td></tr>
+    <tr><td style="text-align:center; font-weight:bold;">5</td><td style="font-size:11pt;">Ibu punya 8 telur, 3 pecah. Sisa?</td><td></td></tr>
+  </table>
+
+  <div class="key"><strong>Kunci:</strong> 1) 3 &nbsp;|&nbsp; 2) 3 &nbsp;|&nbsp; 3) 3 &nbsp;|&nbsp; 4) 5 &nbsp;|&nbsp; 5) 5</div>
+
+  <div class="cert">
+    <div style="font-family: Arial, sans-serif; font-size: 9pt; letter-spacing: 2px;">✦ SERTIFIKAT ✦</div>
+    <h2>DETEKTIF ANGKA ⭐</h2>
+    <p style="margin:6px 0;">Diberikan kepada</p>
+    <div class="nm">LASKAR</div>
+    <p style="margin:6px 0;">Telah menyelesaikan Misi Pengurangan</p>
+    <div style="font-size: 18pt; letter-spacing: 4px; margin: 8px 0;">★ ★ ★ ★ ★</div>
+    <div class="sign"><div><div class="ln"></div>Ayah/Ibu</div><div><div class="ln"></div>Tanggal</div></div>
+  </div>
+</div>
+
+</body>
+</html>

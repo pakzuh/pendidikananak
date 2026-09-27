@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Persiapan Lengkap 4 Mapel Project Week — Laskar (Senin, 21 September 2026)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #eaf2f8;
+    color: #2c3e50;
+    line-height: 1.45;
+    padding: 16px;
+  }
+  .sheet {
+    max-width: 860px;
+    background: #ffffff;
+    margin: 0 auto;
+    padding: 24px 28px;
+    border-radius: 18px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+    border: 3px solid #2980b9;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+    color: #ffffff;
+    border-radius: 14px;
+    padding: 18px 20px;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 20pt;
+    color: #f1c40f;
+    margin-bottom: 5px;
+  }
+  .header .sub {
+    font-size: 11.5pt;
+    font-weight: bold;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+    font-size: 10pt;
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 8px;
+  }
+
+  /* Control & Score Bar */
+  .control-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    padding: 9px 16px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  .score-badge {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #d35400;
+  }
+  .btn-action {
+    background: #2980b9;
+    color: white;
+    border: none;
+    padding: 7px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10pt;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .btn-action:hover { background: #1f618d; transform: scale(1.02); }
+
+  /* Mapel Box */
+  .sec-box {
+    border: 2.5px solid #bdc3c7;
+    border-radius: 14px;
+    padding: 16px 18px;
+    margin-bottom: 22px;
+    background: #ffffff;
+    page-break-inside: avoid;
+  }
+  .sec-math { border-color: #e74c3c; }
+  .sec-it   { border-color: #3498db; }
+  .sec-pe   { border-color: #27ae60; }
+  .sec-indo { border-color: #e67e22; }
+
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 8px;
+    color: #ffffff;
+    font-size: 12.5pt;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+  .sec-math .sec-title { background: #e74c3c; }
+  .sec-it .sec-title   { background: #3498db; }
+  .sec-pe .sec-title   { background: #27ae60; }
+  .sec-indo .sec-title { background: #e67e22; }
+
+  .tip-box {
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 14px;
+  }
+  .sec-math .tip-box { background: #fdf2e9; border-left: 5px solid #e74c3c; }
+  .sec-it .tip-box   { background: #ebf5fb; border-left: 5px solid #3498db; }
+  .sec-pe .tip-box   { background: #eafaf1; border-left: 5px solid #27ae60; }
+  .sec-indo .tip-box { background: #fef5e7; border-left: 5px solid #e67e22; }
+
+  /* Question Cards */
+  .q-card {
+    background: #fafbfc;
+    border: 2px solid #d5dbdb;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+  }
+  .q-num {
+    font-size: 11pt;
+    font-weight: bold;
+    color: #2c3e50;
+    margin-bottom: 8px;
+  }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .opt-btn {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 9px 12px;
+    font-size: 10.5pt;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s;
+  }
+  .opt-btn:hover { background: #edf2f7; border-color: #2980b9; }
+  .opt-btn.correct { background: #d4efdf !important; border-color: #27ae60 !important; color: #196f3d; font-weight: bold; }
+  .opt-btn.wrong   { background: #fadbd8 !important; border-color: #e74c3c !important; color: #943126; }
+
+  /* Visual Garden Container */
+  .garden-visual {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #f4fbf7;
+    border: 2px dashed #2ecc71;
+    border-radius: 12px;
+    padding: 14px;
+    margin: 10px 0;
+  }
+  .garden-pot {
+    text-align: center;
+    background: #fff;
+    border: 1.5px solid #27ae60;
+    border-radius: 8px;
+    padding: 8px 12px;
+  }
+
+  /* Feedback */
+  .feedback {
+    margin-top: 8px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok  { color: #27ae60; }
+  .feedback.err { color: #c0392b; }
+
+  /* Certificate */
+  .cert {
+    border: 4px double #e67e22;
+    background: #fffbf7;
+    padding: 20px;
+    text-align: center;
+    border-radius: 14px;
+    margin-top: 25px;
+    page-break-inside: avoid;
+  }
+  .cert h2 { font-size: 17pt; color: #d35400; margin: 4px 0; }
+  .cert .kid-name {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #e67e22;
+    display: inline-block;
+    padding: 2px 30px;
+    margin: 8px 0;
+  }
+
+  /* Parent Key */
+  .parent-key {
+    background: #fbf0d9;
+    border: 2px dashed #f39c12;
+    padding: 14px 18px;
+    border-radius: 10px;
+    margin-top: 22px;
+    font-size: 9.5pt;
+  }
+  .parent-key h3 { color: #b9770e; font-size: 11pt; margin-bottom: 6px; }
+
+  @media print {
+    body { background: #fff; padding: 0; }
+    .sheet { box-shadow: none; border: 2px solid #000; width: 100%; max-width: 100%; padding: 10mm 12mm; }
+    .control-bar, .btn-action { display: none !important; }
+    .opt-btn { border: 1.5px solid #000; background: #fff !important; color: #000 !important; }
+    .feedback { display: none !important; }
+    .parent-key { page-break-before: always; }
+  }
+</style>
+</head>
+<body>
+
+<div class="sheet">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🌱 MISI SUKSES 4 MAPEL SENIN BESOK 🌱</h1>
+    <div class="sub">PROJECT WEEK TERM I (2026/2027) — SD MISS MALANG</div>
+    <div class="meta">
+      <span>🗓️ <b>Hari:</b> Senin, 21 September 2026</span>
+      <span>👦 <b>Siswa:</b> Laskar (Kelas 2)</span>
+      <span>📚 <b>Mapel:</b> Math, IT, PE & Bahasa Indonesia</span>
+    </div>
+  </div>
+
+  <!-- Score & Control Bar -->
+  <div class="control-bar">
+    <div class="score-badge" id="scoreBoard">⭐ Skor: 0 / 10 Soal Berhasil!</div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn-action" onclick="resetAll()">🔄 Ulangi</button>
+      <button class="btn-action" style="background:#27ae60;" onclick="window.print()">🖨️ Cetak Lembar Ini</button>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 1. MATHEMATICS (My Math Garden: Multiply, Divide, and Grow!) -->
+  <!-- ============================================================== -->
+  <div class="sec-box sec-math">
+    <div class="sec-title">
+      🌻 1. Mathematics (07.30 – 08.30) — My Math Garden: Stage 1 BUILD IT!
+    </div>
+    <div class="tip-box">
+      <b>💡 Konsep Penting My Math Garden:</b><br>
+      • <b>Equal Groups</b> = Kelompok yang <u>sama banyak</u> isinya.<br>
+      • <b>Perkalian (Multiplication)</b> = Penjumlahan berulang dari kelompok yang sama banyak.<br>
+      • Contoh besok di kebun 3D: <b>3 Pot Bunga</b>, masing-masing berisi <b>2 Bunga</b> ➔ 2 + 2 + 2 = 6 bunga (3 × 2 = 6).
+    </div>
+
+    <!-- Soal 1 (Math) -->
+    <div class="q-card" id="q1">
+      <div class="q-num">Soal 1. Di kebun matematika Laskar ada <b>3 Pot Bunga</b>. Setiap pot ditanami <b>2 Bunga</b> mawar.</div>
+      
+      <div class="garden-visual">
+        <div class="garden-pot">
+          <svg viewBox="0 0 60 50" width="50" height="42">
+            <rect x="15" y="28" width="30" height="20" rx="3" fill="#d35400"/>
+            <circle cx="23" cy="18" r="8" fill="#e74c3c"/><circle cx="23" cy="18" r="3" fill="#f1c40f"/>
+            <circle cx="37" cy="18" r="8" fill="#e74c3c"/><circle cx="37" cy="18" r="3" fill="#f1c40f"/>
+          </svg>
+          <div style="font-size:9pt; font-weight:bold;">Pot 1: 2 Bunga</div>
+        </div>
+        <div class="garden-pot">
+          <svg viewBox="0 0 60 50" width="50" height="42">
+            <rect x="15" y="28" width="30" height="20" rx="3" fill="#d35400"/>
+            <circle cx="23" cy="18" r="8" fill="#e74c3c"/><circle cx="23" cy="18" r="3" fill="#f1c40f"/>
+            <circle cx="37" cy="18" r="8" fill="#e74c3c"/><circle cx="37" cy="18" r="3" fill="#f1c40f"/>
+          </svg>
+          <div style="font-size:9pt; font-weight:bold;">Pot 2: 2 Bunga</div>
+        </div>
+        <div class="garden-pot">
+          <svg viewBox="0 0 60 50" width="50" height="42">
+            <rect x="15" y="28" width="30" height="20" rx="3" fill="#d35400"/>
+            <circle cx="23" cy="18" r="8" fill="#e74c3c"/><circle cx="23" cy="18" r="3" fill="#f1c40f"/>
+            <circle cx="37" cy="18" r="8" fill="#e74c3c"/><circle cx="37" cy="18" r="3" fill="#f1c40f"/>
+          </svg>
+          <div style="font-size:9pt; font-weight:bold;">Pot 3: 2 Bunga</div>
+        </div>
+      </div>
+
+      <div style="font-size:10.5pt; margin-bottom:8px;">Berapa jumlah seluruh bunga dalam bentuk penjumlahan berulang dan perkalian?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(1, true, this)">
+          <span>🌸</span> 2 + 2 + 2 = 6 bunga &nbsp;(3 × 2 = 6)
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>🍂</span> 3 + 2 = 5 bunga
+        </button>
+        <button class="opt-btn" onclick="checkQ(1, false, this)">
+          <span>🥀</span> 2 + 2 = 4 bunga
+        </button>
+      </div>
+      <div class="feedback" id="fb1"></div>
+    </div>
+
+    <!-- Soal 2 (Math) -->
+    <div class="q-card" id="q2">
+      <div class="q-num">Soal 2. Laskar menempel <b>3 Pohon Apel</b> di kebun. Setiap pohon memiliki <b>3 Buah Apel</b> (3 pohon × 3 apel). Berapa banyak seluruh apel?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(2, true, this)">
+          <span>🍎</span> 9 Apel &nbsp;(3 + 3 + 3 = 9)
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>🍏</span> 6 Apel &nbsp;(3 + 3 = 6)
+        </button>
+        <button class="opt-btn" onclick="checkQ(2, false, this)">
+          <span>🍐</span> 12 Apel
+        </button>
+      </div>
+      <div class="feedback" id="fb2"></div>
+    </div>
+
+    <!-- Soal 3 (Math) -->
+    <div class="q-card" id="q3">
+      <div class="q-num">Soal 3. Apa yang harus Laskar lakukan pada tahap <b>Stage 1 – BUILD IT!</b> besok pagi?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(3, true, this)">
+          <span>✂️</span> Menggunting, melipat, dan menempel template kebun 3D bersama kelompok
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>😴</span> Tidur di lantai kelas
+        </button>
+        <button class="opt-btn" onclick="checkQ(3, false, this)">
+          <span>🏃</span> Lari-lari keliling sekolah
+        </button>
+      </div>
+      <div class="feedback" id="fb3"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 2. INFORMATION AND TECHNOLOGY (IT) -->
+  <!-- ============================================================== -->
+  <div class="sec-box sec-it">
+    <div class="sec-title">
+      💻 2. Information and Technology (IT) — Literasi Digital & Komputer
+    </div>
+    <div class="tip-box">
+      <b>💡 Keterampilan IT Kelas 2:</b><br>
+      • <b>Monitor:</b> Layar untuk melihat gambar & teks.<br>
+      • <b>Mouse:</b> Jari telunjuk memencet <b>Klik Kiri</b> untuk memilih tombol/gambar.<br>
+      • <b>Aturan Keamanan:</b> Jangan makan/minum dekat komputer agar tidak tumpah dan korslet.
+    </div>
+
+    <!-- Soal 4 (IT) -->
+    <div class="q-card" id="q4">
+      <div class="q-num">Soal 4. Tombol pada mouse yang ditekan menggunakan <b>jari telunjuk</b> untuk memilih objek di komputer dinamakan...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(4, true, this)">
+          <span>🖱️</span> Klik Kiri (Left Click)
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>🖱️</span> Klik Kanan (Right Click)
+        </button>
+        <button class="opt-btn" onclick="checkQ(4, false, this)">
+          <span>🔴</span> Roda Scroll
+        </button>
+      </div>
+      <div class="feedback" id="fb4"></div>
+    </div>
+
+    <!-- Soal 5 (IT) -->
+    <div class="q-card" id="q5">
+      <div class="q-num">Soal 5. Mengapa kita tidak boleh menaruh botol minum yang terbuka di sebelah keyboard komputer?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(5, true, this)">
+          <span>⚠️</span> Karena jika tersenggol dan airnya tumpah, komputer bisa rusak
+        </button>
+        <button class="opt-btn" onclick="checkQ(5, false, this)">
+          <span>😋</span> Supaya komputernya bisa ikut minum
+        </button>
+        <button class="opt-btn" onclick="checkQ(5, false, this)">
+          <span>🖥️</span> Agar layar komputer jadi basah
+        </button>
+      </div>
+      <div class="feedback" id="fb5"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 3. PHYSICAL EDUCATION (PE) / PJOK — Mr. Arief -->
+  <!-- ============================================================== -->
+  <div class="sec-box sec-pe">
+    <div class="sec-title">
+      🏃‍♂️ 3. Physical Education (PE) / PJOK — Mr. Arief
+    </div>
+    <div class="tip-box">
+      <b>💡 Gerak Lokomotor (Pindah Tempat):</b><br>
+      • Jalan & Lari.<br>
+      • <b>Melompat</b> = tumpuan <b>1 kaki</b>.<br>
+      • <b>Meloncat</b> = tumpuan <b>2 kaki</b> bersamaan (seperti kelinci/katak).<br>
+      • <b>Tugas Mewarnai:</b> Lembar gambar kegiatan olahraga <b>Sepak Bola</b>.
+    </div>
+
+    <!-- Soal 6 (PE) -->
+    <div class="q-card" id="q6">
+      <div class="q-num">Soal 6. Manakah perbedaan yang benar antara <b>Melompat</b> dan <b>Meloncat</b>?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(6, true, this)">
+          <span>🦿</span> Melompat bertumpu pada 1 kaki, Meloncat bertumpu pada 2 kaki
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>🙈</span> Melompat sambil tidur, Meloncat sambil makan
+        </button>
+        <button class="opt-btn" onclick="checkQ(6, false, this)">
+          <span>🦶</span> Semuanya bertumpu pada kepala
+        </button>
+      </div>
+      <div class="feedback" id="fb6"></div>
+    </div>
+
+    <!-- Soal 7 (PE) -->
+    <div class="q-card" id="q7">
+      <div class="q-num">Soal 7. Besok saat pelajaran PJOK, Laskar akan mewarnai gambar olahraga sepak bola. Apa alat yang harus dibawa?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(7, true, this)">
+          <span>🖍️</span> Krayon atau pensil warna
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>🍳</span> Panci goreng
+        </button>
+        <button class="opt-btn" onclick="checkQ(7, false, this)">
+          <span>🪥</span> Sikat gigi
+        </button>
+      </div>
+      <div class="feedback" id="fb7"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- 4. BAHASA INDONESIA (Cerita dalam Gambar) -->
+  <!-- ============================================================== -->
+  <div class="sec-box sec-indo">
+    <div class="sec-title">
+      📖 4. Bahasa Indonesia (13.00 – 14.00) — Cerita dalam Gambar
+    </div>
+    <div class="tip-box">
+      <b>💡 Alur Cerita Bergambar Seri:</b><br>
+      • <b>Awal:</b> Pengenalan tokoh dan peristiwa yang baru dimulai.<br>
+      • <b>Tengah:</b> Kegiatan inti yang sedang dikerjakan tokoh.<br>
+      • <b>Akhir:</b> Penutup cerita (kegiatan selesai, bersih, atau senang).
+    </div>
+
+    <!-- Soal 8 (B. Indo) -->
+    <div class="q-card" id="q8">
+      <div class="q-num">Soal 8. Perhatikan alur 3 gambar cerita berikut:<br>
+      (1) Laskar bangun tidur dan merapikan kasur.<br>
+      (2) Laskar mandi dan memakai seragam sekolah yang rapi.<br>
+      (3) Laskar berpamitan pada Ayah dan Ibu lalu berangkat ke sekolah.<br>
+      Apa urutan alur ceritanya?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(8, true, this)">
+          <span>🌅</span> Gambar (1) Awal ➔ Gambar (2) Tengah ➔ Gambar (3) Akhir
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>🔄</span> Berangkat sekolah dulu, baru bangun tidur
+        </button>
+        <button class="opt-btn" onclick="checkQ(8, false, this)">
+          <span>🛁</span> Mandi dulu baru bangun dari kasur
+        </button>
+      </div>
+      <div class="feedback" id="fb8"></div>
+    </div>
+
+    <!-- Soal 9 (B. Indo) -->
+    <div class="q-card" id="q9">
+      <div class="q-num">Soal 9. Berdasarkan cerita di atas, apa <b>JUDUL</b> yang paling tepat untuk gambar seri tersebut?</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(9, true, this)">
+          <span>🎒</span> Semangat Pagi Berangkat ke Sekolah
+        </button>
+        <button class="opt-btn" onclick="checkQ(9, false, this)">
+          <span>🏊</span> Berenang di Laut Malam Hari
+        </button>
+        <button class="opt-btn" onclick="checkQ(9, false, this)">
+          <span>🚀</span> Menjelajah Planet Mars
+        </button>
+      </div>
+      <div class="feedback" id="fb9"></div>
+    </div>
+
+    <!-- Soal 10 (Sikap / Teamwork) -->
+    <div class="q-card" id="q10">
+      <div class="q-num">Soal 10. Selama Project Week besok (Math, IT, PE, B. Indo), sikap anak hebat yang dipuji guru adalah...</div>
+      <div class="options-grid">
+        <button class="opt-btn" onclick="checkQ(10, true, this)">
+          <span>🌟</span> Bekerja sama dengan teman, berani bertanya, dan percaya diri
+        </button>
+        <button class="opt-btn" onclick="checkQ(10, false, this)">
+          <span>😭</span> Menangis dan tidak mau mengerjakan bersama teman
+        </button>
+        <button class="opt-btn" onclick="checkQ(10, false, this)">
+          <span>🙅</span> Merusak karya kelompok lain
+        </button>
+      </div>
+      <div class="feedback" id="fb10"></div>
+    </div>
+  </div>
+
+  <!-- Certificate Award -->
+  <div class="cert" id="certBox">
+    <div style="font-size:10.5pt; letter-spacing:2px; font-weight:bold; color:#7f8c8d;">✦ PIAGAM BINTANG KEHORMATAN ✦</div>
+    <h2>🏆 JUARA PERSIAPAN PROJECT WEEK 🏆</h2>
+    <p style="margin:4px 0; font-size:11pt;">Dianugerahkan dengan penuh rasa bangga kepada:</p>
+    <div class="kid-name">LASKAR</div>
+    <p style="margin:4px 0; font-size:11pt; color:#2c3e50;">
+      Siap dan mantap menghadapi 4 Mapel (<b>Math, IT, PE, Bahasa Indonesia</b>) pada hari <b>Senin, 21 September 2026</b> dengan hebat!
+    </p>
+    <div style="font-size:18pt; letter-spacing:6px; color:#f39c12; margin:10px 0;">
+      ★★★★★
+    </div>
+    <p style="font-size:9.5pt; font-style:italic; color:#7f8c8d;">"Terus bersemangat, berkarya, dan raih prestasi terbaik!"</p>
+  </div>
+
+  <!-- Parent Key Note -->
+  <div class="parent-key">
+    <h3>📌 Kunci Jawaban & Panduan Orang Tua di Rumah:</h3>
+    <ol style="margin-left: 20px; line-height: 1.6;">
+      <li><b>Soal 1 (Math):</b> 2 + 2 + 2 = 6 bunga (3 × 2 = 6). Penjumlahan berulang dari kelompok sama banyak.</li>
+      <li><b>Soal 2 (Math):</b> 3 × 3 = 9 apel (3 pohon, masing-masing 3 apel).</li>
+      <li><b>Soal 3 (Math):</b> Menggunting, melipat, dan menempel template kebun 3D (BUILD IT!).</li>
+      <li><b>Soal 4 (IT):</b> Klik Kiri (Left click) ditekan jari telunjuk untuk memilih.</li>
+      <li><b>Soal 5 (IT):</b> Tidak boleh membawa air terbuka dekat komputer karena bahaya tumpah/rusak.</li>
+      <li><b>Soal 6 (PE):</b> Melompat tumpuan 1 kaki, Meloncat tumpuan 2 kaki.</li>
+      <li><b>Soal 7 (PE):</b> Krayon / pensil warna untuk mewarnai sepak bola.</li>
+      <li><b>Soal 8 (B. Indo):</b> Urutan 1 (Awal) ➔ 2 (Tengah) ➔ 3 (Akhir).</li>
+      <li><b>Soal 9 (B. Indo):</b> Semangat Pagi Berangkat ke Sekolah.</li>
+      <li><b>Soal 10 (Karakter):</b> Bekerja sama, berani bertanya, dan percaya diri.</li>
+    </ol>
+  </div>
+
+</div>
+
+<!-- Interactive Audio & Score Scripts -->
+<script>
+  let correctCount = 0;
+  const answered = {};
+
+  function playSound(type) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } else if (type === 'wrong') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(220, ctx.currentTime);
+        osc.frequency.setValueAtTime(180, ctx.currentTime + 0.15);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.3);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.3);
+      }
+    } catch(e) {}
+  }
+
+  function checkQ(qNum, isCorrect, btnElem) {
+    if (answered[qNum]) return;
+
+    const parent = btnElem.closest('.q-card');
+    const fb = document.getElementById('fb' + qNum);
+
+    if (isCorrect) {
+      btnElem.classList.add('correct');
+      fb.innerHTML = '✨ Hebat sekali Laskar! Jawabanmu 100% Benar! 🎉';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      correctCount++;
+      answered[qNum] = true;
+    } else {
+      btnElem.classList.add('wrong');
+      fb.innerHTML = 'Hampir tepat! Yuk diskusikan bersama Bunda/Ayah 😊';
+      fb.className = 'feedback show err';
+      playSound('wrong');
+      return;
+    }
+
+    updateScore();
+  }
+
+  function updateScore() {
+    const scoreBoard = document.getElementById('scoreBoard');
+    scoreBoard.innerHTML = `⭐ Skor: ${correctCount} / 10 Soal Berhasil!`;
+    if (correctCount === 10) {
+      scoreBoard.innerHTML = `🏆 SEMPURNA! 10 / 10 Soal 4 Mapel Selesai! Kamu Hebat Sekali, Laskar! 🌟`;
+      scoreBoard.style.color = '#27ae60';
+    }
+  }
+
+  function resetAll() {
+    correctCount = 0;
+    for (let k in answered) delete answered[k];
+    document.querySelectorAll('.opt-btn').forEach(b => {
+      b.classList.remove('correct', 'wrong');
+    });
+    document.querySelectorAll('.feedback').forEach(f => {
+      f.className = 'feedback';
+      f.innerHTML = '';
+    });
+    updateScore();
+  }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Worksheet Laskar — Minggu 2: Misi Pengurangan</title>
+<style>
+  /* ===== RESET & BASE ===== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Times New Roman', serif;
+    font-size: 13pt;
+    color: #000;
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  /* ===== PAGE ===== */
+  .page {
+    width: 210mm;
+    min-height: 297mm;
+    padding: 15mm 18mm 15mm 18mm;
+    margin: 0 auto;
+    position: relative;
+    page-break-after: always;
+  }
+  .page:last-child { page-break-after: auto; }
+
+  /* ===== HEADER ===== */
+  .page-header {
+    border: 2px solid #000;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .page-header .title-block h1 {
+    font-family: Arial, sans-serif;
+    font-size: 15pt;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  .page-header .title-block p {
+    font-family: Arial, sans-serif;
+    font-size: 9pt;
+  }
+  .page-header .day-badge {
+    font-family: Arial, sans-serif;
+    font-size: 11pt;
+    font-weight: bold;
+    border: 2px solid #000;
+    padding: 6px 12px;
+    text-align: center;
+    white-space: nowrap;
+  }
+
+  /* ===== MISSION BOX ===== */
+  .mission-box {
+    border: 2px solid #000;
+    padding: 8px 12px;
+    margin-bottom: 14px;
+    background: #fff;
+  }
+  .mission-box .mission-label {
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+  }
+  .mission-box .mission-text {
+    font-family: Arial, sans-serif;
+    font-size: 12pt;
+    font-weight: bold;
+  }
+
+  /* ===== SECTION ===== */
+  .section {
+    margin-bottom: 16px;
+    page-break-inside: avoid;
+  }
+  .section-header {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+    background: #000;
+    color: #fff;
+    padding: 4px 10px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-header .icon { font-size: 11pt; }
+  .section-body {
+    border: 1.5px solid #000;
+    padding: 10px 12px;
+  }
+
+  /* ===== INSTRUCTION ===== */
+  .instruction {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    border-left: 3px solid #000;
+    padding-left: 8px;
+    margin-bottom: 10px;
+    font-style: italic;
+  }
+
+  /* ===== SUBTRACTION VISUAL BLOCKS ===== */
+  .subtraction-problem {
+    border: 2px solid #000;
+    padding: 10px 14px;
+    margin: 10px 0;
+    page-break-inside: avoid;
+  }
+  .subtraction-problem .soal-label {
+    font-family: Arial, sans-serif;
+    font-size: 9pt;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+  .items-row {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 6px 0;
+  }
+  .item-box {
+    width: 52px;
+    height: 52px;
+    border: 2px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 26pt;
+    flex-shrink: 0;
+    position: relative;
+  }
+  .item-box.crossed {
+    position: relative;
+  }
+  .item-box.crossed::after {
+    content: "✕";
+    position: absolute;
+    font-size: 30pt;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    color: #000;
+    line-height: 1;
+  }
+  .item-box.empty-cross {
+    border: 2px dashed #000;
+    background: #fafafa;
+  }
+  .subtraction-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0 6px;
+    flex-wrap: wrap;
+  }
+  .num-big {
+    font-family: 'Times New Roman', serif;
+    font-size: 28pt;
+    font-weight: bold;
+    min-width: 28px;
+    text-align: center;
+  }
+  .answer-box-big {
+    width: 52px;
+    height: 52px;
+    border: 3px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 9pt;
+    font-family: Arial, sans-serif;
+    color: #888;
+  }
+  .cross-instruction {
+    font-family: Arial, sans-serif;
+    font-size: 8.5pt;
+    font-style: italic;
+    color: #333;
+    margin: 4px 0;
+    border-left: 2px solid #555;
+    padding-left: 6px;
+  }
+
+  /* ===== NUMBER SENTENCE ===== */
+  .number-sentence-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 10px 0;
+    flex-wrap: wrap;
+  }
+  .ns-box {
+    width: 46px;
+    height: 46px;
+    border: 2.5px solid #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', serif;
+    font-size: 22pt;
+    font-weight: bold;
+  }
+  .ns-box.blank {
+    border: 2.5px solid #000;
+    background: #fff;
+    color: #fff;
+  }
+  .ns-sign {
+    font-family: 'Times New Roman', serif;
+    font-size: 26pt;
+    font-weight: bold;
+    min-width: 24px;
+    text-align: center;
+  }
+
+  /* ===== WRITE LINE ===== */
+  .write-line {
+    border-bottom: 1.5px solid #000;
+    height: 36px;
+    margin: 6px 0;
+    width: 100%;
+  }
+
+  /* ===== REWARD STRIP ===== */
+  .reward-strip {
+    margin-top: 14px;
+    border: 2px solid #000;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    page-break-inside: avoid;
+  }
+  .reward-strip .stamp-box {
+    width: 60px;
+    height: 60px;
+    border: 2px dashed #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+    text-align: center;
+    color: #555;
+  }
+  .reward-strip .reward-text {
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    font-weight: bold;
+  }
+  .reward-strip .sign-area {
+    text-align: right;
+    font-family: Arial, sans-serif;
+    font-size: 8pt;
+  }
+  .reward-strip .sign-line {
+    border-bottom: 1px solid #000;
+    width: 100px;
+    margin-top: 16px;
+  }
+
+  /* ===== PARENT NOTE ===== */
+  .parent-note {
+    margin-top: 10px;
+    border-left: 3px solid #000;
+    padding: 6px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 8.5pt;
+    background: #fff;
+    page-break-inside: avoid;
+  }
+  .parent-note strong {
+    font-size: 9pt;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== REVIEW TABLE ===== */
+  .review-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+  }
+  .review-table th, .review-table td {
+    border: 1.5px solid #000;
+    padding: 6px 10px;
+    font-family: Arial, sans-serif;
+    font-size: 10pt;
+    text-align: left;
+  }
+  .review-table th {
+    background: #000;
+    color: #fff;
+    font-size: 9pt;
+  }
+  .review-table td.answer-cell {
+    width: 40%;
+    height: 40px;
+  }
+
+  /* ===== CERTIFICATE ===== */
+  .certificate {
+    border: 4px double #000;
+    padding: 20px;
+    text-align: center;
+    margin: 10px 0;
+  }
+  .certificate h2 {
+    font-family: Arial, sans-serif;
+    font-size: 20pt;
+    margin-bottom: 8px;
+  }
+  .certificate p {
+    font-size: 12pt;
+    margin: 6px 0;
+    font-family: 'Times New Roman', serif;
+  }
+  .certificate .cert-name {
+    font-size: 26pt;
+    font-weight: bold;
+    font-family: 'Times New Roman', serif;
+    border-bottom: 3px solid #000;
+    display: inline-block;
+    padding: 0 30px 4px;
+    margin: 12px 0;
+  }
+  .star-row {
+    font-size: 20pt;
+    letter-spacing: 4px;
+    margin: 10px 0;
+  }
+
+  /* ===== PRINT ===== */
+  @media print {
+    body { margin: 0; }
+    .page { margin: 0; width: 100%; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ================================================= -->
+<!-- HALAMAN 0: COVER                                  -->
+<!-- ================================================= -->
+<div class="page">
+  <div style="border: 3px solid #000; padding: 30px 20px; text-align: center; margin-top: 40px;">
+    <div style="font-family: Arial, sans-serif; font-size: 10pt; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;">Program Belajar Harian</div>
+    <div style="font-size: 28pt; font-family: 'Times New Roman', serif; font-weight: bold; margin-bottom: 6px;">SEKOLAH</div>
+    <div style="font-size: 28pt; font-family: 'Times New Roman', serif; font-weight: bold; margin-bottom: 6px;">DETEKTIF BINTANG</div>
+    <div style="border-top: 2px solid #000; border-bottom: 2px solid #000; padding: 10px 0; margin: 16px 0;">
+      <div style="font-size: 18pt; font-family: Arial, sans-serif; font-weight: bold;">LASKAR</div>
+      <div style="font-size: 11pt; font-family: Arial, sans-serif; margin-top: 4px;">Kelas 1 SD &nbsp;|&nbsp; Minggu ke-2</div>
+    </div>
+    <div style="font-size: 56pt; margin: 20px 0;">➖</div>
+    <div style="font-size: 16pt; font-family: Arial, sans-serif; font-weight: bold; margin: 8px 0;">MISI: MENGURANGI</div>
+    <div style="font-family: Arial, sans-serif; font-size: 10pt; margin-top: 10px;">5 Misi &bull; 5 Hari &bull; Detektif Angka</div>
+  </div>
+
+  <div style="margin-top: 30px; border: 1.5px solid #000; padding: 12px 14px;">
+    <div style="font-family: Arial, sans-serif; font-size: 9pt; font-weight: bold; margin-bottom: 8px; text-transform: uppercase;">Kartu Identitas Detektif</div>
+    <table style="width: 100%; font-family: Arial, sans-serif; font-size: 10pt;">
+      <tr>
+        <td style="width: 50%; padding: 4px 0;">Nama Detektif :</td>
+        <td style="border-bottom: 1.5px solid #000; width: 50%;"></td>
+      </tr>
+      <tr><td colspan="2" style="height: 8px;"></td></tr>
+      <tr>
+        <td style="padding: 4px 0;">Mulai Belajar :</td>
+        <td style="border-bottom: 1.5px solid #000;"></td>
+      </tr>
+      <tr><td colspan="2" style="height: 8px;"></td></tr>
+      <tr>
+        <td style="padding: 4px 0;">Tanda Tangan Ayah/Ibu :</td>
+        <td style="border-bottom: 1.5px solid #000;"></td>
+      </tr>
+    </table>
+  </div>
+
+  <div style="margin-top: 16px; border: 2px solid #000; padding: 12px 14px; font-family: Arial, sans-serif; font-size: 10pt;">
+    <div style="font-weight: bold; margin-bottom: 6px;">🔢 Cara Membaca Worksheet Ini:</div>
+    <div style="margin-bottom: 4px;">📦 = benda yang ada (jangan dicoret)</div>
+    <div style="margin-bottom: 4px;">✕ = benda yang <strong>DIAMBIL</strong> (Laskar yang mencoret sendiri)</div>
+    <div>□ = kotak jawaban (tulis angkanya di sini)</div>
+  </div>
+
+  <div class="parent-note" style="margin-top: 16px;">
+    <strong>Catatan untuk Orang Tua:</strong><br>
+    Minggu ini fokus pada konsep <em>pengurangan</em>. Pendekatan yang dipakai adalah visual: Laskar melihat gambar benda,
+    lalu mencoret sendiri benda yang "diambil", lalu menghitung sisanya.
+    Setiap sesi ±20–25 menit. Satu lembar per hari (Senin–Jumat).
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- HALAMAN 1: HARI 1 — KONSEP "DIAMBIL"              -->
+<!-- ================================================= -->
+<div class="page">
+  <div class="page-header">
+    <div class="title-block">
+      <h1>➖ Misi 1: Ada yang Diambil!</h1>
+      <p>Kalau ada yang diambil, jumlahnya jadi berkurang. Kita coba, yuk!</p>
+    </div>
+    <div class="day-badge">HARI<br>KE-1</div>
+  </div>
+
+  <div class="mission-box">
+    <div class="mission-label">📋 Misi Hari Ini</div>
+    <div class="mission-text">Lihat gambar &nbsp;→&nbsp; Coret yang diambil &nbsp;→&nbsp; Hitung sisanya</div>
+  </div>
+
+  <!-- BAGIAN A: Konsep visual — sudah dicoret (contoh) -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">👀</span> BAGIAN A — Perhatikan Contoh Ini!
+    </div>
+    <div class="section-body">
+      <div class="instruction">Lihat contoh di bawah. Ada 4 bintang. 1 bintang diambil (tanda ✕). Sisa berapa?</div>
+
+      <!-- Contoh 1: sudah ada coretan (agar anak mengerti konsep) -->
+      <div class="subtraction-problem">
+        <div class="soal-label">CONTOH:</div>
+        <div class="items-row">
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+          <div class="item-box crossed">⭐</div>
+        </div>
+        <div class="cross-instruction">1 bintang diambil (sudah dicoret). Hitung yang TIDAK dicoret.</div>
+        <div class="subtraction-row">
+          <div class="num-big">4</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">1</div>
+          <div class="ns-sign">=</div>
+          <div class="ns-box">3</div>
+        </div>
+      </div>
+
+      <div style="font-family: Arial, sans-serif; font-size: 10pt; font-weight: bold; margin: 10px 0 4px;">Sekarang giliran Laskar! Coret sendiri yang diambil, lalu tulis jawabannya:</div>
+
+      <!-- Soal 1: 3 - 1 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 1: Ada 3 apel. 1 apel diambil. Coret 1 apel, lalu hitung sisanya!</div>
+        <div class="items-row">
+          <div class="item-box">🍎</div>
+          <div class="item-box">🍎</div>
+          <div class="item-box">🍎</div>
+        </div>
+        <div class="cross-instruction">← Coret 1 apel dengan pensil!</div>
+        <div class="subtraction-row">
+          <div class="num-big">3</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">1</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Soal 2: 5 - 2 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 2: Ada 5 ikan. 2 ikan diambil. Coret 2 ikan, lalu hitung sisanya!</div>
+        <div class="items-row">
+          <div class="item-box">🐟</div>
+          <div class="item-box">🐟</div>
+          <div class="item-box">🐟</div>
+          <div class="item-box">🐟</div>
+          <div class="item-box">🐟</div>
+        </div>
+        <div class="cross-instruction">← Coret 2 ikan dengan pensil!</div>
+        <div class="subtraction-row">
+          <div class="num-big">5</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">2</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REWARD -->
+  <div class="reward-strip">
+    <div class="stamp-box">STEMPEL<br>MISI ✓</div>
+    <div class="reward-text">⭐ MISI 1 SELESAI! ⭐<br><span style="font-size: 9pt; font-weight: normal;">Laskar sudah tahu artinya "dikurangi"!</span></div>
+    <div class="sign-area">
+      Ayah / Ibu<br>
+      <div class="sign-line"></div>
+    </div>
+  </div>
+
+  <div class="parent-note">
+    <strong>Panduan Orang Tua — Hari 1:</strong><br>
+    Sebelum mulai, peraga dulu dengan benda nyata: ambil 3 kelereng (atau apapun), minta Laskar ambil 1, lalu tanya: "Sekarang tinggal berapa?"
+    Baru tunjukkan worksheet. Bacakan contoh: "Lihat, ini ada 4 bintang. Ini 1 diambil, makanya dikasih tanda X. Yang tidak dicoret ada berapa? Tiga! Jadi 4 dikurangi 1 sama dengan 3."
+    Untuk Soal 1 dan 2: biarkan Laskar mencoret sendiri. Yang penting dia mengerti: yang dicoret = yang diambil.
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- HALAMAN 2: HARI 2 — LATIHAN LEBIH BANYAK          -->
+<!-- ================================================= -->
+<div class="page">
+  <div class="page-header">
+    <div class="title-block">
+      <h1>➖ Misi 2: Berapa yang Tersisa?</h1>
+      <p>Semakin banyak latihan, Laskar semakin jago mengurangi!</p>
+    </div>
+    <div class="day-badge">HARI<br>KE-2</div>
+  </div>
+
+  <div class="mission-box">
+    <div class="mission-label">📋 Misi Hari Ini</div>
+    <div class="mission-text">Coret yang diambil &nbsp;→&nbsp; Hitung sisa &nbsp;→&nbsp; Tulis angkanya</div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">✏️</span> BAGIAN A — Coret dan Hitung!
+    </div>
+    <div class="section-body">
+      <div class="instruction">Di setiap soal: coret benda yang diambil (sesuai angka di bawah), lalu tulis sisanya!</div>
+
+      <!-- Soal 1: 4 - 1 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 1: Coret 1 bunga.</div>
+        <div class="items-row">
+          <div class="item-box">🌸</div>
+          <div class="item-box">🌸</div>
+          <div class="item-box">🌸</div>
+          <div class="item-box">🌸</div>
+        </div>
+        <div class="cross-instruction">← Coret 1 bunga dengan pensil!</div>
+        <div class="subtraction-row">
+          <div class="num-big">4</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">1</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Soal 2: 5 - 3 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 2: Coret 3 balon.</div>
+        <div class="items-row">
+          <div class="item-box">🎈</div>
+          <div class="item-box">🎈</div>
+          <div class="item-box">🎈</div>
+          <div class="item-box">🎈</div>
+          <div class="item-box">🎈</div>
+        </div>
+        <div class="cross-instruction">← Coret 3 balon dengan pensil!</div>
+        <div class="subtraction-row">
+          <div class="num-big">5</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">3</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Soal 3: 3 - 2 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 3: Coret 2 bola.</div>
+        <div class="items-row">
+          <div class="item-box">⚽</div>
+          <div class="item-box">⚽</div>
+          <div class="item-box">⚽</div>
+        </div>
+        <div class="cross-instruction">← Coret 2 bola dengan pensil!</div>
+        <div class="subtraction-row">
+          <div class="num-big">3</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">2</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BAGIAN B: Pilih jawaban -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">🔢</span> BAGIAN B — Pilih Jawaban yang Benar!
+    </div>
+    <div class="section-body">
+      <div class="instruction">Lingkari angka jawaban yang benar!</div>
+
+      <table style="width: 100%; border-collapse: collapse; margin-top: 8px;">
+        <tr>
+          <td style="border: 1.5px solid #000; padding: 10px; font-family: 'Times New Roman', serif; font-size: 14pt; font-weight: bold; width: 40%;">5 − 1 = ?</td>
+          <td style="border: 1.5px solid #000; padding: 10px; font-family: Arial, sans-serif; font-size: 16pt; text-align: center;">
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">2</span>
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">4</span>
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">6</span>
+          </td>
+        </tr>
+        <tr>
+          <td style="border: 1.5px solid #000; padding: 10px; font-family: 'Times New Roman', serif; font-size: 14pt; font-weight: bold;">4 − 2 = ?</td>
+          <td style="border: 1.5px solid #000; padding: 10px; font-family: Arial, sans-serif; font-size: 16pt; text-align: center;">
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">1</span>
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">2</span>
+            <span style="border: 2px solid #000; padding: 4px 12px; margin: 0 6px;">3</span>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- REWARD -->
+  <div class="reward-strip">
+    <div class="stamp-box">STEMPEL<br>MISI ✓</div>
+    <div class="reward-text">⭐ MISI 2 SELESAI! ⭐<br><span style="font-size: 9pt; font-weight: normal;">Laskar makin jago menghitung sisa!</span></div>
+    <div class="sign-area">
+      Ayah / Ibu<br>
+      <div class="sign-line"></div>
+    </div>
+  </div>
+
+  <div class="parent-note">
+    <strong>Panduan Orang Tua — Hari 2:</strong><br>
+    Mulai dengan mengulang konsep hari 1: "Kalau kita coret artinya apa? Diambil!" Lalu minta dia kerjakan sendiri.
+    Untuk Bagian A, perhatikan apakah Laskar sudah mengerti harus mencoret dulu sebelum menghitung. Kalau belum, tunjukkan langkahnya: "Pertama coret dulu, baru hitung."
+    Untuk Bagian B, bacakan soalnya bersama. Kalau dia belum yakin, boleh bantu dengan gambar jari.
+    Kunci Bagian B: 5−1=4, 4−2=2.
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- HALAMAN 3: HARI 3 — KALIMAT MATEMATIKA            -->
+<!-- ================================================= -->
+<div class="page">
+  <div class="page-header">
+    <div class="title-block">
+      <h1>➖ Misi 3: Tulis Kalimat Angka!</h1>
+      <p>Kita ubah gambar menjadi kalimat angka. Laskar pasti bisa!</p>
+    </div>
+    <div class="day-badge">HARI<br>KE-3</div>
+  </div>
+
+  <div class="mission-box">
+    <div class="mission-label">📋 Misi Hari Ini</div>
+    <div class="mission-text">Hitung semua benda &nbsp;→&nbsp; Hitung yang dicoret &nbsp;→&nbsp; Tulis kalimat angkanya</div>
+  </div>
+
+  <!-- BAGIAN A: Dari gambar ke kalimat matematika -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">📝</span> BAGIAN A — Gambar Menjadi Angka!
+    </div>
+    <div class="section-body">
+      <div class="instruction">Lihat gambar. Hitung semua benda dan hitung yang dicoret (✕). Lalu lengkapi kalimat angkanya!</div>
+
+      <!-- Soal 1: tampilkan gambar yang sudah ada beberapa dicoret, isi kalimat matematika -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 1: Hitung semua kue, hitung yang dicoret, lalu isi kotak!</div>
+        <div class="items-row">
+          <div class="item-box">🍰</div>
+          <div class="item-box">🍰</div>
+          <div class="item-box crossed">🍰</div>
+          <div class="item-box crossed">🍰</div>
+          <div class="item-box">🍰</div>
+        </div>
+        <div class="cross-instruction">Ada berapa kue semuanya? Ada berapa yang dicoret?</div>
+        <div class="subtraction-row">
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">semua</div>
+          <div class="ns-sign">−</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">coret</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">sisa</div>
+        </div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 2: Hitung semua mobil, hitung yang dicoret, lalu isi kotak!</div>
+        <div class="items-row">
+          <div class="item-box">🚗</div>
+          <div class="item-box crossed">🚗</div>
+          <div class="item-box">🚗</div>
+          <div class="item-box">🚗</div>
+        </div>
+        <div class="cross-instruction">Ada berapa mobil semuanya? Ada berapa yang dicoret?</div>
+        <div class="subtraction-row">
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">semua</div>
+          <div class="ns-sign">−</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">coret</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">sisa</div>
+        </div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="subtraction-problem">
+        <div class="soal-label">Soal 3: Hitung semua kucing, hitung yang dicoret, lalu isi kotak!</div>
+        <div class="items-row">
+          <div class="item-box">🐱</div>
+          <div class="item-box crossed">🐱</div>
+          <div class="item-box crossed">🐱</div>
+          <div class="item-box crossed">🐱</div>
+          <div class="item-box">🐱</div>
+          <div class="item-box">🐱</div>
+        </div>
+        <div class="cross-instruction">Ada berapa kucing semuanya? Ada berapa yang dicoret?</div>
+        <div class="subtraction-row">
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">semua</div>
+          <div class="ns-sign">−</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">coret</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">sisa</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REWARD -->
+  <div class="reward-strip">
+    <div class="stamp-box">STEMPEL<br>MISI ✓</div>
+    <div class="reward-text">⭐ MISI 3 SELESAI! ⭐<br><span style="font-size: 9pt; font-weight: normal;">Laskar bisa membaca kalimat angka!</span></div>
+    <div class="sign-area">
+      Ayah / Ibu<br>
+      <div class="sign-line"></div>
+    </div>
+  </div>
+
+  <div class="parent-note">
+    <strong>Panduan Orang Tua — Hari 3:</strong><br>
+    Hari ini kita membalik arah: dari gambar → ke kalimat angka. Tunjukkan dulu cara membaca: "Lihat, ada 5 kue. Yang dicoret ada 2. Jadi 5 dikurangi 2 sama dengan berapa?"
+    Bantu Laskar menghitung dengan menunjuk fisik: tunjuk tiap item satu per satu, lalu hitung yang tidak dicoret.
+    Kunci: Soal 1) 5−2=3 &nbsp;|&nbsp; Soal 2) 4−1=3 &nbsp;|&nbsp; Soal 3) 6−3=3
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- HALAMAN 4: HARI 4 — CERITA PENGURANGAN            -->
+<!-- ================================================= -->
+<div class="page">
+  <div class="page-header">
+    <div class="title-block">
+      <h1>➖ Misi 4: Cerita Detektif!</h1>
+      <p>Detektif yang hebat bisa memecahkan cerita angka. Ayo coba!</p>
+    </div>
+    <div class="day-badge">HARI<br>KE-4</div>
+  </div>
+
+  <div class="mission-box">
+    <div class="mission-label">📋 Misi Hari Ini</div>
+    <div class="mission-text">Dengarkan ceritanya &nbsp;→&nbsp; Coret benda yang pergi &nbsp;→&nbsp; Tulis jawabannya</div>
+  </div>
+
+  <!-- BAGIAN A: Soal cerita + gambar visual -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">📖</span> BAGIAN A — Soal Cerita!
+    </div>
+    <div class="section-body">
+      <div class="instruction">Baca ceritanya (atau minta Ayah/Ibu bacakan). Coret benda yang "pergi" atau "dimakan" atau "diambil". Lalu tulis jawabannya!</div>
+
+      <!-- Cerita 1 -->
+      <div class="subtraction-problem">
+        <div class="soal-label" style="font-style: italic; font-size: 10pt; font-weight: normal; border-left: 3px solid #000; padding-left: 8px; margin-bottom: 8px;">
+          "Laskar punya 6 permen. Laskar makan 2 permen. Sisa permen Laskar berapa?"
+        </div>
+        <div class="soal-label">Coret 2 permen yang dimakan Laskar:</div>
+        <div class="items-row">
+          <div class="item-box">🍬</div>
+          <div class="item-box">🍬</div>
+          <div class="item-box">🍬</div>
+          <div class="item-box">🍬</div>
+          <div class="item-box">🍬</div>
+          <div class="item-box">🍬</div>
+        </div>
+        <div class="subtraction-row">
+          <div class="num-big">6</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">2</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Cerita 2 -->
+      <div class="subtraction-problem">
+        <div class="soal-label" style="font-style: italic; font-size: 10pt; font-weight: normal; border-left: 3px solid #000; padding-left: 8px; margin-bottom: 8px;">
+          "Di meja ada 5 buku. Ayah mengambil 3 buku. Sisa buku di meja berapa?"
+        </div>
+        <div class="soal-label">Coret 3 buku yang diambil Ayah:</div>
+        <div class="items-row">
+          <div class="item-box">📚</div>
+          <div class="item-box">📚</div>
+          <div class="item-box">📚</div>
+          <div class="item-box">📚</div>
+          <div class="item-box">📚</div>
+        </div>
+        <div class="subtraction-row">
+          <div class="num-big">5</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">3</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Cerita 3 -->
+      <div class="subtraction-problem">
+        <div class="soal-label" style="font-style: italic; font-size: 10pt; font-weight: normal; border-left: 3px solid #000; padding-left: 8px; margin-bottom: 8px;">
+          "Ada 7 burung di pohon. 4 burung terbang pergi. Berapa burung yang masih di pohon?"
+        </div>
+        <div class="soal-label">Coret 4 burung yang terbang:</div>
+        <div class="items-row">
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+          <div class="item-box">🐦</div>
+        </div>
+        <div class="subtraction-row">
+          <div class="num-big">7</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">4</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- REWARD -->
+  <div class="reward-strip">
+    <div class="stamp-box">STEMPEL<br>MISI ✓</div>
+    <div class="reward-text">⭐ MISI 4 SELESAI! ⭐<br><span style="font-size: 9pt; font-weight: normal;">Laskar bisa memecahkan cerita angka!</span></div>
+    <div class="sign-area">
+      Ayah / Ibu<br>
+      <div class="sign-line"></div>
+    </div>
+  </div>
+
+  <div class="parent-note">
+    <strong>Panduan Orang Tua — Hari 4:</strong><br>
+    Bacakan ceritanya dengan penuh ekspresi dan lambat-lambat. Tekankan kata kunci: "makan", "diambil", "terbang pergi" = kata penanda pengurangan.
+    Sebelum mengerjakan, tanya: "Kalau burungnya terbang pergi, berkurang atau bertambah?" — bangun pemahaman kata kunci.
+    Kunci: Cerita 1) 6−2=4 &nbsp;|&nbsp; Cerita 2) 5−3=2 &nbsp;|&nbsp; Cerita 3) 7−4=3
+  </div>
+</div>
+
+<!-- ================================================= -->
+<!-- HALAMAN 5: HARI 5 — UJIAN MINI                   -->
+<!-- ================================================= -->
+<div class="page">
+  <div class="page-header">
+    <div class="title-block">
+      <h1>➖ Misi 5: Ujian Detektif Angka!</h1>
+      <p>Ini misi terakhir minggu ini. Tunjukkan kehebatan Laskar!</p>
+    </div>
+    <div class="day-badge">HARI<br>KE-5</div>
+  </div>
+
+  <div class="mission-box">
+    <div class="mission-label">📋 Misi Terakhir!</div>
+    <div class="mission-text">Kerjakan semua soal &nbsp;→&nbsp; Jawab sendiri dulu &nbsp;→&nbsp; Minta bintang!</div>
+  </div>
+
+  <!-- UJIAN MINI -->
+  <div class="section">
+    <div class="section-header">
+      <span class="icon">📝</span> UJIAN MINI — 6 Soal Pengurangan
+    </div>
+    <div class="section-body">
+      <div class="instruction">Kerjakan sendiri dulu ya! Coret yang perlu dicoret, tulis jawabannya.</div>
+
+      <!-- Soal 1: visual -->
+      <div style="margin: 8px 0; border: 1.5px solid #000; padding: 8px 10px; page-break-inside: avoid;">
+        <div style="font-family: Arial, sans-serif; font-size: 9pt; font-weight: bold; margin-bottom: 6px;">No. 1 — Coret 2 bintang, lalu hitung sisanya:</div>
+        <div class="items-row">
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+          <div class="item-box">⭐</div>
+        </div>
+        <div class="subtraction-row">
+          <div class="num-big">5</div>
+          <div class="ns-sign">−</div>
+          <div class="num-big">2</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big">tulis</div>
+        </div>
+      </div>
+
+      <!-- Soal 2: isi kalimat matematika -->
+      <div style="margin: 8px 0; border: 1.5px solid #000; padding: 8px 10px; page-break-inside: avoid;">
+        <div style="font-family: Arial, sans-serif; font-size: 9pt; font-weight: bold; margin-bottom: 6px;">No. 2 — Hitung benda dan isi kalimat angkanya:</div>
+        <div class="items-row">
+          <div class="item-box">🍎</div>
+          <div class="item-box">🍎</div>
+          <div class="item-box crossed">🍎</div>
+          <div class="item-box">🍎</div>
+        </div>
+        <div class="subtraction-row">
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">semua</div>
+          <div class="ns-sign">−</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">coret</div>
+          <div class="ns-sign">=</div>
+          <div class="answer-box-big" style="font-size:8pt; color:#888;">sisa</div>
+        </div>
+      </div>
+
+      <!-- Soal 3-5: tabel kalimat matematika -->
+      <table class="review-table" style="margin-top: 10px;">
+        <thead>
+          <tr>
+            <th style="width:8%;">No.</th>
+            <th style="width:52%;">Soal</th>
+            <th style="width:40%;">Jawabanku</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td style="text-align:center; font-size:12pt; font-weight:bold;">3</td>
+            <td style="font-family:'Times New Roman', serif; font-size:14pt; font-weight:bold;">4 − 1 = ?</td>
+            <td class="answer-cell"></td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-size:12pt; font-weight:bold;">4</td>
+            <td style="font-family:'Times New Roman', serif; font-size:14pt; font-weight:bold;">6 − 3 = ?</td>
+            <td class="answer-cell"></td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-size:12pt; font-weight:bold;">5</td>
+            <td style="font-family:'Times New Roman', serif; font-size:14pt; font-weight:bold;">7 − 2 = ?</td>
+            <td class="answer-cell"></td>
+          </tr>
+          <tr>
+            <td style="text-align:center; font-size:12pt; font-weight:bold;">6</td>
+            <td style="font-family:'Times New Roman', serif; font-size:12pt;">
+              Ibu punya 8 telur. 3 telur dipecahkan untuk masak.<br>Sisa telur Ibu berapa?
+            </td>
+            <td class="answer-cell"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div style="margin-top: 10px; border: 1.5px dashed #000; padding: 8px; font-family: Arial, sans-serif; font-size: 9pt;">
+        <strong>🔑 Kunci Jawaban (untuk Orang Tua):</strong><br>
+        No.1) 3 &nbsp;|&nbsp; No.2) 4−1=3 &nbsp;|&nbsp; No.3) 3 &nbsp;|&nbsp; No.4) 3 &nbsp;|&nbsp; No.5) 5 &nbsp;|&nbsp; No.6) 5
+      </div>
+    </div>
+  </div>
+
+  <!-- SERTIFIKAT -->
+  <div class="certificate">
+    <div style="font-family: Arial, sans-serif; font-size: 9pt; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px;">✦ Sertifikat Prestasi ✦</div>
+    <h2>DETEKTIF ANGKA ⭐</h2>
+    <p>Dengan bangga diberikan kepada</p>
+    <div class="cert-name">LASKAR</div>
+    <p>Telah menyelesaikan <strong>Misi Pengurangan</strong><br>Program Sekolah Detektif Bintang — Minggu ke-2</p>
+    <div class="star-row">★ ★ ★ ★ ★</div>
+    <div style="display: flex; justify-content: space-between; margin-top: 14px; font-family: Arial, sans-serif; font-size: 9pt;">
+      <div style="text-align: center;">
+        <div style="border-bottom: 1.5px solid #000; width: 120px; margin-bottom: 4px; height: 20px;"></div>
+        Tanda Tangan Ayah/Ibu
+      </div>
+      <div style="text-align: center;">
+        <div style="border-bottom: 1.5px solid #000; width: 120px; margin-bottom: 4px; height: 20px;"></div>
+        Tanggal
+      </div>
+    </div>
+  </div>
+
+  <div class="parent-note">
+    <strong>Panduan Orang Tua — Hari 5:</strong><br>
+    Biarkan Laskar mengerjakan sendiri terlebih dulu selama 3-5 menit pertama — amati pendekatannya.
+    Apakah dia langsung mencoret? Apakah dia menghitung ulang setelah mencoret? Ini data penting.
+    Untuk soal cerita No.6, bacakan ceritanya. Kalau Laskar belum bisa menjawab, bantu dengan gambar jari atau benda nyata.
+    Setelah selesai, bacakan sertifikat dengan bangga dan tanda tangani bersama!
+  </div>
+</div>
+
+</body>
+</html>

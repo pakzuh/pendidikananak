@@ -1,0 +1,2353 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buku Panduan 26 Kolom Huruf Metode Tamyiz - Terjemah Al-Qur'an</title>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0f766e;
+            --primary-dark: #115e59;
+            --primary-light: #ccfbf1;
+            --accent: #f59e0b;
+            --badge-bg: #fee2e2;
+            --badge-color: #dc2626;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #0d9488 0%, #115e59 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(13, 148, 136, 0.2);
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 1.1rem;
+            opacity: 0.92;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .header .badge-total {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 6px 16px;
+            border-radius: 9999px;
+            margin-top: 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: -25px auto 0;
+            padding: 0 20px;
+        }
+
+        .controls {
+            background: white;
+            padding: 16px 24px;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.06);
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+        }
+
+        .search-box {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 18px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            font-family: inherit;
+            outline: none;
+            transition: border 0.2s;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+        }
+
+        .btn-print {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 22px;
+            border-radius: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-print:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        .grid-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            gap: 24px;
+        }
+
+        .column-card {
+            background: white;
+            border-radius: 18px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: all 0.25s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .column-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            border-color: #99f6e4;
+        }
+
+        .card-header {
+            background: #f0fdfa;
+            border-bottom: 2px solid #ccfbf1;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .card-header .num-tag {
+            background: var(--primary);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .card-header .title-area {
+            text-align: right;
+            flex: 1;
+            margin-left: 12px;
+        }
+
+        .card-header .title-arab {
+            font-family: 'Amiri', serif;
+            font-size: 1.55rem;
+            color: var(--primary-dark);
+            direction: rtl;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .card-header .title-latin {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        .card-body {
+            padding: 18px 20px;
+            flex: 1;
+        }
+
+        .kaidah-box {
+            background: #f8fafc;
+            border-left: 3px solid var(--accent);
+            padding: 8px 12px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 14px;
+            font-size: 0.82rem;
+            color: #475569;
+        }
+
+        .word-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .word-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 8px 12px;
+            background: #fafafa;
+            border-radius: 10px;
+            border: 1px solid #f1f5f9;
+        }
+
+        .word-item:hover {
+            background: #f0fdf4;
+        }
+
+        .word-arab {
+            font-family: 'Amiri', serif;
+            font-size: 1.45rem;
+            color: #047857;
+            direction: rtl;
+            font-weight: 700;
+        }
+
+        .word-info {
+            flex: 1;
+            margin: 0 14px;
+            text-align: left;
+        }
+
+        .word-latin {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            font-style: italic;
+        }
+
+        .word-arti {
+            font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
+        }
+
+        .freq-badge {
+            background: #fee2e2;
+            color: #b91c1c;
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 9999px;
+            border: 1px solid #fca5a5;
+            white-space: nowrap;
+        }
+
+        .freq-badge.empty {
+            background: #f1f5f9;
+            color: #94a3b8;
+            border-color: #e2e8f0;
+        }
+
+        footer {
+            margin-top: 50px;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media print {
+            @page {
+                size: A4;
+                margin: 10mm;
+            }
+            body {
+                background: white !important;
+                padding: 0 !important;
+                font-size: 9pt;
+            }
+            .header {
+                background: none !important;
+                color: #0f766e !important;
+                padding: 5px 0 15px 0 !important;
+                text-align: center !important;
+                box-shadow: none !important;
+            }
+            .header h1 {
+                font-size: 18pt !important;
+                color: #0f766e !important;
+            }
+            .header p {
+                font-size: 9.5pt !important;
+                color: #334155 !important;
+            }
+            .header .badge-total {
+                background: #f0fdfa !important;
+                color: #0f766e !important;
+                border: 1px solid #0f766e !important;
+                font-size: 8pt !important;
+                padding: 3px 10px !important;
+            }
+            .container {
+                margin-top: 0 !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            .controls, .btn-print {
+                display: none !important;
+            }
+            .grid-columns {
+                display: grid !important;
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px !important;
+            }
+            .column-card {
+                break-inside: avoid !important;
+                page-break-inside: avoid !important;
+                box-shadow: none !important;
+                border: 1px solid #cbd5e1 !important;
+                border-radius: 12px !important;
+            }
+            .card-header {
+                padding: 8px 12px !important;
+            }
+            .card-header .title-arab {
+                font-size: 1.25rem !important;
+            }
+            .card-body {
+                padding: 8px 12px !important;
+            }
+            .kaidah-box {
+                font-size: 7.5pt !important;
+                padding: 5px 8px !important;
+                margin-bottom: 8px !important;
+            }
+            .word-item {
+                padding: 4px 8px !important;
+                border-radius: 6px !important;
+            }
+            .word-arab {
+                font-size: 1.2rem !important;
+            }
+            .word-arti {
+                font-size: 8.5pt !important;
+            }
+            .word-latin {
+                font-size: 7.5pt !important;
+            }
+            .freq-badge {
+                font-size: 7pt !important;
+                padding: 2px 6px !important;
+            }
+            footer {
+                margin-top: 20px !important;
+                font-size: 8pt !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <h1>KOMPILASI 26 KOLOM METODE TAMYIZ</h1>
+        <p>Kamus Rangkuman Huruf, Kata Hubung, Kata Tanya, dan Kata Ganti yang Paling Sering Berulang dalam Ayat-Ayat Suci Al-Qur'an</p>
+        <div class="badge-total">Lengkap Kolom 1 s/d 26 Beserta Harakat, Arti & Frekuensi Mushaf</div>
+    </header>
+
+    <div class="container">
+        <div class="controls">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Ketik lafadz Arab, arti, atau nama kolom untuk mencari..." onkeyup="filterCards()">
+            </div>
+            <button class="btn-print" onclick="window.print()">
+                <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"></path></svg>
+                Cetak / Simpan PDF
+            </button>
+        </div>
+
+        <div class="grid-columns" id="cardsContainer">
+
+            <div class="column-card" data-search="1 بِيَجُرّ Bi-yajur (Huruf Jer) Huruf Jer dengan bi بِ... seperti ka كَ... untuk li / la لِ... / لَ... kepada ilaa / ilaihi إِلَى / إِلَيْهِ di atas 'alaa / 'alaihi عَلَى / عَلَيْهِ dari min مِنْ di dalam fii / fiihi فِيْ / فِيْهِ dari 'an عَنْ... sehingga hattaa حَتَّى demi bi, ta, wa (Qasam) بِ... تَ... وَ...">
+                <div class="card-header">
+                    <div class="num-tag">1</div>
+                    <div class="title-area">
+                        <div class="title-arab">بِيَجُرّ</div>
+                        <div class="title-latin">Bi-yajur (Huruf Jer)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf yang membarisbawahkan (mengkashrahkan) kata benda/isim setelahnya.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">بِ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">dengan</div>
+                                <div class="word-latin">bi</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">seperti</div>
+                                <div class="word-latin">ka</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لِ... / لَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">untuk</div>
+                                <div class="word-latin">li / la</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِلَى / إِلَيْهِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kepada</div>
+                                <div class="word-latin">ilaa / ilaihi</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">434x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">عَلَى / عَلَيْهِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di atas</div>
+                                <div class="word-latin">'alaa / 'alaihi</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.445x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مِنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">dari</div>
+                                <div class="word-latin">min</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">2.299x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">فِيْ / فِيْهِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di dalam</div>
+                                <div class="word-latin">fii / fiihi</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.699x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">عَنْ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">dari</div>
+                                <div class="word-latin">'an</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">155x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">حَتَّى</span>
+                            <div class="word-info">
+                                <div class="word-arti">sehingga</div>
+                                <div class="word-latin">hattaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">بِ... تَ... وَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">demi</div>
+                                <div class="word-latin">bi, ta, wa (Qasam)</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="2 كَانَ رَفْعُ نَصَبَ Kaana Rafa' Nashab Kaana wa Akhawatuha adalah kaana كَانَ tiada, bukan laisa لَيْسَ">
+                <div class="card-header">
+                    <div class="num-tag">2</div>
+                    <div class="title-area">
+                        <div class="title-arab">كَانَ رَفْعُ نَصَبَ</div>
+                        <div class="title-latin">Kaana Rafa' Nashab</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata kerja bantu yang merofa'kan isim (subjek) dan menashabkan khabar (predikat).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">كَانَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">adalah</div>
+                                <div class="word-latin">kaana</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.418x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَيْسَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">tiada, bukan</div>
+                                <div class="word-latin">laisa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">79x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="3 إِنَّ نَصَبَ رَفْعُ Inna Nashab Rafa' Inna wa Akhawatuha sesungguhnya inna إِنَّ sesungguhnya anna أَنَّ seakan-akan ka-anna كَأَنَّ akan tetapi lakinna لَكِنَّ semoga, supaya la'alla لَعَلَّ andaikan laita لَيْتَ">
+                <div class="card-header">
+                    <div class="num-tag">3</div>
+                    <div class="title-area">
+                        <div class="title-arab">إِنَّ نَصَبَ رَفْعُ</div>
+                        <div class="title-latin">Inna Nashab Rafa'</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf penegas yang menashabkan isim dan merofa'kan khabar.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sesungguhnya</div>
+                                <div class="word-latin">inna</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">972x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sesungguhnya</div>
+                                <div class="word-latin">anna</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">187x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَأَنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">seakan-akan</div>
+                                <div class="word-latin">ka-anna</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">37x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَكِنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">akan tetapi</div>
+                                <div class="word-latin">lakinna</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">65x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَعَلَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">semoga, supaya</div>
+                                <div class="word-latin">la'alla</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">129x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَيْتَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">andaikan</div>
+                                <div class="word-latin">laita</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">14x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="4 لَا نَصَبَ لِلنَّكِرَةِ Laa Nashab lin-Nakirah Laa Nafiyah lil Jinsi tidak ada laa لَا">
+                <div class="card-header">
+                    <div class="num-tag">4</div>
+                    <div class="title-area">
+                        <div class="title-arab">لَا نَصَبَ لِلنَّكِرَةِ</div>
+                        <div class="title-latin">Laa Nashab lin-Nakirah</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf peniadaan mutlak terhadap seluruh jenis, menashabkan kata umum (nakirah).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">لَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">tidak ada</div>
+                                <div class="word-latin">laa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.731x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="5 إِلَّا نَصَبَ لِلْمُسْتَثْنَاءِ Illaa Nashab lil-Mustatsna' Huruf Istitsna' kecuali illaa إِلَّا">
+                <div class="card-header">
+                    <div class="num-tag">5</div>
+                    <div class="title-area">
+                        <div class="title-arab">إِلَّا نَصَبَ لِلْمُسْتَثْنَاءِ</div>
+                        <div class="title-latin">Illaa Nashab lil-Mustatsna'</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf pengecualian yang menashabkan kata yang dikecualikan (mustatsna).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِلَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kecuali</div>
+                                <div class="word-latin">illaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">470x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="6 يَا نَصَبَ لِلْمُضَافِ Yaa Nashab lil-Mudhaf Yaa Munada Mudhaf wahai yaa يَا">
+                <div class="card-header">
+                    <div class="num-tag">6</div>
+                    <div class="title-area">
+                        <div class="title-arab">يَا نَصَبَ لِلْمُضَافِ</div>
+                        <div class="title-latin">Yaa Nashab lil-Mudhaf</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf panggilan yang menashabkan kata majemuk bersandar (mudhaf).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">يَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">wahai</div>
+                                <div class="word-latin">yaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">112x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="7 يَا نِدَاءُ Yaa Nida' (Panggilan) Huruf Nida' wahai yaa يَا wahai (laki-laki / umum) yaa ayyuhaa يَا أَيُّهَا wahai (perempuan) yaa ayyatuhaa يَا أَيَّتُهَا">
+                <div class="card-header">
+                    <div class="num-tag">7</div>
+                    <div class="title-area">
+                        <div class="title-arab">يَا نِدَاءُ</div>
+                        <div class="title-latin">Yaa Nida' (Panggilan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata seru/panggilan untuk menarik perhatian orang yang diseru.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">يَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">wahai</div>
+                                <div class="word-latin">yaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">112x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">يَا أَيُّهَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">wahai (laki-laki / umum)</div>
+                                <div class="word-latin">yaa ayyuhaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">156x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">يَا أَيَّتُهَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">wahai (perempuan)</div>
+                                <div class="word-latin">yaa ayyatuhaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="8 أَنْ يَنْصِبَ An Yanshiba (Penashab Fi'il) Nawasib al-Mudhari' hendaknya an أَنْ tidak akan lan لَنْ kalau demikian idzan إِذَنْ supaya kay كَيْ supaya li لِ... hingga hattaa حَتَّى">
+                <div class="card-header">
+                    <div class="num-tag">8</div>
+                    <div class="title-area">
+                        <div class="title-arab">أَنْ يَنْصِبَ</div>
+                        <div class="title-latin">An Yanshiba (Penashab Fi'il)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf yang membarisfathahkan (menashabkan) kata kerja mudhari'.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">أَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hendaknya</div>
+                                <div class="word-latin">an</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">577x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">tidak akan</div>
+                                <div class="word-latin">lan</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">104x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِذَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalau demikian</div>
+                                <div class="word-latin">idzan</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">3x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَيْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">supaya</div>
+                                <div class="word-latin">kay</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">10x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لِ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">supaya</div>
+                                <div class="word-latin">li</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">حَتَّى</span>
+                            <div class="word-info">
+                                <div class="word-arti">hingga</div>
+                                <div class="word-latin">hattaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">71x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="9 لَا تَجْزُمْ Laa Tajzum (Larangan) Laa an-Nahiyah janganlah laa لَا">
+                <div class="card-header">
+                    <div class="num-tag">9</div>
+                    <div class="title-area">
+                        <div class="title-arab">لَا تَجْزُمْ</div>
+                        <div class="title-latin">Laa Tajzum (Larangan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf larangan yang mensukunkan (menjazamkan) fi'il mudhari'.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">لَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">janganlah</div>
+                                <div class="word-latin">laa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.731x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="10 لَمْ يَجْزُمْ Lam Yajzum (Penjazam Fi'il) Jawazim al-Mudhari' tidak / belum lam لَمْ tidak / belum lammaa لَمَّا hendaklah li لِ... hendaklah wal وَلْ... hendaklah fal فَلْ...">
+                <div class="card-header">
+                    <div class="num-tag">10</div>
+                    <div class="title-area">
+                        <div class="title-arab">لَمْ يَجْزُمْ</div>
+                        <div class="title-latin">Lam Yajzum (Penjazam Fi'il)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf peniadaan dan perintah yang menjazamkan (mensukunkan) satu fi'il mudhari'.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">لَمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">tidak / belum</div>
+                                <div class="word-latin">lam</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">347x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَمَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">tidak / belum</div>
+                                <div class="word-latin">lammaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">165x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لِ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">hendaklah</div>
+                                <div class="word-latin">li</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">وَلْ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">hendaklah</div>
+                                <div class="word-latin">wal</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">9x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">فَلْ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">hendaklah</div>
+                                <div class="word-latin">fal</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">7x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="11 الشَّرْطُ وَالْجَوَابُ Asy-Syarthu wal Jawabu Jawazim Syarthiyah jika in إِنْ siapa man مَنْ apa maa مَا kemanapun ainamaa أَيْنَمَا dimanapun haitsumaa حَيْثُمَا bagaimanapun juga mahmaa مَهْمَا">
+                <div class="card-header">
+                    <div class="num-tag">11</div>
+                    <div class="title-area">
+                        <div class="title-arab">الشَّرْطُ وَالْجَوَابُ</div>
+                        <div class="title-latin">Asy-Syarthu wal Jawabu</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata-kata syarat yang menjazamkan dua kata kerja sekaligus (fi'il syarat dan fi'il jawab).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">jika</div>
+                                <div class="word-latin">in</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">628x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">siapa</div>
+                                <div class="word-latin">man</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">274x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">apa</div>
+                                <div class="word-latin">maa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">718x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَيْنَمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kemanapun</div>
+                                <div class="word-latin">ainamaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">4x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">حَيْثُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">dimanapun</div>
+                                <div class="word-latin">haitsumaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَهْمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">bagaimanapun juga</div>
+                                <div class="word-latin">mahmaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="12 اَلْإِسْتِثْنَاءُ Al-Istitsna' Istitsna' & Taghrid kecuali illaa إِلَّا hendaklah janganlah allaa أَلَّا sekali-kali janganlah kallaa كَلَّا">
+                <div class="card-header">
+                    <div class="num-tag">12</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلْإِسْتِثْنَاءُ</div>
+                        <div class="title-latin">Al-Istitsna'</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata-kata pengecualian, peringatan keras, atau pencegahan.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِلَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kecuali</div>
+                                <div class="word-latin">illaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">470x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَلَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hendaklah janganlah</div>
+                                <div class="word-latin">allaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">45x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَلَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">sekali-kali janganlah</div>
+                                <div class="word-latin">kallaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">33x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="13 اَلْعَطَفُ Al-'Athafu (Kata Sambung) Huruf 'Athaf dan wa وَ... atau au أَوْ maka fa فَ... atau am أَمْ kemudian tsumma ثُمَّ adapun ammaa أَمَّا bahkan bal بَلْ... hingga hattaa حَتَّى... akan tetapi laakin لَكِنْ">
+                <div class="card-header">
+                    <div class="num-tag">13</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلْعَطَفُ</div>
+                        <div class="title-latin">Al-'Athafu (Kata Sambung)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata penghubung antar kata atau kalimat yang menyamakan kedudukan i'rab.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">وَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">dan</div>
+                                <div class="word-latin">wa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَوْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">atau</div>
+                                <div class="word-latin">au</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">265x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">فَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">maka</div>
+                                <div class="word-latin">fa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">atau</div>
+                                <div class="word-latin">am</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">122x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">ثُمَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kemudian</div>
+                                <div class="word-latin">tsumma</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">338x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَمَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">adapun</div>
+                                <div class="word-latin">ammaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">59x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">بَلْ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">bahkan</div>
+                                <div class="word-latin">bal</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">127x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">حَتَّى...</span>
+                            <div class="word-info">
+                                <div class="word-arti">hingga</div>
+                                <div class="word-latin">hattaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">71x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَكِنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">akan tetapi</div>
+                                <div class="word-latin">laakin</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">65x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="14 اَلشَّرْطُ Asy-Syarthu (Syarat Non-Jazam) Adawat Syarthi Ghair Jazimah jika / ketika idz إِذْ jika / apabila idzaa إِذَا jika / kalau begitu idzan إِذَنْ jika tidak immaa إِمَّا adapun ammaa أَمَّا ketika lammaa لَمَّا jikalau lau لَوْ mengapa tidak / jikalau tidak laulaa لَوْلَا mengapa tidak laumaa لَوْمَا">
+                <div class="card-header">
+                    <div class="num-tag">14</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلشَّرْطُ</div>
+                        <div class="title-latin">Asy-Syarthu (Syarat Non-Jazam)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata-kata pengandaian, waktu terjadinya syarat, tanpa menjazamkan kata kerja.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِذْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">jika / ketika</div>
+                                <div class="word-latin">idz</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">239x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِذَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">jika / apabila</div>
+                                <div class="word-latin">idzaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">432x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِذَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">jika / kalau begitu</div>
+                                <div class="word-latin">idzan</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِمَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">jika tidak</div>
+                                <div class="word-latin">immaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">29x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَمَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">adapun</div>
+                                <div class="word-latin">ammaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">59x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَمَّا</span>
+                            <div class="word-info">
+                                <div class="word-arti">ketika</div>
+                                <div class="word-latin">lammaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">165x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَوْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">jikalau</div>
+                                <div class="word-latin">lau</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">200x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَوْلَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">mengapa tidak / jikalau tidak</div>
+                                <div class="word-latin">laulaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">75x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَوْمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">mengapa tidak</div>
+                                <div class="word-latin">laumaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="15 اَلْإِسْتِفْهَامُ Al-Istifham (Kata Tanya) Adawat al-Istifham apakah a أَ ingatlah alaa أَلَا siapakah / yang mana ayyu أَيُّ dimana aina أَيْنَ apakah maa مَا siapakah man مَنْ kapan mataa مَتَى berapa kam كَمْ bagaimana kaifa كَيْفَ apakah hal هَلْ apakah maadzaa مَاذَا kenapa lima لِمَ kenapa limaadzaa لِمَاذَا">
+                <div class="card-header">
+                    <div class="num-tag">15</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلْإِسْتِفْهَامُ</div>
+                        <div class="title-latin">Al-Istifham (Kata Tanya)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata-kata tanya di dalam Al-Qur'an untuk menanyakan orang, benda, waktu, atau alasan.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">أَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">apakah</div>
+                                <div class="word-latin">a</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَلَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">ingatlah</div>
+                                <div class="word-latin">alaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">45x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَيُّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">siapakah / yang mana</div>
+                                <div class="word-latin">ayyu</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">59x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَيْنَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">dimana</div>
+                                <div class="word-latin">aina</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">7x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">apakah</div>
+                                <div class="word-latin">maa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">718x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">siapakah</div>
+                                <div class="word-latin">man</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">274x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَتَى</span>
+                            <div class="word-info">
+                                <div class="word-arti">kapan</div>
+                                <div class="word-latin">mataa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">9x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">berapa</div>
+                                <div class="word-latin">kam</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">21x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كَيْفَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">bagaimana</div>
+                                <div class="word-latin">kaifa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">83x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هَلْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">apakah</div>
+                                <div class="word-latin">hal</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">92x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَاذَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">apakah</div>
+                                <div class="word-latin">maadzaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">26x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لِمَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kenapa</div>
+                                <div class="word-latin">lima</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">19x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لِمَاذَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kenapa</div>
+                                <div class="word-latin">limaadzaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="16 اَلتَّوْكِيْدُ At-Taukid (Penegasan) Huruf Taukid sungguh la لَ... sungguh qad قَدْ sungguh laqad لَقَدْ">
+                <div class="card-header">
+                    <div class="num-tag">16</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلتَّوْكِيْدُ</div>
+                        <div class="title-latin">At-Taukid (Penegasan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf penegas dan penguat makna kalimat (sungguh / benar-benar).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">لَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">sungguh</div>
+                                <div class="word-latin">la</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">قَدْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sungguh</div>
+                                <div class="word-latin">qad</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">218x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَقَدْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sungguh</div>
+                                <div class="word-latin">laqad</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">188x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="17 اَلْإِسْتِقْبَالُ Al-Istiqbal (Masa Depan) Huruf Tanfis / Istiqbal akan sa سَ... akan saufa سَوْفَ">
+                <div class="card-header">
+                    <div class="num-tag">17</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلْإِسْتِقْبَالُ</div>
+                        <div class="title-latin">Al-Istiqbal (Masa Depan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf yang masuk pada fi'il mudhari' untuk menentukan waktu yang akan datang (akan).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">سَ...</span>
+                            <div class="word-info">
+                                <div class="word-arti">akan</div>
+                                <div class="word-latin">sa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">سَوْفَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">akan</div>
+                                <div class="word-latin">saufa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">42x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="18 اَلنَّافِي An-Nafi (Peniadaan) Huruf Nafi bukan maa مَا bukan laa لَا">
+                <div class="card-header">
+                    <div class="num-tag">18</div>
+                    <div class="title-area">
+                        <div class="title-arab">اَلنَّافِي</div>
+                        <div class="title-latin">An-Nafi (Peniadaan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Huruf peniadaan yang berarti 'bukan / tidak'.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">مَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">bukan</div>
+                                <div class="word-latin">maa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">718x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">لَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">bukan</div>
+                                <div class="word-latin">laa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.731x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="19 [tanpa nama] / أَفْعَالُ الْمَدْحِ وَالذَّمِّ Tanpa Nama (Pujian & Celaan) Af'alul Madh wadz-Dzam sebaik-baik ni'ma نِعْمَ sejelek-jelek bi'sa بِئْسَ">
+                <div class="card-header">
+                    <div class="num-tag">19</div>
+                    <div class="title-area">
+                        <div class="title-arab">[tanpa nama] / أَفْعَالُ الْمَدْحِ وَالذَّمِّ</div>
+                        <div class="title-latin">Tanpa Nama (Pujian & Celaan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata kerja khusus untuk memuji setinggi-tingginya atau mencela seburuk-buruknya.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">نِعْمَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sebaik-baik</div>
+                                <div class="word-latin">ni'ma</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">16x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">بِئْسَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sejelek-jelek</div>
+                                <div class="word-latin">bi'sa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">40x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="20 ظَرْفٌ Zhorof (Keterangan Tempat & Waktu) Zharaf Makan wa Zaman sebelum qabla قَبْلَ sesudah ba'da بَعْدَ bukan / selain ghaira غَيْرَ selain duuna دُوْنَ di depan amaama أَمَامَ di belakang waraa'a وَرَاءَ di belakang khalfa خَلْفَ di atas fauqa فَوْقَ di bawah tahta تَحْتَ di samping jaaniba جَانِبَ di sekitar haula حَوْلَ setiap kulla كُلَّ beserta ma'a مَعَ di sisi 'inda عِنْدَ di antara baina بَيْنَ">
+                <div class="card-header">
+                    <div class="num-tag">20</div>
+                    <div class="title-area">
+                        <div class="title-arab">ظَرْفٌ</div>
+                        <div class="title-latin">Zhorof (Keterangan Tempat & Waktu)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata keterangan penunjuk posisi ruang (tempat) atau urutan waktu.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">قَبْلَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sebelum</div>
+                                <div class="word-latin">qabla</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">188x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">بَعْدَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">sesudah</div>
+                                <div class="word-latin">ba'da</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">199x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">غَيْرَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">bukan / selain</div>
+                                <div class="word-latin">ghaira</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">147x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">دُوْنَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">selain</div>
+                                <div class="word-latin">duuna</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">144x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَمَامَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di depan</div>
+                                <div class="word-latin">amaama</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">2x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">وَرَاءَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di belakang</div>
+                                <div class="word-latin">waraa'a</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">24x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">خَلْفَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di belakang</div>
+                                <div class="word-latin">khalfa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">19x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">فَوْقَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di atas</div>
+                                <div class="word-latin">fauqa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">41x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">تَحْتَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di bawah</div>
+                                <div class="word-latin">tahta</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">51x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">جَانِبَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di samping</div>
+                                <div class="word-latin">jaaniba</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">9x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">حَوْلَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di sekitar</div>
+                                <div class="word-latin">haula</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">17x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">كُلَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">setiap</div>
+                                <div class="word-latin">kulla</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">407x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَعَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">beserta</div>
+                                <div class="word-latin">ma'a</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">59x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">عِنْدَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di sisi</div>
+                                <div class="word-latin">'inda</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">196x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">بَيْنَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">di antara</div>
+                                <div class="word-latin">baina</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">266x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="21 مَوْصُوْل Maushul (Kata Sambung Orang / Benda) Isim Maushul orang yang (lelaki 1) alladzii اَلَّذِيْ orang yang (lelaki 2) alladzaani اَللَّذَانِ orang-orang yang (lelaki banyak) alladziina اَلَّذِيْنَ orang yang (wanita 1) allatii اَلَّتِيْ orang yang (wanita 2) allataani اَلتَّانِ orang-orang yang (wanita banyak) allaatii / allaa'ii اَللَّاتِيْ / اَللَّائِيْ siapa yang man مَنْ apa yang maa مَا">
+                <div class="card-header">
+                    <div class="num-tag">21</div>
+                    <div class="title-area">
+                        <div class="title-arab">مَوْصُوْل</div>
+                        <div class="title-latin">Maushul (Kata Sambung Orang / Benda)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata penghubung (relative pronoun) 'yang / orang-orang yang' untuk laki-laki dan perempuan.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">اَلَّذِيْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang yang (lelaki 1)</div>
+                                <div class="word-latin">alladzii</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">304x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">اَللَّذَانِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang yang (lelaki 2)</div>
+                                <div class="word-latin">alladzaani</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">اَلَّذِيْنَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang-orang yang (lelaki banyak)</div>
+                                <div class="word-latin">alladziina</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">1.080x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">اَلَّتِيْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang yang (wanita 1)</div>
+                                <div class="word-latin">allatii</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">68x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">اَلتَّانِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang yang (wanita 2)</div>
+                                <div class="word-latin">allataani</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">اَللَّاتِيْ / اَللَّائِيْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">orang-orang yang (wanita banyak)</div>
+                                <div class="word-latin">allaatii / allaa'ii</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَنْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">siapa yang</div>
+                                <div class="word-latin">man</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">274x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">مَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">apa yang</div>
+                                <div class="word-latin">maa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">718x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="22 إِشَارَةٌ (بَعِيْد) Isyarah Jauh (Kata Tunjuk 'Itu') Isim Isyarah lil Ba'id itu (lelaki 1) dzaalika ذٰلِكَ itu (lelaki 2) dzaalikumaa ذٰلِكُمَا itu (lelaki jamak) dzaalikum ذٰلِكُمْ itu (wanita 1) tilka تِلْكَ itu (wanita 2) tilkumaa تِلْكُمَا itu (wanita jamak) tilkum تِلْكُمْ mereka itu ulaaa'ika أُولٰئِكَ">
+                <div class="card-header">
+                    <div class="num-tag">22</div>
+                    <div class="title-area">
+                        <div class="title-arab">إِشَارَةٌ (بَعِيْد)</div>
+                        <div class="title-latin">Isyarah Jauh (Kata Tunjuk 'Itu')</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata tunjuk untuk menunjuk benda/orang yang posisinya jauh ('itu / mereka itu').
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">ذٰلِكَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (lelaki 1)</div>
+                                <div class="word-latin">dzaalika</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">427x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">ذٰلِكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (lelaki 2)</div>
+                                <div class="word-latin">dzaalikumaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">2x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">ذٰلِكُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (lelaki jamak)</div>
+                                <div class="word-latin">dzaalikum</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">27x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">تِلْكَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (wanita 1)</div>
+                                <div class="word-latin">tilka</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">41x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">تِلْكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (wanita 2)</div>
+                                <div class="word-latin">tilkumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">تِلْكُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">itu (wanita jamak)</div>
+                                <div class="word-latin">tilkum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أُولٰئِكَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka itu</div>
+                                <div class="word-latin">ulaaa'ika</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">204x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="23 إِشَارَةٌ (قَرِيْب) Isyarah Dekat (Kata Tunjuk 'Ini') Isim Isyarah lil Qarib ini satu (lelaki) haadzaa هٰذَا ini dua (lelaki) haadzaani هٰذَانِ mereka ini (lelaki) haa'ulaaa'i هٰؤُلَاءِ ini satu (wanita) haadzihi هٰذِهِ ini dua (wanita) haataani هَاتَانِ mereka ini (wanita) haa'ulaaa'i هٰؤُلَاءِ">
+                <div class="card-header">
+                    <div class="num-tag">23</div>
+                    <div class="title-area">
+                        <div class="title-arab">إِشَارَةٌ (قَرِيْب)</div>
+                        <div class="title-latin">Isyarah Dekat (Kata Tunjuk 'Ini')</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata tunjuk untuk menunjuk benda/orang yang posisinya dekat ('ini / mereka ini').
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">هٰذَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">ini satu (lelaki)</div>
+                                <div class="word-latin">haadzaa</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">225x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هٰذَانِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">ini dua (lelaki)</div>
+                                <div class="word-latin">haadzaani</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">2x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هٰؤُلَاءِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka ini (lelaki)</div>
+                                <div class="word-latin">haa'ulaaa'i</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">46x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هٰذِهِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">ini satu (wanita)</div>
+                                <div class="word-latin">haadzihi</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">47x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هَاتَانِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">ini dua (wanita)</div>
+                                <div class="word-latin">haataani</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">2x</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هٰؤُلَاءِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka ini (wanita)</div>
+                                <div class="word-latin">haa'ulaaa'i</div>
+                            </div>
+                            <span class="freq-badge" title="Frekuensi di Al-Qur'an">46x</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="24 ضَمِيْرٌ (مُنْفَصِلٌ مَرْفُوْعٌ) Dhamir Munfashil (Kata Ganti Mandiri) Dhamir Munfashil dia (lelaki 1) huwa هُوَ dia berdua (lelaki 2) humaa هُمَا mereka (lelaki banyak) hum هُمْ dia (wanita 1) hiya هِيَ dia berdua (wanita 2) humaa هُمَا mereka (wanita banyak) hunna هُنَّ kamu (lelaki 1) anta أَنْتَ kamu berdua (lelaki 2) antumaa أَنْتُمَا kalian (lelaki banyak) antum أَنْتُمْ kamu (wanita 1) anti أَنْتِ kamu berdua (wanita 2) antumaa أَنْتُمَا kalian (wanita banyak) antunna أَنْتُنَّ saya anaa أَنَا kami / kita nahnu نَحْنُ">
+                <div class="card-header">
+                    <div class="num-tag">24</div>
+                    <div class="title-area">
+                        <div class="title-arab">ضَمِيْرٌ (مُنْفَصِلٌ مَرْفُوْعٌ)</div>
+                        <div class="title-latin">Dhamir Munfashil (Kata Ganti Mandiri)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata ganti orang yang berdiri sendiri (tidak bersambung), berfungsi sebagai subjek.
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">هُوَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia (lelaki 1)</div>
+                                <div class="word-latin">huwa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia berdua (lelaki 2)</div>
+                                <div class="word-latin">humaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka (lelaki banyak)</div>
+                                <div class="word-latin">hum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هِيَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia (wanita 1)</div>
+                                <div class="word-latin">hiya</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia berdua (wanita 2)</div>
+                                <div class="word-latin">humaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">هُنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka (wanita banyak)</div>
+                                <div class="word-latin">hunna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu (lelaki 1)</div>
+                                <div class="word-latin">anta</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu berdua (lelaki 2)</div>
+                                <div class="word-latin">antumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian (lelaki banyak)</div>
+                                <div class="word-latin">antum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu (wanita 1)</div>
+                                <div class="word-latin">anti</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu berdua (wanita 2)</div>
+                                <div class="word-latin">antumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنْتُنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian (wanita banyak)</div>
+                                <div class="word-latin">antunna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">أَنَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">saya</div>
+                                <div class="word-latin">anaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">نَحْنُ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kami / kita</div>
+                                <div class="word-latin">nahnu</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="25 ضَمِيْرٌ (مُتَّصِلٌ) Dhamir Muttashil (Kata Ganti Bersambung) Dhamir Muttashil dia / -nya (lelaki 1) -hu / -hi ...ـهُ / ...ـهِ mereka berdua (lelaki 2) -humaa / -himaa ...ـهُمَا / ...ـهِمَا mereka (lelaki banyak) -hum / -him ...ـهُمْ / ...ـهِمْ dia / -nya (wanita 1) -haa ...ـهَا mereka berdua (wanita 2) -humaa / -himaa ...ـهُمَا / ...ـهِمَا mereka (wanita banyak) -hunna / -hinna ...ـهُنَّ / ...ـهِنَّ kamu / -mu (lelaki 1) -ka ...ـكَ kalian berdua (lelaki 2) -kumaa ...ـكُمَا kalian (lelaki banyak) -kum ...ـكُمْ kamu / -mu (wanita 1) -ki ...ـكِ kalian berdua (wanita 2) -kumaa ...ـكُمَا kalian (wanita banyak) -kunna ...ـكُنَّ saya / -ku -ya / -ii / -nii ...ـيْ / ...ـِيْ / ...ـنِيْ kami / kita / -kita -naa ...ـنَا">
+                <div class="card-header">
+                    <div class="num-tag">25</div>
+                    <div class="title-area">
+                        <div class="title-arab">ضَمِيْرٌ (مُتَّصِلٌ)</div>
+                        <div class="title-latin">Dhamir Muttashil (Kata Ganti Bersambung)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Akhiran kata ganti yang menempel di belakang kata benda (milik) atau kata kerja (objek).
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">...ـهُ / ...ـهِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia / -nya (lelaki 1)</div>
+                                <div class="word-latin">-hu / -hi</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـهُمَا / ...ـهِمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka berdua (lelaki 2)</div>
+                                <div class="word-latin">-humaa / -himaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـهُمْ / ...ـهِمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka (lelaki banyak)</div>
+                                <div class="word-latin">-hum / -him</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـهَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">dia / -nya (wanita 1)</div>
+                                <div class="word-latin">-haa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـهُمَا / ...ـهِمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka berdua (wanita 2)</div>
+                                <div class="word-latin">-humaa / -himaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـهُنَّ / ...ـهِنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">mereka (wanita banyak)</div>
+                                <div class="word-latin">-hunna / -hinna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu / -mu (lelaki 1)</div>
+                                <div class="word-latin">-ka</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian berdua (lelaki 2)</div>
+                                <div class="word-latin">-kumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian (lelaki banyak)</div>
+                                <div class="word-latin">-kum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kamu / -mu (wanita 1)</div>
+                                <div class="word-latin">-ki</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian berdua (wanita 2)</div>
+                                <div class="word-latin">-kumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـكُنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">kalian (wanita banyak)</div>
+                                <div class="word-latin">-kunna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـيْ / ...ـِيْ / ...ـنِيْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">saya / -ku</div>
+                                <div class="word-latin">-ya / -ii / -nii</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">...ـنَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">kami / kita / -kita</div>
+                                <div class="word-latin">-naa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+            <div class="column-card" data-search="26 ضَمِيْرٌ (مُنْفَصِلٌ مَنْصُوْبٌ) Dhamir Munfashil Manshub (Kata Ganti Pengkhususan) Dhamir Nashab Munfashil hanya kepadanya (lelaki 1) iyyaahu إِيَّاهُ hanya kepadanya berdua (lelaki 2) iyyaahumaa إِيَّاهُمَا hanya kepada mereka (lelaki banyak) iyyaahum إِيَّاهُمْ hanya kepadanya (wanita 1) iyyaahaa إِيَّاهَا hanya kepadanya berdua (wanita 2) iyyaahumaa إِيَّاهُمَا hanya kepada mereka (wanita banyak) iyyaahunna إِيَّاهُنَّ hanya kepadamu (lelaki 1) iyyaaka إِيَّاكَ hanya kepadamu berdua (lelaki 2) iyyaakumaa إِيَّاكُمَا hanya kepada kalian (lelaki banyak) iyyaakum إِيَّاكُمْ hanya kepadamu (wanita 1) iyyaaki إِيَّاكِ hanya kepadamu berdua (wanita 2) iyyaakumaa إِيَّاكُمَا hanya kepada kalian (wanita banyak) iyyaakunna إِيَّاكُنَّ hanya kepadaku iyyaaya إِيَّايَ hanya kepada kami iyyaanaa إِيَّانَا">
+                <div class="card-header">
+                    <div class="num-tag">26</div>
+                    <div class="title-area">
+                        <div class="title-arab">ضَمِيْرٌ (مُنْفَصِلٌ مَنْصُوْبٌ)</div>
+                        <div class="title-latin">Dhamir Munfashil Manshub (Kata Ganti Pengkhususan)</div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="kaidah-box">
+                        <strong>Kaidah:</strong> Kata ganti manshub pengkhususan pembatasan (Hasyr/Takhshish: 'Hanya kepada...').
+                    </div>
+                    <ul class="word-list">
+        
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهُ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadanya (lelaki 1)</div>
+                                <div class="word-latin">iyyaahu</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadanya berdua (lelaki 2)</div>
+                                <div class="word-latin">iyyaahumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepada mereka (lelaki banyak)</div>
+                                <div class="word-latin">iyyaahum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadanya (wanita 1)</div>
+                                <div class="word-latin">iyyaahaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadanya berdua (wanita 2)</div>
+                                <div class="word-latin">iyyaahumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاهُنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepada mereka (wanita banyak)</div>
+                                <div class="word-latin">iyyaahunna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadamu (lelaki 1)</div>
+                                <div class="word-latin">iyyaaka</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadamu berdua (lelaki 2)</div>
+                                <div class="word-latin">iyyaakumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكُمْ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepada kalian (lelaki banyak)</div>
+                                <div class="word-latin">iyyaakum</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكِ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadamu (wanita 1)</div>
+                                <div class="word-latin">iyyaaki</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكُمَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadamu berdua (wanita 2)</div>
+                                <div class="word-latin">iyyaakumaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّاكُنَّ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepada kalian (wanita banyak)</div>
+                                <div class="word-latin">iyyaakunna</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّايَ</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepadaku</div>
+                                <div class="word-latin">iyyaaya</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                        <li class="word-item">
+                            <span class="word-arab">إِيَّانَا</span>
+                            <div class="word-info">
+                                <div class="word-arti">hanya kepada kami</div>
+                                <div class="word-latin">iyyaanaa</div>
+                            </div>
+                            <span class="freq-badge empty" title="Frekuensi di Al-Qur'an">-</span>
+                        </li>
+            
+                    </ul>
+                </div>
+            </div>
+        
+        </div>
+
+        <footer>
+            <p><strong>Sumber Materi:</strong> Modul Pembelajaran Tamyiz Online (Metode Tamyiz - Terjemah Al-Qur'an)</p>
+            <p>Disusun sebagai bahan ajar dan referensi belajar keluarga & pendidikan anak.</p>
+        </footer>
+    </div>
+
+    <script>
+        function filterCards() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const cards = document.querySelectorAll('.column-card');
+            cards.forEach(card => {
+                const searchData = card.getAttribute('data-search').toLowerCase();
+                if (searchData.includes(query)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>

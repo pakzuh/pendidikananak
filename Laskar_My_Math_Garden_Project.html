@@ -1,0 +1,952 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Math Garden: Multiply, Divide, and Grow! — Laskar (Grade 2)</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Comic Sans MS', 'Trebuchet MS', Arial, sans-serif;
+    background: #eafaf1;
+    color: #2c3e50;
+    line-height: 1.45;
+    padding: 16px;
+  }
+  .app-container {
+    max-width: 920px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 3.5px solid #27ae60;
+    border-radius: 20px;
+    padding: 24px;
+    box-shadow: 0 10px 30px rgba(39, 174, 96, 0.15);
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+    color: #ffffff;
+    border-radius: 16px;
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border: 2px solid #145a32;
+    margin-bottom: 20px;
+  }
+  .header h1 {
+    font-size: 22pt;
+    color: #f1c40f;
+    text-shadow: 1px 2px 3px rgba(0,0,0,0.3);
+    margin-bottom: 6px;
+  }
+  .header .sub {
+    font-size: 12pt;
+    color: #fafffb;
+    font-weight: bold;
+  }
+  .header .meta {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 10pt;
+    background: rgba(255,255,255,0.22);
+    padding: 8px 14px;
+    border-radius: 10px;
+    backdrop-filter: blur(4px);
+  }
+
+  /* Navigation Tabs */
+  .nav-tabs {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  .tab-btn {
+    flex: 1;
+    min-width: 150px;
+    background: #ecf0f1;
+    border: 2px solid #bdc3c7;
+    padding: 10px 14px;
+    border-radius: 10px;
+    font-family: inherit;
+    font-size: 11pt;
+    font-weight: bold;
+    color: #34495e;
+    cursor: pointer;
+    text-align: center;
+    transition: 0.2s;
+  }
+  .tab-btn:hover { background: #d5dbdb; }
+  .tab-btn.active {
+    background: #27ae60;
+    color: #ffffff;
+    border-color: #1e8449;
+    box-shadow: 0 4px 10px rgba(39, 174, 96, 0.3);
+  }
+
+  /* Tab Content Panes */
+  .tab-pane { display: none; }
+  .tab-pane.active { display: block; }
+
+  /* Control / Action Bar */
+  .top-action-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    padding: 10px 16px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+  }
+  .btn-print {
+    background: #e67e22;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 10.5pt;
+    font-family: inherit;
+    font-weight: bold;
+    transition: 0.2s;
+  }
+  .btn-print:hover { background: #d35400; transform: scale(1.02); }
+
+  /* Section Card */
+  .sec-card {
+    background: #ffffff;
+    border: 2.5px solid #27ae60;
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 22px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  }
+  .sec-title {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #27ae60;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12.5pt;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
+
+  .tip-box {
+    background: #eafaf1;
+    border-left: 5px solid #27ae60;
+    padding: 10px 14px;
+    border-radius: 0 8px 8px 0;
+    font-size: 10.5pt;
+    margin-bottom: 14px;
+  }
+
+  /* Interactive Virtual Garden */
+  .garden-stage {
+    background: linear-gradient(180deg, #d4efdf 0%, #a9dfbf 60%, #7dcea0 100%);
+    border: 3px solid #229954;
+    border-radius: 16px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 18px;
+  }
+  .garden-sky {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+  .station-box {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #27ae60;
+    border-radius: 12px;
+    padding: 14px;
+    margin-bottom: 16px;
+  }
+  .station-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .station-title {
+    font-size: 12pt;
+    font-weight: bold;
+    color: #1e8449;
+  }
+  .station-math-label {
+    background: #f1c40f;
+    color: #7d6608;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 11pt;
+    border: 1.5px solid #d4ac0d;
+  }
+
+  .items-row {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 10px 0;
+  }
+  .group-slot {
+    background: #fdfefe;
+    border: 2px dashed #27ae60;
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 140px;
+    text-align: center;
+    transition: 0.2s;
+  }
+  .group-slot:hover { border-color: #145a32; background: #f9fdfa; }
+
+  .btn-add-item {
+    background: #27ae60;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .btn-add-item:hover { background: #1e8449; }
+  .btn-reset-item {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+
+  /* Speaking Cue Cards */
+  .cue-card {
+    background: #fef9e7;
+    border: 2px solid #f39c12;
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+  }
+  .cue-card b { color: #b9770e; font-size: 11.5pt; display: block; margin-bottom: 4px; }
+  .cue-card p { font-size: 11pt; color: #2c3e50; }
+  .cue-card .translation { font-size: 9.5pt; color: #7f8c8d; font-style: italic; margin-top: 4px; }
+
+  /* Printable Templates Area */
+  .cutout-sheet {
+    border: 2px dashed #7f8c8d;
+    background: #fafafa;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 14px;
+  }
+  .cutout-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    gap: 14px;
+    text-align: center;
+  }
+  .cutout-item {
+    background: #ffffff;
+    border: 1.5px dashed #95a5a6;
+    border-radius: 8px;
+    padding: 8px;
+  }
+  .cutout-item svg { display: block; margin: 0 auto 6px; }
+  .cutout-item span { font-size: 8.5pt; font-weight: bold; color: #57606f; }
+
+  /* Interactive Quiz Cards */
+  .q-card {
+    background: #fcfefe;
+    border: 2px solid #bdc3c7;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 14px;
+  }
+  .q-num { font-size: 11pt; font-weight: bold; color: #1e8449; margin-bottom: 8px; }
+  .options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 10px;
+    margin-top: 8px;
+  }
+  .opt-btn {
+    background: #ffffff;
+    border: 2px solid #bdc3c7;
+    border-radius: 10px;
+    padding: 10px 12px;
+    font-size: 10.5pt;
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: 0.15s;
+  }
+  .opt-btn:hover { background: #eafaf1; border-color: #27ae60; }
+  .opt-btn.correct { background: #d4efdf !important; border-color: #27ae60 !important; color: #196f3d; font-weight: bold; }
+  .opt-btn.wrong   { background: #fadbd8 !important; border-color: #e74c3c !important; color: #943126; }
+
+  .feedback {
+    margin-top: 8px;
+    font-size: 10pt;
+    font-weight: bold;
+    display: none;
+  }
+  .feedback.show { display: block; }
+  .feedback.ok  { color: #27ae60; }
+  .feedback.err { color: #c0392b; }
+
+  /* Certificate */
+  .cert {
+    border: 4px double #27ae60;
+    background: #fafffb;
+    padding: 20px;
+    text-align: center;
+    border-radius: 14px;
+    margin-top: 24px;
+  }
+  .cert h2 { font-size: 17pt; color: #1e8449; margin: 4px 0; }
+  .cert .kid-name {
+    font-size: 22pt;
+    font-weight: bold;
+    color: #2c3e50;
+    border-bottom: 3px solid #27ae60;
+    display: inline-block;
+    padding: 2px 30px;
+    margin: 8px 0;
+  }
+
+  /* Print Styles */
+  @media print {
+    body { background: #fff; padding: 0; }
+    .app-container { box-shadow: none; border: 2px solid #000; width: 100%; max-width: 100%; padding: 10mm 12mm; }
+    .nav-tabs, .top-action-bar, .btn-add-item, .btn-reset-item { display: none !important; }
+    .tab-pane { display: block !important; page-break-after: always; }
+    .opt-btn { border: 1.5px solid #000; background: #fff !important; color: #000 !important; }
+    .feedback { display: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<div class="app-container">
+
+  <!-- Header -->
+  <div class="header">
+    <h1>🌻 MY MATH GARDEN: MULTIPLY, DIVIDE & GROW! 🍎</h1>
+    <div class="sub">PROYEK LENGKAP PENILAIAN TENGAH SEMESTER (PTS) TERM I — SD MISS MALANG</div>
+    <div class="meta">
+      <span>👦 <b>Ananda:</b> Laskar (Kelas 2)</span>
+      <span>📐 <b>Materi:</b> Perkalian & Pembagian Konkret</span>
+      <span>🗓️ <b>Tahap 1 (Besok):</b> Senin, 21 September 2026</span>
+    </div>
+  </div>
+
+  <!-- Navigation Tabs -->
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="switchTab('tab-sim')">🎮 Simulator Kebun Virtual</button>
+    <button class="tab-btn" onclick="switchTab('tab-quiz')">⭐ Soal Latihan & Kuis</button>
+    <button class="tab-btn" onclick="switchTab('tab-presentation')">🗣️ Latihan Presentasi</button>
+    <button class="tab-btn" onclick="switchTab('tab-print')">✂️ Template Siap Cetak (A4)</button>
+  </div>
+
+  <!-- Top Action Bar -->
+  <div class="top-action-bar">
+    <div style="font-size:11pt; font-weight:bold; color:#7d6608;">
+      💡 Gunakan tab di atas untuk simulator kebun, latihan soal, naskah presentasi, atau cetak template.
+    </div>
+    <button class="btn-print" onclick="window.print()">🖨️ Cetak Lembar Ini (Print)</button>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 1: VIRTUAL GARDEN SIMULATOR (MULTIPLY & DIVIDE) -->
+  <!-- ============================================================== -->
+  <div id="tab-sim" class="tab-pane active">
+    
+    <div class="tip-box">
+      <b>🌱 Panduan Bermain Simulator Kebun:</b><br>
+      Klik tombol <b>"+ Tambah Bunga"</b> atau <b>"+ Tambah Apel"</b> di setiap pot/pohon.  
+      Lihat bagaimana kartu rumus perkalian otomatis terbentuk dari <b>kelompok yang sama banyak (*Equal Groups*)</b>!
+    </div>
+
+    <!-- STAGE 1 & 2: MULTIPLICATION STATIONS -->
+    <div class="garden-stage">
+      
+      <!-- Langit Kebun -->
+      <div class="garden-sky">
+        <div style="display:flex; align-items:center; gap:8px;">
+          <svg viewBox="0 0 50 30" width="45" height="27">
+            <path d="M10,25 Q5,15 15,12 Q20,5 30,10 Q40,5 45,15 Q50,25 35,25 Z" fill="#ffffff"/>
+          </svg>
+          <span style="font-weight:bold; font-size:11pt; color:#145a32;">☁️ Cuaca Kebun Cerah</span>
+        </div>
+        <div>
+          <svg viewBox="0 0 50 50" width="45" height="45">
+            <circle cx="25" cy="25" r="14" fill="#f39c12"/>
+            <circle cx="25" cy="25" r="10" fill="#f1c40f"/>
+            <line x1="25" y1="5" x2="25" y2="0" stroke="#f39c12" stroke-width="3"/>
+            <line x1="25" y1="45" x2="25" y2="50" stroke="#f39c12" stroke-width="3"/>
+            <line x1="5" y1="25" x2="0" y2="25" stroke="#f39c12" stroke-width="3"/>
+            <line x1="45" y1="25" x2="50" y2="25" stroke="#f39c12" stroke-width="3"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- Station 1: Pot Bunga (3 Pot × 2 Bunga) -->
+      <div class="station-box">
+        <div class="station-header">
+          <div class="station-title">🌺 Station 1: Pot Bunga Indah (Equal Groups)</div>
+          <div class="station-math-label" id="labelPot">3 Pot × 2 Bunga = 6 Bunga</div>
+        </div>
+        <div style="font-size:9.5pt; color:#555; margin-bottom:6px;">
+          Penjumlahan Berulang: <b id="addPot" style="color:#e74c3c;">2 + 2 + 2 = 6</b>
+        </div>
+        
+        <div class="items-row">
+          <!-- Pot 1 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pot 1</div>
+            <div id="pot1-flowers" style="min-height:45px; display:flex; justify-content:center; align-items:center; gap:4px;">
+              🌸 🌸
+            </div>
+            <svg viewBox="0 0 60 30" width="50" height="25">
+              <polygon points="10,0 50,0 42,28 18,28" fill="#d35400"/>
+            </svg>
+          </div>
+
+          <!-- Pot 2 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pot 2</div>
+            <div id="pot2-flowers" style="min-height:45px; display:flex; justify-content:center; align-items:center; gap:4px;">
+              🌸 🌸
+            </div>
+            <svg viewBox="0 0 60 30" width="50" height="25">
+              <polygon points="10,0 50,0 42,28 18,28" fill="#d35400"/>
+            </svg>
+          </div>
+
+          <!-- Pot 3 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pot 3</div>
+            <div id="pot3-flowers" style="min-height:45px; display:flex; justify-content:center; align-items:center; gap:4px;">
+              🌸 🌸
+            </div>
+            <svg viewBox="0 0 60 30" width="50" height="25">
+              <polygon points="10,0 50,0 42,28 18,28" fill="#d35400"/>
+            </svg>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <button class="btn-add-item" onclick="changeFlowers(1)">+ Tambah 1 Bunga ke Tiap Pot</button>
+          <button class="btn-reset-item" onclick="resetFlowers()">Atur Ulang (2 Bunga)</button>
+        </div>
+      </div>
+
+      <!-- Station 2: Pohon Apel (3 Pohon × 3 Apel) -->
+      <div class="station-box">
+        <div class="station-header">
+          <div class="station-title">🌳 Station 2: Pohon Apel Segar</div>
+          <div class="station-math-label" id="labelTree">3 Pohon × 3 Apel = 9 Apel</div>
+        </div>
+        <div style="font-size:9.5pt; color:#555; margin-bottom:6px;">
+          Penjumlahan Berulang: <b id="addTree" style="color:#27ae60;">3 + 3 + 3 = 9</b>
+        </div>
+
+        <div class="items-row">
+          <!-- Tree 1 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pohon 1</div>
+            <svg viewBox="0 0 70 80" width="60" height="68">
+              <rect x="30" y="45" width="10" height="30" fill="#784212"/>
+              <circle cx="35" cy="30" r="28" fill="#2ecc71"/>
+            </svg>
+            <div id="tree1-apples" style="font-size:12pt; font-weight:bold; color:#e74c3c; margin-top:-25px; position:relative;">
+              🍎 🍎 🍎
+            </div>
+          </div>
+
+          <!-- Tree 2 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pohon 2</div>
+            <svg viewBox="0 0 70 80" width="60" height="68">
+              <rect x="30" y="45" width="10" height="30" fill="#784212"/>
+              <circle cx="35" cy="30" r="28" fill="#2ecc71"/>
+            </svg>
+            <div id="tree2-apples" style="font-size:12pt; font-weight:bold; color:#e74c3c; margin-top:-25px; position:relative;">
+              🍎 🍎 🍎
+            </div>
+          </div>
+
+          <!-- Tree 3 -->
+          <div class="group-slot">
+            <div style="font-size:10pt; font-weight:bold;">Pohon 3</div>
+            <svg viewBox="0 0 70 80" width="60" height="68">
+              <rect x="30" y="45" width="10" height="30" fill="#784212"/>
+              <circle cx="35" cy="30" r="28" fill="#2ecc71"/>
+            </svg>
+            <div id="tree3-apples" style="font-size:12pt; font-weight:bold; color:#e74c3c; margin-top:-25px; position:relative;">
+              🍎 🍎 🍎
+            </div>
+          </div>
+        </div>
+
+        <div style="text-align:center;">
+          <button class="btn-add-item" onclick="changeApples(1)">+ Tambah 1 Apel ke Tiap Pohon</button>
+          <button class="btn-reset-item" onclick="resetApples()">Atur Ulang (3 Apel)</button>
+        </div>
+      </div>
+
+      <!-- STAGE 3: DIVISION STATION (12 KEPIK DIBAGI KE 3 DAUN) -->
+      <div class="station-box" style="border-color:#2980b9;">
+        <div class="station-header">
+          <div class="station-title" style="color:#2980b9;">🐞 Station 3: Pembagian Kepik (Sharing Equally)</div>
+          <div class="station-math-label" style="background:#3498db; color:#fff; border-color:#2980b9;">
+            12 Kepik ÷ 3 Daun = 4 Kepik / Daun
+          </div>
+        </div>
+        <div style="font-size:9.5pt; color:#555; margin-bottom:6px;">
+          Konsep Pembagian: 12 ekor kepik dibagi sama rata ke 3 helai daun.
+        </div>
+
+        <div class="items-row">
+          <div class="group-slot" style="border-color:#3498db;">
+            <div style="font-size:10pt; font-weight:bold;">Daun A</div>
+            <div style="font-size:16pt; margin:6px 0;">🍃</div>
+            <div style="font-size:11pt; color:#c0392b; font-weight:bold;">🐞🐞🐞🐞 (4)</div>
+          </div>
+          <div class="group-slot" style="border-color:#3498db;">
+            <div style="font-size:10pt; font-weight:bold;">Daun B</div>
+            <div style="font-size:16pt; margin:6px 0;">🍃</div>
+            <div style="font-size:11pt; color:#c0392b; font-weight:bold;">🐞🐞🐞🐞 (4)</div>
+          </div>
+          <div class="group-slot" style="border-color:#3498db;">
+            <div style="font-size:10pt; font-weight:bold;">Daun C</div>
+            <div style="font-size:16pt; margin:6px 0;">🍃</div>
+            <div style="font-size:11pt; color:#c0392b; font-weight:bold;">🐞🐞🐞🐞 (4)</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 2: SOAL LATIHAN & KUIS MATEMATIKA -->
+  <!-- ============================================================== -->
+  <div id="tab-quiz" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">📝 Kuis Pemahaman Math Garden — Laskar</div>
+      <div class="tip-box">
+        Kerjakan soal-soal di bawah ini dengan mengeklik jawaban yang benar. Dengarkan suara *ting* jika benar!
+      </div>
+
+      <!-- Soal 1 -->
+      <div class="q-card" id="q1">
+        <div class="q-num">Soal 1. Apa yang dimaksud dengan konsep <b>Equal Groups</b> dalam perkalian?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(1, true, this)">
+            <span>✅</span> Kelompok benda yang jumlah isinya sama banyak
+          </button>
+          <button class="opt-btn" onclick="checkQ(1, false, this)">
+            <span>❌</span> Kelompok yang isinya beda-beda (ada yang 1, ada yang 10)
+          </button>
+          <button class="opt-btn" onclick="checkQ(1, false, this)">
+            <span>❌</span> Benda yang tidak punya kelompok sama sekali
+          </button>
+        </div>
+        <div class="feedback" id="fb1"></div>
+      </div>
+
+      <!-- Soal 2 -->
+      <div class="q-card" id="q2">
+        <div class="q-num">Soal 2. Di kebun ada <b>3 Pot</b>, masing-masing berisi <b>2 Bunga</b>. Bentuk kalimat perkaliannya (multiplication sentence) adalah...</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(2, true, this)">
+            <span>🌸</span> 3 × 2 = 6
+          </button>
+          <button class="opt-btn" onclick="checkQ(2, false, this)">
+            <span>🍂</span> 3 + 2 = 5
+          </button>
+          <button class="opt-btn" onclick="checkQ(2, false, this)">
+            <span>🥀</span> 2 × 2 = 4
+          </button>
+        </div>
+        <div class="feedback" id="fb2"></div>
+      </div>
+
+      <!-- Soal 3 -->
+      <div class="q-card" id="q3">
+        <div class="q-num">Soal 3. Laskar melihat <b>3 Pohon Apel</b>. Di setiap pohon menggantung <b>3 Buah Apel</b> (3 + 3 + 3). Berapa jumlah total apel di kebun?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(3, true, this)">
+            <span>🍎</span> 9 Apel &nbsp;(3 × 3 = 9)
+          </button>
+          <button class="opt-btn" onclick="checkQ(3, false, this)">
+            <span>🍏</span> 6 Apel
+          </button>
+          <button class="opt-btn" onclick="checkQ(3, false, this)">
+            <span>🍐</span> 12 Apel
+          </button>
+        </div>
+        <div class="feedback" id="fb3"></div>
+      </div>
+
+      <!-- Soal 4 -->
+      <div class="q-card" id="q4">
+        <div class="q-num">Soal 4. Ada <b>12 ekor kepik</b> yang ingin hinggap sama rata di <b>3 helai daun</b>. Berapa ekor kepik di setiap daun? (12 ÷ 3 = ...)</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(4, true, this)">
+            <span>🐞</span> 4 Kepik di setiap daun
+          </button>
+          <button class="opt-btn" onclick="checkQ(4, false, this)">
+            <span>🐞</span> 2 Kepik di setiap daun
+          </button>
+          <button class="opt-btn" onclick="checkQ(4, false, this)">
+            <span>🐞</span> 6 Kepik di setiap daun
+          </button>
+        </div>
+        <div class="feedback" id="fb4"></div>
+      </div>
+
+      <!-- Soal 5 -->
+      <div class="q-card" id="q5">
+        <div class="q-num">Soal 5. Petani memanen <b>18 buah wortel</b> dan membaginya sama rata ke <b>3 keranjang</b> (18 ÷ 3 = ...). Berapa isi setiap keranjang?</div>
+        <div class="options-grid">
+          <button class="opt-btn" onclick="checkQ(5, true, this)">
+            <span>🥕</span> 6 Wortel per keranjang
+          </button>
+          <button class="opt-btn" onclick="checkQ(5, false, this)">
+            <span>🥕</span> 3 Wortel per keranjang
+          </button>
+          <button class="opt-btn" onclick="checkQ(5, false, this)">
+            <span>🥕</span> 9 Wortel per keranjang
+          </button>
+        </div>
+        <div class="feedback" id="fb5"></div>
+      </div>
+
+      <!-- Sertifikat -->
+      <div class="cert">
+        <div style="font-size:10pt; letter-spacing:2px; font-weight:bold; color:#7f8c8d;">✦ PIAGAM PRESTASI MATEMATIKA ✦</div>
+        <h2>🌻 MASTER OF MATH GARDEN 🌻</h2>
+        <p style="margin:4px 0; font-size:11pt;">Diberikan dengan bangga kepada:</p>
+        <div class="kid-name">LASKAR</div>
+        <p style="margin:4px 0; font-size:10.5pt; color:#2c3e50;">
+          Telah menguasai konsep perkalian <i>(Equal Groups)</i> dan pembagian <i>(Sharing Equally)</i> pada Proyek <b>My Math Garden 3D</b>!
+        </p>
+        <div style="font-size:18pt; letter-spacing:6px; color:#f39c12; margin:10px 0;">
+          ★★★★★
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 3: PRESENTATION DAY CUE CARDS -->
+  <!-- ============================================================== -->
+  <div id="tab-presentation" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">🗣️ Naskah Latihan Presentasi (Presentation Day)</div>
+      <div class="tip-box">
+        Saat pameran nanti, Laskar cukup menceritakan 1 contoh perkalian dan 1 contoh pembagian dari kebunnya dengan suara percaya diri. Gunakan contekan kalimat sederhana di bawah ini:
+      </div>
+
+      <!-- Card 1: Pembuka -->
+      <div class="cue-card">
+        <b>1. Kalimat Pembuka (Greeting & Intro)</b>
+        <p>"Hello teachers and friends! Welcome to our 3D Math Garden project."</p>
+        <div class="translation">"Halo bapak/ibu guru dan teman-teman! Selamat datang di proyek Kebun Matematika 3D kami."</div>
+      </div>
+
+      <!-- Card 2: Contoh Perkalian -->
+      <div class="cue-card">
+        <b>2. Menjelaskan Perkalian (Multiplication Station)</b>
+        <p>"Look at our flower pots. We have <b>3 pots</b>. Each pot has <b>2 flowers</b>. So, <b>2 + 2 + 2 = 6</b>. In multiplication, <b>3 times 2 equals 6!</b>"</p>
+        <div class="translation">"Lihat pot bunga kami. Ada 3 pot, masing-masing isi 2 bunga. 2 + 2 + 2 = 6. Dalam perkalian, 3 kali 2 sama dengan 6!"</div>
+      </div>
+
+      <!-- Card 3: Contoh Pembagian -->
+      <div class="cue-card">
+        <b>3. Menjelaskan Pembagian (Division Station)</b>
+        <p>"Here we have <b>12 ladybugs</b> shared equally onto <b>3 green leaves</b>. Each leaf has <b>4 ladybugs</b>. So, <b>12 divided by 3 equals 4!</b>"</p>
+        <div class="translation">"Di sini kami punya 12 kepik dibagi sama rata ke 3 helai daun hijau. Setiap daun ada 4 kepik. Jadi, 12 dibagi 3 sama dengan 4!"</div>
+      </div>
+
+      <!-- Card 4: Penutup -->
+      <div class="cue-card">
+        <b>4. Kalimat Penutup (Closing)</b>
+        <p>"We worked together happily as a team. Thank you!"</p>
+        <div class="translation">"Kami bekerja sama dengan gembira dalam satu tim. Terima kasih!"</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================== -->
+  <!-- TAB 4: TEMPLATE GUNTING & TEMPEL (PRINT READY A4) -->
+  <!-- ============================================================== -->
+  <div id="tab-print" class="tab-pane">
+    <div class="sec-card">
+      <div class="sec-title">✂️ Template Gambar Kebun (Siap Dicetak & Digunting)</div>
+      <div class="tip-box">
+        Bunda/Ayah bisa mencetak halaman ini langsung ke printer. Ananda bisa menggunting gambar-gambar di bawah ini malam ini atau besok di sekolah untuk ditempel di papan karton alas kebun!
+      </div>
+
+      <div class="cutout-sheet">
+        <div style="text-align:center; font-weight:bold; color:#7f8c8d; margin-bottom:10px; font-size:10pt;">
+          --- GARIS POTONG GUNTING TEMPLATE (CUT ALONG DASHED LINES) ---
+        </div>
+
+        <div class="cutout-grid">
+          
+          <!-- Pot Bunga x 3 -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 40" width="55" height="36">
+              <polygon points="10,5 50,5 42,35 18,35" fill="#d35400" stroke="#a04000" stroke-width="2"/>
+            </svg>
+            <span>Flower Pot (1)</span>
+          </div>
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 40" width="55" height="36">
+              <polygon points="10,5 50,5 42,35 18,35" fill="#d35400" stroke="#a04000" stroke-width="2"/>
+            </svg>
+            <span>Flower Pot (2)</span>
+          </div>
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 40" width="55" height="36">
+              <polygon points="10,5 50,5 42,35 18,35" fill="#d35400" stroke="#a04000" stroke-width="2"/>
+            </svg>
+            <span>Flower Pot (3)</span>
+          </div>
+
+          <!-- Bunga x 6 -->
+          <div class="cutout-item">
+            <div style="font-size:24pt;">🌸</div>
+            <span>Bunga 1 & 2</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:24pt;">🌸</div>
+            <span>Bunga 3 & 4</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:24pt;">🌸</div>
+            <span>Bunga 5 & 6</span>
+          </div>
+
+          <!-- Pohon Apel x 3 -->
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 70" width="50" height="58">
+              <rect x="25" y="40" width="10" height="25" fill="#784212"/>
+              <circle cx="30" cy="25" r="22" fill="#2ecc71"/>
+            </svg>
+            <span>Apple Tree (1)</span>
+          </div>
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 70" width="50" height="58">
+              <rect x="25" y="40" width="10" height="25" fill="#784212"/>
+              <circle cx="30" cy="25" r="22" fill="#2ecc71"/>
+            </svg>
+            <span>Apple Tree (2)</span>
+          </div>
+          <div class="cutout-item">
+            <svg viewBox="0 0 60 70" width="50" height="58">
+              <rect x="25" y="40" width="10" height="25" fill="#784212"/>
+              <circle cx="30" cy="25" r="22" fill="#2ecc71"/>
+            </svg>
+            <span>Apple Tree (3)</span>
+          </div>
+
+          <!-- Buah Apel x 9 -->
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🍎🍎🍎</div>
+            <span>3 Apel (Pohon 1)</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🍎🍎🍎</div>
+            <span>3 Apel (Pohon 2)</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🍎🍎🍎</div>
+            <span>3 Apel (Pohon 3)</span>
+          </div>
+
+          <!-- Daun & Kepik -->
+          <div class="cutout-item">
+            <div style="font-size:22pt;">🍃</div>
+            <span>Daun Hijau (3x)</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:20pt;">🐞🐞🐞🐞</div>
+            <span>4 Kepik (Daun A)</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:20pt;">🐞🐞🐞🐞</div>
+            <span>4 Kepik (Daun B)</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:20pt;">🐞🐞🐞🐞</div>
+            <span>4 Kepik (Daun C)</span>
+          </div>
+
+          <!-- Dekorasi: Matahari, Awan, Pagar -->
+          <div class="cutout-item">
+            <div style="font-size:24pt;">☀️</div>
+            <span>Matahari</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:24pt;">☁️</div>
+            <span>Awan Langit</span>
+          </div>
+          <div class="cutout-item">
+            <div style="font-size:24pt;">🦋 🐝</div>
+            <span>Kupu-kupu & Lebah</span>
+          </div>
+
+          <!-- Kartu Label Matematika -->
+          <div class="cutout-item" style="grid-column: span 2; background:#fffde7;">
+            <b style="font-size:11pt; color:#d35400;">3 × 2 = 6</b>
+            <div style="font-size:8pt;">Kartu Label Pot Bunga</div>
+          </div>
+          <div class="cutout-item" style="grid-column: span 2; background:#fffde7;">
+            <b style="font-size:11pt; color:#27ae60;">3 × 3 = 9</b>
+            <div style="font-size:8pt;">Kartu Label Pohon Apel</div>
+          </div>
+          <div class="cutout-item" style="grid-column: span 2; background:#e8f8f5;">
+            <b style="font-size:11pt; color:#2980b9;">12 ÷ 3 = 4</b>
+            <div style="font-size:8pt;">Kartu Label Pembagian Kepik</div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Interactive Engine -->
+<script>
+  let flowerCountPerPot = 2;
+  let appleCountPerTree = 3;
+  let quizCount = 0;
+  const answeredQuiz = {};
+
+  function switchTab(tabId) {
+    document.querySelectorAll('.tab-pane').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(tabId).classList.add('active');
+    event.currentTarget.classList.add('active');
+  }
+
+  function playSound(type) {
+    try {
+      const ctx = new (window.AudioContext || window.webkitAudioContext)();
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      if (type === 'correct') {
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
+        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
+        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.2, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.35);
+      } else if (type === 'pop') {
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(440, ctx.currentTime);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
+        osc.start();
+        osc.stop(ctx.currentTime + 0.1);
+      }
+    } catch(e) {}
+  }
+
+  function changeFlowers(delta) {
+    flowerCountPerPot += delta;
+    if (flowerCountPerPot > 4) flowerCountPerPot = 4;
+    renderFlowers();
+    playSound('pop');
+  }
+
+  function resetFlowers() {
+    flowerCountPerPot = 2;
+    renderFlowers();
+    playSound('pop');
+  }
+
+  function renderFlowers() {
+    const fStr = '🌸 '.repeat(flowerCountPerPot).trim();
+    document.getElementById('pot1-flowers').innerHTML = fStr;
+    document.getElementById('pot2-flowers').innerHTML = fStr;
+    document.getElementById('pot3-flowers').innerHTML = fStr;
+    const total = 3 * flowerCountPerPot;
+    document.getElementById('labelPot').innerHTML = `3 Pot × ${flowerCountPerPot} Bunga = ${total} Bunga`;
+    document.getElementById('addPot').innerHTML = `${flowerCountPerPot} + ${flowerCountPerPot} + ${flowerCountPerPot} = ${total}`;
+  }
+
+  function changeApples(delta) {
+    appleCountPerTree += delta;
+    if (appleCountPerTree > 5) appleCountPerTree = 5;
+    renderApples();
+    playSound('pop');
+  }
+
+  function resetApples() {
+    appleCountPerTree = 3;
+    renderApples();
+    playSound('pop');
+  }
+
+  function renderApples() {
+    const aStr = '🍎 '.repeat(appleCountPerTree).trim();
+    document.getElementById('tree1-apples').innerHTML = aStr;
+    document.getElementById('tree2-apples').innerHTML = aStr;
+    document.getElementById('tree3-apples').innerHTML = aStr;
+    const total = 3 * appleCountPerTree;
+    document.getElementById('labelTree').innerHTML = `3 Pohon × ${appleCountPerTree} Apel = ${total} Apel`;
+    document.getElementById('addTree').innerHTML = `${appleCountPerTree} + ${appleCountPerTree} + ${appleCountPerTree} = ${total}`;
+  }
+
+  function checkQ(qNum, isCorrect, btnElem) {
+    if (answeredQuiz[qNum]) return;
+
+    const fb = document.getElementById('fb' + qNum);
+    if (isCorrect) {
+      btnElem.classList.add('correct');
+      fb.innerHTML = '✨ Benar sekali, Laskar! Kamu hebat! 🎉';
+      fb.className = 'feedback show ok';
+      playSound('correct');
+      quizCount++;
+      answeredQuiz[qNum] = true;
+    } else {
+      btnElem.classList.add('wrong');
+      fb.innerHTML = 'Yuk coba hitung lagi bersama Bunda/Ayah ya 😊';
+      fb.className = 'feedback show err';
+    }
+  }
+</script>
+
+</body>
+</html>

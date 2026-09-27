@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Proyek Science Grade 2 — I Can Make My Classroom Cool | Laskar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent: #22c55e;
+      --accent-light: #dcfce7;
+      --warning: #f59e0b;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --card-bg: #ffffff;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 60px;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, .font-title { font-family: 'Fredoka', cursive, sans-serif; }
+
+    .container {
+      max-width: 1050px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Header Banner */
+    .header-card {
+      background: linear-gradient(135deg, #0369a1 0%, #0284c7 50%, #0ea5e9 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 30px 36px;
+      box-shadow: 0 15px 30px rgba(2, 132, 199, 0.25);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 24px;
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+
+    .header-card::after {
+      content: "🌬️";
+      position: absolute;
+      right: 25px;
+      bottom: -15px;
+      font-size: 130px;
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    .badge-bar { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 12px; }
+    .badge {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(8px);
+      padding: 5px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge-gold { background: #fef08a; color: #854d0e; }
+
+    .header-title { font-size: 30px; font-weight: 700; margin-bottom: 8px; line-height: 1.2; }
+    .header-subtitle { font-size: 16px; color: #bae6fd; max-width: 800px; margin-bottom: 18px; font-weight: 600; }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 12px;
+      background: rgba(0, 0, 0, 0.18);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 13.5px;
+    }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+      margin-bottom: 20px;
+    }
+
+    .tab-btn {
+      background: #ffffff;
+      border: 2px solid var(--border);
+      border-radius: 14px;
+      padding: 11px 18px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14.5px;
+      font-weight: 600;
+      color: var(--text-muted);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+
+    .tab-btn:hover { background: #f8fafc; color: var(--primary); border-color: var(--primary); }
+    .tab-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 15px rgba(2, 132, 199, 0.3);
+    }
+
+    .tab-pane { display: none; animation: fadeIn 0.25s ease; }
+    .tab-pane.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 26px;
+      margin-bottom: 22px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+      border: 1.5px solid var(--border);
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      border-bottom: 2px dashed #e2e8f0;
+      padding-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .section-title { font-size: 21px; color: var(--primary-dark); display: flex; align-items: center; gap: 10px; }
+
+    /* Flashcards Q&A */
+    .qa-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 18px;
+    }
+
+    .qa-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.2s;
+    }
+
+    .qa-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.1);
+    }
+
+    .qa-badge {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+    }
+
+    .qa-question {
+      font-size: 16px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .qa-answer {
+      background: #ffffff;
+      border-left: 4px solid var(--accent);
+      padding: 12px 14px;
+      border-radius: 0 10px 10px 0;
+      font-size: 14px;
+      color: #1e293b;
+      margin-top: auto;
+      line-height: 1.5;
+    }
+
+    .qa-en { font-style: italic; color: #0369a1; font-weight: 700; margin-bottom: 4px; }
+    .qa-id { font-size: 12.5px; color: #64748b; }
+
+    /* Infographic 4 Items */
+    .infographic-box {
+      background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+      border: 2.5px solid #86efac;
+      border-radius: 18px;
+      padding: 24px;
+      margin-top: 14px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .info-item {
+      background: #ffffff;
+      border: 2px solid #bbf7d0;
+      border-radius: 14px;
+      padding: 16px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    }
+
+    .info-icon { font-size: 42px; margin-bottom: 8px; }
+    .info-title { font-size: 16px; font-weight: 800; color: #166534; margin-bottom: 4px; }
+    .info-desc { font-size: 13px; color: #374151; }
+
+    /* Presentation Script Box */
+    .script-box {
+      background: #fffbeb;
+      border: 2px solid #fde68a;
+      border-radius: 16px;
+      padding: 22px;
+      line-height: 1.8;
+      font-size: 15px;
+    }
+
+    .script-step { margin-bottom: 16px; }
+    .script-step strong { color: #b45309; display: block; font-size: 14px; }
+    .script-speech { color: #0f172a; font-style: italic; font-weight: 600; font-size: 15.5px; }
+    .script-trans { color: #64748b; font-size: 12.5px; display: block; margin-top: 2px; }
+
+    /* Quiz */
+    .quiz-card {
+      background: #f8fafc;
+      border: 2px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-q { font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 10px; }
+    .quiz-opts { display: flex; flex-direction: column; gap: 8px; }
+    .quiz-btn {
+      background: #ffffff;
+      border: 1.5px solid #cbd5e1;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-size: 14px;
+      text-align: left;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all 0.2s;
+    }
+    .quiz-btn:hover { border-color: var(--primary); background: #f0f9ff; }
+    .quiz-btn.correct { background: #dcfce7; border-color: #22c55e; color: #166534; font-weight: 700; }
+    .quiz-btn.wrong { background: #fee2e2; border-color: #ef4444; color: #991b1b; }
+
+    .btn {
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 13.5px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-primary:hover { background: var(--primary-dark); }
+    .btn-outline { background: white; border: 1.5px solid var(--border); color: var(--text); }
+    .btn-outline:hover { border-color: var(--primary); color: var(--primary); }
+
+    /* Print Preview */
+    .print-sheet {
+      background: #ffffff;
+      max-width: 820px;
+      margin: 0 auto 24px auto;
+      padding: 36px 40px;
+      border-radius: 12px;
+      border: 1px solid #cbd5e1;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        color: #000000 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print, .tabs-nav, .header-card, .btn, button, .top-action-bar, .toast, .print-controls {
+        display: none !important;
+      }
+      .container, .app-container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        width: 100% !important;
+      }
+      .tab-pane {
+        display: none !important;
+      }
+      .tab-pane.active {
+        display: block !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      .print-sheet {
+        border: 1.5px solid #cbd5e1 !important;
+        box-shadow: none !important;
+        padding: 8mm !important;
+        max-width: 100% !important;
+        margin: 0 0 20px 0 !important;
+        page-break-after: always;
+        break-after: page;
+      }
+      .print-sheet:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    
+    <!-- Header -->
+    <header class="header-card no-print">
+      <div class="badge-bar">
+        <span class="badge badge-gold">⭐ PROJECT WEEK TERM I</span>
+        <span class="badge">🌬️ Science • Grade 2</span>
+        <span class="badge">Rabu & Kamis, 23-24 Sep 2026</span>
+      </div>
+      <h1 class="header-title">I Can Make My Classroom Cool...</h1>
+      <p class="header-subtitle">
+        Unit 3: Air (Udara & Angin) — Tanya-Jawab Alat Peraga, Infografis Sejuk, & Video Presentasi Bahasa Inggris
+      </p>
+
+      <div class="meta-grid">
+        <div><strong>👦 Ananda:</strong> Laskar Al Kautsar (Grade 2)</div>
+        <div><strong>🏫 Sekolah:</strong> SD MISS Malang</div>
+        <div><strong>⏱️ Waktu:</strong> 11.30 - 12.30 WIB</div>
+        <div><strong>📖 Buku:</strong> My Pals are Here 2 (Hal 26-39)</div>
+      </div>
+    </header>
+
+    <!-- Nav Tabs -->
+    <nav class="tabs-nav no-print">
+      <button class="tab-btn active" onclick="switchTab('tab-qa', this)">
+        <span>❓</span> Tanya Jawab Alat Peraga
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-infographic', this)">
+        <span>🌱</span> Infografis Kelas Sejuk
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-video', this)">
+        <span>🎬</span> Naskah Presentasi Video
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-quiz', this)">
+        <span>🧠</span> Mini Kuis Sains (5 Soal)
+      </button>
+      <button class="tab-btn" onclick="switchTab('tab-print', this)">
+        <span>🖨️</span> Lembar Siap Cetak (A4)
+      </button>
+    </nav>
+
+    <!-- Quick Action Bar -->
+    <div class="top-action-bar no-print" style="display: flex; justify-content: space-between; align-items: center; background: #e0f2fe; border: 1.5px solid #7dd3fc; border-radius: 12px; padding: 10px 16px; margin-bottom: 20px; flex-wrap: wrap; gap: 10px;">
+      <div style="font-size: 13.5px; font-weight: 700; color: #0369a1;">
+        💡 Siap dicetak: Workbook "I Can Make My Classroom Cool" & 4 Infografis Bergambar (A4)!
+      </div>
+      <div style="display: flex; gap: 8px;">
+        <button class="btn btn-primary" onclick="printWorksheet('tab-print')" style="padding: 8px 16px; font-size: 13.5px; background: #0284c7; color: white; border: none; border-radius: 8px; cursor: pointer; font-weight: 700;">
+          🖨️ Cetak Lembar Science (A4)
+        </button>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 1: TANYA JAWAB ALAT PERAGA DARI TEACHER
+         ======================================================= -->
+    <div id="tab-qa" class="tab-pane active">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🗣️</span> Prediksi Tanya-Jawab Lisan Miss & Mister</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Sesuai outline: <em>"Ananda menjawab pertanyaan dari teacher sesuai dengan alat peraga yang diberikan."</em>
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="playAudio('Mari latihan menjawab pertanyaan Miss dan Mister tentang udara dan angin!')">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
+
+        <div class="qa-grid">
+          
+          <!-- Q1 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 1 • DEFINISI UDARA</span>
+            <div class="qa-question">Teacher: "What is Air?" (Apa itu udara?)</div>
+            <div class="qa-answer">
+              <div class="qa-en">"Air is around us. We cannot see air, but we can feel it. Living things need air to breathe."</div>
+              <div class="qa-id">Artinya: Udara ada di sekitar kita. Kita tidak bisa melihatnya tapi bisa merasakannya. Makhluk hidup butuh udara untuk bernapas.</div>
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 2 • DEFINISI ANGIN</span>
+            <div class="qa-question">Teacher: "What is Wind?" (Apa itu angin?)</div>
+            <div class="qa-answer">
+              <div class="qa-en">"Wind is moving air."</div>
+              <div class="qa-id">Artinya: Angin adalah udara yang bergerak. (Jawaban singkat, tepat, dan sangat disukai teacher!)</div>
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 3 • FUNGSI UDARA & ANGIN</span>
+            <div class="qa-question">Teacher: "What can wind / moving air do?" (Apa manfaat angin?)</div>
+            <div class="qa-answer">
+              <div class="qa-en">"Wind can fly kites, dry wet clothes, sail boats, and spin windmills."</div>
+              <div class="qa-id">Artinya: Angin bisa menerbangkan layangan, mengeringkan jemuran basah, menggerakkan perahu layar, dan memutar kincir angin.</div>
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 4 • KELAS PANAS DI SIANG HARI</span>
+            <div class="qa-question">Teacher: "Why is our classroom hot at noon?" (Kenapa kelas panas di siang hari?)</div>
+            <div class="qa-answer">
+              <div class="qa-en">"Because the sun is very hot, there are many students inside, and the windows are closed."</div>
+              <div class="qa-id">Artinya: Karena matahari sangat terik, ada banyak siswa di dalam kelas, dan jendela tertutup sehingga udara tidak mengalir.</div>
+            </div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 5 • ALAT PERAGA KINCIR / BALON</span>
+            <div class="qa-question">Teacher: "What happens when you blow this pinwheel / balloon?"</div>
+            <div class="qa-answer">
+              <div class="qa-en">"When I blow, my breath creates moving air (wind). It makes the pinwheel spin and the balloon expand!"</div>
+              <div class="qa-id">Artinya: Saat aku meniup, hembusan nafasku membuat udara bergerak (angin). Ini membuat kincir berputar dan balon membesar!</div>
+            </div>
+          </div>
+
+          <!-- Q6 -->
+          <div class="qa-card">
+            <span class="qa-badge">SOAL 6 • CARA MEMBUAT SEJUK</span>
+            <div class="qa-question">Teacher: "How do you make your classroom cool?"</div>
+            <div class="qa-answer">
+              <div class="qa-en">"I can open the windows, turn on the fan, close the curtains, and put plants!"</div>
+              <div class="qa-id">Artinya: Aku bisa membuka jendela, menyalakan kipas angin, menutup gorden dari sinar matahari, dan menaruh tanaman hijau.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 2: INFOGRAFIS KELAS SEJUK
+         ======================================================= -->
+    <div id="tab-infographic" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🌱</span> 4 Solusi Infografis: "I Can Make My Classroom Cool"</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Laskar dapat menggambarkan atau menempelkan 4 ide ini ke lembar infografis di sekolah.
+            </p>
+          </div>
+        </div>
+
+        <div class="infographic-box">
+          <div style="text-align: center; margin-bottom: 12px;">
+            <h3 style="font-size: 22px; color: #15803d;">🍃 Aku Bisa Membuat Kelasku Terasa Sejuk! 🍃</h3>
+            <p style="font-size: 14px; color: #166534;">4 Langkah Mudah yang Bisa Laskar dan Teman-teman Lakukan:</p>
+          </div>
+
+          <div class="info-grid">
+            <div class="info-item" style="display:flex; flex-direction:column; align-items:center; border:2px solid #38bdf8; border-radius:16px; padding:18px; background:#ffffff; box-shadow:0 4px 12px rgba(2,132,199,0.06);">
+              <div style="height:90px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                <svg viewBox="0 0 100 80" width="110" height="85">
+                  <rect x="15" y="10" width="70" height="55" rx="6" fill="#bae6fd"/>
+                  <circle cx="30" cy="55" r="16" fill="#86efac"/>
+                  <circle cx="50" cy="55" r="20" fill="#4ade80"/>
+                  <circle cx="70" cy="55" r="14" fill="#22c55e"/>
+                  <circle cx="74" cy="22" r="8" fill="#fde047"/>
+                  <rect x="12" y="8" width="76" height="60" rx="4" fill="none" stroke="#0369a1" stroke-width="3.5"/>
+                  <line x1="50" y1="8" x2="50" y2="68" stroke="#0369a1" stroke-width="2.5"/>
+                  <polygon points="12,12 28,16 28,62 12,66" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" fill-opacity="0.9"/>
+                  <line x1="20" y1="14" x2="20" y2="64" stroke="#0284c7" stroke-width="1.5"/>
+                  <polygon points="88,12 72,16 72,62 88,66" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" fill-opacity="0.9"/>
+                  <line x1="80" y1="14" x2="80" y2="64" stroke="#0284c7" stroke-width="1.5"/>
+                  <path d="M40,24 Q55,20 62,28 Q66,32 60,36 Q54,38 48,34" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M33,38 Q48,32 58,42 Q63,47 56,52 Q48,54 42,48" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M25,48 Q42,42 52,50" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M68,28 Q74,25 72,32 Q66,35 68,28 Z" fill="#22c55e"/>
+                  <path d="M62,48 Q68,45 66,52 Q60,55 62,48 Z" fill="#16a34a"/>
+                </svg>
+              </div>
+              <div class="info-title" style="font-size:16px; font-weight:800; color:#0369a1; margin-bottom:4px;">1. Open the Windows</div>
+              <div class="info-desc" style="font-size:13px; color:#475569; line-height:1.5;">Membuka jendela kelas lebar-lebar agar <b>udara segar & angin sejuk</b> masuk menggantikan udara pengap.</div>
+            </div>
+
+            <div class="info-item" style="display:flex; flex-direction:column; align-items:center; border:2px solid #60a5fa; border-radius:16px; padding:18px; background:#ffffff; box-shadow:0 4px 12px rgba(37,99,235,0.06);">
+              <div style="height:90px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                <svg viewBox="0 0 100 80" width="110" height="85">
+                  <ellipse cx="50" cy="74" rx="22" ry="5" fill="#64748b"/>
+                  <rect x="47" y="44" width="6" height="30" fill="#94a3b8" rx="2"/>
+                  <circle cx="50" cy="42" r="5" fill="#475569"/>
+                  <circle cx="50" cy="28" r="26" fill="#f0f9ff" stroke="#2563eb" stroke-width="2.5"/>
+                  <circle cx="50" cy="28" r="18" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="3,3"/>
+                  <path d="M50,28 Q44,12 54,6 Q60,12 50,28 Z" fill="#0284c7"/>
+                  <path d="M50,28 Q66,34 70,24 Q64,18 50,28 Z" fill="#0284c7"/>
+                  <path d="M50,28 Q40,46 48,50 Q54,44 50,28 Z" fill="#0284c7"/>
+                  <circle cx="50" cy="28" r="4.5" fill="#f59e0b"/>
+                  <path d="M78,14 Q88,16 95,12" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M80,28 Q92,28 97,24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M78,42 Q88,40 95,44" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <text x="10" y="24" font-size="12">❄️</text>
+                  <text x="82" y="22" font-size="12">💨</text>
+                </svg>
+              </div>
+              <div class="info-title" style="font-size:16px; font-weight:800; color:#1d4ed8; margin-bottom:4px;">2. Turn On the Fan / AC</div>
+              <div class="info-desc" style="font-size:13px; color:#475569; line-height:1.5;">Menyalakan kipas angin atau AC untuk <b>menggerakkan udara dingin</b> (moving air) ke seluruh sudut kelas.</div>
+            </div>
+
+            <div class="info-item" style="display:flex; flex-direction:column; align-items:center; border:2px solid #fb923c; border-radius:16px; padding:18px; background:#ffffff; box-shadow:0 4px 12px rgba(234,88,12,0.06);">
+              <div style="height:90px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                <svg viewBox="0 0 100 80" width="110" height="85">
+                  <rect x="14" y="10" width="72" height="58" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="2"/>
+                  <circle cx="28" cy="24" r="12" fill="#f59e0b"/>
+                  <line x1="28" y1="6" x2="28" y2="10" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="12" y1="24" x2="16" y2="24" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="16" y1="12" x2="20" y2="15" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="38" y1="14" x2="42" y2="12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="25" cy="22" r="1.5" fill="#78350f"/>
+                  <circle cx="31" cy="22" r="1.5" fill="#78350f"/>
+                  <path d="M26,27 Q28,29 30,27" fill="none" stroke="#78350f" stroke-width="1.2"/>
+                  <rect x="10" y="8" width="80" height="4" rx="2" fill="#b45309"/>
+                  <circle cx="10" cy="10" r="3" fill="#f59e0b"/>
+                  <circle cx="90" cy="10" r="3" fill="#f59e0b"/>
+                  <path d="M12,12 Q24,12 36,12 Q38,40 38,68 Q24,68 12,68 Z" fill="#ea580c"/>
+                  <path d="M88,12 Q76,12 64,12 Q62,40 62,68 Q76,68 88,68 Z" fill="#ea580c"/>
+                  <path d="M36,12 Q50,12 64,12 Q62,40 62,68 Q50,68 38,68 Z" fill="#f97316"/>
+                  <line x1="24" y1="12" x2="24" y2="68" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4,2"/>
+                  <line x1="50" y1="12" x2="50" y2="68" stroke="#ea580c" stroke-width="1.5"/>
+                  <line x1="76" y1="12" x2="76" y2="68" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4,2"/>
+                  <circle cx="50" cy="42" r="9" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+                  <text x="44" y="46" font-size="11">🛡️</text>
+                </svg>
+              </div>
+              <div class="info-title" style="font-size:16px; font-weight:800; color:#ea580c; margin-bottom:4px;">3. Close the Curtains</div>
+              <div class="info-desc" style="font-size:13px; color:#475569; line-height:1.5;">Menutup gorden/tirai jendela saat <b>matahari terik</b> menyengat agar panas tidak masuk ke dalam kelas.</div>
+            </div>
+
+            <div class="info-item" style="display:flex; flex-direction:column; align-items:center; border:2px solid #4ade80; border-radius:16px; padding:18px; background:#ffffff; box-shadow:0 4px 12px rgba(34,197,94,0.06);">
+              <div style="height:90px; display:flex; align-items:center; justify-content:center; margin-bottom:10px;">
+                <svg viewBox="0 0 100 80" width="110" height="85">
+                  <rect x="8" y="68" width="84" height="6" rx="2" fill="#b45309"/>
+                  <polygon points="34,44 66,44 60,68 40,68" fill="#ea580c"/>
+                  <rect x="31" y="40" width="38" height="6" rx="3" fill="#c2410c"/>
+                  <circle cx="46" cy="54" r="1.5" fill="#7c2d12"/>
+                  <circle cx="54" cy="54" r="1.5" fill="#7c2d12"/>
+                  <path d="M48,58 Q50,61 52,58" fill="none" stroke="#7c2d12" stroke-width="1.2"/>
+                  <circle cx="43" cy="56" r="2" fill="#fca5a5"/>
+                  <circle cx="57" cy="56" r="2" fill="#fca5a5"/>
+                  <ellipse cx="50" cy="42" rx="16" ry="3" fill="#78350f"/>
+                  <path d="M50,42 Q48,22 50,10 Q58,18 50,42 Z" fill="#22c55e"/>
+                  <path d="M50,42 Q52,22 50,10" fill="none" stroke="#15803d" stroke-width="1.2"/>
+                  <path d="M48,36 Q32,24 24,28 Q30,40 48,36 Z" fill="#16a34a"/>
+                  <path d="M52,36 Q68,24 76,28 Q70,40 52,36 Z" fill="#4ade80"/>
+                  <circle cx="20" cy="18" r="4.5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
+                  <text x="16" y="21" font-size="6" font-weight="bold" fill="#0369a1">O₂</text>
+                  <circle cx="80" cy="16" r="5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
+                  <text x="76" y="19" font-size="6" font-weight="bold" fill="#0369a1">O₂</text>
+                  <text x="45" y="8" font-size="10">✨</text>
+                </svg>
+              </div>
+              <div class="info-title" style="font-size:16px; font-weight:800; color:#16a34a; margin-bottom:4px;">4. Classroom Plants</div>
+              <div class="info-desc" style="font-size:13px; color:#475569; line-height:1.5;">Menaruh pot tanaman hijau segar di sudut kelas untuk <b>menyerap hawa panas & membuat oksigen segar</b>.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 3: NASKAH VIDEO PRESENTASI
+         ======================================================= -->
+    <div id="tab-video" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🎬</span> Naskah Presentasi Video Science (Simple English)</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Sesuai outline: <em>"Mempresentasikannya dalam bentuk video."</em>
+            </p>
+          </div>
+          <button class="btn btn-outline" onclick="playAudio('Hello Miss, Mister, and friends! My name is Laskar from Grade 2. Today I want to tell you about air and how to make our classroom cool!')">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
+
+        <div class="script-box">
+          <div class="script-step">
+            <strong>1. GREETING & INTRODUCTION (Pembukaan):</strong>
+            <div class="script-speech">"Hello Miss, Mister, and friends! My full name is <b>Laskar Al Kautsar</b> (call me <b>Laskar</b>) from Grade 2 SD MISS Malang."</div>
+            <span class="script-trans">(Halo Miss, Mister, dan teman-teman! Nama lengkap saya Laskar Al Kautsar, panggilannya Laskar dari Grade 2 SD MISS Malang.)</span>
+          </div>
+
+          <div class="script-step">
+            <strong>2. EXPLAINING AIR & WIND (Menjelaskan Udara & Angin):</strong>
+            <div class="script-speech">"Air is everywhere around us. We cannot see it, but we can feel it. Moving air is called <b>wind</b>! We need air to breathe every day."</div>
+            <span class="script-trans">(Udara ada di sekitar kita. Kita tidak bisa melihatnya tapi bisa merasakannya. Udara yang bergerak disebut angin! Kita butuh udara untuk bernapas.)</span>
+          </div>
+
+          <div class="script-step">
+            <strong>3. PROBLEM (Masalah Kelas Panas):</strong>
+            <div class="script-speech">"In the afternoon, the sun is very hot, so our classroom can feel hot and stuffy."</div>
+            <span class="script-trans">(Di siang hari, matahari sangat panas, jadi kelas kita bisa terasa panas dan pengap.)</span>
+          </div>
+
+          <div class="script-step">
+            <strong>4. SOLUTION (4 Cara Membuat Sejuk sambil Menunjuk Infografis):</strong>
+            <div class="script-speech">
+              "Don't worry! I can make my classroom cool by:<br>
+              • First, <b>opening the windows</b> for fresh air.<br>
+              • Second, <b>turning on the fan</b>.<br>
+              • Third, <b>closing the curtains</b> to block direct sunlight.<br>
+              • And fourth, <b>placing green plants</b> inside our classroom!"
+            </div>
+            <span class="script-trans">(Jangan khawatir! Aku bisa membuat kelasku sejuk dengan: 1. Buka jendela, 2. Nyalakan kipas angin, 3. Tutup gorden, 4. Taruh tanaman hijau!)</span>
+          </div>
+
+          <div class="script-step">
+            <strong>5. CLOSING (Penutup):</strong>
+            <div class="script-speech">"Now our classroom is fresh and cool! Thank you for listening, bye bye!"</div>
+            <span class="script-trans">(Sekarang kelas kita segar dan sejuk! Terima kasih sudah mendengarkan, sampai jumpa!)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 4: MINI KUIS SAINS (5 SOAL)
+         ======================================================= -->
+    <div id="tab-quiz" class="tab-pane">
+      <div class="section-card">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><span>🧠</span> Mini Kuis Sains: Udara & Angin (5 Soal)</h2>
+            <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
+              Latihan interaktif untuk menguji pemahaman Laskar malam ini!
+            </p>
+          </div>
+          <span id="quiz-score-badge" class="badge badge-gold" style="font-size: 14px; padding: 6px 14px;">
+            Skor: 0 / 5
+          </span>
+        </div>
+
+        <div id="quiz-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- =======================================================
+         TAB 5: LEMBAR SIAP CETAK (A4)
+         ======================================================= -->
+    <div id="tab-print" class="tab-pane">
+      <div style="text-align: center; margin-bottom: 20px;" class="no-print">
+        <button class="btn btn-primary" style="padding: 12px 24px; font-size: 16px;" onclick="printWorksheet('tab-print')">
+          <span>🖨️</span> Cetak Lembar Infografis Science (A4)
+        </button>
+      </div>
+
+      <div class="print-sheet">
+        <div style="border-bottom: 2px solid #0f172a; padding-bottom: 12px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center;">
+          <div>
+            <div style="font-size: 12px; font-weight: 800; color: #0284c7;">MAFAZA INTEGRATED SMART SCHOOL (MISS) MALANG</div>
+            <h2 style="font-size: 18px; color: #0f172a; margin: 4px 0;">PROJECT WORKBOOK: "I CAN MAKE MY CLASSROOM COOL"</h2>
+            <div style="font-size: 12px; color: #64748b;">Subject: Science Grade 2 • Unit 3: Air & Wind</div>
+          </div>
+          <div style="font-size: 32px;">🌬️🌱</div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; border: 1px solid #cbd5e1; padding: 8px 12px; border-radius: 8px; font-size: 12px; margin-bottom: 16px; background: #f8fafc;">
+          <div><strong>Name:</strong> Laskar Al Kautsar</div>
+          <div><strong>Grade:</strong> Grade 2 SD</div>
+          <div><strong>Date:</strong> 23-24 Sep 2026</div>
+          <div><strong>Score:</strong> [ &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ]</div>
+        </div>
+
+        <div style="margin-bottom: 16px;">
+          <h4 style="font-size: 13px; color: #0369a1; margin-bottom: 4px;">A. Core Concepts (Definisi Inti):</h4>
+          <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 10px; font-size: 12px; background: #fafafa; line-height: 1.6;">
+            1. <strong>Air:</strong> A gas that is everywhere around us. We cannot see it, but we can feel it.<br>
+            2. <strong>Wind:</strong> Moving air.<br>
+            3. <strong>Living things:</strong> Humans, animals, and plants need air to breathe.
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 13px; color: #0369a1; margin-bottom: 8px;">B. Infografis: 4 Ways to Make Classroom Cool (Gunting, Tempel & Hias):</h4>
+          
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px;">
+            
+            <!-- 1. Open Windows -->
+            <div style="border: 2px dashed #0284c7; border-radius: 12px; padding: 14px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: #f0f9ff; position: relative;">
+              <span style="position: absolute; top: -10px; right: 10px; background: #ffffff; padding: 0 6px; font-size: 10px; color: #0284c7; font-weight: bold; border-radius: 4px;">✂️ Gunting di sini</span>
+              <div style="height: 85px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 100 80" width="105" height="80">
+                  <rect x="15" y="10" width="70" height="55" rx="6" fill="#bae6fd"/>
+                  <circle cx="30" cy="55" r="16" fill="#86efac"/>
+                  <circle cx="50" cy="55" r="20" fill="#4ade80"/>
+                  <circle cx="70" cy="55" r="14" fill="#22c55e"/>
+                  <circle cx="74" cy="22" r="8" fill="#fde047"/>
+                  <rect x="12" y="8" width="76" height="60" rx="4" fill="none" stroke="#0369a1" stroke-width="3.5"/>
+                  <line x1="50" y1="8" x2="50" y2="68" stroke="#0369a1" stroke-width="2.5"/>
+                  <polygon points="12,12 28,16 28,62 12,66" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" fill-opacity="0.9"/>
+                  <line x1="20" y1="14" x2="20" y2="64" stroke="#0284c7" stroke-width="1.5"/>
+                  <polygon points="88,12 72,16 72,62 88,66" fill="#e0f2fe" stroke="#0284c7" stroke-width="2" fill-opacity="0.9"/>
+                  <line x1="80" y1="14" x2="80" y2="64" stroke="#0284c7" stroke-width="1.5"/>
+                  <path d="M40,24 Q55,20 62,28 Q66,32 60,36 Q54,38 48,34" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M33,38 Q48,32 58,42 Q63,47 56,52 Q48,54 42,48" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M25,48 Q42,42 52,50" fill="none" stroke="#0ea5e9" stroke-width="2" stroke-linecap="round"/>
+                  <path d="M68,28 Q74,25 72,32 Q66,35 68,28 Z" fill="#22c55e"/>
+                  <path d="M62,48 Q68,45 66,52 Q60,55 62,48 Z" fill="#16a34a"/>
+                </svg>
+              </div>
+              <div>
+                <strong style="font-size: 13px; display: block; color: #0369a1; margin-bottom: 2px;">1. Open the Windows</strong>
+                <span style="font-size: 11px; color: #475569; line-height: 1.4; display: block;">Membuka jendela agar angin sejuk masuk ke kelas.</span>
+              </div>
+            </div>
+
+            <!-- 2. Turn on Fan / AC -->
+            <div style="border: 2px dashed #0284c7; border-radius: 12px; padding: 14px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: #f0f9ff; position: relative;">
+              <span style="position: absolute; top: -10px; right: 10px; background: #ffffff; padding: 0 6px; font-size: 10px; color: #0284c7; font-weight: bold; border-radius: 4px;">✂️ Gunting di sini</span>
+              <div style="height: 85px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 100 80" width="105" height="80">
+                  <ellipse cx="50" cy="74" rx="22" ry="5" fill="#64748b"/>
+                  <rect x="47" y="44" width="6" height="30" fill="#94a3b8" rx="2"/>
+                  <circle cx="50" cy="42" r="5" fill="#475569"/>
+                  <circle cx="50" cy="28" r="26" fill="#f0f9ff" stroke="#2563eb" stroke-width="2.5"/>
+                  <circle cx="50" cy="28" r="18" fill="none" stroke="#93c5fd" stroke-width="1.5" stroke-dasharray="3,3"/>
+                  <path d="M50,28 Q44,12 54,6 Q60,12 50,28 Z" fill="#0284c7"/>
+                  <path d="M50,28 Q66,34 70,24 Q64,18 50,28 Z" fill="#0284c7"/>
+                  <path d="M50,28 Q40,46 48,50 Q54,44 50,28 Z" fill="#0284c7"/>
+                  <circle cx="50" cy="28" r="4.5" fill="#f59e0b"/>
+                  <path d="M78,14 Q88,16 95,12" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M80,28 Q92,28 97,24" fill="none" stroke="#0284c7" stroke-width="2.5" stroke-linecap="round"/>
+                  <path d="M78,42 Q88,40 95,44" fill="none" stroke="#38bdf8" stroke-width="2.5" stroke-linecap="round"/>
+                  <text x="10" y="24" font-size="12">❄️</text>
+                  <text x="82" y="22" font-size="12">💨</text>
+                </svg>
+              </div>
+              <div>
+                <strong style="font-size: 13px; display: block; color: #0369a1; margin-bottom: 2px;">2. Turn On the Fan / AC</strong>
+                <span style="font-size: 11px; color: #475569; line-height: 1.4; display: block;">Menyalakan kipas angin untuk menggerakkan udara dingin.</span>
+              </div>
+            </div>
+
+            <!-- 3. Close the Curtains -->
+            <div style="border: 2px dashed #ea580c; border-radius: 12px; padding: 14px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: #fff7ed; position: relative;">
+              <span style="position: absolute; top: -10px; right: 10px; background: #ffffff; padding: 0 6px; font-size: 10px; color: #ea580c; font-weight: bold; border-radius: 4px;">✂️ Gunting di sini</span>
+              <div style="height: 85px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 100 80" width="105" height="80">
+                  <rect x="14" y="10" width="72" height="58" rx="4" fill="#fef08a" stroke="#d97706" stroke-width="2"/>
+                  <circle cx="28" cy="24" r="12" fill="#f59e0b"/>
+                  <line x1="28" y1="6" x2="28" y2="10" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="12" y1="24" x2="16" y2="24" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="16" y1="12" x2="20" y2="15" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <line x1="38" y1="14" x2="42" y2="12" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round"/>
+                  <circle cx="25" cy="22" r="1.5" fill="#78350f"/>
+                  <circle cx="31" cy="22" r="1.5" fill="#78350f"/>
+                  <path d="M26,27 Q28,29 30,27" fill="none" stroke="#78350f" stroke-width="1.2"/>
+                  <rect x="10" y="8" width="80" height="4" rx="2" fill="#b45309"/>
+                  <circle cx="10" cy="10" r="3" fill="#f59e0b"/>
+                  <circle cx="90" cy="10" r="3" fill="#f59e0b"/>
+                  <path d="M12,12 Q24,12 36,12 Q38,40 38,68 Q24,68 12,68 Z" fill="#ea580c"/>
+                  <path d="M88,12 Q76,12 64,12 Q62,40 62,68 Q76,68 88,68 Z" fill="#ea580c"/>
+                  <path d="M36,12 Q50,12 64,12 Q62,40 62,68 Q50,68 38,68 Z" fill="#f97316"/>
+                  <line x1="24" y1="12" x2="24" y2="68" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4,2"/>
+                  <line x1="50" y1="12" x2="50" y2="68" stroke="#ea580c" stroke-width="1.5"/>
+                  <line x1="76" y1="12" x2="76" y2="68" stroke="#c2410c" stroke-width="1.5" stroke-dasharray="4,2"/>
+                  <circle cx="50" cy="42" r="9" fill="#ffffff" stroke="#0284c7" stroke-width="1.5"/>
+                  <text x="44" y="46" font-size="11">🛡️</text>
+                </svg>
+              </div>
+              <div>
+                <strong style="font-size: 13px; display: block; color: #c2410c; margin-bottom: 2px;">3. Close the Curtains</strong>
+                <span style="font-size: 11px; color: #475569; line-height: 1.4; display: block;">Menutup tirai saat sinar matahari siang terik menyengat.</span>
+              </div>
+            </div>
+
+            <!-- 4. Classroom Plants -->
+            <div style="border: 2px dashed #16a34a; border-radius: 12px; padding: 14px; text-align: center; min-height: 180px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; background: #f0fdf4; position: relative;">
+              <span style="position: absolute; top: -10px; right: 10px; background: #ffffff; padding: 0 6px; font-size: 10px; color: #16a34a; font-weight: bold; border-radius: 4px;">✂️ Gunting di sini</span>
+              <div style="height: 85px; display: flex; align-items: center; justify-content: center;">
+                <svg viewBox="0 0 100 80" width="105" height="80">
+                  <rect x="8" y="68" width="84" height="6" rx="2" fill="#b45309"/>
+                  <polygon points="34,44 66,44 60,68 40,68" fill="#ea580c"/>
+                  <rect x="31" y="40" width="38" height="6" rx="3" fill="#c2410c"/>
+                  <circle cx="46" cy="54" r="1.5" fill="#7c2d12"/>
+                  <circle cx="54" cy="54" r="1.5" fill="#7c2d12"/>
+                  <path d="M48,58 Q50,61 52,58" fill="none" stroke="#7c2d12" stroke-width="1.2"/>
+                  <circle cx="43" cy="56" r="2" fill="#fca5a5"/>
+                  <circle cx="57" cy="56" r="2" fill="#fca5a5"/>
+                  <ellipse cx="50" cy="42" rx="16" ry="3" fill="#78350f"/>
+                  <path d="M50,42 Q48,22 50,10 Q58,18 50,42 Z" fill="#22c55e"/>
+                  <path d="M50,42 Q52,22 50,10" fill="none" stroke="#15803d" stroke-width="1.2"/>
+                  <path d="M48,36 Q32,24 24,28 Q30,40 48,36 Z" fill="#16a34a"/>
+                  <path d="M52,36 Q68,24 76,28 Q70,40 52,36 Z" fill="#4ade80"/>
+                  <circle cx="20" cy="18" r="4.5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
+                  <text x="16" y="21" font-size="6" font-weight="bold" fill="#0369a1">O₂</text>
+                  <circle cx="80" cy="16" r="5" fill="#e0f2fe" stroke="#38bdf8" stroke-width="1.2"/>
+                  <text x="76" y="19" font-size="6" font-weight="bold" fill="#0369a1">O₂</text>
+                  <text x="45" y="8" font-size="10">✨</text>
+                </svg>
+              </div>
+              <div>
+                <strong style="font-size: 13px; display: block; color: #15803d; margin-bottom: 2px;">4. Classroom Plants</strong>
+                <span style="font-size: 11px; color: #475569; line-height: 1.4; display: block;">Menaruh tanaman pot hijau untuk menghasilkan oksigen bersih.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div style="margin-top: 30px; display: grid; grid-template-columns: 1fr 1fr; text-align: center; font-size: 12px;">
+          <div>
+            <div>Student Signature</div>
+            <div style="margin-top: 40px; border-top: 1px solid #000; width: 140px; margin-left: auto; margin-right: auto; padding-top: 4px;">Laskar</div>
+          </div>
+          <div>
+            <div>Science Teacher</div>
+            <div style="margin-top: 40px; border-top: 1px solid #000; width: 140px; margin-left: auto; margin-right: auto; padding-top: 4px;">( Miss / Mister )</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function playAudio(text) {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = 'en-US';
+        u.rate = 0.9;
+        window.speechSynthesis.speak(u);
+      }
+    }
+
+    function switchTab(tabId, el) {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      const targetPane = document.getElementById(tabId);
+      if (targetPane) targetPane.classList.add('active');
+      if (el) el.classList.add('active');
+      window.scrollTo({ top: 120, behavior: 'smooth' });
+    }
+
+    function printWorksheet(targetTabId = 'tab-print') {
+      const tabBtn = document.querySelector(`[onclick*="${targetTabId}"]`);
+      if (tabBtn) {
+        switchTab(targetTabId, tabBtn);
+      } else {
+        document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+        document.getElementById(targetTabId)?.classList.add('active');
+      }
+      setTimeout(() => {
+        window.print();
+      }, 250);
+    }
+
+    // Quiz
+    const scienceQuiz = [
+      {
+        q: '1. What is moving air called?',
+        opts: ['Water', 'Wind', 'Fire', 'Stone'],
+        ans: 1,
+        exp: 'Moving air is called wind!'
+      },
+      {
+        q: '2. Can we see air with our eyes?',
+        opts: ['Yes, it is blue', 'No, air is invisible but we can feel it', 'Yes, air is red', 'Yes, at night'],
+        ans: 1,
+        exp: 'Air is invisible, but we can feel it when it moves as wind.'
+      },
+      {
+        q: '3. What do living things need air for?',
+        opts: ['To sleep', 'To breathe', 'To eat', 'To run'],
+        ans: 1,
+        exp: 'All living things need air to breathe.'
+      },
+      {
+        q: '4. Why is our classroom hot in the afternoon?',
+        opts: ['Because it is raining', 'Because of the hot sun and closed windows', 'Because we eat ice cream', 'Because the wind blows'],
+        ans: 1,
+        exp: 'The hot sun shining in and closed windows make the room hot.'
+      },
+      {
+        q: '5. Which one can make our classroom feel cool?',
+        opts: ['Closing all windows and turning off fans', 'Opening windows and turning on the fan', 'Burning paper', 'Wearing thick jackets'],
+        ans: 1,
+        exp: 'Opening windows for fresh air and turning on the fan keeps the room cool.'
+      }
+    ];
+
+    let quizScore = 0;
+    const answered = {};
+
+    function renderQuiz() {
+      const c = document.getElementById('quiz-container');
+      c.innerHTML = '';
+      scienceQuiz.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = 'quiz-card';
+        card.innerHTML = `
+          <div class="quiz-q">${item.q}</div>
+          <div class="quiz-opts" id="opt-box-${idx}">
+            ${item.opts.map((opt, oIdx) => `
+              <button class="quiz-btn" onclick="checkAnswer(${idx}, ${oIdx})">${opt}</button>
+            `).join('')}
+          </div>
+          <div id="explain-${idx}" style="display:none; margin-top:8px; font-size:13px; font-weight:700;"></div>
+        `;
+        c.appendChild(card);
+      });
+    }
+
+    function checkAnswer(qIdx, oIdx) {
+      if (answered[qIdx]) return;
+      answered[qIdx] = true;
+
+      const item = scienceQuiz[qIdx];
+      const btns = document.getElementById('opt-box-' + qIdx).querySelectorAll('.quiz-btn');
+      const exp = document.getElementById('explain-' + qIdx);
+
+      if (oIdx === item.ans) {
+        btns[oIdx].classList.add('correct');
+        exp.style.display = 'block';
+        exp.style.color = '#15803d';
+        exp.innerText = '🌟 Great job! ' + item.exp;
+        quizScore++;
+      } else {
+        btns[oIdx].classList.add('wrong');
+        btns[item.ans].classList.add('correct');
+        exp.style.display = 'block';
+        exp.style.color = '#b91c1c';
+        exp.innerText = '💡 Correct answer: ' + item.opts[item.ans] + '. ' + item.exp;
+      }
+
+      document.getElementById('quiz-score-badge').innerText = `Skor: ${quizScore} / ${scienceQuiz.length}`;
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>

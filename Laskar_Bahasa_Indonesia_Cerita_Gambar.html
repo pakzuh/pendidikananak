@@ -778,9 +778,22 @@
         <div>
           <h2 class="section-title"><span>🧩</span> Simulator Susun Gambar: "Kelinci dan Wortel"</h2>
           <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
-            Bantu Laskar menyusun 4 gambar cerita kelinci yang teracak ini dari <strong>Urutan 1 (Awal)</strong> sampai <strong>Urutan 4 (Akhir)</strong>!
+            Bantu Laskar menyusun 4 gambar cerita kelinci yang teracak ini dari <strong>Urutan 1 (Awal)</strong> sampai <strong>Urutan 4 (Akhir)</strong> sambil mendengarkan naskah lisan di setiap gambar!
           </p>
         </div>
+      </div>
+
+      <!-- Panduan Salam Pembuka untuk Speech Delay -->
+      <div style="background: #fff7ed; border: 2px solid #ea580c; border-radius: 14px; padding: 12px 16px; margin-bottom: 18px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;">
+        <div>
+          <span style="background: #ffedd5; color: #c2410c; font-size: 12px; font-weight: 800; padding: 3px 10px; border-radius: 99px;">🗣️ Langkah 1: Salam Pembuka Laskar</span>
+          <div style="font-size: 13.5px; font-weight: 700; color: #1e293b; margin-top: 4px;">
+            "Assalamu'alaikum Miss, Mister, dan teman-teman! Saya <mark style="background:#fed7aa; padding:1px 4px; border-radius:3px;">Laskar Al Kautsar</mark>. Hari ini saya akan menceritakan buku cerita seri: <mark style="background:#fed7aa; padding:1px 4px; border-radius:3px;">Kelinci dan Wortel</mark>."
+          </div>
+        </div>
+        <button class="btn btn-outline" style="padding: 6px 14px; font-size: 12.5px; border-color: #ea580c; color: #c2410c;" onclick="playAudioText('Assalamu alaikum Miss, Mister, dan teman-teman! Saya Laskar Al Kautsar. Hari ini saya akan menceritakan buku cerita seri buatan saya yang berjudul: Kelinci dan Wortel.')">
+          <span>🔊</span> Dengar Salam
+        </button>
       </div>
 
       <div class="story-strip">
@@ -798,6 +811,18 @@
             <option value="3">Urutan 3 (Tengah 2)</option>
             <option value="4">Urutan 4 (Akhir)</option>
           </select>
+          <!-- Naskah Lisan Terintegrasi -->
+          <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#b45309;">🗣️ Naskah Lisan:</span>
+              <button style="background:#ea580c; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Lalu, kelinci mulai menggali tanah. Ia bekerja dengan penuh semangat. Akhirnya, wortel besar yang oranye itu berhasil keluar!')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Lalu</strong>, kelinci mulai <b>menggali tanah</b> dengan semangat. Wortelnya berhasil keluar!"
+            </div>
+          </div>
         </div>
 
         <!-- Kartu Acak 2: Melihat Kebun (Harusnya Urutan 1) -->
@@ -814,6 +839,18 @@
             <option value="3">Urutan 3 (Tengah 2)</option>
             <option value="4">Urutan 4 (Akhir)</option>
           </select>
+          <!-- Naskah Lisan Terintegrasi -->
+          <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#b45309;">🗣️ Naskah Lisan:</span>
+              <button style="background:#ea580c; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Mula-mula, di sebuah kebun yang indah, ada seekor kelinci putih yang melihat kebun wortel. Kelinci sangat senang dan ingin mengambil wortel segar itu.')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Mula-mula</strong>, ada kelinci putih yang <b>melihat kebun wortel</b> dan sangat senang."
+            </div>
+          </div>
         </div>
 
         <!-- Kartu Acak 3: Makan Lahap (Harusnya Urutan 4) -->
@@ -830,6 +867,18 @@
             <option value="3">Urutan 3 (Tengah 2)</option>
             <option value="4">Urutan 4 (Akhir)</option>
           </select>
+          <!-- Naskah Lisan Terintegrasi -->
+          <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#b45309;">🗣️ Naskah Lisan:</span>
+              <button style="background:#ea580c; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Akhirnya, kelinci makan wortel dengan sangat lahap! Sejak saat itu, kelinci selalu rajin mencari makanan yang sehat. Sekian cerita dari saya, terima kasih!')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Akhirnya</strong>, kelinci <b>makan wortel dengan sangat lahap</b> dan rajin makan sehat!"
+            </div>
+          </div>
         </div>
 
         <!-- Kartu Acak 4: Membawa Pulang (Harusnya Urutan 3) -->
@@ -846,6 +895,18 @@
             <option value="3">Urutan 3 (Tengah 2)</option>
             <option value="4">Urutan 4 (Akhir)</option>
           </select>
+          <!-- Naskah Lisan Terintegrasi -->
+          <div style="background: #fffbeb; border: 1.5px solid #fde68a; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#b45309;">🗣️ Naskah Lisan:</span>
+              <button style="background:#ea580c; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Setelah itu, kelinci membawa wortelnya pulang ke rumah. Ia ingin memasaknya di dapur untuk makan siang yang lezat.')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Setelah itu</strong>, kelinci <b>membawa wortelnya pulang ke rumah</b> untuk dimasak."
+            </div>
+          </div>
         </div>
       </div>
 
@@ -881,6 +942,17 @@
             <option value="2">Urutan 2 (Tengah)</option>
             <option value="3">Urutan 3 (Akhir)</option>
           </select>
+          <div style="background: #f0f9ff; border: 1.5px solid #bae6fd; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#0369a1;">🗣️ Naskah Lisan:</span>
+              <button style="background:#0284c7; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Kuterus mandi! Laskar mengguyur badan dengan air bersih yang segar memakai gayung dari bak mandi.')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Kuterus mandi!</strong> Laskar mengguyur air bersih pakai gayung dari bak."
+            </div>
+          </div>
         </div>
 
         <!-- Kartu Bangun Tidur -->
@@ -896,6 +968,17 @@
             <option value="2">Urutan 2 (Tengah)</option>
             <option value="3">Urutan 3 (Akhir)</option>
           </select>
+          <div style="background: #fff7ed; border: 1.5px solid #fed7aa; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#c2410c;">🗣️ Naskah Lisan:</span>
+              <button style="background:#ea580c; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Bangun tidur kuterus mandi! Di pagi hari yang cerah, Laskar bangun pagi dengan ceria dan merapikan tempat tidur.')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Bangun tidur!</strong> Laskar bangun pagi ceria dan merapikan tempat tidur."
+            </div>
+          </div>
         </div>
 
         <!-- Kartu Gosok Gigi -->
@@ -911,6 +994,17 @@
             <option value="2">Urutan 2 (Tengah)</option>
             <option value="3">Urutan 3 (Akhir)</option>
           </select>
+          <div style="background: #f0fdf4; border: 1.5px solid #bbf7d0; border-radius: 8px; padding: 8px; margin-top: 8px; text-align: left;">
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <span style="font-size:10.5px; font-weight:800; color:#15803d;">🗣️ Naskah Lisan:</span>
+              <button style="background:#16a34a; color:white; border:none; padding:3px 8px; border-radius:6px; font-size:10.5px; cursor:pointer; font-weight:bold;" onclick="playAudioText('Tidak lupa menggosok gigi! Laskar menyikat giginya di depan cermin sampai putih bersih berkilau.')">
+                🔊 Dengar
+              </button>
+            </div>
+            <div style="font-size:11.5px; color:#1e293b; line-height:1.4;">
+              "<strong>Tidak lupa menggosok gigi!</strong> Laskar menyikat giginya sampai putih bersih."
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1374,7 +1468,7 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = 'id-ID';
-        u.rate = 0.9;
+        u.rate = 0.82; // Tempo pelan & tenang untuk speech delay
         u.pitch = 1.05;
         window.speechSynthesis.speak(u);
       }

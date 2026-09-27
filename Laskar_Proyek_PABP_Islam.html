@@ -492,6 +492,70 @@
       margin-bottom: 14px;
     }
 
+    /* Speech Prompt Card for Speech Delay Handicap */
+    .speech-prompt-card {
+      background: #fffbeb;
+      border: 2px solid #047857;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 14px 0 20px 0;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(4, 120, 87, 0.08);
+    }
+    .speech-prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .speech-badge {
+      background: #ecfdf5;
+      color: #065f46;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid #a7f3d0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-voice {
+      background: linear-gradient(135deg, #047857 0%, #065f46 100%);
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(4, 120, 87, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-voice:hover {
+      background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(4, 120, 87, 0.35);
+    }
+    .speech-prompt-text {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .speech-prompt-text mark {
+      background: #fef08a;
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #854d0e;
+    }
+
     /* Print Controls & Sheet */
     .print-controls {
       display: flex;
@@ -1784,11 +1848,24 @@
           <div>
             <h2 class="section-title"><span>🎮</span> Game Klasifikasi 4 Sikap Terpuji</h2>
             <p style="color: var(--text-muted); font-size: 14px; margin-top: 4px;">
-              Klik salah satu kartu perbuatan di bawah, lalu klik kotak kategori sikap yang tepat!
+              Klik salah satu kartu perbuatan di bawah, lalu klik kotak kategori sikap yang tepat sambil ucapkan kalimatnya!
             </p>
           </div>
           <div id="game-score" style="font-size:16px; font-weight:700; color:#047857;">
             Skor: 0 / 8 Kartu Selesai
+          </div>
+        </div>
+
+        <!-- Panduan Bicara Pembuka Terintegrasi -->
+        <div class="speech-prompt-card no-print">
+          <div class="speech-prompt-header">
+            <span class="speech-badge">🗣️ PANDUAN BICARA LASKAR: LANGKAH 1 — PEMBUKAAN</span>
+            <button class="btn-voice" onclick="playAudioText('Assalamu\'alaikum warahmatullahi wabarakatuh. Good morning Miss, Mister, dan teman-teman! Nama saya Laskar Al Kautsar dari kelas Grade 2 SD MISS Malang. Hari ini Laskar mempresentasikan proyek PABP berjudul: Show Your Caring. Dalam agama Islam, kita diajarkan 4 sikap terpuji kepada sesama.')">
+              <span>🔊</span> Dengar Suara Laskar
+            </button>
+          </div>
+          <div class="speech-prompt-text">
+            "Assalamu'alaikum warahmatullahi wabarakatuh. Good morning <mark>Miss, Mister</mark>, dan teman-teman! Nama saya <mark>Laskar Al Kautsar</mark> dari kelas Grade 2 SD MISS Malang. Hari ini Laskar mempresentasikan proyek PABP: <mark>Show Your Caring</mark>."
           </div>
         </div>
 
@@ -1826,33 +1903,49 @@
             </div>
           </div>
 
-          <!-- Target Kotak 4 Sikap -->
+          <!-- Target Kotak 4 Sikap dengan Panduan Suara Terintegrasi -->
           <div class="game-targets">
             
             <div class="target-box" data-cat="c1" onclick="dropToTarget(this)">
-              <div class="target-head" style="color:#e11d48;">
-                <span>❤️</span> 1. Saling Menyayangi
+              <div class="target-head" style="color:#e11d48; justify-content:space-between;">
+                <span>❤️ 1. Saling Menyayangi</span>
+                <button class="btn-voice no-print" style="padding:3px 8px; font-size:11px; background:#e11d48;" onclick="event.stopPropagation(); playAudioText('Sikap saling menyayangi: Saya berbagi bekal makanan dan menyirami tanaman sekolah.')">🔊 Dengar</button>
+              </div>
+              <div style="background:#fff1f2; border:1px solid #fecdd3; border-radius:8px; padding:6px 8px; margin-bottom:8px; font-size:11.5px; line-height:1.4; color:#9f1239;">
+                🗣️ Laskar: <em>"Saya <mark>saling menyayangi</mark> dengan berbagi bekal dan menyiram tanaman."</em>
               </div>
               <div class="target-items" id="target-c1"></div>
             </div>
 
             <div class="target-box" data-cat="c2" onclick="dropToTarget(this)">
-              <div class="target-head" style="color:#0284c7;">
-                <span>🤝</span> 2. Sikap Empati
+              <div class="target-head" style="color:#0284c7; justify-content:space-between;">
+                <span>🤝 2. Sikap Empati</span>
+                <button class="btn-voice no-print" style="padding:3px 8px; font-size:11px; background:#0284c7;" onclick="event.stopPropagation(); playAudioText('Sikap empati: Saya menolong teman yang tersandung jatuh dan menghibur yang menangis.')">🔊 Dengar</button>
+              </div>
+              <div style="background:#f0f9ff; border:1px solid #bae6fd; border-radius:8px; padding:6px 8px; margin-bottom:8px; font-size:11.5px; line-height:1.4; color:#0369a1;">
+                🗣️ Laskar: <em>"Saya bersikap <mark>empati</mark> dengan menolong teman jatuh dan menghibur yang sedih."</em>
               </div>
               <div class="target-items" id="target-c2"></div>
             </div>
 
             <div class="target-box" data-cat="c3" onclick="dropToTarget(this)">
-              <div class="target-head" style="color:#7c3aed;">
-                <span>🗣️</span> 3. Tutur Kata Lembut
+              <div class="target-head" style="color:#7c3aed; justify-content:space-between;">
+                <span>🗣️ 3. Tutur Kata Lembut</span>
+                <button class="btn-voice no-print" style="padding:3px 8px; font-size:11px; background:#7c3aed;" onclick="event.stopPropagation(); playAudioText('Tutur kata lembut: Saya selalu membiasakan kata tolong, maaf, dan terima kasih.')">🔊 Dengar</button>
+              </div>
+              <div style="background:#faf5ff; border:1px solid #e9d5ff; border-radius:8px; padding:6px 8px; margin-bottom:8px; font-size:11.5px; line-height:1.4; color:#6b21a8;">
+                🗣️ Laskar: <em>"Saya bertutur kata <mark>lembut</mark> dengan kata tolong, maaf, dan terima kasih."</em>
               </div>
               <div class="target-items" id="target-c3"></div>
             </div>
 
             <div class="target-box" data-cat="c4" onclick="dropToTarget(this)">
-              <div class="target-head" style="color:#d97706;">
-                <span>💎</span> 4. Sikap Jujur
+              <div class="target-head" style="color:#d97706; justify-content:space-between;">
+                <span>💎 4. Sikap Jujur</span>
+                <button class="btn-voice no-print" style="padding:3px 8px; font-size:11px; background:#d97706;" onclick="event.stopPropagation(); playAudioText('Sikap jujur: Saya mengembalikan pensil temuan dan belajar ulangan tanpa menyontek.')">🔊 Dengar</button>
+              </div>
+              <div style="background:#fffbeb; border:1px solid #fde68a; border-radius:8px; padding:6px 8px; margin-bottom:8px; font-size:11.5px; line-height:1.4; color:#92400e;">
+                🗣️ Laskar: <em>"Saya bersikap <mark>jujur</mark> dengan mengembalikan barang temuan dan tidak menyontek."</em>
               </div>
               <div class="target-items" id="target-c4"></div>
             </div>
@@ -1861,15 +1954,32 @@
 
         </div>
 
+        <!-- Panduan Bicara Penutup Terintegrasi -->
+        <div class="speech-prompt-card no-print" style="margin-top:20px;">
+          <div class="speech-prompt-header">
+            <span class="speech-badge">🗣️ PANDUAN BICARA LASKAR: LANGKAH 2 — SALAM PENUTUP</span>
+            <button class="btn-voice" onclick="playAudioText('Mari kita saling menyayangi dan berbuat baik setiap hari karena Allah SWT. Terima kasih banyak Miss, Mister, dan teman-teman! Wassalamu\'alaikum warahmatullahi wabarakatuh.')">
+              <span>🔊</span> Dengar Suara Laskar
+            </button>
+          </div>
+          <div class="speech-prompt-text">
+            "Mari kita <mark>saling menyayangi</mark> dan berbuat baik setiap hari karena Allah SWT. Terima kasih banyak <mark>Miss & Mister</mark>! Wassalamu'alaikum warahmatullahi wabarakatuh."
+          </div>
+        </div>
+
         <!-- Kuis 5 Soal -->
         <div style="margin-top:32px; border-top:2px dashed #e2e8f0; padding-top:24px;">
-          <h3 style="font-size:20px; color:#065f46; margin-bottom:14px;">
-            📝 Kuis Pemahaman 4 Sikap Terpuji (5 Soal)
+          <h3 style="font-size:20px; color:#065f46; margin-bottom:14px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:10px;">
+            <span>📝 Kuis Pemahaman 4 Sikap Terpuji (5 Soal)</span>
+            <span style="font-size:13px; font-weight:normal; color:#64748b;">(Klik dengar soal untuk memandu lisan Laskar)</span>
           </h3>
 
           <!-- Soal 1 -->
           <div class="quiz-card" id="q1">
-            <div class="quiz-q">1. Saat melihat teman terjatuh di halaman sekolah, sikap terpuji yang harus Laskar lakukan adalah...</div>
+            <div class="quiz-q" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+              <span>1. Saat melihat teman terjatuh di halaman sekolah, sikap terpuji yang harus Laskar lakukan adalah...</span>
+              <button class="btn-voice no-print" style="padding:4px 10px; font-size:11px; flex-shrink:0;" onclick="playAudioText('Nomor 1: Saat melihat teman terjatuh di halaman sekolah, sikap terpuji yang harus Laskar lakukan adalah: menolongnya berdiri dan mengantar ke guru.')">🔊 Dengar Soal</button>
+            </div>
             <div class="quiz-options">
               <button class="quiz-btn" onclick="checkQuiz(this, 'q1', false)">A. Menertawakannya bersama teman-teman</button>
               <button class="quiz-btn" onclick="checkQuiz(this, 'q1', true)">B. Segera menghampiri, menolongnya berdiri, dan mengantar ke guru (Sikap Empati)</button>
@@ -1879,7 +1989,10 @@
 
           <!-- Soal 2 -->
           <div class="quiz-card" id="q2">
-            <div class="quiz-q">2. Ketika kita ingin meminjam penghapus kepada teman sekelas, kata ajaib apa yang harus kita ucapkan?</div>
+            <div class="quiz-q" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+              <span>2. Ketika kita ingin meminjam penghapus kepada teman sekelas, kata ajaib apa yang harus kita ucapkan?</span>
+              <button class="btn-voice no-print" style="padding:4px 10px; font-size:11px; flex-shrink:0;" onclick="playAudioText('Nomor 2: Ketika kita ingin meminjam penghapus kepada teman sekelas, kata ajaib apa yang harus kita ucapkan? Jawabannya: Bolehkah aku pinjam penghapusmu, tolong?')">🔊 Dengar Soal</button>
+            </div>
             <div class="quiz-options">
               <button class="quiz-btn" onclick="checkQuiz(this, 'q2', true)">A. "Bolehkah aku pinjam penghapusmu, tolong?" (Tutur Kata Lembut)</button>
               <button class="quiz-btn" onclick="checkQuiz(this, 'q2', false)">B. "Cepat berikan penghapusmu sekarang juga!"</button>
@@ -1889,7 +2002,10 @@
 
           <!-- Soal 3 -->
           <div class="quiz-card" id="q3">
-            <div class="quiz-q">3. Laskar menemukan uang koin Rp 2.000 di lantai kelas yang bukan miliknya. Sikap jujur yang tepat adalah...</div>
+            <div class="quiz-q" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+              <span>3. Laskar menemukan uang koin Rp 2.000 di lantai kelas yang bukan miliknya. Sikap jujur yang tepat adalah...</span>
+              <button class="btn-voice no-print" style="padding:4px 10px; font-size:11px; flex-shrink:0;" onclick="playAudioText('Nomor 3: Laskar menemukan uang koin dua ribu rupiah di lantai kelas. Sikap jujur yang tepat adalah: Menyerahkannya kepada Miss atau Mister guru.')">🔊 Dengar Soal</button>
+            </div>
             <div class="quiz-options">
               <button class="quiz-btn" onclick="checkQuiz(this, 'q3', false)">A. Memasukkannya ke dalam saku sendiri</button>
               <button class="quiz-btn" onclick="checkQuiz(this, 'q3', true)">B. Menyerahkannya kepada Miss atau Mister guru agar dikembalikan ke pemiliknya</button>
@@ -1899,7 +2015,10 @@
 
           <!-- Soal 4 -->
           <div class="quiz-card" id="q4">
-            <div class="quiz-q">4. Berbagi bekal cemilan saat istirahat dan rajin menyirami tanaman sekolah merupakan contoh dari sikap...</div>
+            <div class="quiz-q" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+              <span>4. Berbagi bekal cemilan saat istirahat dan rajin menyirami tanaman sekolah merupakan contoh dari sikap...</span>
+              <button class="btn-voice no-print" style="padding:4px 10px; font-size:11px; flex-shrink:0;" onclick="playAudioText('Nomor 4: Berbagi bekal cemilan saat istirahat dan menyirami tanaman sekolah merupakan contoh dari sikap: Saling Menyayangi.')">🔊 Dengar Soal</button>
+            </div>
             <div class="quiz-options">
               <button class="quiz-btn" onclick="checkQuiz(this, 'q4', true)">A. Saling Menyayangi sesama ciptaan Allah SWT</button>
               <button class="quiz-btn" onclick="checkQuiz(this, 'q4', false)">B. Sikap sombong dan pamer</button>
@@ -1909,7 +2028,10 @@
 
           <!-- Soal 5 -->
           <div class="quiz-card" id="q5">
-            <div class="quiz-q">5. Jika kita tidak sengaja menumpahkan air minum di atas meja kelas, perbuatan jujur dan bertanggung jawab adalah...</div>
+            <div class="quiz-q" style="display:flex; justify-content:space-between; align-items:flex-start; gap:10px;">
+              <span>5. Jika kita tidak sengaja menumpahkan air minum di atas meja kelas, perbuatan jujur dan bertanggung jawab adalah...</span>
+              <button class="btn-voice no-print" style="padding:4px 10px; font-size:11px; flex-shrink:0;" onclick="playAudioText('Nomor 5: Jika tidak sengaja menumpahkan air minum di atas meja, perbuatan jujur adalah: Berani jujur mengakui, meminta maaf, dan segera membersihkan meja.')">🔊 Dengar Soal</button>
+            </div>
             <div class="quiz-options">
               <button class="quiz-btn" onclick="checkQuiz(this, 'q5', false)">A. Menyalahkan teman di sebelah kita</button>
               <button class="quiz-btn" onclick="checkQuiz(this, 'q5', true)">B. Berani jujur mengakui, meminta maaf, dan segera membersihkan meja dengan kain lap</button>
@@ -2068,7 +2190,7 @@
         window.speechSynthesis.cancel();
         const utterance = new SpeechSynthesisUtterance(text);
         utterance.lang = 'id-ID';
-        utterance.rate = 0.92;
+        utterance.rate = 0.82; // Tempo santai & jelas untuk memandu Laskar
         utterance.pitch = 1.05;
         window.speechSynthesis.speak(utterance);
         showToast('🔊 Memutar narasi suara...');

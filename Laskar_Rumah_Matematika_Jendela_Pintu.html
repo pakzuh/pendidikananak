@@ -244,6 +244,77 @@
   .cue-card p { font-size: 10.5pt; color: #2c3e50; }
   .cue-card .translation { font-size: 9.5pt; color: #7f8c8d; font-style: italic; margin-top: 4px; }
 
+  /* Speech Delay Support Card */
+  .speech-prompt-card {
+    background: #fffbeb;
+    border: 2px solid #e67e22;
+    border-radius: 12px;
+    padding: 12px 16px;
+    margin: 14px 0;
+    text-align: left;
+    box-shadow: 0 3px 8px rgba(230, 126, 34, 0.12);
+  }
+  .speech-prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .speech-badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 9.5pt;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #fde68a;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-voice {
+    background: linear-gradient(135deg, #e67e22 0%, #d35400 100%);
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(230, 126, 34, 0.3);
+    transition: all 0.2s;
+  }
+  .btn-voice:hover {
+    background: linear-gradient(135deg, #d35400 0%, #b03a2e 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(230, 126, 34, 0.4);
+  }
+  .speech-prompt-en {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .speech-prompt-en mark {
+    background: #fef08a;
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: #854d0e;
+  }
+  .speech-prompt-id {
+    font-size: 9.5pt;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
   /* Cutout Grid */
   .cutout-grid {
     display: grid;
@@ -351,6 +422,22 @@
       • <b>Pintu:</b> Rumah punya <b>2 Daun Pintu Utama</b>. Setiap pintu memiliki <b>3 Kotak Panel Kayu</b>.<br>
       &nbsp;&nbsp;➔ Penjumlahan berulang: <b>3 + 3 = 6</b> &nbsp;|&nbsp; Perkalian: <b>2 Pintu × 3 Panel = 6 Panel</b>.<br>
       • <b>Pembagian (Sharing Equally):</b> Ada 12 stiker bunga hiasan dibagi sama rata ke 3 Jendela ➔ <b>12 ÷ 3 = 4 stiker per jendela</b>!
+    </div>
+
+    <!-- Panduan Bicara Pembuka (Speech Delay Support) -->
+    <div class="speech-prompt-card" style="border-color:#d35400; background:#fdf2e9; margin-bottom:18px;">
+      <div class="speech-prompt-header">
+        <span class="speech-badge" style="background:#fae5d3; color:#a04000; border-color:#edbb99;">🗣️ Langkah 1: Salam Pembuka Laskar</span>
+        <button type="button" class="btn-voice" onclick="speakGreeting()">
+          <span>🔊</span> Dengar Salam Pembuka
+        </button>
+      </div>
+      <div class="speech-prompt-en">
+        "Good morning <mark>teachers</mark> and <mark>friends</mark>! This is our <mark>3D Math House</mark> project showing the front view of a house."
+      </div>
+      <div class="speech-prompt-id">
+        "Selamat pagi bapak/ibu guru dan teman-teman! Ini adalah proyek Rumah Matematika 3D kami yang menampilkan tampak depan sebuah rumah."
+      </div>
     </div>
 
     <!-- Visual Fasad Rumah -->
@@ -472,28 +559,67 @@
         
         <!-- Kartu 1: Perkalian Jendela -->
         <div class="stat-card">
-          <b>🪟 Perkalian Kaca Jendela (Multiplication):</b>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <b style="color:#2980b9;">🪟 Perkalian Kaca Jendela:</b>
+            <button class="btn-voice" style="padding:4px 10px; font-size:9pt;" onclick="speakWindows()">
+              <span>🔊</span> Dengar
+            </button>
+          </div>
           <div>Ada <b>3 jendela</b>, setiap jendela punya <b>4 kotak kaca</b>.</div>
           <div class="math-exp">4 + 4 + 4 = 12 Kaca</div>
           <div style="font-size:11pt; font-weight:bold; color:#2980b9;">➔ 3 Jendela × 4 Kaca = 12 Kaca</div>
+          <div style="font-size:9pt; color:#64748b; font-style:italic; margin-top:4px;">
+            "Look at the windows. There are 3 windows. Each window has 4 glass panes. 3 times 4 equals 12 glass panes!"
+          </div>
         </div>
 
         <!-- Kartu 2: Perkalian Panel Pintu -->
         <div class="stat-card">
-          <b>🚪 Perkalian Panel Pintu (Multiplication):</b>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <b style="color:#d35400;">🚪 Perkalian Panel Pintu:</b>
+            <button class="btn-voice" style="padding:4px 10px; font-size:9pt;" onclick="speakDoors()">
+              <span>🔊</span> Dengar
+            </button>
+          </div>
           <div>Ada <b>2 daun pintu</b>, setiap pintu punya <b>3 kotak panel</b>.</div>
           <div class="math-exp">3 + 3 = 6 Panel</div>
           <div style="font-size:11pt; font-weight:bold; color:#d35400;">➔ 2 Pintu × 3 Panel = 6 Panel</div>
+          <div style="font-size:9pt; color:#64748b; font-style:italic; margin-top:4px;">
+            "Now look at the front door. We have 2 door wings. Each door has 3 wooden panels. 2 times 3 equals 6 panels!"
+          </div>
         </div>
 
         <!-- Kartu 3: Pembagian Hiasan Jendela -->
         <div class="stat-card">
-          <b>➗ Pembagian Kaca Jendela (Division):</b>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <b style="color:#16a085;">➗ Pembagian Kaca Jendela:</b>
+            <button class="btn-voice" style="padding:4px 10px; font-size:9pt; background:linear-gradient(135deg, #16a085, #117864);" onclick="speakDivision()">
+              <span>🔊</span> Dengar
+            </button>
+          </div>
           <div>12 kotak kaca dibagi sama rata ke 3 bingkai jendela.</div>
           <div class="math-exp">12 ÷ 3 = 4 Kaca per Jendela</div>
-          <div style="font-size:9pt; color:#666;">Konsep: Sharing equally (dibagi sama banyak)</div>
+          <div style="font-size:9pt; color:#64748b; font-style:italic; margin-top:4px;">
+            "For division, 12 glass panes divided into 3 windows equals 4 panes each (12 ÷ 3 = 4)!"
+          </div>
         </div>
 
+      </div>
+
+      <!-- Panduan Bicara Penutup (Speech Delay Support) -->
+      <div class="speech-prompt-card" style="border-color:#27ae60; background:#f0fdf4; margin-top:16px;">
+        <div class="speech-prompt-header">
+          <span class="speech-badge" style="background:#dcfce7; color:#166534; border-color:#bbf7d0;">🗣️ Langkah 5: Kalimat Penutup Presentasi Laskar</span>
+          <button type="button" class="btn-voice" style="background:linear-gradient(135deg, #27ae60, #1e8449);" onclick="speakClosing()">
+            <span>🔊</span> Dengar Penutup
+          </button>
+        </div>
+        <div class="speech-prompt-en">
+          "We worked together happily as a team. <mark>Thank you Miss, Mister, and friends!</mark>"
+        </div>
+        <div class="speech-prompt-id">
+          "Kami bekerja sama dengan gembira dalam satu tim. Terima kasih Miss, Mister, dan teman-teman!"
+        </div>
       </div>
     </div>
   </div>
@@ -603,25 +729,45 @@
       </div>
 
       <div class="cue-card">
-        <b>1. Pembuka (Introduction)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">1. Pembuka (Introduction)</b>
+          <button type="button" class="btn-voice" onclick="speakGreeting()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Good morning teachers and friends! This is our 3D Math House project showing the front view of a house."</p>
         <div class="translation">"Selamat pagi bapak/ibu guru dan teman-teman! Ini adalah proyek Rumah Matematika 3D kami yang menampilkan tampak depan sebuah rumah."</div>
       </div>
 
       <div class="cue-card">
-        <b>2. Menjelaskan Jendela (Multiplication of Windows)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">2. Menjelaskan Jendela (Multiplication of Windows)</b>
+          <button type="button" class="btn-voice" onclick="speakWindows()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Look at the windows. There are <b>3 windows</b>. Each window has <b>4 glass panes</b>. In repeated addition: <b>4 + 4 + 4 = 12</b>. In multiplication: <b>3 times 4 equals 12 glass panes!</b>"</p>
         <div class="translation">"Lihat bagian jendelanya. Ada 3 jendela, masing-masing punya 4 kotak kaca. 4 + 4 + 4 = 12. Jadi, 3 kali 4 sama dengan 12 kotak kaca!"</div>
       </div>
 
       <div class="cue-card">
-        <b>3. Menjelaskan Pintu (Multiplication of Doors)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">3. Menjelaskan Pintu (Multiplication of Doors)</b>
+          <button type="button" class="btn-voice" onclick="speakDoors()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Now look at the front door. We have <b>2 door wings</b>. Each door has <b>3 wooden panels</b>. So, <b>2 times 3 equals 6 panels!</b>"</p>
         <div class="translation">"Sekarang perhatikan pintunya. Kami punya 2 daun pintu utama. Tiap pintu memiliki 3 panel kayu. Jadi, 2 kali 3 sama dengan 6 panel kayu!"</div>
       </div>
 
       <div class="cue-card">
-        <b>4. Menjelaskan Pembagian (Division Concept)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">4. Menjelaskan Pembagian (Division Concept)</b>
+          <button type="button" class="btn-voice" style="background:linear-gradient(135deg, #16a085, #117864);" onclick="speakDivision()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"For division, <b>12 glass panes</b> divided into <b>3 windows</b> equals <b>4 panes each (12 ÷ 3 = 4)</b>. Thank you!"</p>
         <div class="translation">"Untuk pembagian, 12 kotak kaca dibagi ke 3 jendela sama dengan 4 kaca per jendela. Terima kasih!"</div>
       </div>
@@ -754,25 +900,40 @@
     event.currentTarget.classList.add('active');
   }
 
-  function playSound(type) {
+  // Speech Synthesis Engine for Speech Delay Support
+  function speakText(text, lang = 'en-US') {
     try {
-      const ctx = new (window.AudioContext || window.webkitAudioContext)();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      if (type === 'correct') {
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(523.25, ctx.currentTime);
-        osc.frequency.setValueAtTime(659.25, ctx.currentTime + 0.1);
-        osc.frequency.setValueAtTime(783.99, ctx.currentTime + 0.2);
-        gain.gain.setValueAtTime(0.2, ctx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.35);
-        osc.start();
-        osc.stop(ctx.currentTime + 0.35);
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        u.rate = 0.82; // tempo pelan dan jelas untuk membimbing Laskar
+        u.pitch = 1.05;
+        window.speechSynthesis.speak(u);
       }
-    } catch(e) {}
+    } catch(e) {
+      console.error(e);
+    }
+  }
+
+  function speakGreeting() {
+    speakText("Good morning teachers and friends! This is our 3D Math House project showing the front view of a house.", 'en-US');
+  }
+
+  function speakWindows() {
+    speakText("Look at the windows. There are 3 windows. Each window has 4 glass panes. In repeated addition: 4 plus 4 plus 4 equals 12. In multiplication: 3 times 4 equals 12 glass panes!", 'en-US');
+  }
+
+  function speakDoors() {
+    speakText("Now look at the front door. We have 2 door wings. Each door has 3 wooden panels. So, 2 times 3 equals 6 panels!", 'en-US');
+  }
+
+  function speakDivision() {
+    speakText("For division, 12 glass panes divided into 3 windows equals 4 panes each (12 divided by 3 equals 4)!", 'en-US');
+  }
+
+  function speakClosing() {
+    speakText("We worked together happily as a team. Thank you teachers and friends!", 'en-US');
   }
 
   function checkQ(qNum, isCorrect, btnElem) {

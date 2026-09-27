@@ -338,6 +338,70 @@
     .script-step strong { color: #b45309; display: block; font-size: 14px; }
     .script-speech { color: #0f172a; font-style: italic; font-weight: 600; font-size: 15.5px; }
 
+    /* Speech Prompt Card for Speech Delay Handicap */
+    .speech-prompt-card {
+      background: #fffbeb;
+      border: 2px solid #4f46e5;
+      border-radius: 14px;
+      padding: 14px 18px;
+      margin: 14px 0;
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08);
+    }
+    .speech-prompt-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .speech-badge {
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: 12.5px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid #c7d2fe;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-voice {
+      background: linear-gradient(135deg, #4f46e5 0%, #3730a3 100%);
+      color: #ffffff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-family: inherit;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(79, 70, 229, 0.25);
+      transition: all 0.2s;
+    }
+    .btn-voice:hover {
+      background: linear-gradient(135deg, #3730a3 0%, #312e81 100%);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.35);
+    }
+    .speech-prompt-text {
+      font-size: 14px;
+      font-weight: 700;
+      color: #1e293b;
+      line-height: 1.6;
+    }
+    .speech-prompt-text mark {
+      background: #fef08a;
+      padding: 1px 6px;
+      border-radius: 4px;
+      color: #854d0e;
+    }
+
     /* Print */
     .print-sheet {
       background: #ffffff;
@@ -594,6 +658,70 @@
           </div>
 
         </div>
+
+        <!-- ============================================== -->
+        <!-- PANDUAN BICARA TERPADU LASKAR (SPEECH DELAY) -->
+        <!-- ============================================== -->
+        <div style="margin-top:24px; border-top:2px dashed #c7d2fe; padding-top:20px;" class="no-print">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; flex-wrap:wrap; gap:8px;">
+            <h3 style="font-size:17px; color:#3730a3; display:flex; align-items:center; gap:8px;">
+              <span>🗣️</span> Panduan Bicara Presentasi ID Card (Untuk Laskar)
+            </h3>
+            <button class="btn-voice" onclick="playAudio('Assalamu\'alaikum warahmatullahi wabarakatuh. Selamat pagi Miss, Mister, dan teman-teman semuanya! Hari ini Laskar ingin mempresentasikan kartu identitas diri buatan saya. Nama lengkap saya adalah Laskar Al Kautsar, panggilan Laskar. Saya lahir di Malang tanggal 8 Desember 2018 dan umur saya 7 tahun. Saya bersekolah di SD MISS Malang kelas Grade 2. Alamat rumah saya di Griya Salam Madani Cemorokandang Malang. Nama orang tua saya adalah Ayah dan Bunda tercinta. Di pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri. Terima kasih Miss, Mister, dan teman-teman! Wassalamu\'alaikum warahmatullahi wabarakatuh!')">
+              <span>🔊</span> Putar Seluruh Naskah
+            </button>
+          </div>
+          <p style="font-size:13.5px; color:#64748b; margin-bottom:16px;">
+            Klik tombol <b>🔊 Dengar</b> pada setiap langkah di bawah untuk mendengarkan lafal kata yang perlahan dan jelas:
+          </p>
+
+          <!-- Langkah 1: Salam Pembuka -->
+          <div class="speech-prompt-card">
+            <div class="speech-prompt-header">
+              <span class="speech-badge">🎙️ LANGKAH 1 — SALAM & SAPAAN</span>
+              <button class="btn-voice" onclick="playAudio('Assalamu\'alaikum warahmatullahi wabarakatuh. Selamat pagi Miss, Mister, dan teman-teman semuanya!')">
+                <span>🔊</span> Dengar Suara Laskar
+              </button>
+            </div>
+            <div class="speech-prompt-text">
+              "Assalamu'alaikum warahmatullahi wabarakatuh. Selamat pagi <mark>Miss, Mister</mark>, dan teman-teman semuanya!"
+            </div>
+          </div>
+
+          <!-- Langkah 2: Biodata Diri -->
+          <div class="speech-prompt-card">
+            <div class="speech-prompt-header">
+              <span class="speech-badge">🪪 LANGKAH 2 — BIODATA KARTU IDENTITAS</span>
+              <button class="btn-voice" onclick="playAudio('Hari ini Laskar ingin mempresentasikan kartu identitas diri saya: Nama lengkap saya Laskar Al Kautsar, panggilan Laskar. Lahir di Malang, 8 Desember 2018, umur 7 tahun. Sekolah di SD MISS Malang kelas Grade 2. Alamat di Griya Salam Madani Cemorokandang. Nama orang tua: Ayah dan Bunda.')">
+                <span>🔊</span> Dengar Suara Laskar
+              </button>
+            </div>
+            <div class="speech-prompt-text">
+              "Hari ini Laskar mempresentasikan kartu identitas diri saya:<br>
+              • Nama lengkap saya <mark>Laskar Al Kautsar</mark>, panggilan <mark>Laskar</mark>.<br>
+              • Lahir di Malang, <mark>8 Desember 2018</mark>, umur <mark>7 tahun</mark>.<br>
+              • Sekolah di <mark>SD MISS Malang</mark> kelas <mark>Grade 2</mark>.<br>
+              • Alamat rumah: <mark>Griya Salam Madani Cemorokandang</mark>.<br>
+              • Nama orang tua: <mark>Ayah dan Bunda</mark>."
+            </div>
+          </div>
+
+          <!-- Langkah 3: Tanda Tangan & Penutup -->
+          <div class="speech-prompt-card">
+            <div class="speech-prompt-header">
+              <span class="speech-badge">✨ LANGKAH 3 — TANDA TANGAN & PENUTUP</span>
+              <button class="btn-voice" onclick="playAudio('Di pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri. Kartu identitas sangat berguna agar orang lain mengenal diri kita. Terima kasih Miss, Mister, dan teman-teman! Wassalamu\'alaikum warahmatullahi wabarakatuh!')">
+                <span>🔊</span> Dengar Suara Laskar
+              </button>
+            </div>
+            <div class="speech-prompt-text">
+              "Di bagian pojok bawah kartu ini adalah <mark>tanda tangan asli</mark> buatan saya sendiri.<br>
+              Kartu identitas berguna agar orang lain dapat mengenal diri kita.<br>
+              Terima kasih <mark>Miss, Mister</mark>, dan teman-teman! Wassalamu'alaikum warahmatullahi wabarakatuh!"
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -609,14 +737,17 @@
               Sesuai rubrik guru: <em>"Representatif: Mampu menyajikan dalam bentuk lisan."</em>
             </p>
           </div>
-          <button class="btn btn-outline" onclick="playAudio('Assalamu alaikum Miss, Mister, dan teman-teman! Perkenalkan nama saya Laskar...')">
-            <span>🔊</span> Dengar Suara
+          <button class="btn btn-outline" onclick="playAudio('Assalamu\'alaikum warahmatullahi wabarakatuh. Selamat pagi Miss, Mister, dan teman-teman semuanya! Hari ini Laskar ingin mempresentasikan kartu identitas diri buatan saya. Nama lengkap saya adalah Laskar Al Kautsar, panggilan Laskar. Saya lahir di Malang tanggal 8 Desember 2018 dan umur saya 7 tahun. Saya bersekolah di SD MISS Malang kelas Grade 2. Alamat rumah saya di Griya Salam Madani Cemorokandang Malang. Nama orang tua saya adalah Ayah dan Bunda tercinta. Di pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri. Terima kasih Miss, Mister, dan teman-teman! Wassalamu\'alaikum warahmatullahi wabarakatuh!')">
+            <span>🔊</span> Putar Semua Naskah
           </button>
         </div>
 
         <div class="script-box">
           <div class="script-step">
-            <strong>1. SALAM & SAPAAN SANTUN:</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <strong>1. SALAM & SAPAAN SANTUN:</strong>
+              <button class="btn-voice" style="padding:3px 10px; font-size:11px;" onclick="playAudio('Assalamu\'alaikum warahmatullahi wabarakatuh. Selamat pagi Miss, Mister, dan teman-teman semuanya!')">🔊 Dengar</button>
+            </div>
             <div class="script-speech">
               "Assalamu'alaikum warahmatullahi wabarakatuh.<br>
               Selamat pagi <b>Miss, Mister</b>, dan teman-teman semuanya!"
@@ -624,7 +755,10 @@
           </div>
 
           <div class="script-step">
-            <strong>2. MEMPERKENALKAN KARTU IDENTITAS DIRI:</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <strong>2. MEMPERKENALKAN KARTU IDENTITAS DIRI:</strong>
+              <button class="btn-voice" style="padding:3px 10px; font-size:11px;" onclick="playAudio('Hari ini saya ingin mempresentasikan kartu identitas diri buatan saya. Nama lengkap saya adalah Laskar Al Kautsar. Teman-teman bisa memanggil saya Laskar. Saya lahir di Malang pada tanggal 8 Desember 2018 dan umur saya 7 tahun. Saya bersekolah di SD MISS Malang kelas Grade 2. Alamat rumah saya di Griya Salam Madani Cemorokandang Kedungkandang Malang. Nama orang tua saya adalah Ayah dan Bunda tercinta.')">🔊 Dengar</button>
+            </div>
             <div class="script-speech">
               "Hari ini saya ingin mempresentasikan kartu identitas diri (ID Card) buatan saya.<br>
               • Nama lengkap saya adalah <b>Laskar Al Kautsar</b>.<br>
@@ -637,7 +771,10 @@
           </div>
 
           <div class="script-step">
-            <strong>3. MENUNJUKKAN TANDA TANGAN & PENUTUP:</strong>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+              <strong>3. MENUNJUKKAN TANDA TANGAN & PENUTUP:</strong>
+              <button class="btn-voice" style="padding:3px 10px; font-size:11px;" onclick="playAudio('Di bagian pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri. Kartu identitas ini sangat berguna agar orang lain dapat mengenal diri kita. Terima kasih Miss, Mister, dan teman-teman! Wassalamu\'alaikum warahmatullahi wabarakatuh!')">🔊 Dengar</button>
+            </div>
             <div class="script-speech">
               "Di bagian pojok bawah kartu ini adalah tanda tangan asli buatan saya sendiri.<br>
               Kartu identitas ini sangat berguna agar orang lain dapat mengenal diri kita.<br>
@@ -777,7 +914,8 @@
         window.speechSynthesis.cancel();
         const u = new SpeechSynthesisUtterance(text);
         u.lang = 'id-ID';
-        u.rate = 0.92;
+        u.rate = 0.82; // Tempo santai & artikulasi jelas untuk memandu Laskar
+        u.pitch = 1.05;
         window.speechSynthesis.speak(u);
       }
     }
@@ -873,7 +1011,10 @@
         card.style.padding = '18px';
         card.style.marginBottom = '14px';
         card.innerHTML = `
-          <div style="font-size: 15.5px; font-weight: 800; color: #0f172a; margin-bottom: 10px;">${item.q}</div>
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom: 10px; gap:8px;">
+            <div style="font-size: 15.5px; font-weight: 800; color: #0f172a;">${item.q}</div>
+            <button class="btn-voice no-print" style="padding:3px 10px; font-size:11px; flex-shrink:0;" onclick="playAudio('${item.q.replace(/'/g, "\\'")}')">🔊 Dengar Soal</button>
+          </div>
           <div style="display:flex; flex-direction:column; gap:8px;" id="opt-box-${idx}">
             ${item.opts.map((opt, oIdx) => `
               <button style="background:white; border:1.5px solid #cbd5e1; padding:10px 14px; border-radius:10px; font-size:14px; text-align:left; cursor:pointer; font-family:inherit; transition:0.2s;" onclick="checkAnswer(${idx}, ${oIdx})">${opt}</button>

@@ -248,6 +248,77 @@
   .cue-card p { font-size: 11pt; color: #2c3e50; }
   .cue-card .translation { font-size: 9.5pt; color: #7f8c8d; font-style: italic; margin-top: 4px; }
 
+  /* Speaking Prompt Box for Speech Delay */
+  .speech-prompt-card {
+    background: #fffbeb;
+    border: 2px solid #f59e0b;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    text-align: left;
+    box-shadow: 0 3px 8px rgba(245, 158, 11, 0.12);
+  }
+  .speech-prompt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .speech-badge {
+    background: #fef3c7;
+    color: #92400e;
+    font-size: 9.5pt;
+    font-weight: 800;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid #fde68a;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .btn-voice {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #ffffff;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 9.5pt;
+    font-weight: bold;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 2px 6px rgba(16, 185, 129, 0.3);
+    transition: all 0.2s;
+  }
+  .btn-voice:hover {
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(16, 185, 129, 0.4);
+  }
+  .speech-prompt-en {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0f172a;
+    line-height: 1.5;
+  }
+  .speech-prompt-en mark {
+    background: #fef08a;
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: #854d0e;
+  }
+  .speech-prompt-id {
+    font-size: 9.5pt;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+
   /* Printable Templates Area */
   .cutout-sheet {
     border: 2px dashed #7f8c8d;
@@ -427,6 +498,22 @@
         </div>
       </div>
 
+      <!-- Panduan Bicara Pembuka (Speech Delay Support) -->
+      <div class="speech-prompt-card" style="margin-bottom: 16px; border-color: #27ae60; background: #f0fdf4;">
+        <div class="speech-prompt-header">
+          <span class="speech-badge" style="background: #dcfce7; color: #166534; border-color: #bbf7d0;">🗣️ Langkah 1: Salam & Pembukaan Presentasi (Opening)</span>
+          <button type="button" class="btn-voice" onclick="speakGreeting()">
+            <span>🔊</span> Dengarkan Laskar Bicara
+          </button>
+        </div>
+        <div class="speech-prompt-en">
+          "Hello <mark>teachers</mark> and <mark>friends</mark>! Welcome to my <mark>3D Math Garden</mark> project."
+        </div>
+        <div class="speech-prompt-id">
+          "Halo bapak/ibu guru dan teman-teman! Selamat datang di proyek Kebun Matematika 3D saya."
+        </div>
+      </div>
+
       <!-- Station 1: Pot Bunga (3 Pot × 2 Bunga) -->
       <div class="station-box">
         <div class="station-header">
@@ -475,6 +562,22 @@
         <div style="text-align:center;">
           <button class="btn-add-item" onclick="changeFlowers(1)">+ Tambah 1 Bunga ke Tiap Pot</button>
           <button class="btn-reset-item" onclick="resetFlowers()">Atur Ulang (2 Bunga)</button>
+        </div>
+
+        <!-- Panduan Bicara Station 1 Langsung di Bawah Simulator -->
+        <div class="speech-prompt-card" id="speechBoxPot">
+          <div class="speech-prompt-header">
+            <span class="speech-badge">🗣️ Langkah 2: Naskah Bicara Pot Bunga (Multiplication)</span>
+            <button type="button" class="btn-voice" onclick="speakStation1()">
+              <span>🔊</span> Dengarkan Laskar Bicara
+            </button>
+          </div>
+          <div class="speech-prompt-en" id="speechTextPotEn">
+            "Look at our flower pots. We have <mark>3 pots</mark>. Each pot has <mark>2 flowers</mark>. So, <mark>2 + 2 + 2 = 6</mark>. In multiplication: <mark>3 times 2 equals 6 flowers!</mark>"
+          </div>
+          <div class="speech-prompt-id" id="speechTextPotId">
+            "Lihat pot bunga kami. Ada 3 pot, masing-masing isi 2 bunga. 2 + 2 + 2 = 6. Dalam perkalian, 3 kali 2 sama dengan 6 bunga!"
+          </div>
         </div>
       </div>
 
@@ -530,6 +633,22 @@
           <button class="btn-add-item" onclick="changeApples(1)">+ Tambah 1 Apel ke Tiap Pohon</button>
           <button class="btn-reset-item" onclick="resetApples()">Atur Ulang (3 Apel)</button>
         </div>
+
+        <!-- Panduan Bicara Station 2 Langsung di Bawah Simulator -->
+        <div class="speech-prompt-card" id="speechBoxTree">
+          <div class="speech-prompt-header">
+            <span class="speech-badge">🗣️ Langkah 3: Naskah Bicara Pohon Apel</span>
+            <button type="button" class="btn-voice" onclick="speakStation2()">
+              <span>🔊</span> Dengarkan Laskar Bicara
+            </button>
+          </div>
+          <div class="speech-prompt-en" id="speechTextTreeEn">
+            "Look at our apple trees. We have <mark>3 trees</mark>. Each tree has <mark>3 apples</mark>. So, <mark>3 + 3 + 3 = 9</mark>. In multiplication: <mark>3 times 3 equals 9 apples!</mark>"
+          </div>
+          <div class="speech-prompt-id" id="speechTextTreeId">
+            "Lihat pohon apel kami. Ada 3 pohon, masing-masing ada 3 apel. 3 + 3 + 3 = 9. Dalam perkalian, 3 kali 3 sama dengan 9 buah apel!"
+          </div>
+        </div>
       </div>
 
       <!-- STAGE 3: DIVISION STATION (12 KEPIK DIBAGI KE 3 DAUN) -->
@@ -560,6 +679,38 @@
             <div style="font-size:16pt; margin:6px 0;">🍃</div>
             <div style="font-size:11pt; color:#c0392b; font-weight:bold;">🐞🐞🐞🐞 (4)</div>
           </div>
+        </div>
+
+        <!-- Panduan Bicara Station 3 Langsung di Bawah Simulator -->
+        <div class="speech-prompt-card" style="border-color: #3b82f6; background: #eff6ff;">
+          <div class="speech-prompt-header">
+            <span class="speech-badge" style="background: #dbeafe; color: #1e40af; border-color: #bfdbfe;">🗣️ Langkah 4: Naskah Bicara Pembagian Kepik (Division)</span>
+            <button type="button" class="btn-voice" style="background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);" onclick="speakStation3()">
+              <span>🔊</span> Dengarkan Laskar Bicara
+            </button>
+          </div>
+          <div class="speech-prompt-en">
+            "Here we have <mark>12 ladybugs</mark> shared equally onto <mark>3 green leaves</mark>. Each leaf has <mark>4 ladybugs</mark>. So, <mark>12 divided by 3 equals 4!</mark>"
+          </div>
+          <div class="speech-prompt-id">
+            "Di sini kami punya 12 ekor kepik dibagi sama rata ke 3 helai daun. Setiap daun ada 4 ekor kepik. Jadi, 12 dibagi 3 sama dengan 4!"
+          </div>
+        </div>
+      </div>
+
+      <!-- Panduan Bicara Penutup (Closing) -->
+      <div class="speech-prompt-card" style="margin-top: 16px; border-color: #10b981; background: #ecfdf5;">
+        <div class="speech-prompt-header">
+          <span class="speech-badge" style="background: #d1fae5; color: #065f46; border-color: #a7f3d0;">🗣️ Langkah 5: Kalimat Penutup Presentasi (Closing)</span>
+          <button type="button" class="btn-voice" onclick="speakClosing()">
+            <span>🔊</span> Dengarkan Laskar Bicara
+          </button>
+        </div>
+        <div class="speech-prompt-en">
+          "We worked together happily as a team. <mark>Thank you Miss, Mister, and friends!</mark>"
+        </div>
+        <div class="speech-prompt-id">
+          "Kami bekerja sama dengan gembira dalam satu tim. Terima kasih Miss, Mister, dan teman-teman!"
         </div>
       </div>
 
@@ -689,28 +840,48 @@
 
       <!-- Card 1: Pembuka -->
       <div class="cue-card">
-        <b>1. Kalimat Pembuka (Greeting & Intro)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">1. Kalimat Pembuka (Greeting & Intro)</b>
+          <button type="button" class="btn-voice" onclick="speakGreeting()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Hello teachers and friends! Welcome to our 3D Math Garden project."</p>
         <div class="translation">"Halo bapak/ibu guru dan teman-teman! Selamat datang di proyek Kebun Matematika 3D kami."</div>
       </div>
 
       <!-- Card 2: Contoh Perkalian -->
       <div class="cue-card">
-        <b>2. Menjelaskan Perkalian (Multiplication Station)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">2. Menjelaskan Perkalian (Multiplication Station)</b>
+          <button type="button" class="btn-voice" onclick="speakStation1()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Look at our flower pots. We have <b>3 pots</b>. Each pot has <b>2 flowers</b>. So, <b>2 + 2 + 2 = 6</b>. In multiplication, <b>3 times 2 equals 6!</b>"</p>
         <div class="translation">"Lihat pot bunga kami. Ada 3 pot, masing-masing isi 2 bunga. 2 + 2 + 2 = 6. Dalam perkalian, 3 kali 2 sama dengan 6!"</div>
       </div>
 
       <!-- Card 3: Contoh Pembagian -->
       <div class="cue-card">
-        <b>3. Menjelaskan Pembagian (Division Station)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">3. Menjelaskan Pembagian (Division Station)</b>
+          <button type="button" class="btn-voice" onclick="speakStation3()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"Here we have <b>12 ladybugs</b> shared equally onto <b>3 green leaves</b>. Each leaf has <b>4 ladybugs</b>. So, <b>12 divided by 3 equals 4!</b>"</p>
         <div class="translation">"Di sini kami punya 12 kepik dibagi sama rata ke 3 helai daun hijau. Setiap daun ada 4 kepik. Jadi, 12 dibagi 3 sama dengan 4!"</div>
       </div>
 
       <!-- Card 4: Penutup -->
       <div class="cue-card">
-        <b>4. Kalimat Penutup (Closing)</b>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; flex-wrap:wrap; gap:6px;">
+          <b style="margin-bottom:0;">4. Kalimat Penutup (Closing)</b>
+          <button type="button" class="btn-voice" onclick="speakClosing()">
+            <span>🔊</span> Dengar Suara
+          </button>
+        </div>
         <p>"We worked together happily as a team. Thank you!"</p>
         <div class="translation">"Kami bekerja sama dengan gembira dalam satu tim. Terima kasih!"</div>
       </div>
@@ -900,6 +1071,46 @@
     } catch(e) {}
   }
 
+  // Speech Synthesis Engine for Speech Delay Handicap
+  function speakText(text, lang = 'en-US') {
+    try {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const u = new SpeechSynthesisUtterance(text);
+        u.lang = lang;
+        u.rate = 0.82; // Tempo pelan dan sangat jelas untuk membimbing Laskar
+        u.pitch = 1.05;
+        window.speechSynthesis.speak(u);
+      }
+    } catch(e) {
+      console.error('Speech error:', e);
+    }
+  }
+
+  function speakGreeting() {
+    speakText("Hello teachers and friends! Welcome to our 3D Math Garden project.", 'en-US');
+  }
+
+  function speakStation1() {
+    const total = 3 * flowerCountPerPot;
+    const addParts = Array(3).fill(flowerCountPerPot).join(' plus ');
+    speakText(`Look at our flower pots. We have 3 pots. Each pot has ${flowerCountPerPot} flowers. So, ${addParts} equals ${total}. In multiplication, 3 times ${flowerCountPerPot} equals ${total} flowers!`, 'en-US');
+  }
+
+  function speakStation2() {
+    const total = 3 * appleCountPerTree;
+    const addParts = Array(3).fill(appleCountPerTree).join(' plus ');
+    speakText(`Look at our apple trees. We have 3 trees. Each tree has ${appleCountPerTree} apples. So, ${addParts} equals ${total}. In multiplication, 3 times ${appleCountPerTree} equals ${total} apples!`, 'en-US');
+  }
+
+  function speakStation3() {
+    speakText("Here we have 12 ladybugs shared equally onto 3 green leaves. Each leaf has 4 ladybugs. So, 12 divided by 3 equals 4!", 'en-US');
+  }
+
+  function speakClosing() {
+    speakText("We worked together happily as a team. Thank you teachers and friends!", 'en-US');
+  }
+
   function changeFlowers(delta) {
     flowerCountPerPot += delta;
     if (flowerCountPerPot > 4) flowerCountPerPot = 4;
@@ -921,6 +1132,16 @@
     const total = 3 * flowerCountPerPot;
     document.getElementById('labelPot').innerHTML = `3 Pot × ${flowerCountPerPot} Bunga = ${total} Bunga`;
     document.getElementById('addPot').innerHTML = `${flowerCountPerPot} + ${flowerCountPerPot} + ${flowerCountPerPot} = ${total}`;
+
+    // Update naskah bicara dinamis
+    const spEn = document.getElementById('speechTextPotEn');
+    const spId = document.getElementById('speechTextPotId');
+    if (spEn) {
+      spEn.innerHTML = `"Look at our flower pots. We have <mark>3 pots</mark>. Each pot has <mark>${flowerCountPerPot} flowers</mark>. So, <mark>${flowerCountPerPot} + ${flowerCountPerPot} + ${flowerCountPerPot} = ${total}</mark>. In multiplication: <mark>3 times ${flowerCountPerPot} equals ${total} flowers!</mark>"`;
+    }
+    if (spId) {
+      spId.innerHTML = `"Lihat pot bunga kami. Ada 3 pot, masing-masing isi ${flowerCountPerPot} bunga. ${flowerCountPerPot} + ${flowerCountPerPot} + ${flowerCountPerPot} = ${total}. Dalam perkalian, 3 kali ${flowerCountPerPot} sama dengan ${total} bunga!"`;
+    }
   }
 
   function changeApples(delta) {
@@ -944,6 +1165,16 @@
     const total = 3 * appleCountPerTree;
     document.getElementById('labelTree').innerHTML = `3 Pohon × ${appleCountPerTree} Apel = ${total} Apel`;
     document.getElementById('addTree').innerHTML = `${appleCountPerTree} + ${appleCountPerTree} + ${appleCountPerTree} = ${total}`;
+
+    // Update naskah bicara dinamis
+    const spEn = document.getElementById('speechTextTreeEn');
+    const spId = document.getElementById('speechTextTreeId');
+    if (spEn) {
+      spEn.innerHTML = `"Look at our apple trees. We have <mark>3 trees</mark>. Each tree has <mark>${appleCountPerTree} apples</mark>. So, <mark>${appleCountPerTree} + ${appleCountPerTree} + ${appleCountPerTree} = ${total}</mark>. In multiplication: <mark>3 times ${appleCountPerTree} equals ${total} apples!</mark>"`;
+    }
+    if (spId) {
+      spId.innerHTML = `"Lihat pohon apel kami. Ada 3 pohon, masing-masing ada ${appleCountPerTree} apel. ${appleCountPerTree} + ${appleCountPerTree} + ${appleCountPerTree} = ${total}. Dalam perkalian, 3 kali ${appleCountPerTree} sama dengan ${total} buah apel!"`;
+    }
   }
 
   function checkQ(qNum, isCorrect, btnElem) {

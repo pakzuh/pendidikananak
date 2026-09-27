@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expo 4: PJOK / Physical Education — Laskar Al Kautsar | Grade 2 SD MISS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #059669;
+      --primary-dark: #047857;
+      --primary-light: #ecfdf5;
+      --accent: #d97706;
+      --card-bg: #ffffff;
+      --text: #0f172a;
+      --text-muted: #64748b;
+      --border: #cbd5e1;
+      --radius: 18px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', sans-serif;
+      background: #f0fdf4;
+      color: var(--text);
+      line-height: 1.55;
+      padding-bottom: 60px;
+    }
+
+    h1, h2, h3, h4, .font-title {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px 16px;
+    }
+
+    /* Top Navigation */
+    .top-action-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 2px solid #d1fae5;
+      border-radius: 16px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.05);
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      border-radius: 12px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+      border: none;
+    }
+
+    .btn-primary {
+      background: #059669;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    }
+    .btn-primary:hover {
+      background: #047857;
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: #f8fafc;
+      color: #475569;
+      border: 2px solid #cbd5e1;
+    }
+    .btn-outline:hover {
+      background: #e2e8f0;
+      color: #0f172a;
+    }
+
+    .btn-voice {
+      background: #fef3c7;
+      color: #92400e;
+      border: 1.5px solid #f59e0b;
+      padding: 6px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s;
+    }
+    .btn-voice:hover {
+      background: #fde68a;
+      transform: scale(1.03);
+    }
+
+    /* Hero Card */
+    .hero-card {
+      background: linear-gradient(135deg, #047857 0%, #059669 60%, #10b981 100%);
+      color: #ffffff;
+      border-radius: 24px;
+      padding: 26px 30px;
+      margin-bottom: 24px;
+      box-shadow: 0 16px 32px -8px rgba(5, 150, 105, 0.3);
+      border: 3px solid rgba(255,255,255,0.25);
+    }
+
+    .badge-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .badge {
+      background: rgba(255,255,255,0.22);
+      backdrop-filter: blur(6px);
+      padding: 5px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-title {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .hero-subtitle {
+      font-size: 14.5px;
+      color: #d1fae5;
+      margin-bottom: 18px;
+      max-width: 820px;
+    }
+
+    .meta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      background: rgba(0,0,0,0.18);
+      border-radius: 14px;
+      padding: 12px 18px;
+      font-size: 13.5px;
+    }
+    .meta-grid strong { color: #fef08a; }
+
+    /* Tabs */
+    .tabs-nav {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      overflow-x: auto;
+      padding-bottom: 6px;
+    }
+
+    .tab-btn {
+      padding: 10px 18px;
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 12px;
+      font-family: 'Fredoka', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      color: #475569;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .tab-btn.active {
+      background: #059669;
+      color: #ffffff;
+      border-color: #059669;
+      box-shadow: 0 4px 12px rgba(5, 150, 105, 0.25);
+    }
+
+    .tab-pane { display: none; }
+    .tab-pane.active { display: block; animation: fadeIn 0.3s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Movement Cards */
+    .movement-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .move-card {
+      background: #ffffff;
+      border: 2px solid #d1fae5;
+      border-radius: 16px;
+      padding: 18px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+      transition: all 0.2s;
+    }
+    .move-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(5, 150, 105, 0.12);
+      border-color: #059669;
+    }
+
+    /* Print Sheet */
+    .printable-sheet {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.05);
+    }
+
+    /* Print CSS */
+    @page {
+      size: A4 portrait;
+      margin: 10mm;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+      .no-print, .top-action-bar, .tabs-nav, .btn-voice {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+      }
+      .tab-pane { display: none !important; }
+      .tab-pane.active { display: block !important; }
+      .printable-sheet {
+        border: 1.5px solid #000 !important;
+        box-shadow: none !important;
+        padding: 6mm !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- TOP ACTION BAR -->
+  <div class="top-action-bar no-print">
+    <div style="display:flex; align-items:center; gap:10px;">
+      <a href="index.html" class="btn btn-outline">
+        <span>🏠</span> Kembali ke Portal Utama
+      </a>
+      <a href="Laskar_Buku_Panduan_Presentasi_Expo_Senin.html" class="btn btn-outline" style="border-color:#f59e0b; color:#b45309; background:#fffbeb;">
+        <span>📖</span> Buku Saku Panduan Expo
+      </a>
+    </div>
+    <div style="display:flex; gap:8px;">
+      <button class="btn btn-primary" onclick="printWorksheet('tab-print')">
+        <span>🖨️</span> Cetak Lembar Mewarnai Sepak Bola (A4)
+      </button>
+    </div>
+  </div>
+
+  <!-- HERO CARD -->
+  <header class="hero-card">
+    <div class="badge-bar">
+      <span class="badge">🏫 SD MISS Malang</span>
+      <span class="badge">Grade 2 • Physical Education</span>
+      <span class="badge" style="background:#fef08a; color:#854d0e;">⭐ EXPO 4 — PJOK</span>
+      <span class="badge" style="background:#d1fae5; color:#065f46;">🏃‍♂️ Guru: Mr. Arief</span>
+    </div>
+    <h1 class="hero-title">Expo 4: PJOK (Gerak Lokomotor & Olahraga)</h1>
+    <p class="hero-subtitle">
+      Modul interaktif peragaan gerak lokomotor berpindah tempat (berjalan, berlari, melompat 1 kaki, meloncat 2 kaki), naskah bicara ramah <em>speech delay</em>, dan lembar mewarnai olahraga Sepak Bola.
+    </p>
+    <div class="meta-grid">
+      <div>👦 <strong>Siswa:</strong> Laskar Al Kautsar</div>
+      <div>⏰ <strong>Jadwal:</strong> 10.00 – 10.30 WIB</div>
+      <div>👨‍🏫 <strong>Guru PJOK:</strong> Mr. Arief</div>
+      <div>⚽ <strong>Olahraga:</strong> Sepak Bola & Gerak Lokomotor</div>
+    </div>
+  </header>
+
+  <!-- NAVIGATION TABS -->
+  <div class="tabs-nav no-print">
+    <button class="tab-btn active" onclick="switchTab('tab-move', this)">🏃‍♂️ 4 Gerak Lokomotor</button>
+    <button class="tab-btn" onclick="switchTab('tab-speech', this)">🎙️ Naskah Presentasi Lisan</button>
+    <button class="tab-btn" onclick="switchTab('tab-print', this)">🖨️ Lembar Mewarnai Sepak Bola (A4)</button>
+    <button class="tab-btn" onclick="switchTab('tab-quiz', this)">❓ Kuis Gerak & Olahraga</button>
+  </div>
+
+  <!-- TAB 1: 4 GERAK LOKOMOTOR -->
+  <div id="tab-move" class="tab-pane active">
+    <div style="background:#ffffff; border-radius:18px; padding:22px; border:2px solid #d1fae5; margin-bottom:20px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px; flex-wrap:wrap; gap:8px;">
+        <div>
+          <h3 style="color:#047857; font-size:18px;">💡 Gerak Lokomotor (Gerakan Berpindah Tempat)</h3>
+          <p style="font-size:13.5px; color:#64748b;">Klik tombol <b>🔊 Dengar</b> untuk mendengarkan panduan gerak:</p>
+        </div>
+        <button class="btn-voice" onclick="playAudio('Gerak lokomotor adalah gerakan tubuh yang berpindah tempat. Contohnya: berjalan, berlari, melompat satu kaki, dan meloncat dua kaki!')">
+          🔊 Dengar Penjelasan
+        </button>
+      </div>
+
+      <div class="movement-grid">
+        <!-- 1. Berjalan -->
+        <div class="move-card">
+          <div style="font-size:44px; margin-bottom:6px;">🚶‍♂️</div>
+          <div style="font-weight:700; color:#047857; font-size:16px;">1. Berjalan</div>
+          <div style="font-size:12.5px; color:#475569; margin:6px 0;">Melangkahkan kaki bergantian secara santai ke depan.</div>
+          <button class="btn-voice" onclick="playAudio('Berjalan. Melangkahkan kaki bergantian dengan santai.')">🔊 Dengar</button>
+        </div>
+
+        <!-- 2. Berlari -->
+        <div class="move-card">
+          <div style="font-size:44px; margin-bottom:6px;">🏃‍♂️</div>
+          <div style="font-weight:700; color:#047857; font-size:16px;">2. Berlari</div>
+          <div style="font-size:12.5px; color:#475569; margin:6px 0;">Melangkahkan kaki dengan cepat, ada saat kedua kaki melayang.</div>
+          <button class="btn-voice" onclick="playAudio('Berlari. Melangkahkan kaki dengan cepat mengejar bola.')">🔊 Dengar</button>
+        </div>
+
+        <!-- 3. Melompat -->
+        <div class="move-card">
+          <div style="font-size:44px; margin-bottom:6px;">🦿</div>
+          <div style="font-weight:700; color:#047857; font-size:16px;">3. Melompat</div>
+          <div style="font-size:12.5px; color:#059669; font-weight:700; margin:6px 0;">Bertumpu pada 1 KAKI</div>
+          <div style="font-size:12px; color:#475569; margin-bottom:6px;">Mendorong tubuh ke atas memakai 1 kaki tumpuan.</div>
+          <button class="btn-voice" onclick="playAudio('Melompat bertumpu pada satu kaki!')">🔊 Dengar</button>
+        </div>
+
+        <!-- 4. Meloncat -->
+        <div class="move-card">
+          <div style="font-size:44px; margin-bottom:6px;">🐸</div>
+          <div style="font-weight:700; color:#047857; font-size:16px;">4. Meloncat</div>
+          <div style="font-size:12.5px; color:#059669; font-weight:700; margin:6px 0;">Bertumpu pada 2 KAKI</div>
+          <div style="font-size:12px; color:#475569; margin-bottom:6px;">Mendorong tubuh ke atas memakai 2 kaki bersamaan seperti kelinci atau katak.</div>
+          <button class="btn-voice" onclick="playAudio('Meloncat bertumpu pada dua kaki seperti katak atau kelinci!')">🔊 Dengar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: NASKAH PRESENTASI LISAN -->
+  <div id="tab-speech" class="tab-pane">
+    <div style="background:#ffffff; border-radius:18px; padding:24px; border:2px solid #d1fae5;">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:8px;">
+        <div>
+          <h3 style="color:#047857; font-size:18px;">🎙️ Naskah Bicara PJOK untuk Laskar (Didampingi Mr. Arief)</h3>
+          <p style="font-size:13.5px; color:#64748b;">Naskah sangat ringkas, jelas, dan didukung aksi peragaan langsung:</p>
+        </div>
+        <button class="btn-voice" onclick="playAudio('Halo Mister Arief! Ini gambar sepak bola buatan Laskar. Sepak bola menendang bola menggunakan kaki. Laskar bisa berjalan, berlari, melompat satu kaki, dan meloncat dua kaki!')">
+          🔊 Putar Seluruh Naskah
+        </button>
+      </div>
+
+      <!-- Step 1 -->
+      <div style="background:#ecfdf5; border:2px solid #10b981; border-radius:14px; padding:16px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-weight:700; color:#065f46; font-size:13px;">LANGKAH 1 — SAPAAN KEPADA GURU:</span>
+          <button class="btn-voice" onclick="playAudio('Halo Mister Arief! Ini karya olahraga Laskar.')">🔊 Dengar</button>
+        </div>
+        <div style="font-family:'Fredoka',sans-serif; font-size:16px; color:#064e3b; line-height:1.7;">
+          "Ha-lo <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">Mis-ter A-rief</mark>!<br>
+          I-ni kar-ya o-lah-ra-ga <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">Las-kar</mark>."
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div style="background:#ecfdf5; border:2px solid #10b981; border-radius:14px; padding:16px; margin-bottom:14px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-weight:700; color:#065f46; font-size:13px;">LANGKAH 2 — MENUNJUK GAMBAR SEPAK BOLA:</span>
+          <button class="btn-voice" onclick="playAudio('Ini gambar sepak bola. Olahraga sepak bola menendang menggunakan kaki.')">🔊 Dengar</button>
+        </div>
+        <div style="font-family:'Fredoka',sans-serif; font-size:16px; color:#064e3b; line-height:1.7;">
+          "I-ni gam-bar <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">se-pak bo-la</mark>.<br>
+          Me-nen-dang bo-la pa-kai <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">ka-ki</mark>."
+        </div>
+        <div style="font-size:12.5px; color:#047857; margin-top:8px; font-weight:700;">
+          👆 <em>Petunjuk: Laskar menunjuk gambar bola sepak yang sudah diwarnai rapi!</em>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div style="background:#ecfdf5; border:2px solid #10b981; border-radius:14px; padding:16px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+          <span style="font-weight:700; color:#065f46; font-size:13px;">LANGKAH 3 — PERAGAAN GERAK LOKOMOTOR:</span>
+          <button class="btn-voice" onclick="playAudio('Laskar bisa melompat satu kaki dan meloncat dua kaki seperti kelinci!')">🔊 Dengar</button>
+        </div>
+        <div style="font-family:'Fredoka',sans-serif; font-size:16px; color:#064e3b; line-height:1.7;">
+          "Me-lom-pat <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">sa-tu ka-ki</mark>,<br>
+          me-lon-cat <mark style="background:#fef08a; padding:2px 6px; border-radius:4px;">du-a ka-ki</mark>!"
+        </div>
+        <div style="font-size:12.5px; color:#047857; margin-top:8px; font-weight:700;">
+          👆 <em>Petunjuk: Laskar meloncat kecil di tempat menggunakan 2 kaki sambil tersenyum!</em>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3: LEMBAR CETAK MEWARNAI SEPAK BOLA -->
+  <div id="tab-print" class="tab-pane">
+    <div class="printable-sheet">
+      <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:2px solid #059669; padding-bottom:12px; margin-bottom:16px;">
+        <div>
+          <h2 style="font-size:18px; color:#047857;">LEMBAR MEWARNAI & ASESMEN PJOK — SEPAK BOLA ⚽</h2>
+          <span style="font-size:12px; color:#64748b;">SD MISS (Mafaza) Malang • Siswa: <strong>Laskar Al Kautsar (Grade 2)</strong></span>
+        </div>
+        <div style="text-align:right; font-size:11px; color:#475569;">
+          Senin, 28 September 2026<br>
+          Expo 4 (10.00 – 10.30)
+        </div>
+      </div>
+
+      <div style="background:#f0fdf4; border-left:4px solid #059669; padding:10px 14px; border-radius:4px; font-size:12px; color:#065f46; margin-bottom:16px;">
+        <strong>Petunjuk untuk Laskar & Pendamping:</strong><br>
+        1. Warnai pola bola sepak di bawah ini dengan krayon atau pensil warna favoritmu! 🖍️<br>
+        2. Tunjukkan gambar ini kepada <strong>Mr. Arief</strong> saat sesi Expo 4 jam 10.00 WIB! 🌟
+      </div>
+
+      <!-- Ilustrasi Bola Sepak Outline Siap Mewarnai -->
+      <div style="text-align:center; padding:20px; border:2px dashed #059669; border-radius:16px; background:#fafafa; margin-bottom:20px;">
+        <svg viewBox="0 0 200 200" width="180" height="180" style="margin:0 auto; display:block;">
+          <!-- Lingkaran Luar Bola -->
+          <circle cx="100" cy="100" r="85" fill="#ffffff" stroke="#1e293b" stroke-width="4"/>
+          <!-- Pentagon Pusat -->
+          <polygon points="100,70 125,88 115,118 85,118 75,88" fill="#334155" stroke="#1e293b" stroke-width="2"/>
+          <!-- Garis penghubung ke tepi -->
+          <line x1="100" y1="70" x2="100" y2="15" stroke="#1e293b" stroke-width="3"/>
+          <line x1="125" y1="88" x2="180" y2="70" stroke="#1e293b" stroke-width="3"/>
+          <line x1="115" y1="118" x2="155" y2="165" stroke="#1e293b" stroke-width="3"/>
+          <line x1="85" y1="118" x2="45" y2="165" stroke="#1e293b" stroke-width="3"/>
+          <line x1="75" y1="88" x2="20" y2="70" stroke="#1e293b" stroke-width="3"/>
+          <!-- Patch Samping -->
+          <polygon points="100,15 80,35 120,35" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+          <polygon points="180,70 160,55 170,95" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+          <polygon points="20,70 40,55 30,95" fill="#e2e8f0" stroke="#1e293b" stroke-width="2"/>
+        </svg>
+        <div style="font-family:'Fredoka',sans-serif; font-size:16px; font-weight:700; color:#047857; margin-top:10px;">
+          BOLA SEPAK LASKAR AL KAUTSAR
+        </div>
+        <div style="font-size:11.5px; color:#64748b;">
+          "Menendang bola menggunakan kaki. Berlari mengejar bola di lapangan."
+        </div>
+      </div>
+
+      <!-- Catatan Kunci Gerak Lokomotor -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; font-size:12px; margin-bottom:20px;">
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:10px 14px;">
+          <strong>🦿 Melompat:</strong><br>
+          Dorongan tubuh ke atas dengan <strong>1 KAKI</strong> tumpuan.
+        </div>
+        <div style="background:#f8fafc; border:1px solid #cbd5e1; border-radius:10px; padding:10px 14px;">
+          <strong>🐸 Meloncat:</strong><br>
+          Dorongan tubuh ke atas dengan <strong>2 KAKI</strong> bersamaan (kelinci/katak).
+        </div>
+      </div>
+
+      <div style="margin-top:20px; display:grid; grid-template-columns:1fr 1fr; text-align:center; font-size:11px; border-top:1px solid #cbd5e1; padding-top:14px;">
+        <div>
+          <div>Tanda Tangan Siswa:</div>
+          <div style="margin-top:28px; font-weight:700; border-top:1px solid #000; width:130px; margin-left:auto; margin-right:auto;">
+            Laskar Al Kautsar
+          </div>
+        </div>
+        <div>
+          <div>Guru Penilai PJOK:</div>
+          <div style="margin-top:28px; font-weight:700; border-top:1px solid #000; width:130px; margin-left:auto; margin-right:auto;">
+            Mr. Arief
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 4: KUIS INTERAKTIF -->
+  <div id="tab-quiz" class="tab-pane">
+    <div style="background:#ffffff; border-radius:18px; padding:22px; border:2px solid #d1fae5;">
+      <h3 style="color:#047857; font-size:18px; margin-bottom:14px;">❓ Kuis Gerak Lokomotor & Olahraga Sepak Bola</h3>
+
+      <!-- Q1 -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:14px; margin-bottom:12px;">
+        <div style="font-weight:700; font-size:14px; margin-bottom:8px;">1. Anggota tubuh utama yang digunakan untuk menendang bola dalam sepak bola adalah...</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="answerQuiz(this, true)">🦶 Kaki</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">👂 Telinga</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">👃 Hidung</button>
+        </div>
+        <div class="feedback" style="margin-top:6px; font-size:12px; font-weight:700;"></div>
+      </div>
+
+      <!-- Q2 -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:14px; margin-bottom:12px;">
+        <div style="font-weight:700; font-size:14px; margin-bottom:8px;">2. Gerakan <b>MELONCAT</b> seperti katak atau kelinci bertumpu pada...</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="answerQuiz(this, true)">2 Kaki Bersamaan</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">1 Kaki Saja</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">Kepala</button>
+        </div>
+        <div class="feedback" style="margin-top:6px; font-size:12px; font-weight:700;"></div>
+      </div>
+
+      <!-- Q3 -->
+      <div style="background:#f8fafc; border:1px solid #e2e8f0; border-radius:12px; padding:14px;">
+        <div style="font-weight:700; font-size:14px; margin-bottom:8px;">3. Apa alat yang dibawa Laskar untuk mewarnai gambar sepak bola?</div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <button class="btn btn-outline" onclick="answerQuiz(this, true)">🖍️ Krayon / Pensil Warna</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">🍳 Wajan Goreng</button>
+          <button class="btn btn-outline" onclick="answerQuiz(this, false)">🧼 Sabun Mandi</button>
+        </div>
+        <div class="feedback" style="margin-top:6px; font-size:12px; font-weight:700;"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  function playAudio(text) {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = 'id-ID';
+      u.rate = 0.82;
+      u.pitch = 1.05;
+      window.speechSynthesis.speak(u);
+    }
+  }
+
+  function switchTab(tabId, el) {
+    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabId)?.classList.add('active');
+    if (el) el.classList.add('active');
+    window.scrollTo({ top: 120, behavior: 'smooth' });
+  }
+
+  function printWorksheet(targetTabId = 'tab-print') {
+    const tabBtn = document.querySelector(`[onclick*="${targetTabId}"]`);
+    if (tabBtn) {
+      switchTab(targetTabId, tabBtn);
+    } else {
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      document.getElementById(targetTabId)?.classList.add('active');
+    }
+    setTimeout(() => {
+      window.print();
+    }, 250);
+  }
+
+  function answerQuiz(btn, isCorrect) {
+    const fb = btn.parentElement.nextElementSibling;
+    if (isCorrect) {
+      btn.style.background = '#dcfce7';
+      btn.style.borderColor = '#16a34a';
+      btn.style.color = '#15803d';
+      fb.innerHTML = '<span style="color:#16a34a;">✅ Hebat Laskar! Jawaban benar!</span>';
+    } else {
+      btn.style.background = '#fee2e2';
+      btn.style.borderColor = '#dc2626';
+      fb.innerHTML = '<span style="color:#dc2626;">❌ Coba lagi bersama Ayah/Bunda ya!</span>';
+    }
+  }
+</script>
+
+</body>
+</html>

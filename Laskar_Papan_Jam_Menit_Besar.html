@@ -14,7 +14,24 @@ h1{font-size:20pt;text-align:center;margin-bottom:2px;}
 .badge .lbl{font-size:9.5pt;margin-top:3px;}
 .note{border-left:4px solid #000;padding:6px 10px;font-size:10pt;margin-top:12px;}
 @media print{body{margin:0;} .sheet{width:100%;padding:8mm 12mm;}}
-</style></head><body><div class="sheet"><div class="card">
+</style>
+<style>
+@media print {
+  .top-back-bar, .floating-back-btn, .no-print { display: none !important; }
+}
+</style>
+
+</head><body>
+  <!-- Tombol Kembali ke Halaman Utama -->
+  <div class="top-back-bar no-print" style="margin-bottom: 16px; display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;">
+    <a href="index.html" style="display: inline-flex; align-items: center; gap: 8px; background: #ffffff; color: #0f172a; padding: 9px 18px; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 13.5px; box-shadow: 0 4px 14px rgba(0,0,0,0.08); border: 2px solid #cbd5e1; transition: all 0.2s;" onmouseover="this.style.background='#f8fafc'; this.style.transform='translateY(-2px)'" onmouseout="this.style.background='#ffffff'; this.style.transform='translateY(0)'">
+      <span style="font-size: 15px;">⬅️</span> Kembali ke Halaman Utama
+    </a>
+    <span style="font-size: 12.5px; font-weight: 700; color: #475569; background: rgba(255, 255, 255, 0.9); padding: 5px 14px; border-radius: 999px; border: 1.5px solid #e2e8f0; display: inline-flex; align-items: center; gap: 6px;">
+      <span>🌟</span> Laskar Al Kautsar • Grade 2 SD MISS
+    </span>
+  </div>
+<div class="sheet"><div class="card">
 <h1>⏰ PAPAN JAM &amp; MENIT</h1>
 <div class="sub">Angka <b style="color:#111;">HITAM besar</b> = JAM &nbsp;•&nbsp; Angka <b style="color:#0a5bd3;">BIRU kecil</b> = MENIT</div>
 <div class="legend">🔴 <b class="r">Jarum pendek → JAM</b> &nbsp;&nbsp; 🔵 <b class="b">Jarum panjang → MENIT</b> &nbsp;&nbsp; Hitung menit dengan <b>lompat 5</b>: 5, 10, 15, 20 …</div>
@@ -117,4 +134,9 @@ h1{font-size:20pt;text-align:center;margin-bottom:2px;}
 <div class="badge"><div class="big">45</div><div class="lbl">jarum biru di <b>9</b><br>= lewat 45 menit<br>(tiga perempat)</div></div>
 </div>
 <div class="note"><b>Cara pakai:</b> Tempel di dinding dekat meja belajar. Ajak Laskar menelusuri angka biru sambil berhitung "5, 10, 15 …" mengikuti arah jarum (searah putaran). Setiap pindah satu angka = tambah 5 menit.</div>
-</div></div></body></html>
+</div></div><!-- Floating Back Button -->
+<a href="index.html" class="no-print floating-back-btn" title="Kembali ke Halaman Utama" style="position: fixed; bottom: 22px; left: 22px; z-index: 99999; background: #0f172a; color: #ffffff; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 13.5px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 8px; border: 2px solid #ffffff; font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif; transition: all 0.2s;" onmouseover="this.style.transform='scale(1.06)'; this.style.background='#1e293b'" onmouseout="this.style.transform='scale(1)'; this.style.background='#0f172a'">
+  <span style="font-size: 16px;">🏠</span> Menu Utama
+</a>
+
+</body></html>

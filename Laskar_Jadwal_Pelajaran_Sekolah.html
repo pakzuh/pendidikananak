@@ -1,0 +1,2524 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jadwal Sekolah & Checklist Tas Harian — Laskar Al Kautsar | Grade 2 SD MISS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #4338ca;
+      --primary-light: #eef2ff;
+      --text: #1e293b;
+      --text-muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 18px;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.07), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+
+      /* Theme colors per day */
+      --senin: #be123c;
+      --senin-bg: #fff1f2;
+      --selasa: #b45309;
+      --selasa-bg: #fef3c7;
+      --rabu: #0284c7;
+      --rabu-bg: #f0f9ff;
+      --kamis: #7e22ce;
+      --kamis-bg: #faf5ff;
+      --jumat: #059669;
+      --jumat-bg: #ecfdf5;
+      --outing: #ea580c;
+      --outing-bg: #fff7ed;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: linear-gradient(135deg, #f8fafc 0%, #eef2ff 50%, #fdf2f8 100%);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 20px 14px 60px;
+    }
+
+    h1, h2, h3, h4, .font-title {
+      font-family: 'Fredoka', cursive, sans-serif;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+    }
+
+    /* Top Back Bar */
+    .top-back-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    .btn-back {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #0f172a;
+      padding: 9px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-weight: 800;
+      font-size: 13.5px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      border: 2px solid #cbd5e1;
+      transition: all 0.2s;
+    }
+    .btn-back:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+    }
+
+    .student-badge {
+      font-size: 13px;
+      font-weight: 800;
+      color: #4338ca;
+      background: #eef2ff;
+      padding: 6px 16px;
+      border-radius: 999px;
+      border: 1.5px solid #c7d2fe;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Hero Banner */
+    .hero {
+      background: linear-gradient(135deg, #1e1b4b 0%, #312e81 40%, #4338ca 100%);
+      color: #ffffff;
+      border-radius: 26px;
+      padding: 30px 34px;
+      box-shadow: 0 20px 35px -10px rgba(67, 56, 202, 0.35);
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 26px;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .hero::after {
+      content: "🎒";
+      position: absolute;
+      right: 20px;
+      bottom: -15px;
+      font-size: 120px;
+      opacity: 0.16;
+      pointer-events: none;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 12px;
+    }
+
+    .hero-tag {
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(6px);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .hero h1 {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+    }
+
+    .hero p {
+      color: #e0e7ff;
+      font-size: 14.5px;
+      max-width: 780px;
+      line-height: 1.5;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      font-size: 13px;
+      font-weight: 600;
+      color: #c7d2fe;
+    }
+
+    /* Quick Action Controls */
+    .controls-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 18px;
+      padding: 12px 18px;
+      margin-bottom: 22px;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .today-indicator {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .today-indicator .live-dot {
+      width: 10px;
+      height: 10px;
+      background: #10b981;
+      border-radius: 50%;
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.25);
+      animation: pulse 1.8s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6); }
+      70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+      100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    }
+
+    .action-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn-tool {
+      background: #f8fafc;
+      border: 1.5px solid #cbd5e1;
+      color: #334155;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-size: 12.5px;
+      font-weight: 800;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-tool:hover {
+      background: #f1f5f9;
+      border-color: #94a3b8;
+      transform: translateY(-1px);
+    }
+
+    .btn-voice {
+      background: #4338ca;
+      border: 1.5px solid #3730a3;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(67, 56, 202, 0.25);
+    }
+    .btn-voice:hover {
+      background: #3730a3;
+      color: #ffffff;
+    }
+
+    .btn-print {
+      background: #059669;
+      border: 1.5px solid #047857;
+      color: #ffffff;
+    }
+    .btn-print:hover {
+      background: #047857;
+      color: #ffffff;
+    }
+
+    /* Day Navigation Tabs */
+    .day-tabs {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .day-tab {
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      border-radius: 16px;
+      padding: 12px 14px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      user-select: none;
+    }
+
+    .day-tab:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+    }
+
+    .day-tab .tab-icon {
+      font-size: 22px;
+    }
+
+    .day-tab .tab-name {
+      font-family: 'Fredoka', cursive;
+      font-size: 16px;
+      font-weight: 600;
+      color: #1e293b;
+    }
+
+    .day-tab .tab-uniform {
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    /* Active States */
+    .day-tab.active-senin {
+      background: var(--senin-bg);
+      border-color: var(--senin);
+      box-shadow: 0 6px 18px rgba(190, 18, 60, 0.2);
+    }
+    .day-tab.active-senin .tab-name { color: var(--senin); }
+
+    .day-tab.active-selasa {
+      background: var(--selasa-bg);
+      border-color: var(--selasa);
+      box-shadow: 0 6px 18px rgba(180, 83, 9, 0.2);
+    }
+    .day-tab.active-selasa .tab-name { color: var(--selasa); }
+
+    .day-tab.active-rabu {
+      background: var(--rabu-bg);
+      border-color: var(--rabu);
+      box-shadow: 0 6px 18px rgba(2, 132, 199, 0.2);
+    }
+    .day-tab.active-rabu .tab-name { color: var(--rabu); }
+
+    .day-tab.active-kamis {
+      background: var(--kamis-bg);
+      border-color: var(--kamis);
+      box-shadow: 0 6px 18px rgba(126, 34, 206, 0.2);
+    }
+    .day-tab.active-kamis .tab-name { color: var(--kamis); }
+
+    .day-tab.active-jumat {
+      background: var(--jumat-bg);
+      border-color: var(--jumat);
+      box-shadow: 0 6px 18px rgba(5, 150, 105, 0.2);
+    }
+    .day-tab.active-jumat .tab-name { color: var(--jumat); }
+
+    .day-tab.active-all {
+      background: #eef2ff;
+      border-color: var(--primary);
+      box-shadow: 0 6px 18px rgba(67, 56, 202, 0.2);
+    }
+    .day-tab.active-all .tab-name { color: var(--primary); }
+
+    .day-tab.active-outing {
+      background: var(--outing-bg);
+      border-color: var(--outing);
+      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.2);
+    }
+    .day-tab.active-outing .tab-name { color: var(--outing); }
+
+    /* Tab Content Panes */
+    .day-pane {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+    .day-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Day Header Card */
+    .day-header-card {
+      background: #ffffff;
+      border-radius: 20px;
+      padding: 22px 26px;
+      margin-bottom: 22px;
+      border: 3px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .dh-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .dh-icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      flex-shrink: 0;
+    }
+
+    .dh-info h2 {
+      font-size: 22px;
+      margin-bottom: 4px;
+      color: #0f172a;
+    }
+
+    .dh-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .dh-pill {
+      font-size: 12px;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* Layout 2 Kolom: Kiri Timeline, Kanan Checklist Tas */
+    .day-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+    }
+
+    @media (max-width: 860px) {
+      .day-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Card Panels */
+    .panel-card {
+      background: #ffffff;
+      border-radius: 20px;
+      border: 2px solid #e2e8f0;
+      padding: 22px;
+      box-shadow: var(--shadow);
+      margin-bottom: 22px;
+    }
+
+    .panel-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 18px;
+      padding-bottom: 12px;
+      border-bottom: 2px solid #f1f5f9;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .panel-head h3 {
+      font-size: 18px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Timeline Items */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      position: relative;
+    }
+
+    .tl-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      transition: all 0.2s;
+    }
+
+    .tl-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+    }
+
+    .tl-time {
+      font-family: 'Fredoka', cursive;
+      font-size: 13px;
+      font-weight: 600;
+      color: #475569;
+      background: #ffffff;
+      padding: 6px 10px;
+      border-radius: 10px;
+      border: 1.5px solid #cbd5e1;
+      white-space: nowrap;
+      min-width: 100px;
+      text-align: center;
+    }
+
+    .tl-content {
+      flex: 1;
+    }
+
+    .tl-title {
+      font-weight: 800;
+      font-size: 14.5px;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 2px;
+    }
+
+    .tl-desc {
+      font-size: 12.5px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* Highlight Specific Sessions */
+    .tl-flag { background: #fff1f2; border-color: #fecdd3; }
+    .tl-flag .tl-time { border-color: #f43f5e; color: #be123c; }
+
+    .tl-snack { background: #fefce8; border-color: #fef08a; }
+    .tl-snack .tl-time { border-color: #eab308; color: #854d0e; }
+
+    .tl-prayer { background: #ecfdf5; border-color: #a7f3d0; }
+    .tl-prayer .tl-time { border-color: #10b981; color: #065f46; }
+
+    .tl-ekskul { background: #faf5ff; border-color: #e9d5ff; }
+    .tl-ekskul .tl-time { border-color: #a855f7; color: #6b21a8; }
+
+    .tl-special { background: #eff6ff; border-color: #bfdbfe; }
+    .tl-special .tl-time { border-color: #3b82f6; color: #1e40af; }
+
+    /* Checklist Section */
+    .checklist-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: #ffffff;
+      border: 2px solid #e2e8f0;
+      cursor: pointer;
+      transition: all 0.2s;
+      user-select: none;
+    }
+
+    .check-item:hover {
+      border-color: #94a3b8;
+      background: #f8fafc;
+    }
+
+    .check-item.done {
+      background: #ecfdf5;
+      border-color: #10b981;
+    }
+
+    .check-box {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      border: 2px solid #cbd5e1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 900;
+      color: #ffffff;
+      background: #ffffff;
+      flex-shrink: 0;
+      margin-top: 1px;
+      transition: all 0.2s;
+    }
+
+    .check-item.done .check-box {
+      background: #10b981;
+      border-color: #10b981;
+    }
+
+    .check-text {
+      flex: 1;
+    }
+
+    .check-label {
+      font-weight: 800;
+      font-size: 14px;
+      color: #1e293b;
+      margin-bottom: 2px;
+    }
+
+    .check-item.done .check-label {
+      text-decoration: line-through;
+      color: #065f46;
+    }
+
+    .check-sub {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.35;
+    }
+
+    /* Progress Bar */
+    .progress-box {
+      background: #f8fafc;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+    }
+
+    .progress-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: #334155;
+      margin-bottom: 6px;
+    }
+
+    .progress-bar-bg {
+      background: #e2e8f0;
+      border-radius: 999px;
+      height: 10px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+      height: 100%;
+      width: 0%;
+      border-radius: 999px;
+      transition: width 0.3s ease;
+    }
+
+    .progress-status {
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 6px;
+      color: #059669;
+      text-align: right;
+    }
+
+    /* Reminder Box */
+    .note-box {
+      background: #fefce8;
+      border: 2px dashed #facc15;
+      border-radius: 14px;
+      padding: 14px 16px;
+      margin-top: 18px;
+      font-size: 13px;
+      color: #854d0e;
+      line-height: 1.5;
+    }
+
+    .note-box b {
+      color: #713f12;
+    }
+
+    /* Table Full Matrix Sepekan */
+    .table-container {
+      overflow-x: auto;
+      background: #ffffff;
+      border-radius: 18px;
+      border: 2px solid #e2e8f0;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+
+    .matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }
+
+    .matrix-table th {
+      background: #1e1b4b;
+      color: #ffffff;
+      padding: 12px 14px;
+      font-family: 'Fredoka', cursive;
+      font-size: 14px;
+      letter-spacing: 0.3px;
+    }
+
+    .matrix-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid #e2e8f0;
+      vertical-align: top;
+    }
+
+    .matrix-table tr:nth-child(even) td {
+      background: #f8fafc;
+    }
+
+    .matrix-table tr:hover td {
+      background: #f1f5f9;
+    }
+
+    .badge-seragam {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 800;
+      margin-top: 4px;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #64748b;
+      font-size: 13.5px;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff !important;
+        padding: 0 !important;
+        font-size: 10pt;
+      }
+      .top-back-bar, .controls-bar, .day-tabs, .btn-tool, .floating-back-btn, footer {
+        display: none !important;
+      }
+      .container {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .hero {
+        background: #f8fafc !important;
+        color: #000000 !important;
+        border: 2px solid #000000 !important;
+        padding: 14px !important;
+        box-shadow: none !important;
+        margin-bottom: 14px !important;
+      }
+      .hero h1 { color: #000000 !important; font-size: 18pt !important; }
+      .hero p, .hero-meta { color: #333333 !important; }
+      .day-pane { display: none !important; }
+      .day-pane.active { display: block !important; }
+      .day-grid { display: flex !important; flex-direction: row !important; gap: 14px !important; }
+      .day-grid > div { flex: 1 !important; }
+      .panel-card, .day-header-card {
+        box-shadow: none !important;
+        border: 1.5px solid #000000 !important;
+        padding: 12px !important;
+      }
+      .check-box {
+        border: 1.5px solid #000000 !important;
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .check-item.done .check-box {
+        background: #000000 !important;
+        color: #ffffff !important;
+      }
+      .tl-item {
+        border: 1px solid #999999 !important;
+        background: #ffffff !important;
+        page-break-inside: avoid;
+        padding: 8px 10px !important;
+      }
+      .table-container {
+        border: 1.5px solid #000000 !important;
+        box-shadow: none !important;
+      }
+      .matrix-table th {
+        background: #eeeeee !important;
+        color: #000000 !important;
+        border-bottom: 2px solid #000000 !important;
+      }
+      .matrix-table td {
+        border-bottom: 1px solid #cccccc !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Back Button -->
+  <a href="index.html" class="floating-back-btn" title="Kembali ke Portal Edukasi" style="position: fixed; bottom: 22px; left: 22px; z-index: 99999; background: #0f172a; color: #ffffff; padding: 10px 18px; border-radius: 999px; text-decoration: none; font-weight: 800; font-size: 13.5px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); display: inline-flex; align-items: center; gap: 8px; border: 2px solid #ffffff; transition: all 0.2s;">
+    <span>🏠</span> Menu Utama
+  </a>
+
+  <div class="container">
+
+    <!-- Top Navigation Bar -->
+    <div class="top-back-bar">
+      <a href="index.html" class="btn-back">
+        <span>⬅️</span> Kembali ke Portal Utama
+      </a>
+      <div class="student-badge">
+        <span>🌟</span> Laskar Al Kautsar • Grade 2 SD MISS Malang
+      </div>
+    </div>
+
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="hero-tags">
+        <span class="hero-tag">🏫 SD MISS (Mafaza) Malang</span>
+        <span class="hero-tag">⏰ Masuk Tepat Pukul 07.15 WIB</span>
+        <span class="hero-tag">🎒 Checklist Tas & Seragam</span>
+        <span class="hero-tag">🗣️ Audio Pendampingan Laskar</span>
+      </div>
+      <h1>📅 Jadwal Pelajaran Rutin & Checklist Harian Siswa</h1>
+      <p>
+        Panduan jadwal resmi sepekan (Senin s.d. Jumat) ananda <strong>Laskar Al Kautsar</strong> di SD MISS Malang. Dilengkapi timeline jam-per-jam, seragam harian, checklist interaktif perlengkapan tas, serta audio pembaca lembut untuk melatih kemandirian ananda.
+      </p>
+      <div class="hero-meta">
+        <div>👦 <strong>Siswa:</strong> Laskar Al Kautsar</div>
+        <div>👨‍👩‍👦 <strong>Orang Tua:</strong> Zuhdi & Ririn</div>
+        <div>📍 <strong>Sekolah:</strong> SD MISS Malang</div>
+        <div>🔔 <strong>Pesan Sekolah:</strong> <em>"Please attend to school on time (no later than 07.15 AM) ☺"</em></div>
+      </div>
+    </header>
+
+    <!-- Quick Control Bar -->
+    <div class="controls-bar">
+      <div class="today-indicator" id="todayIndicator">
+        <span class="live-dot"></span>
+        <span id="currentDateStr">Memuat tanggal...</span>
+      </div>
+      <div class="action-btns">
+        <button class="btn-tool btn-voice" onclick="playVoiceReminder()" id="btnVoice">
+          <span id="voiceIcon">🔊</span> <span id="voiceText">Dengar Pengingat Hari Ini</span>
+        </button>
+        <button class="btn-tool" onclick="resetCurrentChecklist()">
+          <span>🔄</span> Reset Centang
+        </button>
+        <button class="btn-tool btn-print" onclick="window.print()">
+          <span>🖨️</span> Cetak Jadwal (A4)
+        </button>
+      </div>
+    </div>
+
+    <!-- Day Selector Tabs -->
+    <div class="day-tabs">
+      <div class="day-tab active-senin" onclick="switchDay('senin')" id="tab-senin">
+        <span class="tab-icon">🔴</span>
+        <span class="tab-name">Senin</span>
+        <span class="tab-uniform">Merah Putih + Blazer</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('selasa')" id="tab-selasa">
+        <span class="tab-icon">🟤</span>
+        <span class="tab-name">Selasa</span>
+        <span class="tab-uniform">Pramuka Lengkap</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('rabu')" id="tab-rabu">
+        <span class="tab-icon">🟡</span>
+        <span class="tab-name">Rabu</span>
+        <span class="tab-uniform">Polo & Cream</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('kamis')" id="tab-kamis">
+        <span class="tab-icon">🟣</span>
+        <span class="tab-name">Kamis</span>
+        <span class="tab-uniform">Batik SD MISS</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('jumat')" id="tab-jumat">
+        <span class="tab-icon">🟢</span>
+        <span class="tab-name">Jumat</span>
+        <span class="tab-uniform">Sport Casual (13.30)</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('sepekan')" id="tab-sepekan">
+        <span class="tab-icon">📊</span>
+        <span class="tab-name">Roster Sepekan</span>
+        <span class="tab-uniform">Matriks Lengkap</span>
+      </div>
+      <div class="day-tab" onclick="switchDay('outing')" id="tab-outing">
+        <span class="tab-icon">🏕️</span>
+        <span class="tab-name">Outing / Event</span>
+        <span class="tab-uniform">Contoh: Pinine Park</span>
+      </div>
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 1. TAB SENIN -->
+    <!-- ============================================================== -->
+    <div class="day-pane active" id="pane-senin">
+      
+      <div class="day-header-card" style="border-color: var(--senin);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--senin-bg); color: var(--senin);">🇮🇩</div>
+          <div class="dh-info">
+            <h2>Hari Senin — Upacara Bendera & Semangat Baru</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--senin-bg); color: var(--senin);">⏰ 07.15 – 15.00 WIB</span>
+              <span class="dh-pill" style="background: #fecdd3; color: #9f1239;">🧢 Seragam: Merah Putih + Blazer</span>
+              <span class="dh-pill" style="background: #e0f2fe; color: #0369a1;">🏃 Bawa Baju Olahraga (PE)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Pelajaran -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Pelajaran & Rutinitas</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--senin);">Total: 10 Sesi</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item tl-flag">
+              <div class="tl-time">07.15 – 07.50</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🇮🇩</span> Flag Ceremony (Upacara Bendera)</div>
+                <div class="tl-desc">Baris rapi di lapangan, memakai seragam Merah Putih + Blazer lengkap.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">07.50 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📖</span> Literacy Class</div>
+                <div class="tl-desc">Membaca buku cerita dan latihan kosakata terarah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>👩‍🏫</span> HTS (Homeroom Teacher Session)</div>
+                <div class="tl-desc">Sesi pengkondisian kelas bersama wali kelas & morning circle.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📐</span> Mathematics (Sesi 1)</div>
+                <div class="tl-desc">Belajar Matematika bab penjumlahan / perkalian dasar.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.30 – 09.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🥪</span> Snack Time (Istirahat Pagi)</div>
+                <div class="tl-desc">Cuci tangan, doa sebelum makan, dan menikmati bekal snack sehat.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.45 – 10.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📐</span> Mathematics (Sesi 2)</div>
+                <div class="tl-desc">Lanjutan latihan lembar kerja Math Pupils & Workbook.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">10.15 – 11.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>💻</span> IT (Teknologi Informasi & Komputer)</div>
+                <div class="tl-desc">Mengenal perangkat keras, software edukasi, dan literasi digital.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-flag">
+              <div class="tl-time">11.15 – 12.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🏃</span> Physical Education (PJOK / Olahraga)</div>
+                <div class="tl-desc">Ganti memakai seragam olahraga. Gerak lokomotor & ketangkasan fisik.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">12.15 – 13.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🍱🕌</span> Lunch & Shalat Dhuhur Berjamaah</div>
+                <div class="tl-desc">Makan siang bergizi bersama teman, wudhu, dan shalat Dhuhur.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">13.00 – 14.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📚</span> Bahasa Indonesia</div>
+                <div class="tl-desc">Buku ESPS Bahasa Indonesia: menulis kata, membaca kalimat, dan pemahaman teks.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-ekskul">
+              <div class="tl-time">14.00 – 15.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🀄🧮</span> Ekstrakurikuler: Mandarin / Olimpiade Math</div>
+                <div class="tl-desc">Sesi minat bakat pilihan. Pulang sekolah pukul 15.00 WIB.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Tas & Bawaan -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Bawaan Tas Hari Senin</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-senin">0/8 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Laskar</span>
+                <span id="percent-senin">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-senin"></div>
+              </div>
+              <div class="progress-status" id="status-senin">Ayo cek bawaan tas malam ini!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-senin">
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku ESPS Bahasa Indonesia</div>
+                  <div class="check-sub">Untuk pelajaran jam 13.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Math Pupils & Workbook 2A</div>
+                  <div class="check-sub">Untuk 2 sesi pelajaran matematika</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Pelajaran IT</div>
+                  <div class="check-sub">Materi komputer jam 10.15 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Baju Ganti Seragam Olahraga (PE)</div>
+                  <div class="check-sub">Wajib dibawa di tas untuk ganti saat jam PJOK</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Kotak Alat Tulis (Pensil, Penghapus, Penggaris)</div>
+                  <div class="check-sub">Pastikan pensil sudah diraut runcing</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum (Isi Penuh) 🥤</div>
+                  <div class="check-sub">Agar Laskar tetap terhidrasi seharian</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snack Box & Kotak Makan Siang (Lunch) 🍱</div>
+                  <div class="check-sub">Snack pagi (09.30) & makan siang (12.15)</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'senin')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Hand Sanitizer / Wet Tissue & Lotion Anti Nyamuk 🧴</div>
+                  <div class="check-sub">Oleskan lotion anti nyamuk sebelum berangkat</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              💡 <b>Catatan Seragam Senin:</b> Laskar memakai <b>Seragam Merah Putih lengkap dengan Blazer</b> dari rumah untuk Upacara Bendera pukul 07.15 WIB.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 2. TAB SELASA -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-selasa">
+      
+      <div class="day-header-card" style="border-color: var(--selasa);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--selasa-bg); color: var(--selasa);">⚜️</div>
+          <div class="dh-info">
+            <h2>Hari Selasa — Pramuka & Pembentukan Karakter</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--selasa-bg); color: var(--selasa);">⏰ 07.15 – 15.00 WIB</span>
+              <span class="dh-pill" style="background: #fed7aa; color: #9a3412;">🧢 Seragam: Pramuka Lengkap</span>
+              <span class="dh-pill" style="background: #fef08a; color: #854d0e;">🧮 Bawa Sempoa</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Pelajaran -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Pelajaran & Rutinitas</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--selasa);">Total: 9 Sesi</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">07.15 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🤲</span> Religious Activity</div>
+                <div class="tl-desc">Doa pagi, tadarus Al-Qur'an, pembiasaan sholat Dhuha, & hafalan surat pendek.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>👩‍🏫</span> HTS (Homeroom Teacher Session)</div>
+                <div class="tl-desc">Sesi motivasi pagi dan pengecekan kesiapan siswa.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔤</span> English (Sesi 1)</div>
+                <div class="tl-desc">Materi My Pals & Workbook English 2A (Vocabulary & Speaking).</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.30 – 09.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🍎</span> Snack Time</div>
+                <div class="tl-desc">Makan snack buah atau kue sehat pendamping belajar.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">09.45 – 10.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔤</span> English (Sesi 2)</div>
+                <div class="tl-desc">Latihan tertulis pada Workbook English.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">10.15 – 11.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🕌</span> PABP Islam (Pendidikan Agama Islam)</div>
+                <div class="tl-desc">Unit 3: Akhlak terpuji, kasih sayang sesama, dan kisah tauladan Nabi.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">11.45 – 12.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🦅🕌</span> Pancasila & Pray Dhuhur</div>
+                <div class="tl-desc">Pengantar nilai-nilai Pancasila dilanjutkan persiapan shalat Dhuhur.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">12.15 – 13.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🍱</span> Lunch & Istirahat</div>
+                <div class="tl-desc">Makan siang bersama dan istirahat sejenak.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">13.00 – 14.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🧮</span> Sempoa (Mental Aritmatika)</div>
+                <div class="tl-desc">Latihan manik sempoa, bayangan, dan kecepatan hitung.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-ekskul">
+              <div class="tl-time">14.00 – 15.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🧩</span> Ekstrakurikuler: MHO</div>
+                <div class="tl-desc">Kegiatan pengembangan bakat MHO. Pulang sekolah pukul 15.00 WIB.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Tas & Bawaan -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Bawaan Tas Hari Selasa</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-selasa">0/8 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Laskar</span>
+                <span id="percent-selasa">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-selasa"></div>
+              </div>
+              <div class="progress-status" id="status-selasa">Ayo siapkan buku Pramuka & Sempoa!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-selasa">
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku ESPS Pendidikan Pancasila</div>
+                  <div class="check-sub">Materi sila & pengamalan nilai kebaikan</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Pelajaran PABP Islam</div>
+                  <div class="check-sub">Textbook Pendidikan Agama & Budi Pekerti</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">My Pals & Workbook English 2A</div>
+                  <div class="check-sub">Kamus & lembar kerja bahasa Inggris</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Alat Sempoa Fisik 🧮</div>
+                  <div class="check-sub">Wajib dibawa untuk sesi hitung jam 13.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Kotak Alat Tulis & Pensil Warna</div>
+                  <div class="check-sub">Pensil, karet penghapus, dan penggaris</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum Full 🥤</div>
+                  <div class="check-sub">Air putih matang cukup untuk sehari</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snack Pagi & Bekal Lunch 🍱</div>
+                  <div class="check-sub">Bekal makan siang disiapkan dari rumah</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'selasa')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Masker, Hand Sanitizer & Lotion Anti Nyamuk 🧴🚫🦟</div>
+                  <div class="check-sub">Tetap jaga kesehatan dan higienitas</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              💡 <b>Catatan Seragam Selasa:</b> Mengenakan <b>Seragam Pramuka lengkap</b> (baju cokelat, celana cokelat, kacu & pin pramuka).
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 3. TAB RABU -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-rabu">
+      
+      <div class="day-header-card" style="border-color: var(--rabu);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--rabu-bg); color: var(--rabu);">👕</div>
+          <div class="dh-info">
+            <h2>Hari Rabu — Humaniora, Science & Kreativitas</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--rabu-bg); color: var(--rabu);">⏰ 07.15 – 15.00 WIB</span>
+              <span class="dh-pill" style="background: #e0f2fe; color: #0369a1;">🧢 Seragam: Polo & Cream</span>
+              <span class="dh-pill" style="background: #dcfce7; color: #15803d;">🔬 Science & Math</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Pelajaran -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Pelajaran & Rutinitas</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--rabu);">Total: 9 Sesi</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">07.15 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🤲</span> Religious Activity</div>
+                <div class="tl-desc">Doa pagi pembuka hari dan pembiasaan nilai-nilai Islami.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>👩‍🏫</span> HTS (Homeroom Teacher Session)</div>
+                <div class="tl-desc">Sesi sharing pagi bersama Miss/Mister.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🌍</span> Humaniora (Sesi 1)</div>
+                <div class="tl-desc">Pelajaran IPS / Lingkungan Sosial: identitas diri, keluarga, & lingkungan.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.30 – 09.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🍌</span> Snack Time</div>
+                <div class="tl-desc">Makan snack sehat dan minum air putih.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.45 – 10.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🌍</span> Humaniora (Sesi 2)</div>
+                <div class="tl-desc">Tugas mandiri & eksplorasi gambar materi humaniora.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">10.15 – 11.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🦅</span> Pendidikan Pancasila</div>
+                <div class="tl-desc">Buku Pancasila: pengenalan simbol Garuda dan kerukunan bersama.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">11.15 – 12.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔬</span> Science (Sains IPA)</div>
+                <div class="tl-desc">My Pals are Here Science: Mengenal alam, udara, dan makhluk hidup.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">12.15 – 13.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🕌🍱</span> Shalat Dhuhur & Lunch</div>
+                <div class="tl-desc">Shalat Dhuhur berjamaah dan makan siang.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">13.00 – 14.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📐</span> Mathematics</div>
+                <div class="tl-desc">Buku Math Pupils & Workbook: operasi hitung dan logika matematika.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-ekskul">
+              <div class="tl-time">14.00 – 15.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🎨🎵</span> Ekstrakurikuler: Dance / Music / English Corner / Tahfidz</div>
+                <div class="tl-desc">Pengembangan bakat seni dan tahfidz Al-Qur'an. Pulang 15.00 WIB.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Tas & Bawaan -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Bawaan Tas Hari Rabu</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-rabu">0/8 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Laskar</span>
+                <span id="percent-rabu">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-rabu"></div>
+              </div>
+              <div class="progress-status" id="status-rabu">Siapkan 4 buku paket hari Rabu!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-rabu">
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Humaniora (IPS)</div>
+                  <div class="check-sub">Untuk pelajaran jam 09.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku ESPS Pendidikan Pancasila</div>
+                  <div class="check-sub">Untuk pelajaran jam 10.15 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Science Pupils & Workbook 2A</div>
+                  <div class="check-sub">Materi IPA jam 11.15 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Math Pupils & Workbook 2A</div>
+                  <div class="check-sub">Materi matematika jam 13.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Alat Tulis & Crayon / Pensil Warna 🖍️</div>
+                  <div class="check-sub">Untuk tugas visual science & humaniora</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum Full 🥤</div>
+                  <div class="check-sub">Pastikan botol tertutup rapat</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snack & Bekal Makan Siang (Lunch) 🍱</div>
+                  <div class="check-sub">Makan siang bergizi di sekolah</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'rabu')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Masker, Hand Sanitizer & Lotion Anti Nyamuk 🧴</div>
+                  <div class="check-sub">Perlindungan dari gigitan nyamuk</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              💡 <b>Catatan Seragam Rabu:</b> Mengenakan <b>Kaos Polo warna sekolah dan celana/rok Cream</b> yang rapi dan nyaman.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 4. TAB KAMIS -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-kamis">
+      
+      <div class="day-header-card" style="border-color: var(--kamis);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--kamis-bg); color: var(--kamis);">👔</div>
+          <div class="dh-info">
+            <h2>Hari Kamis — Batik Khas, Menabung, & Ekskul ICT</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--kamis-bg); color: var(--kamis);">⏰ 07.15 – 15.00 WIB</span>
+              <span class="dh-pill" style="background: #f3e8ff; color: #6b21a8;">🧢 Seragam: Batik SD MISS</span>
+              <span class="dh-pill" style="background: #fef08a; color: #854d0e;">💸 Bawa Uang Tabungan</span>
+              <span class="dh-pill" style="background: #e0f2fe; color: #0369a1;">💻 Ekskul ICT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Pelajaran -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Pelajaran & Rutinitas</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--kamis);">Total: 8 Sesi</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">07.15 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🤲</span> Religious Activity</div>
+                <div class="tl-desc">Doa bersama, hafalan doa harian, dan pembiasaan akhlak karimah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>👩‍🏫</span> Homeroom Teacher Session (HTS)</div>
+                <div class="tl-desc">Penyetoran <b>Uang Tabungan (Money to Save 💸)</b> & briefing kelas.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📖</span> Bahasa Indonesia (Sesi 1)</div>
+                <div class="tl-desc">Membaca teks narasi dan menulis kalimat sederhana.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.30 – 09.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🥪</span> Snack Time</div>
+                <div class="tl-desc">Istirahat makan snack pagi.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.45 – 10.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📖</span> Bahasa Indonesia (Sesi 2)</div>
+                <div class="tl-desc">Latihan soal pemahaman bacaan pada buku ESPS.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">10.15 – 12.15</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔬</span> Science (Sains - 2 Jam Pelajaran)</div>
+                <div class="tl-desc">Eksperimen sains sederhana, observasi, dan modul pembelajaran alam.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">12.15 – 13.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🕌🍱</span> Pray Duhur & Lunch</div>
+                <div class="tl-desc">Shalat Dhuhur berjamaah dan makan siang bersama teman.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">13.00 – 14.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔤</span> English</div>
+                <div class="tl-desc">Pembelajaran bahasa Inggris komunikatif (Grammar & Listening).</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-ekskul">
+              <div class="tl-time">14.00 – 15.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>💻</span> Ekstrakurikuler ICT (Komputer)</div>
+                <div class="tl-desc">Praktik lab komputer / perangkat IT. Pulang pukul 15.00 WIB.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Tas & Bawaan -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Bawaan Tas Hari Kamis</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-kamis">0/8 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Laskar</span>
+                <span id="percent-kamis">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-kamis"></div>
+              </div>
+              <div class="progress-status" id="status-kamis">Jangan lupa uang tabungan hari Kamis!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-kamis">
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku ESPS Bahasa Indonesia</div>
+                  <div class="check-sub">Untuk 2 sesi pagi Bahasa Indonesia</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Science Pupils & Workbook 2A</div>
+                  <div class="check-sub">Sesi Science 2 jam pelajaran (10.15 - 12.15)</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku English Pupils & Workbook 2A</div>
+                  <div class="check-sub">Untuk pelajaran jam 13.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Uang Tabungan (Money to Save) 💸</div>
+                  <div class="check-sub">Disetorkan ke wali kelas saat sesi HTS pagi</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Stationeries Lengkap (Pensil & Penghapus) 📝</div>
+                  <div class="check-sub">Siap pakai untuk menulis dan mencatat</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum Full 🥤</div>
+                  <div class="check-sub">Air minum yang cukup sampai sore</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snacks & Bekal Makan Siang (Meals) 🍱</div>
+                  <div class="check-sub">Makan siang sehat dan bernutrisi</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Masker, Hand Sanitizer & Lotion Anti Nyamuk 🧴🚫🦟</div>
+                  <div class="check-sub">Jaga kesehatan diri dan oles lotion anti nyamuk</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              💡 <b>Catatan Kamis:</b> Mengenakan <b>Seragam Batik khas SD MISS</b>. Ingatkan Laskar untuk sarapan di rumah dan minum vitamin sebelum berangkat!
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 5. TAB JUMAT -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-jumat">
+      
+      <div class="day-header-card" style="border-color: var(--jumat);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--jumat-bg); color: var(--jumat);">🏃‍♂️</div>
+          <div class="dh-info">
+            <h2>Hari Jumat — Be Fresh on Friday & Shalat Jumat</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--jumat-bg); color: var(--jumat);">⏰ 07.15 – 13.30 WIB (Pulang Awal)</span>
+              <span class="dh-pill" style="background: #d1fae5; color: #065f46;">🧢 Seragam: Sport Casual</span>
+              <span class="dh-pill" style="background: #fef08a; color: #854d0e;">🕌 Bawa Alat Shalat Jumat</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Pelajaran -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Pelajaran & Rutinitas</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--jumat);">Total: 8 Sesi (Pulang 13.30)</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item tl-flag">
+              <div class="tl-time">07.15 – 08.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🏃‍♂️✨</span> Be Fresh on Friday!</div>
+                <div class="tl-desc">Senam kesegaran jasmani / aktivitas gerak ceria pagi di halaman sekolah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.00 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>👩‍🏫</span> HTS (Homeroom Teacher Session)</div>
+                <div class="tl-desc">Pendinginan dan pembiasaan kelas Jumat pagi.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📖</span> Bahasa Indonesia (Sesi 1)</div>
+                <div class="tl-desc">Belajar membaca ekspresif dan menyimak cerita.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🥛</span> Snack Time (30 Menit)</div>
+                <div class="tl-desc">Istirahat makan snack dan minum susu/air putih.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.30 – 10.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📖</span> Bahasa Indonesia (Sesi 2)</div>
+                <div class="tl-desc">Latihan menulis rapi pada lembar kerja.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">10.00 – 11.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📐</span> Mathematics</div>
+                <div class="tl-desc">Buku Math Pupils & Workbook: review materi pekanan.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">11.00 – 12.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🕌🍱</span> Lunch & Shalat Jumat Berjamaah</div>
+                <div class="tl-desc">Makan siang bersama dan mendengarkan khutbah serta shalat Jumat berjamaah di masjid sekolah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">12.30 – 13.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🔤</span> English Session</div>
+                <div class="tl-desc">Sesi akhir pekan bahasa Inggris (fun games & singing).</div>
+              </div>
+            </div>
+
+            <div class="tl-item" style="background:#ecfdf5; border-color:#10b981;">
+              <div class="tl-time" style="border-color:#10b981; color:#065f46; font-weight:800;">13.30 WIB</div>
+              <div class="tl-content">
+                <div class="tl-title" style="color:#065f46;"><span>🏠👋</span> Perpulangan Siswa (Go Home)</div>
+                <div class="tl-desc">Penjemputan ananda oleh orang tua. Selamat berakhir pekan bersama keluarga!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Tas & Bawaan -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Bawaan Tas Hari Jumat</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-jumat">0/8 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Laskar</span>
+                <span id="percent-jumat">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-jumat"></div>
+              </div>
+              <div class="progress-status" id="status-jumat">Ingat bawa perlengkapan shalat Jumat!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-jumat">
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku ESPS Bahasa Indonesia</div>
+                  <div class="check-sub">Pelajaran membaca & menulis Jumat pagi</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Math Pupils & Workbook 2A</div>
+                  <div class="check-sub">Pelajaran jam 10.00 – 11.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku English Pupils & Workbook 2A</div>
+                  <div class="check-sub">Pelajaran jam 12.30 – 13.30 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Perlengkapan Shalat Jumat (Kopiah, Sarung/Sajadah) 🕌</div>
+                  <div class="check-sub">Wajib dibawa untuk shalat Jumat berjamaah</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Kotak Alat Tulis (Pensil, Penghapus) 📝</div>
+                  <div class="check-sub">Perlengkapan menulis standar</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum Full 🥤</div>
+                  <div class="check-sub">Minum air yang cukup setelah senam pagi</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snack Sehat & Bekal Makan Siang 🍱</div>
+                  <div class="check-sub">Makan siang sebelum atau sesudah Jumatan</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'jumat')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Masker, Hand Sanitizer & Lotion Anti Nyamuk 🧴</div>
+                  <div class="check-sub">Tetap higienis dan terbebas dari nyamuk</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              💡 <b>Catatan Hari Jumat:</b> Memakai <b>Seragam Sport Casual (Olahraga santai & sepatu kets)</b>. Jadwal pulang lebih awal pukul <b>13.30 WIB</b>.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 6. TAB ROSTER SEPEKAN (TABEL LENGKAP) -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-sepekan">
+      
+      <div class="day-header-card" style="border-color: var(--primary);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: #eef2ff; color: var(--primary);">📊</div>
+          <div class="dh-info">
+            <h2>Roster Lengkap Sepekan (Senin s.d. Jumat)</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: #eef2ff; color: #3730a3;">Grade 2 SD MISS Malang</span>
+              <span class="dh-pill" style="background: #ecfdf5; color: #065f46;">Waktu Masuk: 07.15 WIB</span>
+              <span class="dh-pill" style="background: #fef3c7; color: #92400e;">Kurikulum Terpadu</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="table-container">
+        <table class="matrix-table">
+          <thead>
+            <tr>
+              <th style="width: 14%;">Hari</th>
+              <th style="width: 18%;">Seragam Resmi</th>
+              <th style="width: 15%;">Jam Sekolah</th>
+              <th style="width: 33%;">Mata Pelajaran & Aktivitas Kunci</th>
+              <th style="width: 20%;">Buku Pokok Dibawa</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <strong style="color:var(--senin); font-size:15px;">🔴 SENIN</strong>
+              </td>
+              <td>
+                <b>Merah Putih + Blazer</b>
+                <span class="badge-seragam" style="background:#fee2e2; color:#991b1b;">+ Bawa Baju Olahraga</span>
+              </td>
+              <td><b>07.15 – 15.00</b></td>
+              <td>
+                • Flag Ceremony (Upacara Bendera)<br>
+                • Literacy Class & HTS<br>
+                • Mathematics (2 sesi)<br>
+                • IT (Komputer)<br>
+                • Physical Education (PJOK)<br>
+                • B. Indonesia<br>
+                • Ekskul: Mandarin / Olym Math
+              </td>
+              <td>
+                • ESPS B. Indonesia<br>
+                • Math Pupils & Wb 2A<br>
+                • Buku IT<br>
+                • Seragam Ganti PE
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong style="color:var(--selasa); font-size:15px;">🟤 SELASA</strong>
+              </td>
+              <td>
+                <b>Pramuka Lengkap</b>
+                <span class="badge-seragam" style="background:#fef3c7; color:#92400e;">Baju Cokelat & Kacu</span>
+              </td>
+              <td><b>07.15 – 15.00</b><br><small style="color:#64748b;">(14.00 bila tanpa ekskul)</small></td>
+              <td>
+                • Religious Activity & HTS<br>
+                • English (2 sesi)<br>
+                • PABP Islam (Unit 3)<br>
+                • Pancasila & Pray Dhuhur<br>
+                • Sempoa (13.00 – 14.00)<br>
+                • Ekskul MHO (14.00 – 15.00)
+              </td>
+              <td>
+                • ESPS Pancasila<br>
+                • Buku PABP Islam<br>
+                • English Pupils & Wb<br>
+                • Sempoa Fisik
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong style="color:var(--rabu); font-size:15px;">🟡 RABU</strong>
+              </td>
+              <td>
+                <b>Polo & Cream</b>
+                <span class="badge-seragam" style="background:#e0f2fe; color:#0369a1;">Kaos Polo Sekolah</span>
+              </td>
+              <td><b>07.15 – 15.00</b></td>
+              <td>
+                • Religious Activity & HTS<br>
+                • Humaniora (2 sesi)<br>
+                • Pendidikan Pancasila<br>
+                • Science (IPA)<br>
+                • Mathematics<br>
+                • Ekskul: Dance / Music / English Corner / Tahfidz
+              </td>
+              <td>
+                • Buku Humaniora<br>
+                • ESPS Pancasila<br>
+                • Science Pupils & Wb<br>
+                • Math Pupils & Wb
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong style="color:var(--kamis); font-size:15px;">🟣 KAMIS</strong>
+              </td>
+              <td>
+                <b>Batik SD MISS</b>
+                <span class="badge-seragam" style="background:#f3e8ff; color:#6b21a8;">💸 Hari Menabung</span>
+              </td>
+              <td><b>07.15 – 15.00</b></td>
+              <td>
+                • Religious Activity & HTS<br>
+                • Setor Uang Tabungan<br>
+                • Bahasa Indonesia (2 sesi)<br>
+                • Science (2 jam pelajaran)<br>
+                • English<br>
+                • Ekskul ICT (Komputer)
+              </td>
+              <td>
+                • ESPS B. Indonesia<br>
+                • Science Pupils & Wb<br>
+                • English Pupils & Wb<br>
+                • Uang Tabungan
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <strong style="color:var(--jumat); font-size:15px;">🟢 JUMAT</strong>
+              </td>
+              <td>
+                <b>Sport Casual</b>
+                <span class="badge-seragam" style="background:#d1fae5; color:#065f46;">Sepatu Kets & Celana Nyaman</span>
+              </td>
+              <td><b>07.15 – 13.30</b><br><small style="color:#059669; font-weight:700;">Pulang Lebih Awal</small></td>
+              <td>
+                • Be Fresh on Friday (Senam Pagi)<br>
+                • HTS & Bahasa Indonesia (2 sesi)<br>
+                • Mathematics<br>
+                • Lunch & Shalat Jumat Berjamaah<br>
+                • English Session<br>
+                • Perpulangan (13.30 WIB)
+              </td>
+              <td>
+                • ESPS B. Indonesia<br>
+                • Math Pupils & Wb<br>
+                • English Pupils & Wb<br>
+                • Alat Shalat Jumat
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-card">
+        <h3 style="font-size:16px; margin-bottom:10px;">🌟 Ringkasan Perlengkapan Wajib Setiap Hari:</h3>
+        <p style="font-size:13.5px; color:#475569; line-height:1.6;">
+          1. <b>Tumbler Air Minum Full:</b> Wajib diisi air putih penuh dari rumah setiap hari.<br>
+          2. <b>Snack & Bekal Makan Siang:</b> Dikemas dalam wadah praktis yang mudah dibuka Laskar sendiri.<br>
+          3. <b>Higienitas & Kesehatan:</b> Masker cadangan, tisu basah / hand sanitizer, serta <em>lotion anti nyamuk</em> (dioles sebelum berangkat).<br>
+          4. <b>Ketepatan Waktu:</b> Pintu gerbang dan kegiatan pagi dimulai tepat pukul <b>07.15 WIB</b>.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ============================================================== -->
+    <!-- 7. TAB OUTING / AGENDA KHUSUS -->
+    <!-- ============================================================== -->
+    <div class="day-pane" id="pane-outing">
+      
+      <div class="day-header-card" style="border-color: var(--outing);">
+        <div class="dh-title-wrap">
+          <div class="dh-icon" style="background: var(--outing-bg); color: var(--outing);">🏕️</div>
+          <div class="dh-info">
+            <h2>Agenda Khusus / Outing — Contoh: Pinine Bike Park</h2>
+            <div class="dh-badges">
+              <span class="dh-pill" style="background: var(--outing-bg); color: var(--outing);">⏰ 07.15 – 15.30 WIB</span>
+              <span class="dh-pill" style="background: #ffedd5; color: #c2410c;">🧢 Seragam: Pramuka Lapangan</span>
+              <span class="dh-pill" style="background: #fef08a; color: #854d0e;">🎒 Bawa Alat Makan & Snack "R"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="day-grid">
+        <!-- Kolom Kiri: Timeline Outing -->
+        <div class="panel-card">
+          <div class="panel-head">
+            <h3><span>⏰</span> Timeline Agenda Outing (Outdoor)</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--outing);">Di Luar Kelas</span>
+          </div>
+
+          <div class="timeline">
+            <div class="tl-item">
+              <div class="tl-time">07.15 – 07.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🌅</span> Morning Affirmation & Doa Bersama</div>
+                <div class="tl-desc">Berkumpul di sekolah, doa bersama, dan pembagian regu.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-special">
+              <div class="tl-time">07.30 – 08.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🚌</span> Perjalanan Menuju Lokasi (Pinine Bike Park)</div>
+                <div class="tl-desc">Berangkat bersama Miss & Mister menggunakan transportasi sekolah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">08.30 – 09.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>📦</span> Penurunan Barang & Penataan Lokasi</div>
+                <div class="tl-desc">Menata tas di area regu masing-masing.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-flag">
+              <div class="tl-time">09.00 – 09.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🚩</span> Apel Pembukaan Kegiatan Outdoor</div>
+                <div class="tl-desc">Pengarahan tata tertib dan keselamatan di alam terbuka.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-snack">
+              <div class="tl-time">09.30 – 09.45</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🥪</span> Snack Time Pagi</div>
+                <div class="tl-desc">Menikmati snack berawalan huruf 'R'.</div>
+              </div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-time">09.45 – 11.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🎯</span> Materi Alam & Games Edukasi</div>
+                <div class="tl-desc">Eksplorasi ketangkasan, kerja sama tim, dan kepanduan.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">11.00 – 13.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🍱🕌</span> Ishoma (Istirahat, Sholat, Makan)</div>
+                <div class="tl-desc">Makan siang dengan piring & sendok sendiri, wudhu, dan shalat berjamaah.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-flag">
+              <div class="tl-time">13.00 – 15.00</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🏆</span> Ice Breaking & Lomba Antar Regu</div>
+                <div class="tl-desc">Lomba ketangkasan ceria dan unjuk kekompakan.</div>
+              </div>
+            </div>
+
+            <div class="tl-item tl-prayer">
+              <div class="tl-time">15.00 – 15.30</div>
+              <div class="tl-content">
+                <div class="tl-title"><span>🕌</span> Shalat Ashar Berjamaah</div>
+                <div class="tl-desc">Penutupan kegiatan outdoor dan doa safar.</div>
+              </div>
+            </div>
+
+            <div class="tl-item" style="background:#ffedd5; border-color:#ea580c;">
+              <div class="tl-time" style="border-color:#ea580c; color:#c2410c; font-weight:800;">15.30 WIB</div>
+              <div class="tl-content">
+                <div class="tl-title" style="color:#c2410c;"><span>👨‍👩‍👦 Perpulangan Grade 2 di Lokasi</span></div>
+                <div class="tl-desc">Dijemput langsung oleh orang tua di Pinine Bike Park.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Kolom Kanan: Checklist Outing -->
+        <div>
+          <div class="panel-card">
+            <div class="panel-head">
+              <h3><span>🎒</span> Checklist Perlengkapan Outing</h3>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-outing">0/7 Siap</span>
+            </div>
+
+            <div class="progress-box">
+              <div class="progress-top">
+                <span>Kesiapan Tas Outing</span>
+                <span id="percent-outing">0%</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" id="bar-outing"></div>
+              </div>
+              <div class="progress-status" id="status-outing">Cek barang bawaan sesuai surat edaran!</div>
+            </div>
+
+            <div class="checklist-wrap" id="list-outing">
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Alat Makan Mandiri (Piring Plastik, Sendok, Garpu) 🍽️</div>
+                  <div class="check-sub">Bahan plastik yang tidak mudah pecah</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Tumbler Air Minum (Full Isi Air) 🥤</div>
+                  <div class="check-sub">Kapasitas cukup untuk aktivitas fisik luar ruangan</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Snack Awalan Huruf "R" (Minimal 2 Macam) 🍪</div>
+                  <div class="check-sub">Contoh: Roti, Regal, Richeese, Ring, Roll cake</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Perlengkapan Sholat Lengkap 🕌</div>
+                  <div class="check-sub">Sajadah travel, sarung, kopiah</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Obat-Obatan Pribadi 💊</div>
+                  <div class="check-sub">Minyak kayu putih, plester luka, obat alergi pribadi</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Sunscreen / Sunblock & Lotion Anti Nyamuk 🧴☀️🚫🦟</div>
+                  <div class="check-sub">Oleskan sebelum berangkat agar terlindung terik matahari & serangga</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'outing')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Surat Edaran Sekolah (Sudah Dicentang Semua) 📋</div>
+                  <div class="check-sub">Dikumpulkan langsung ke wali kelas (HRT) saat tiba di sekolah</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="note-box">
+              📢 <b>SOP Penjemputan Outing:</b><br>
+              • Siswa diantar ke sekolah pagi, berangkat ke lokasi bersama teacher.<br>
+              • Siswa <b>dijemput langsung di lokasi (Pinine Bike Park)</b> oleh orang tua pukul 15.30 WIB.
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      <p>🌟 <strong>Program Pendidikan Anak — Laskar Al Kautsar</strong> • SD MISS (Mafaza Integrated Smart School) Malang</p>
+      <p style="margin-top: 4px; font-size: 12.5px;">Portal edukasi interaktif: <a href="https://edukasi.rakyat.space" style="color:#4338ca; font-weight:700; text-decoration:none;">edukasi.rakyat.space</a></p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPT INTERAKTIF & AUDIO ASSISTANT -->
+  <script>
+    // State Hari Aktif
+    let currentActiveDay = 'senin';
+
+    // Data Naskah Pengingat Suara (Speech Delay Assistance tempo 0.82)
+    const voiceScripts = {
+      senin: "Halo Laskar! Hari ini hari Senin. Seragam Laskar adalah Merah Putih dan Blazer. Jam masuk sekolah pukul 07.15 untuk Upacara Bendera. Jangan lupa siapkan buku ESPS Bahasa Indonesia, Matematika, IT, dan bawa baju ganti seragam olahraga di dalam tas ya. Semangat belajar Laskar!",
+      selasa: "Halo Laskar! Hari ini hari Selasa. Seragam Laskar adalah Pramuka lengkap warna cokelat. Jangan lupa bawa buku ESPS Pancasila, buku PABP Islam, English Pupils dan Workbook, serta alat Sempoa. Belajar dengan gembira ya Laskar!",
+      rabu: "Halo Laskar! Hari ini hari Rabu. Seragam Laskar adalah Kaos Polo dan bawahan Cream. Jangan lupa bawa buku Humaniora, Pendidikan Pancasila, buku Science, dan buku Math. Laskar anak pintar dan sholeh!",
+      kamis: "Halo Laskar! Hari ini hari Kamis. Seragam Laskar adalah Batik SD MISS. Jangan lupa bawa buku ESPS Bahasa Indonesia, Science, English, dan bawa uang tabungan untuk disetor ke guru. Tetap ceria ya Laskar!",
+      jumat: "Halo Laskar! Hari ini hari Jumat ceria. Seragam Laskar adalah Sport Casual untuk senam pagi. Jangan lupa bawa buku Bahasa Indonesia, Math, English, dan perlengkapan shalat Jumat. Hari ini pulang lebih awal pukul 13.30 ya!",
+      sepekan: "Berikut adalah ringkasan jadwal pelajaran Laskar dari hari Senin sampai hari Jumat di SD MISS Malang. Selalu jaga kesehatan, bawa tumbler air minum, dan datang tepat waktu pukul 07.15.",
+      outing: "Halo Laskar! Ini agenda outing di luar ruangan. Pakai seragam Pramuka, bawa alat makan sendiri, botol minum penuh, dua snack berawalan huruf R, dan perlengkapan sholat. Hati-hati dan have fun ya Laskar!"
+    };
+
+    // Deteksi Hari Ini Secara Otomatis
+    function detectCurrentDay() {
+      const days = ['minggu', 'senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sabtu'];
+      const now = new Date();
+      const dayIndex = now.getDay();
+      const dayName = days[dayIndex];
+
+      const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+      const dateStr = now.toLocaleDateString('id-ID', options);
+      
+      const indicatorEl = document.getElementById('currentDateStr');
+      if (indicatorEl) {
+        indicatorEl.innerHTML = `Hari Ini: <strong>${dateStr}</strong>`;
+      }
+
+      // Jika hari Senin s.d. Jumat, otomatis aktifkan tab hari tersebut
+      if (['senin', 'selasa', 'rabu', 'kamis', 'jumat'].includes(dayName)) {
+        switchDay(dayName);
+      } else {
+        // Jika weekend (Sabtu / Minggu), default ke Senin
+        switchDay('senin');
+      }
+    }
+
+    // Fungsi Ganti Tab Hari
+    function switchDay(day) {
+      currentActiveDay = day;
+
+      // Update Tab Styles
+      const tabIds = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sepekan', 'outing'];
+      tabIds.forEach(d => {
+        const tabEl = document.getElementById('tab-' + d);
+        const paneEl = document.getElementById('pane-' + d);
+
+        if (tabEl) {
+          tabEl.className = 'day-tab';
+          if (d === day) {
+            tabEl.classList.add('active-' + (d === 'sepekan' ? 'all' : d));
+          }
+        }
+
+        if (paneEl) {
+          if (d === day) {
+            paneEl.classList.add('active');
+          } else {
+            paneEl.classList.remove('active');
+          }
+        }
+      });
+
+      // Update text voice button
+      const voiceText = document.getElementById('voiceText');
+      if (voiceText) {
+        const cap = day.charAt(0).toUpperCase() + day.slice(1);
+        voiceText.textContent = `Dengar Pengingat ${cap}`;
+      }
+
+      // Hentikan suara jika sedang bicara
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        resetVoiceButton();
+      }
+    }
+
+    // Toggle Checklist Item & Simpan ke LocalStorage
+    function toggleCheck(el, day) {
+      el.classList.toggle('done');
+      saveChecklistState(day);
+      updateProgress(day);
+    }
+
+    // Hitung Progress & Perbarui UI
+    function updateProgress(day) {
+      const pane = document.getElementById('pane-' + day);
+      if (!pane) return;
+
+      const items = pane.querySelectorAll('.check-item');
+      if (!items.length) return;
+
+      const doneItems = pane.querySelectorAll('.check-item.done');
+      const total = items.length;
+      const done = doneItems.length;
+      const percent = Math.round((done / total) * 100);
+
+      const countEl = document.getElementById(`count-${day}`);
+      const percentEl = document.getElementById(`percent-${day}`);
+      const barEl = document.getElementById(`bar-${day}`);
+      const statusEl = document.getElementById(`status-${day}`);
+
+      if (countEl) countEl.textContent = `${done}/${total} Siap`;
+      if (percentEl) percentEl.textContent = `${percent}%`;
+      if (barEl) barEl.style.width = `${percent}%`;
+
+      if (statusEl) {
+        if (done === total) {
+          statusEl.textContent = '🎉 Hore! Semua perlengkapan tas Laskar sudah lengkap!';
+          statusEl.style.color = '#059669';
+        } else if (done > 0) {
+          statusEl.textContent = `Bagus! Masih kurang ${total - done} perlengkapan lagi.`;
+          statusEl.style.color = '#d97706';
+        } else {
+          statusEl.textContent = 'Ayo cek dan centang perlengkapan tas malam ini!';
+          statusEl.style.color = '#64748b';
+        }
+      }
+    }
+
+    // Simpan Status Centang ke LocalStorage
+    function saveChecklistState(day) {
+      const pane = document.getElementById('pane-' + day);
+      if (!pane) return;
+
+      const items = pane.querySelectorAll('.check-item');
+      const state = [];
+      items.forEach(item => {
+        state.push(item.classList.contains('done'));
+      });
+
+      try {
+        localStorage.setItem(`laskar_sch_check_${day}`, JSON.stringify(state));
+      } catch (e) {
+        console.warn('LocalStorage error', e);
+      }
+    }
+
+    // Muat Status Centang dari LocalStorage
+    function loadAllChecklists() {
+      const days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'outing'];
+      days.forEach(day => {
+        try {
+          const raw = localStorage.getItem(`laskar_sch_check_${day}`);
+          if (raw) {
+            const state = JSON.parse(raw);
+            const pane = document.getElementById('pane-' + day);
+            if (pane) {
+              const items = pane.querySelectorAll('.check-item');
+              items.forEach((item, idx) => {
+                if (state[idx] === true) {
+                  item.classList.add('done');
+                } else {
+                  item.classList.remove('done');
+                }
+              });
+            }
+          }
+        } catch (e) {
+          console.warn('Error loading checklist', e);
+        }
+        updateProgress(day);
+      });
+    }
+
+    // Reset Checklist Hari Aktif
+    function resetCurrentChecklist() {
+      const pane = document.getElementById('pane-' + currentActiveDay);
+      if (!pane) return;
+
+      const items = pane.querySelectorAll('.check-item');
+      items.forEach(item => item.classList.remove('done'));
+
+      try {
+        localStorage.removeItem(`laskar_sch_check_${currentActiveDay}`);
+      } catch (e) {}
+
+      updateProgress(currentActiveDay);
+    }
+
+    // Fitur Audio Sintetis Pendamping Speech Delay (Web Speech API)
+    let isSpeaking = false;
+
+    function playVoiceReminder() {
+      if (!('speechSynthesis' in window)) {
+        alert('Browser Anda belum mendukung fitur sintesis suara (Web Speech API).');
+        return;
+      }
+
+      if (isSpeaking) {
+        window.speechSynthesis.cancel();
+        resetVoiceButton();
+        return;
+      }
+
+      const textToSpeak = voiceScripts[currentActiveDay] || voiceScripts['senin'];
+      const utterance = new SpeechSynthesisUtterance(textToSpeak);
+      utterance.lang = 'id-ID';
+      utterance.rate = 0.82; // Tempo pelan, artikulasi jelas
+      utterance.pitch = 1.05; // Suara ramah dan hangat
+
+      const btn = document.getElementById('btnVoice');
+      const icon = document.getElementById('voiceIcon');
+      const text = document.getElementById('voiceText');
+
+      utterance.onstart = function() {
+        isSpeaking = true;
+        if (btn) btn.style.background = '#e11d48';
+        if (icon) icon.textContent = '⏹️';
+        if (text) text.textContent = 'Berhenti Bicara';
+      };
+
+      utterance.onend = function() {
+        resetVoiceButton();
+      };
+
+      utterance.onerror = function() {
+        resetVoiceButton();
+      };
+
+      window.speechSynthesis.cancel(); // Pastikan antrian kosong
+      window.speechSynthesis.speak(utterance);
+    }
+
+    function resetVoiceButton() {
+      isSpeaking = false;
+      const btn = document.getElementById('btnVoice');
+      const icon = document.getElementById('voiceIcon');
+      const text = document.getElementById('voiceText');
+
+      if (btn) btn.style.background = '#4338ca';
+      if (icon) icon.textContent = '🔊';
+      if (text) {
+        const cap = currentActiveDay.charAt(0).toUpperCase() + currentActiveDay.slice(1);
+        text.textContent = `Dengar Pengingat ${cap}`;
+      }
+    }
+
+    // Inisialisasi saat halaman selesai dimuat
+    window.addEventListener('DOMContentLoaded', () => {
+      loadAllChecklists();
+      detectCurrentDay();
+    });
+  </script>
+
+</body>
+</html>

@@ -21,6 +21,12 @@ Setiap proyek dilengkapi dengan materi konsep, visual interaktif, simulasi latih
 
 ---
 
+## 📅 Jadwal Sekolah & Checklist Tas Harian (Senin – Jumat)
+
+* [`Laskar_Jadwal_Pelajaran_Sekolah.html`](./Laskar_Jadwal_Pelajaran_Sekolah.html) — Aplikasi interaktif jadwal resmi sepekan SD MISS Malang (jam masuk 07.15 WIB, timeline per jam, seragam harian Merah Putih/Pramuka/Polo/Batik/Sport, checklist tas interaktif dengan penyimpanan otomatis, format cetak A4, dan audio pendamping anak).
+
+---
+
 ## ⏰ Materi Tambahan & Latihan Harian
 
 1. **Mengenal Jam, Menit, & Kegiatan Harian:**

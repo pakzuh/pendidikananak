@@ -28,8 +28,6 @@
       --kamis-bg: #faf5ff;
       --jumat: #059669;
       --jumat-bg: #ecfdf5;
-      --outing: #ea580c;
-      --outing-bg: #fff7ed;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -341,13 +339,6 @@
       box-shadow: 0 6px 18px rgba(67, 56, 202, 0.2);
     }
     .day-tab.active-all .tab-name { color: var(--primary); }
-
-    .day-tab.active-outing {
-      background: var(--outing-bg);
-      border-color: var(--outing);
-      box-shadow: 0 6px 18px rgba(234, 88, 12, 0.2);
-    }
-    .day-tab.active-outing .tab-name { color: var(--outing); }
 
     /* Tab Content Panes */
     .day-pane {
@@ -873,11 +864,6 @@
         <span class="tab-icon">📊</span>
         <span class="tab-name">Roster Sepekan</span>
         <span class="tab-uniform">Matriks Lengkap</span>
-      </div>
-      <div class="day-tab" onclick="switchDay('outing')" id="tab-outing">
-        <span class="tab-icon">🏕️</span>
-        <span class="tab-name">Outing / Event</span>
-        <span class="tab-uniform">Contoh: Pinine Park</span>
       </div>
     </div>
 
@@ -1609,7 +1595,7 @@
           <div class="panel-card">
             <div class="panel-head">
               <h3><span>🎒</span> Checklist Bawaan Tas Hari Kamis</h3>
-              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-kamis">0/8 Siap</span>
+              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-kamis">0/9 Siap</span>
             </div>
 
             <div class="progress-box">
@@ -1620,7 +1606,7 @@
               <div class="progress-bar-bg">
                 <div class="progress-bar-fill" id="bar-kamis"></div>
               </div>
-              <div class="progress-status" id="status-kamis">Jangan lupa uang tabungan hari Kamis!</div>
+              <div class="progress-status" id="status-kamis">Jangan lupa uang tabungan & buku ICT hari Kamis!</div>
             </div>
 
             <div class="checklist-wrap" id="list-kamis">
@@ -1645,6 +1631,14 @@
                 <div class="check-text">
                   <div class="check-label">Buku English Pupils & Workbook 2A</div>
                   <div class="check-sub">Untuk pelajaran jam 13.00 WIB</div>
+                </div>
+              </div>
+
+              <div class="check-item" onclick="toggleCheck(this, 'kamis')">
+                <div class="check-box">✓</div>
+                <div class="check-text">
+                  <div class="check-label">Buku Pelajaran ICT / Komputer 💻</div>
+                  <div class="check-sub">Wajib dibawa untuk sesi Ekstrakurikuler ICT (14.00 – 15.00 WIB)</div>
                 </div>
               </div>
 
@@ -2022,6 +2016,7 @@
                 • ESPS B. Indonesia<br>
                 • Science Pupils & Wb<br>
                 • English Pupils & Wb<br>
+                • <b>Buku Pelajaran ICT (Ekskul)</b><br>
                 • Uang Tabungan
               </td>
             </tr>
@@ -2066,204 +2061,6 @@
 
     </div>
 
-    <!-- ============================================================== -->
-    <!-- 7. TAB OUTING / AGENDA KHUSUS -->
-    <!-- ============================================================== -->
-    <div class="day-pane" id="pane-outing">
-      
-      <div class="day-header-card" style="border-color: var(--outing);">
-        <div class="dh-title-wrap">
-          <div class="dh-icon" style="background: var(--outing-bg); color: var(--outing);">🏕️</div>
-          <div class="dh-info">
-            <h2>Agenda Khusus / Outing — Contoh: Pinine Bike Park</h2>
-            <div class="dh-badges">
-              <span class="dh-pill" style="background: var(--outing-bg); color: var(--outing);">⏰ 07.15 – 15.30 WIB</span>
-              <span class="dh-pill" style="background: #ffedd5; color: #c2410c;">🧢 Seragam: Pramuka Lapangan</span>
-              <span class="dh-pill" style="background: #fef08a; color: #854d0e;">🎒 Bawa Alat Makan & Snack "R"</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="day-grid">
-        <!-- Kolom Kiri: Timeline Outing -->
-        <div class="panel-card">
-          <div class="panel-head">
-            <h3><span>⏰</span> Timeline Agenda Outing (Outdoor)</h3>
-            <span style="font-size:12px; font-weight:700; color:var(--outing);">Di Luar Kelas</span>
-          </div>
-
-          <div class="timeline">
-            <div class="tl-item">
-              <div class="tl-time">07.15 – 07.30</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🌅</span> Morning Affirmation & Doa Bersama</div>
-                <div class="tl-desc">Berkumpul di sekolah, doa bersama, dan pembagian regu.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-special">
-              <div class="tl-time">07.30 – 08.30</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🚌</span> Perjalanan Menuju Lokasi (Pinine Bike Park)</div>
-                <div class="tl-desc">Berangkat bersama Miss & Mister menggunakan transportasi sekolah.</div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-time">08.30 – 09.00</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>📦</span> Penurunan Barang & Penataan Lokasi</div>
-                <div class="tl-desc">Menata tas di area regu masing-masing.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-flag">
-              <div class="tl-time">09.00 – 09.30</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🚩</span> Apel Pembukaan Kegiatan Outdoor</div>
-                <div class="tl-desc">Pengarahan tata tertib dan keselamatan di alam terbuka.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-snack">
-              <div class="tl-time">09.30 – 09.45</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🥪</span> Snack Time Pagi</div>
-                <div class="tl-desc">Menikmati snack berawalan huruf 'R'.</div>
-              </div>
-            </div>
-
-            <div class="tl-item">
-              <div class="tl-time">09.45 – 11.00</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🎯</span> Materi Alam & Games Edukasi</div>
-                <div class="tl-desc">Eksplorasi ketangkasan, kerja sama tim, dan kepanduan.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-prayer">
-              <div class="tl-time">11.00 – 13.00</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🍱🕌</span> Ishoma (Istirahat, Sholat, Makan)</div>
-                <div class="tl-desc">Makan siang dengan piring & sendok sendiri, wudhu, dan shalat berjamaah.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-flag">
-              <div class="tl-time">13.00 – 15.00</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🏆</span> Ice Breaking & Lomba Antar Regu</div>
-                <div class="tl-desc">Lomba ketangkasan ceria dan unjuk kekompakan.</div>
-              </div>
-            </div>
-
-            <div class="tl-item tl-prayer">
-              <div class="tl-time">15.00 – 15.30</div>
-              <div class="tl-content">
-                <div class="tl-title"><span>🕌</span> Shalat Ashar Berjamaah</div>
-                <div class="tl-desc">Penutupan kegiatan outdoor dan doa safar.</div>
-              </div>
-            </div>
-
-            <div class="tl-item" style="background:#ffedd5; border-color:#ea580c;">
-              <div class="tl-time" style="border-color:#ea580c; color:#c2410c; font-weight:800;">15.30 WIB</div>
-              <div class="tl-content">
-                <div class="tl-title" style="color:#c2410c;"><span>👨‍👩‍👦 Perpulangan Grade 2 di Lokasi</span></div>
-                <div class="tl-desc">Dijemput langsung oleh orang tua di Pinine Bike Park.</div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Kolom Kanan: Checklist Outing -->
-        <div>
-          <div class="panel-card">
-            <div class="panel-head">
-              <h3><span>🎒</span> Checklist Perlengkapan Outing</h3>
-              <span style="font-size:12px; font-weight:700; color:#059669;" id="count-outing">0/7 Siap</span>
-            </div>
-
-            <div class="progress-box">
-              <div class="progress-top">
-                <span>Kesiapan Tas Outing</span>
-                <span id="percent-outing">0%</span>
-              </div>
-              <div class="progress-bar-bg">
-                <div class="progress-bar-fill" id="bar-outing"></div>
-              </div>
-              <div class="progress-status" id="status-outing">Cek barang bawaan sesuai surat edaran!</div>
-            </div>
-
-            <div class="checklist-wrap" id="list-outing">
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Alat Makan Mandiri (Piring Plastik, Sendok, Garpu) 🍽️</div>
-                  <div class="check-sub">Bahan plastik yang tidak mudah pecah</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Tumbler Air Minum (Full Isi Air) 🥤</div>
-                  <div class="check-sub">Kapasitas cukup untuk aktivitas fisik luar ruangan</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Snack Awalan Huruf "R" (Minimal 2 Macam) 🍪</div>
-                  <div class="check-sub">Contoh: Roti, Regal, Richeese, Ring, Roll cake</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Perlengkapan Sholat Lengkap 🕌</div>
-                  <div class="check-sub">Sajadah travel, sarung, kopiah</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Obat-Obatan Pribadi 💊</div>
-                  <div class="check-sub">Minyak kayu putih, plester luka, obat alergi pribadi</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Sunscreen / Sunblock & Lotion Anti Nyamuk 🧴☀️🚫🦟</div>
-                  <div class="check-sub">Oleskan sebelum berangkat agar terlindung terik matahari & serangga</div>
-                </div>
-              </div>
-
-              <div class="check-item" onclick="toggleCheck(this, 'outing')">
-                <div class="check-box">✓</div>
-                <div class="check-text">
-                  <div class="check-label">Surat Edaran Sekolah (Sudah Dicentang Semua) 📋</div>
-                  <div class="check-sub">Dikumpulkan langsung ke wali kelas (HRT) saat tiba di sekolah</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="note-box">
-              📢 <b>SOP Penjemputan Outing:</b><br>
-              • Siswa diantar ke sekolah pagi, berangkat ke lokasi bersama teacher.<br>
-              • Siswa <b>dijemput langsung di lokasi (Pinine Bike Park)</b> oleh orang tua pukul 15.30 WIB.
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
     <!-- Footer -->
     <footer>
       <p>🌟 <strong>Program Pendidikan Anak — Laskar Al Kautsar</strong> • SD MISS (Mafaza Integrated Smart School) Malang</p>
@@ -2282,10 +2079,9 @@
       senin: "Halo Laskar! Hari ini hari Senin. Seragam Laskar adalah Merah Putih dan Blazer. Jam masuk sekolah pukul 07.15 untuk Upacara Bendera. Jangan lupa siapkan buku ESPS Bahasa Indonesia, Matematika, IT, dan bawa baju ganti seragam olahraga di dalam tas ya. Semangat belajar Laskar!",
       selasa: "Halo Laskar! Hari ini hari Selasa. Seragam Laskar adalah Pramuka lengkap warna cokelat. Jangan lupa bawa buku ESPS Pancasila, buku PABP Islam, English Pupils dan Workbook, serta alat Sempoa. Belajar dengan gembira ya Laskar!",
       rabu: "Halo Laskar! Hari ini hari Rabu. Seragam Laskar adalah Kaos Polo dan bawahan Cream. Jangan lupa bawa buku Humaniora, Pendidikan Pancasila, buku Science, dan buku Math. Laskar anak pintar dan sholeh!",
-      kamis: "Halo Laskar! Hari ini hari Kamis. Seragam Laskar adalah Batik SD MISS. Jangan lupa bawa buku ESPS Bahasa Indonesia, Science, English, dan bawa uang tabungan untuk disetor ke guru. Tetap ceria ya Laskar!",
+      kamis: "Halo Laskar! Hari ini hari Kamis. Seragam Laskar adalah Batik SD MISS. Jangan lupa bawa buku ESPS Bahasa Indonesia, Science, English, buku pelajaran ICT untuk ekstrakurikuler komputer, dan bawa uang tabungan untuk disetor ke guru. Tetap ceria ya Laskar!",
       jumat: "Halo Laskar! Hari ini hari Jumat ceria. Seragam Laskar adalah Sport Casual untuk senam pagi. Jangan lupa bawa buku Bahasa Indonesia, Math, English, dan perlengkapan shalat Jumat. Hari ini pulang lebih awal pukul 13.30 ya!",
-      sepekan: "Berikut adalah ringkasan jadwal pelajaran Laskar dari hari Senin sampai hari Jumat di SD MISS Malang. Selalu jaga kesehatan, bawa tumbler air minum, dan datang tepat waktu pukul 07.15.",
-      outing: "Halo Laskar! Ini agenda outing di luar ruangan. Pakai seragam Pramuka, bawa alat makan sendiri, botol minum penuh, dua snack berawalan huruf R, dan perlengkapan sholat. Hati-hati dan have fun ya Laskar!"
+      sepekan: "Berikut adalah ringkasan jadwal pelajaran Laskar dari hari Senin sampai hari Jumat di SD MISS Malang. Selalu jaga kesehatan, bawa tumbler air minum, dan datang tepat waktu pukul 07.15."
     };
 
     // Deteksi Hari Ini Secara Otomatis
@@ -2317,7 +2113,7 @@
       currentActiveDay = day;
 
       // Update Tab Styles
-      const tabIds = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sepekan', 'outing'];
+      const tabIds = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'sepekan'];
       tabIds.forEach(d => {
         const tabEl = document.getElementById('tab-' + d);
         const paneEl = document.getElementById('pane-' + d);
@@ -2415,7 +2211,7 @@
 
     // Muat Status Centang dari LocalStorage
     function loadAllChecklists() {
-      const days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat', 'outing'];
+      const days = ['senin', 'selasa', 'rabu', 'kamis', 'jumat'];
       days.forEach(day => {
         try {
           const raw = localStorage.getItem(`laskar_sch_check_${day}`);

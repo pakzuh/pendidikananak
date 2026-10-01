@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portal Belajar & Jadwal Siswa — Grade 2 SD MISS Malang</title>
+  <title>Ruang Belajar & Proyek Siswa — Laskar Al Kautsar | Grade 2 SD MISS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -46,7 +46,51 @@
     .container {
       max-width: 1140px;
       margin: 0 auto;
-      padding: 30px 20px;
+      padding: 24px 20px;
+    }
+
+    /* Top Navigation Bar */
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-portal-back {
+      background: #ffffff;
+      border: 2px solid #cbd5e1;
+      color: #0f172a;
+      padding: 8px 18px;
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 13.5px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+      transition: all 0.2s;
+    }
+    .btn-portal-back:hover {
+      background: #f8fafc;
+      transform: translateY(-2px);
+      border-color: #94a3b8;
+    }
+
+    .portal-tag {
+      background: #eef2ff;
+      border: 1.5px solid #c7d2fe;
+      color: #4338ca;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 800;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
     }
 
     /* Hero Banner */
@@ -58,7 +102,7 @@
       box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.35);
       position: relative;
       overflow: hidden;
-      margin-bottom: 34px;
+      margin-bottom: 30px;
       border: 3px solid rgba(255, 255, 255, 0.25);
     }
 
@@ -200,24 +244,22 @@
       font-size: 11.5px;
       font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
-      padding: 3px 10px;
+      letter-spacing: 0.5px;
+      padding: 4px 10px;
       border-radius: 999px;
       display: inline-block;
       margin-bottom: 6px;
     }
 
     .time-pill {
-      font-size: 11.5px;
+      font-size: 11px;
       font-weight: 800;
-      color: #92400e;
-      background: #fef3c7;
-      border: 1px solid #fde68a;
+      color: #64748b;
+      background: #f1f5f9;
       padding: 3px 8px;
       border-radius: 6px;
       display: inline-block;
-      margin-bottom: 6px;
-      margin-left: 4px;
+      margin-left: 6px;
     }
 
     .project-name {
@@ -225,14 +267,13 @@
       font-weight: 700;
       color: #0f172a;
       line-height: 1.3;
-      margin-bottom: 6px;
     }
 
     .project-desc {
-      font-size: 13.5px;
+      font-size: 14px;
       color: var(--text-muted);
       line-height: 1.55;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .btn-group {
@@ -242,21 +283,17 @@
     }
 
     .btn {
-      flex: 1;
-      min-width: 130px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      padding: 10px 14px;
+      padding: 10px 18px;
       border-radius: 12px;
-      font-size: 13px;
+      font-size: 13.5px;
       font-weight: 700;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
       cursor: pointer;
-      font-family: 'Fredoka', sans-serif;
-      text-align: center;
     }
 
     .btn-primary {
@@ -264,84 +301,65 @@
       color: #ffffff;
       box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25);
     }
-
     .btn-primary:hover {
-      background: var(--primary-dark);
-      transform: scale(1.02);
+      filter: brightness(1.1);
+      transform: translateY(-2px);
     }
 
     .btn-outline {
-      background: #ffffff;
-      color: #334155;
-      border: 1.5px solid #cbd5e1;
+      background: transparent;
+      border: 1.5px solid var(--border);
+      color: var(--text);
     }
-
     .btn-outline:hover {
-      background: #f8fafc;
-      border-color: #94a3b8;
-      color: #0f172a;
+      background: #f1f5f9;
+      border-color: #cbd5e1;
     }
 
-    /* Sub-grid for additional worksheets */
+    /* Mini Grid */
     .mini-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
       gap: 16px;
       margin-bottom: 40px;
     }
 
     .mini-card {
-      background: #ffffff;
-      border: 1.5px solid #e2e8f0;
+      background: var(--card-bg);
+      border: 1.5px solid var(--border);
       border-radius: 16px;
-      padding: 16px 18px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-      transition: all 0.2s;
       text-decoration: none;
-      color: inherit;
+      color: var(--text);
+      transition: all 0.2s;
     }
-
     .mini-card:hover {
-      transform: translateY(-3px);
       border-color: var(--primary);
-      box-shadow: 0 8px 18px rgba(79, 70, 229, 0.12);
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
     }
-
     .mini-info h4 {
       font-size: 15px;
-      color: #0f172a;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
-
     .mini-info p {
       font-size: 12px;
-      color: #64748b;
+      color: var(--text-muted);
     }
-
     .mini-icon {
       font-size: 26px;
-      flex-shrink: 0;
     }
 
     /* Footer */
     footer {
       text-align: center;
-      margin-top: 40px;
-      font-size: 13.5px;
+      padding-top: 20px;
+      border-top: 2px solid #e2e8f0;
       color: var(--text-muted);
-      border-top: 2px dashed #cbd5e1;
-      padding-top: 24px;
-    }
-
-    @media (max-width: 768px) {
-      .hero-card { padding: 26px 20px; border-radius: 20px; }
-      .hero-title { font-size: 26px; }
-      .grid-projects { grid-template-columns: 1fr; }
-      .meta-grid { grid-template-columns: 1fr; }
+      font-size: 14px;
     }
   </style>
 </head>
@@ -349,43 +367,38 @@
 
 <div class="container">
 
-  <!-- Top Profile Switcher -->
-  <div style="background: #ffffff; border: 1.5px solid #c7d2fe; border-radius: 999px; padding: 10px 20px; margin-bottom: 24px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.08); flex-wrap: wrap; gap: 12px;">
-    <div style="display: flex; align-items: center; gap: 8px;">
-      <span style="font-size: 18px;">🌐</span>
-      <span style="font-weight: 800; color: #3730a3; font-size: 14px;">Portal Pembelajaran Siswa — SD MISS (Mafaza) Malang</span>
-      <span style="background: #ecfdf5; color: #065f46; font-size: 11px; font-weight: 800; padding: 3px 9px; border-radius: 999px; border: 1px solid #a7f3d0;">Grade 2</span>
-    </div>
-    <div style="display: flex; align-items: center; gap: 10px;">
-      <span style="color: #64748b; font-size: 13px; font-weight: 600;">Khusus ananda Laskar?</span>
-      <a href="laskar.html" style="background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%); color: #ffffff; padding: 8px 18px; border-radius: 999px; text-decoration: none; font-size: 13px; font-weight: 800; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 4px 12px rgba(79, 70, 229, 0.25); transition: all 0.2s;">
-        <span>👦</span> Masuk ke Profil Belajar Laskar 🚀
-      </a>
+  <!-- Top Navigation Bar -->
+  <div class="top-nav">
+    <a href="index.html" class="btn-portal-back">
+      <span>🌐</span> Kembali ke Portal Umum
+    </a>
+    <div class="portal-tag">
+      <span>👦</span> Ruang Belajar Khusus • Laskar Al Kautsar
     </div>
   </div>
 
-  <!-- Hero Header -->
+  <!-- Hero Header Laskar -->
   <header class="hero-card">
     <div class="badge-bar">
       <span class="badge">🌟 SD MISS (Mafaza) Malang</span>
       <span class="badge">Grade 2 • Academic Year 2026/2027</span>
-      <span class="badge" style="background: #fef08a; color: #854d0e;">✨ Modul & Proyek Tematik Siswa</span>
+      <span class="badge" style="background: #fef08a; color: #854d0e;">✨ Ruang Belajar & Proyek Mandiri</span>
       <span class="badge" style="background: #ecfdf5; color: #065f46;">🗣️ Panduan Suara & Simulator Terpadu</span>
     </div>
-    <h1 class="hero-title">Portal Edukasi & Jadwal Belajar Siswa</h1>
+    <h1 class="hero-title">Portal Belajar & Proyek Siswa — Laskar Al Kautsar</h1>
     <p class="hero-subtitle">
-      Aplikasi pembelajaran interaktif terpadu untuk siswa Grade 2 SD MISS (Mafaza Integrated Smart School). Dilengkapi jadwal pelajaran rutin sepekan, checklist tas harian, 9 modul proyek tematik, simulator interaktif dengan audio artikulasi jelas, dan lembar kerja siap cetak (A4 PDF).
+      Aplikasi pembelajaran interaktif berbasis web dengan <strong>naskah bicara terintegrasi langsung di dalam simulator</strong> di seluruh modul, dilengkapi tombol audio suara perlahan & artikulasi jelas (Web Speech API tempo 0.82) serta lembar kerja siap cetak (A4 PDF) terlengkap untuk ananda Laskar.
     </p>
     <div class="meta-grid">
-      <div>🎒 <strong>Tingkat:</strong> Siswa Grade 2 SD MISS</div>
+      <div>👦 <strong>Siswa:</strong> Laskar Al Kautsar</div>
       <div>🏫 <strong>Sekolah:</strong> SD MISS Malang</div>
-      <div>📅 <strong>Tahun Ajaran:</strong> 2026 / 2027</div>
-      <div>📚 <strong>Kurikulum:</strong> Tematik Terpadu SD MISS</div>
-      <div>👦 <strong>Ruang Khusus:</strong> <a href="laskar.html" style="color: #fef08a; text-decoration: underline; font-weight: 700;">Profil Belajar Laskar &rarr;</a></div>
+      <div>👨‍👩‍👦 <strong>Orang Tua:</strong> Zuhdi & Ririn</div>
+      <div>📅 <strong>Periode:</strong> Semester Ganjil 2026/2027</div>
+      <div>👩‍🏫 <strong>Pendidik:</strong> Miss & Mister</div>
     </div>
   </header>
 
-  <!-- BANNER UTAMA: JADWAL PELAJARAN RUTIN & CHECKLIST TAS SISWA -->
+  <!-- BANNER KHUSUS: JADWAL PELAJARAN RUTIN & CHECKLIST TAS LASKAR -->
   <div style="background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%); border: 3px solid #6366f1; border-radius: 20px; padding: 24px 28px; margin-bottom: 28px; box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.2); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
     <div style="flex: 1; min-width: 290px;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px; flex-wrap: wrap;">
@@ -394,10 +407,10 @@
         <span style="background: #ecfdf5; color: #065f46; font-size: 11.5px; font-weight: 800; padding: 4px 10px; border-radius: 999px; border: 1px solid #a7f3d0;">🎒 Checklist Tas Harian</span>
       </div>
       <h2 style="color: #1e1b4b; font-size: 23px; margin-bottom: 6px; font-family: 'Fredoka', cursive;">
-        📅 Jadwal Pelajaran Rutin & Checklist Tas Siswa (Senin – Jumat)
+        📅 Jadwal Pelajaran Rutin & Checklist Tas Laskar (Senin – Jumat)
       </h2>
       <p style="color: #334155; font-size: 14.5px; line-height: 1.5; margin-bottom: 12px;">
-        Panduan harian lengkap siswa Grade 2 SD MISS: rincian seragam harian (Merah Putih, Pramuka, Polo Cream, Batik, Sport Casual), jadwal jam-per-jam, checklist interaktif perlengkapan tas & buku pelajaran, serta audio pengingat ramah anak.
+        Panduan harian lengkap ananda Laskar Al Kautsar: rincian seragam harian (Merah Putih, Pramuka, Polo Cream, Batik, Sport Casual), jadwal jam-per-jam, checklist interaktif perlengkapan tas & buku pelajaran, serta suara pengingat ramah anak.
       </p>
       
       <!-- Mini Chips Seragam -->
@@ -410,35 +423,32 @@
       </div>
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="jadwal.html" class="btn btn-primary" style="background: #4338ca; font-size: 14.5px; padding: 13px 22px; box-shadow: 0 4px 16px rgba(67, 56, 202, 0.35);">
-        <span>🎒</span> Buka Jadwal Siswa (Umum) 🚀
-      </a>
-      <a href="Laskar_Jadwal_Pelajaran_Sekolah.html" class="btn btn-outline" style="border-color: #6366f1; color: #4338ca; background: #ffffff; font-size: 13.5px; padding: 12px 18px;">
-        <span>👦</span> Jadwal Khusus Laskar
+      <a href="Laskar_Jadwal_Pelajaran_Sekolah.html" class="btn btn-primary" style="background: #4338ca; font-size: 14.5px; padding: 13px 22px; box-shadow: 0 4px 16px rgba(67, 56, 202, 0.35);">
+        <span>🎒</span> Buka Jadwal & Checklist 🚀
       </a>
     </div>
   </div>
 
-  <!-- BANNER KHUSUS: RUANG BELAJAR & PORTOFOLIO LASKAR -->
+  <!-- BANNER KHUSUS: BUKU SAKU PANDUAN EXPO SENIN -->
   <div style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%); border: 3px solid #f59e0b; border-radius: 20px; padding: 22px 26px; margin-bottom: 32px; box-shadow: 0 10px 25px -5px rgba(245, 158, 11, 0.25); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px;">
     <div style="flex: 1; min-width: 280px;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 6px;">
-        <span style="background: #b45309; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; letter-spacing: 0.5px;">RUANG BELAJAR PERSONAL</span>
-        <span style="color: #92400e; font-size: 13px; font-weight: 700;">👦 Laskar Al Kautsar</span>
+        <span style="background: #b45309; color: #fff; font-size: 11px; font-weight: 800; padding: 4px 10px; border-radius: 999px; letter-spacing: 0.5px;">AGENDA RESMI PRESENTATION DAY</span>
+        <span style="color: #92400e; font-size: 13px; font-weight: 700;">⏰ 07.15 – 14.00 WIB</span>
       </div>
       <h2 style="color: #78350f; font-size: 22px; margin-bottom: 4px; font-family: 'Fredoka', cursive;">
-        👦 Ruang Belajar Mandiri & Portofolio Khusus — Laskar Al Kautsar
+        📖 Buku Saku & 9 Kartu Peraga Presentasi Laskar (A4 Cue Cards)
       </h2>
       <p style="color: #92400e; font-size: 14px; line-height: 1.5;">
-        Akses ruang belajar khusus dengan naskah presentasi terintegrasi, buku saku peraga (cue cards), panduan artikulasi audio pelan, checklist tas harian, dan ringkasan portofolio ananda Laskar.
+        Panduan komprehensif siap cetak: checklist tas, jadwal jam-per-jam, instruksi tunjuk fisik (<em>point & speak</em>), naskah fonetik suku kata terpisah, & bocoran tanya-jawab guru khusus pendampingan belajar ananda.
       </p>
     </div>
     <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-      <a href="laskar.html" class="btn btn-primary" style="background: #b45309; font-size: 14px; padding: 12px 20px; box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);">
-        <span>👦</span> Buka Ruang Belajar Laskar 🚀
+      <a href="Laskar_Buku_Panduan_Presentasi_Expo_Senin.html" class="btn btn-primary" style="background: #b45309; font-size: 14px; padding: 12px 20px; box-shadow: 0 4px 14px rgba(180, 83, 9, 0.35);">
+        <span>📖</span> Buka Buku Saku & Panduan 🚀
       </a>
-      <a href="Laskar_Buku_Panduan_Presentasi_Expo_Senin.html" class="btn btn-outline" style="border-color: #b45309; color: #78350f; background: #ffffff;">
-        <span>📖</span> Buku Saku Presentasi
+      <a href="Laskar_Buku_Panduan_Presentasi_Expo_Senin.pdf" target="_blank" class="btn btn-outline" style="border-color: #b45309; color: #78350f; background: #ffffff;">
+        <span>📄</span> Unduh PDF Siap Cetak
       </a>
     </div>
   </div>
@@ -447,11 +457,11 @@
   <section>
     <div class="section-header">
       <div>
-        <h2 class="section-title"><span>⭐</span> Rangkaian 9 Modul & Proyek Tematik Siswa (Grade 2)</h2>
-        <span class="section-desc">Materi tematik terpadu SD MISS • Simulator Interaktif, Panduan Suara, & Lembar Cetak A4</span>
+        <h2 class="section-title"><span>⭐</span> Rangkaian 9 Sesi Proyek Siswa — Laskar</h2>
+        <span class="section-desc">Diurutkan kronologis sesuai jadwal sekolah: 08.00 s/d 14.00 WIB • Simulator Interaktif, Audio 0.82, & Lembar Cetak A4</span>
       </div>
-      <a href="laskar.html" class="btn btn-outline" style="border-color:#4f46e5; color:#4f46e5; font-size:12px; padding:8px 14px;">
-        <span>👦</span> Versi Khusus Laskar
+      <a href="Laskar_Buku_Panduan_Presentasi_Expo_Senin.html" class="btn btn-outline" style="border-color:#4f46e5; color:#4f46e5; font-size:12px; padding:8px 14px;">
+        <span>🪪</span> Buka 9 Kartu Saku
       </a>
     </div>
 
@@ -499,80 +509,39 @@
         </div>
       </div>
 
-      <!-- 3. EXPO 3: Humaniora -->
-      <div class="project-card" style="border-top: 6px solid #7c3aed;">
-        <div>
-          <div class="card-top">
-            <div class="icon-badge" style="background: #faf5ff; color: #7c3aed;">🪪</div>
-            <div class="card-info">
-              <span class="subject-pill" style="background: #faf5ff; color: #6b21a8;">⭐ EXPO 3 • HUMANIORA</span>
-              <span class="time-pill">⏰ 09.30 – 10.00</span>
-              <h3 class="project-name">Identity Document (Student ID Card) Diri Siswa</h3>
-            </div>
-          </div>
-          <p class="project-desc">
-            Kartu identitas resmi siswa SD MISS: pasfoto siswa, data identitas diri, naskah bicara perkenalan diri terintegrasi di bawah kartu, audio artikulasi jelas, & lembar cetak A4.
-          </p>
-        </div>
-        <div class="btn-group">
-          <a href="Laskar_Proyek_Humaniora_IDCard.html" class="btn btn-primary" style="background: #7c3aed;">Buka Interaktif 🚀</a>
-        </div>
-      </div>
-
-      <!-- 4. EXPO 4: Physical Education (PJOK) -->
+      <!-- 3. EXPO 3: PABP Islam -->
       <div class="project-card" style="border-top: 6px solid #059669;">
         <div>
           <div class="card-top">
-            <div class="icon-badge" style="background: #ecfdf5; color: #059669;">⚽</div>
+            <div class="icon-badge" style="background: #ecfdf5; color: #059669;">🕌</div>
             <div class="card-info">
-              <span class="subject-pill" style="background: #ecfdf5; color: #047857;">⭐ EXPO 4 • PJOK (MR. ARIEF)</span>
-              <span class="time-pill">⏰ 10.00 – 10.30</span>
-              <h3 class="project-name">Gerak Lokomotor & Olahraga Sepak Bola</h3>
+              <span class="subject-pill" style="background: #ecfdf5; color: #047857;">⭐ EXPO 3 • PABP ISLAM</span>
+              <span class="time-pill">⏰ 09.00 – 09.30</span>
+              <h3 class="project-name">Show Your Caring: Kasih Sayang Kepada Sesama</h3>
             </div>
           </div>
           <p class="project-desc">
-            Peragaan 4 gerak lokomotor (jalan, lari, melompat 1 kaki, meloncat 2 kaki), naskah sapaan Mr. Arief, kuis interaktif, & lembar mewarnai bola sepak A4.
+            4 Sikap Terpuji, toleransi 6 rumah ibadah di Indonesia, naskah bicara interaktif, simulator klasifikasi, & lembar gunting-tempel A4.
           </p>
         </div>
         <div class="btn-group">
-          <a href="Laskar_Proyek_PJOK_Gerak_Olahraga.html" class="btn btn-primary" style="background: #059669;">Buka Interaktif 🚀</a>
-          <a href="Laskar_Proyek_PJOK_Gerak_Olahraga.pdf" target="_blank" class="btn btn-outline">Cetak PDF 📄</a>
+          <a href="Laskar_Proyek_PABP_Islam.html" class="btn btn-primary" style="background: #059669;">Buka Interaktif 🚀</a>
         </div>
       </div>
 
-      <!-- 5. EXPO 5: PABP Islam -->
-      <div class="project-card" style="border-top: 6px solid #0d9488;">
-        <div>
-          <div class="card-top">
-            <div class="icon-badge" style="background: #f0fdfa; color: #0d9488;">🕌</div>
-            <div class="card-info">
-              <span class="subject-pill" style="background: #f0fdfa; color: #0f766e;">⭐ EXPO 5 • PABP ISLAM</span>
-              <span class="time-pill">⏰ 10.30 – 11.00</span>
-              <h3 class="project-name">Show Your Caring: 4 Sikap Terpuji & Budi Pekerti</h3>
-            </div>
-          </div>
-          <p class="project-desc">
-            Saling menyayangi, empati, tutur kata lembut, jujur. Naskah presentasi terintegrasi di target klasifikasi, audio pelan, & lembar potong 12 kartu gambar.
-          </p>
-        </div>
-        <div class="btn-group">
-          <a href="Laskar_Proyek_PABP_Islam.html" class="btn btn-primary" style="background: #0d9488;">Buka Interaktif 🚀</a>
-        </div>
-      </div>
-
-      <!-- 6. EXPO 6: Science -->
+      <!-- 4. EXPO 4: Science -->
       <div class="project-card" style="border-top: 6px solid #0284c7;">
         <div>
           <div class="card-top">
             <div class="icon-badge" style="background: #e0f2fe; color: #0284c7;">🌬️</div>
             <div class="card-info">
-              <span class="subject-pill" style="background: #e0f2fe; color: #0369a1;">⭐ EXPO 6 • SCIENCE</span>
-              <span class="time-pill">⏰ 11.00 – 11.30</span>
-              <h3 class="project-name">I Can Make My Classroom Cool... (Udara & Angin)</h3>
+              <span class="subject-pill" style="background: #e0f2fe; color: #0369a1;">⭐ EXPO 4 • SCIENCE</span>
+              <span class="time-pill">⏰ 09.30 – 10.00</span>
+              <h3 class="project-name">I Can Make My Classroom Cool... (Unit 3: Air)</h3>
             </div>
           </div>
           <p class="project-desc">
-            Rangkuman suhu & udara, simulator infografis 4 solusi kelas sejuk (jendela, kipas, tirai, tanaman), naskah lisan terpadu, & lembar workbook cetak.
+            Definisi & fungsi udara/angin, eksperimen *Water Cycle in a Bag*, tanya-jawab alat peraga, naskah video presentasi, & lembar jurnal pengamatan.
           </p>
         </div>
         <div class="btn-group">
@@ -580,19 +549,60 @@
         </div>
       </div>
 
+      <!-- 5. EXPO 5: PJOK -->
+      <div class="project-card" style="border-top: 6px solid #16a34a;">
+        <div>
+          <div class="card-top">
+            <div class="icon-badge" style="background: #dcfce7; color: #16a34a;">⚽</div>
+            <div class="card-info">
+              <span class="subject-pill" style="background: #dcfce7; color: #15803d;">⭐ EXPO 5 • PJOK</span>
+              <span class="time-pill">⏰ 10.00 – 10.30</span>
+              <h3 class="project-name">Gerak Dasar Lokomotor & Olahraga Sepak Bola</h3>
+            </div>
+          </div>
+          <p class="project-desc">
+            4 Gerak Lokomotor (berjalan, berlari, melompat 1 kaki, meloncat 2 kaki), naskah bicara terstruktur, peragaan fisik, simulator gerakan, & lembar mewarnai A4.
+          </p>
+        </div>
+        <div class="btn-group">
+          <a href="Laskar_Proyek_PJOK_Gerak_Olahraga.html" class="btn btn-primary" style="background: #16a34a;">Buka Interaktif 🚀</a>
+          <a href="Laskar_Proyek_PJOK_Gerak_Olahraga.pdf" target="_blank" class="btn btn-outline">Cetak PDF 📄</a>
+        </div>
+      </div>
+
+      <!-- 6. EXPO 6: Humaniora -->
+      <div class="project-card" style="border-top: 6px solid #0891b2;">
+        <div>
+          <div class="card-top">
+            <div class="icon-badge" style="background: #cffafe; color: #0891b2;">🪪</div>
+            <div class="card-info">
+              <span class="subject-pill" style="background: #cffafe; color: #0e7490;">⭐ EXPO 6 • HUMANIORA</span>
+              <span class="time-pill">⏰ 10.30 – 11.00</span>
+              <h3 class="project-name">Identity Document (ID Card) Laskar Al Kautsar</h3>
+            </div>
+          </div>
+          <p class="project-desc">
+            Kartu identitas resmi siswa SD MISS: foto profil, biodata lengkap, tanggal lahir 8 Des 2018, orang tua Zuhdi & Ririn, naskah bicara ID Card, & format cetak tebal.
+          </p>
+        </div>
+        <div class="btn-group">
+          <a href="Laskar_Proyek_Humaniora_IDCard.html" class="btn btn-primary" style="background: #0891b2;">Buka Interaktif 🚀</a>
+        </div>
+      </div>
+
       <!-- 7. EXPO 7: Mathematics -->
       <div class="project-card" style="border-top: 6px solid #e11d48;">
         <div>
           <div class="card-top">
-            <div class="icon-badge" style="background: #fff1f2; color: #e11d48;">🌻</div>
+            <div class="icon-badge" style="background: #ffe4e6; color: #e11d48;">🌻</div>
             <div class="card-info">
-              <span class="subject-pill" style="background: #fff1f2; color: #be123c;">⭐ EXPO 7 • MATHEMATICS</span>
-              <span class="time-pill">⏰ 12.30 – 13.00</span>
-              <h3 class="project-name">Rumah Matematika & My Math Garden</h3>
+              <span class="subject-pill" style="background: #ffe4e6; color: #be123c;">⭐ EXPO 7 • MATHEMATICS</span>
+              <span class="time-pill">⏰ 11.00 – 11.30</span>
+              <h3 class="project-name">My Math Garden & Rumah Matematika 3D</h3>
             </div>
           </div>
           <p class="project-desc">
-            Konsep fasad jendela & pintu pembagian (12÷3=4), simulator kebun 3D bunga & apel, kalimat matematika lisan dinamis, & template cetak potong A4.
+            Konsep perkalian & pembagian equal groups (fasad jendela rumah & kelopak bunga taman), dialog interaktif guru-siswa, simulator interaktif, & lembar lipat 3D.
           </p>
         </div>
         <div class="btn-group">
@@ -652,7 +662,7 @@
     </div>
 
     <div class="mini-grid">
-      <a href="jadwal.html" class="mini-card" style="border: 2px solid #4338ca; background: #eef2ff;">
+      <a href="Laskar_Jadwal_Pelajaran_Sekolah.html" class="mini-card" style="border: 2px solid #4338ca; background: #eef2ff;">
         <div class="mini-info">
           <h4 style="color: #312e81;">📅 Jadwal Sekolah & Tas</h4>
           <p style="color: #4338ca; font-weight: 700;">Roster Senin–Jumat & Checklist Tas</p>
@@ -744,11 +754,8 @@
 
   <!-- Footer -->
   <footer>
-    <p>🌟 <strong>Portal Pendidikan Siswa — Grade 2 SD MISS (Mafaza) Malang</strong></p>
-    <p style="margin-top: 4px; font-size: 13px;">
-      Mendampingi peserta didik menjadi ananda yang sholeh, cerdas, kreatif, dan mandiri. • 
-      <a href="laskar.html" style="color: #4f46e5; font-weight: 700; text-decoration: underline;">Masuk ke Ruang Belajar Khusus Laskar &rarr;</a>
-    </p>
+    <p>🌟 <strong>Program Pendidikan Anak — Laskar Al Kautsar</strong> • SD MISS (Mafaza Integrated Smart School) Malang</p>
+    <p style="margin-top: 4px; font-size: 12.5px;">Dipersembahkan untuk mendampingi Laskar menjadi ananda yang sholeh, cerdas, kreatif, dan mandiri. 🚀</p>
   </footer>
 
 </div>

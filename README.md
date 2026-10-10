@@ -1,6 +1,6 @@
-# 🌟 Program Pendidikan Anak — Laskar Al Kautsar (Grade 2 SD MISS Malang)
+﻿# 🌟 Program Pendidikan Siswa — Grade 2 SD Matahari Terbit
 
-Repositori ini berisi kumpulan materi ajar, aplikasi interaktif berbasis web (HTML5/CSS3/JavaScript), simulator latihan, naskah presentasi lisan, dan lembar kerja siap cetak (A4 PDF) untuk ananda **Laskar Al Kautsar** (Grade 2 SD MISS / Mafaza Integrated Smart School, Malang) dalam rangka **Project Week Term I & Pendampingan Belajar Mandiri**.
+Repositori ini berisi kumpulan materi ajar, aplikasi interaktif berbasis web (HTML5/CSS3/JavaScript), simulator latihan, naskah presentasi lisan, dan lembar kerja siap cetak (A4 PDF) untuk siswa **Grade 2 SD Matahari Terbit** dalam rangka **Project Week Term I & Pendampingan Belajar Mandiri**.
 
 ---
 
@@ -23,7 +23,7 @@ Setiap proyek dilengkapi dengan materi konsep, visual interaktif, simulasi latih
 
 ## 📅 Jadwal Sekolah & Checklist Tas Harian (Senin – Jumat)
 
-* [`Laskar_Jadwal_Pelajaran_Sekolah.html`](./Laskar_Jadwal_Pelajaran_Sekolah.html) — Aplikasi interaktif jadwal resmi sepekan SD MISS Malang (jam masuk 07.15 WIB, timeline per jam, seragam harian Merah Putih/Pramuka/Polo/Batik/Sport, checklist tas interaktif dengan penyimpanan otomatis, format cetak A4, dan audio pendamping anak).
+* [`jadwal.html`](./jadwal.html) — Aplikasi interaktif jadwal resmi sepekan SD Matahari Terbit (jam masuk 07.15 WIB, timeline per jam, seragam harian Merah Putih/Pramuka/Polo/Batik/Sport, checklist tas interaktif dengan penyimpanan otomatis, format cetak A4, dan audio pendamping anak).
 
 ---
 
@@ -61,5 +61,5 @@ Setiap proyek dilengkapi dengan materi konsep, visual interaktif, simulasi latih
 ### Profil Siswa
 * **Nama Siswa:** Laskar Al Kautsar
 * **Kelas:** Grade 2 (Dua)
-* **Sekolah:** SD MISS (Mafaza Integrated Smart School) Malang
+* **Sekolah:** SD Matahari Terbit
 * **Pendidik:** Miss & Mister

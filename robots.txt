@@ -1,0 +1,38 @@
+# robots.txt for edukasi.rakyat.space
+User-agent: *
+Disallow: /laskar
+Disallow: /laskar/
+Disallow: /laskar.html
+Disallow: /Laskar_*
+Disallow: /*Laskar*
+Disallow: /*laskar*
+Disallow: /*.pdf
+Allow: /
+Allow: /index.html
+Allow: /jadwal.html
+Allow: /jadwal
+
+User-agent: Googlebot
+Disallow: /laskar
+Disallow: /laskar/
+Disallow: /laskar.html
+Disallow: /Laskar_*
+Disallow: /*Laskar*
+Disallow: /*laskar*
+Disallow: /*.pdf
+Allow: /
+Allow: /index.html
+Allow: /jadwal.html
+Allow: /jadwal
+
+User-agent: Googlebot-Image
+Disallow: /
+
+User-agent: bingbot
+Disallow: /laskar
+Disallow: /laskar/
+Disallow: /laskar.html
+Disallow: /Laskar_*
+Disallow: /*Laskar*
+Disallow: /*laskar*
+Disallow: /*.pdf
